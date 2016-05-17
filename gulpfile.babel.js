@@ -7,11 +7,15 @@ import sourcemaps from 'gulp-sourcemaps';
 import gutil from 'gulp-util';
 import watchify from 'watchify';
 import assign from 'lodash.assign';
+import wrap from 'gulp-wrap';
 
 //custom browserify options
 var customOpts = {
     entries: ['./src/js/index.js'],
-    debug: true
+    debug: true,
+    plugin: [
+        [ "browserify-derequire" ]
+    ],
 };
 var opts = assign({}, watchify.args, customOpts);
 var b = watchify(browserify(opts));
@@ -28,6 +32,8 @@ function bundle() {
         // log errors if they happen
         .on('error', gutil.log.bind(gutil, 'Browserify Error'))
         .pipe(source('compiled.js'))
+        //wrap define = undefined; to be compatible with RequireJS
+        .pipe(wrap('(function () { var define = undefined; <%=contents%> })();'))
         // optional, remove if you don't need to buffer file contents
         .pipe(buffer())
         // optional, remove if you dont want sourcemaps
