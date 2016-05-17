@@ -39,7 +39,6 @@ app.all('/proxy', function (req, res) {
 	if (proxyURL === undefined) {
 		proxyURL = req.body.proxyURL;
 	}
-	console.log("URL: " + url + " proxyURL " + proxyURL);
 
 	if (req.method == "OPTIONS") {
 		res.send("myApi OPTIONS\n", {
@@ -53,12 +52,6 @@ app.all('/proxy', function (req, res) {
 		var data = fs.readFileSync(proxyURL);
 		res.end(data.toString());
 	} else {
-		// Add host key to params
-		var params = JSON.parse(JSON.stringify(req.body));;
-		params.host_key = config.hostkey;
-		delete params.proxyURL;
-
-		console.log("Host " + JSON.stringify(params));
 
 		var options = {
 			method: req.method,
@@ -67,10 +60,24 @@ app.all('/proxy', function (req, res) {
 			url: proxyURL,
 			// headers: req.headers
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
 			}
 		}
 
+		if (proxyURL.indexOf("https://api.cloudflare.com/host-gw.html") > -1) {
+			// Add host key to params
+			var params = JSON.parse(JSON.stringify(req.body));;
+			params.host_key = config.hostkey;
+			delete params.proxyURL;	
+			options.form = params;
+		} else if (proxyURL.indexOf("https://api.cloudflare.com/client/v4") > -1) {
+			options.headers = {
+				'Content-Type': 'application/json',
+				'X-Auth-Key': config.clientv4.apikey,
+				'X-Auth-Email': config.clientv4.email,
+			}
+		}
+		
 		request(options, function (err, newRes, body) {
 			if (err) {
 				console.log('Error :', err);
@@ -78,16 +85,9 @@ app.all('/proxy', function (req, res) {
 				return
 			}
 
-		 	res.header('Content-Type', 'application/json');
 			res.end(JSON.stringify(body));
 		});		
 	}
-});
-
-app.post('/proxy', function (req, res) {
-	console.log("*************************************************");	
-    console.log("START " + req.method + " " + req.url);
-    // console.log("BODY" + JSON.stringify(req.body));
 });
 
 app.listen(PORT, function () {
