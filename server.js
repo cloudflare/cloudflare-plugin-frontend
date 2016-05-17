@@ -15,11 +15,10 @@ var allowCrossDomain = function(req, res, next) {
 		res.sendStatus(200);
     }
     else {
-		res.writeHead(200, {
-			'Content-Type': 'text/plain',
-			'Access-Control-Allow-Origin': '*',
-			'Access-Control-Allow-Methods': '*'
-		});
+    	res.header('Content-Type', 'text/plain');
+    	res.header('Access-Control-Allow-Origin', '*');
+    	res.header('Access-Control-Allow-Methods', '*');
+    	res.statusCode = 200;
 		next();
     }
 };
@@ -67,16 +66,20 @@ app.all('/proxy', function (req, res) {
 			json: true, 
 			url: proxyURL,
 			// headers: req.headers
+			headers: {
+				'Content-Type': 'application/json'
+			}
 		}
 
 		request(options, function (err, newRes, body) {
-		  if (err) {
-		    console.log('Error :', err);
-		    res.end(body.toString());
-		    return
-		  }
-		  console.log('Success :', body);
-		  res.end(body.toString());
+			if (err) {
+				console.log('Error :', err);
+				res.end(JSON.stringify(body));
+				return
+			}
+
+		 	res.header('Content-Type', 'application/json');
+			res.end(JSON.stringify(body));
 		});		
 	}
 });
