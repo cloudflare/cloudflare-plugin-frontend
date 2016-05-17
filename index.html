@@ -28,7 +28,10 @@
          */
         function RestProxyCallback(opts) {
             //only proxy external REST calls
-            if(opts.url.lastIndexOf("http", 0) === 0) {
+
+            var outliars = opts.url.indexOf("./lang/en.js") > -1 || opts.url.indexOf("./config.js") > -1
+
+            if(opts.url.lastIndexOf("http", 0) === 0 || outliars) {
                 if(opts.method.toUpperCase() !== "GET") {
                     if(!opts.body) {
                         opts.body = {};
@@ -41,8 +44,11 @@
                     opts.parameters['proxyURL'] = opts.url;
                 }
 
-                opts.url = "./proxy.live.php";
+                // opts.url = "./proxy.live.php";
+                opts.url = "http://localhost:8080/proxy";
             }
+
+            console.log("OPTS " + JSON.stringify(opts));
         }
         </script>
         <div id="root" class="cloudflare-partners site-wrapper"></div>
