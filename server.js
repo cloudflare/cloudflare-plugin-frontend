@@ -5,6 +5,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 
 const PORT = 8080; 
+const HOST_URL = "https://api.cloudflare.com/host-gw.html";
+const V4_URL = "https://api.cloudflare.com/client/v4"
 
 var allowCrossDomain = function(req, res, next) {
     if ('OPTIONS' == req.method) {
@@ -68,13 +70,13 @@ app.all('/proxy', function (req, res) {
             }
         }
 
-        if (proxyURL.indexOf("https://api.cloudflare.com/host-gw.html") > -1) {
+        if (proxyURL.indexOf(HOST_URL) > -1) {
             // Add host key to params
             var params = JSON.parse(JSON.stringify(req.body));;
             params.host_key = process.env.HOSTKEY
             delete params.proxyURL; 
             options.form = params;
-        } else if (proxyURL.indexOf("https://api.cloudflare.com/client/v4") > -1) {
+        } else if (proxyURL.indexOf(V4_URL) > -1) {
             options.headers = {
                 'X-Auth-Key': process.env.V4_APIKEY,
                 'X-Auth-Email': process.env.V4_EMAIL,
