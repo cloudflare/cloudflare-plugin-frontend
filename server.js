@@ -46,7 +46,9 @@ app.all('/proxy', function (req, res) {
         }, 200);
     }
 
-    if (proxyURL == "./config.js" || proxyURL == "./lang/en.js") {
+
+
+    if (proxyURL.lastIndexOf("http", 0) !== 0) {
         // Handle static requests
         var data = fs.readFileSync(proxyURL);
         res.end(data.toString());

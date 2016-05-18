@@ -29,24 +29,19 @@
         function RestProxyCallback(opts) {
             //only proxy external REST calls
 
-            var outliars = opts.url.indexOf("./lang/en.js") > -1 || opts.url.indexOf("./config.js") > -1
-
-            if(opts.url.lastIndexOf("http", 0) === 0 || outliars) {
-                if(opts.method.toUpperCase() !== "GET") {
-                    if(!opts.body) {
-                        opts.body = {};
-                    }
-                    opts.body['proxyURL'] = opts.url;
-                } else {
-                    if(!opts.parameters) {
-                        opts.parameters = {};
-                    }
-                    opts.parameters['proxyURL'] = opts.url;
+            if(opts.method.toUpperCase() !== "GET") {
+                if(!opts.body) {
+                    opts.body = {};
                 }
-
-                // opts.url = "./proxy.live.php";
-                opts.url = "http://localhost:8080/proxy";
+                opts.body['proxyURL'] = opts.url;
+            } else {
+                if(!opts.parameters) {
+                    opts.parameters = {};
+                }
+                opts.parameters['proxyURL'] = opts.url;
             }
+
+            opts.url = "http://localhost:8080/proxy";
 
             console.log("OPTS " + JSON.stringify(opts));
         }
