@@ -3,7 +3,6 @@ var querystring = require('querystring');
 var fs = require("fs");
 var express = require('express');
 var bodyParser = require('body-parser');
-var config = require('./config_keys');
 
 const PORT=8080; 
 
@@ -67,14 +66,13 @@ app.all('/proxy', function (req, res) {
         if (proxyURL.indexOf("https://api.cloudflare.com/host-gw.html") > -1) {
             // Add host key to params
             var params = JSON.parse(JSON.stringify(req.body));;
-            params.host_key = config.hostkey;
+            params.host_key = process.env.HOSTKEY
             delete params.proxyURL; 
             options.form = params;
         } else if (proxyURL.indexOf("https://api.cloudflare.com/client/v4") > -1) {
             options.headers = {
-                'Content-Type': 'application/json',
-                'X-Auth-Key': config.clientv4.apikey,
-                'X-Auth-Email': config.clientv4.email,
+                'X-Auth-Key': process.env.V4_APIKEY,
+                'X-Auth-Email': process.env.V4_EMAIL,
             }
         }
         
@@ -85,6 +83,7 @@ app.all('/proxy', function (req, res) {
                 return
             }
 
+            res.header('Content-Type', 'application/json');
             res.end(JSON.stringify(body));
         });     
     }
