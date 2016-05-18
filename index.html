@@ -28,7 +28,6 @@
          */
         function RestProxyCallback(opts) {
             //only proxy external REST calls
-
             if(opts.method.toUpperCase() !== "GET") {
                 if(!opts.body) {
                     opts.body = {};
@@ -42,8 +41,6 @@
             }
 
             opts.url = "http://localhost:8080/proxy";
-
-            console.log("OPTS " + JSON.stringify(opts));
         }
         </script>
         <div id="root" class="cloudflare-partners site-wrapper"></div>

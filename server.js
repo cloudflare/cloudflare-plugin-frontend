@@ -4,7 +4,7 @@ var fs = require("fs");
 var express = require('express');
 var bodyParser = require('body-parser');
 
-const PORT=8080; 
+const PORT = 8080; 
 
 var allowCrossDomain = function(req, res, next) {
     if ('OPTIONS' == req.method) {
@@ -27,11 +27,15 @@ app.use(bodyParser.json())
 app.use(allowCrossDomain);
 
 app.all('/proxy', function (req, res) {
-    console.log("*************************************************");   
-    console.log("START " + req.method + " " + req.url);
-    console.log("BODY" + JSON.stringify(req.body));
-    console.log("QUERY" + JSON.stringify(req.query));
-    console.log("PARAMS" + JSON.stringify(req.params));
+    if (process.env.DEBUG) {
+        console.log("*************************************************");   
+        console.log("START " + req.method + " " + req.url);
+        console.log("BODY" + JSON.stringify(req.body));
+        console.log("QUERY" + JSON.stringify(req.query));
+        console.log("PARAMS" + JSON.stringify(req.params));
+    }
+
+    
     
     var url = req.url;
     var proxyURL = req.query.proxyURL;
@@ -56,7 +60,6 @@ app.all('/proxy', function (req, res) {
 
         var options = {
             method: req.method,
-            form: params,
             json: true, 
             url: proxyURL,
             // headers: req.headers
@@ -92,5 +95,8 @@ app.all('/proxy', function (req, res) {
 });
 
 app.listen(PORT, function () {
-  console.log('Example app listening on port ' + PORT);
+    console.log('Example app listening on port ' + PORT);
+    if (process.env.DEBUG) {
+        console.log('Debug Logs Active');
+    }
 });
