@@ -1,12 +1,14 @@
+require('dotenv').config();
 var request = require('request')
 var querystring = require('querystring');
 var fs = require("fs");
 var express = require('express');
 var bodyParser = require('body-parser');
 
+
 const PORT = 8080; 
 const HOST_URL = "https://api.cloudflare.com/host-gw.html";
-const V4_URL = "https://api.cloudflare.com/client/v4"
+const V4_URL = "https://api.cloudflare.com/client/v4";
 
 var allowCrossDomain = function(req, res, next) {
     if ('OPTIONS' == req.method) {
@@ -37,9 +39,6 @@ app.all('/proxy', function (req, res) {
         console.log("PARAMS" + JSON.stringify(req.params));
     }
 
-    
-    
-    var url = req.url;
     var proxyURL = req.query.proxyURL;
     if (proxyURL === undefined) {
         proxyURL = req.body.proxyURL;
