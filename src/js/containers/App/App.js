@@ -11,6 +11,7 @@ import { isLoggedIn } from '../../utils/Auth/Auth';
 import { asyncConfigFetch } from '../../actions/config';
 import NotificationList from '../../containers/NotificationList/NotificationList';
 import UnderAttackButton from '../../containers/UnderAttackButton/UnderAttackButton';
+import { getAbsoluteUrl } from '../../selectors/config';
 
 //Safari Intl Polyfill
 if (!global.Intl) {
@@ -20,6 +21,7 @@ class AppContainer extends Component {
 
 
     render() {
+        const { config } = this.props.state;
         return (
             <div className="wrapper">
                 <div className="row">
@@ -27,7 +29,7 @@ class AppContainer extends Component {
                         &nbsp;
                     </div>
                     <div className="col-6">
-                        <img src="./assets/logo.svg" />
+                        <img src={ getAbsoluteUrl(config, "assets/logo.svg") } />
                     </div>
                     <div className="col-5">
                         &nbsp;

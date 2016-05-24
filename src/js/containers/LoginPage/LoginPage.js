@@ -9,6 +9,7 @@ import MarketingFeature from '../../components/MarketingFeature/MarketingFeature
 import * as UserActionCreators from '../../actions/user'
 import { SIGN_UP_PAGE, DOMAINS_OVERVIEW_PAGE } from '../../constants/UrlPaths.js'
 import { isLoggedIn } from '../../utils/Auth/Auth';
+import { getAbsoluteUrl } from '../../selectors/config';
 
 class LoginPage extends Component {
 
@@ -21,6 +22,7 @@ class LoginPage extends Component {
 
     render() {
         const { formatMessage } = this.props.intl;
+        const { config } = this.props;
 
         return (
             <div>
@@ -77,16 +79,16 @@ class LoginPage extends Component {
                 </div>
                 <div className="row">
                     <div className="col-4">
-                         <MarketingFeature imgSrc="assets/icon-pin.svg" titleKey="component.marketingFeature.cdn.title" descriptionKey="component.marketingFeature.cdn.description" />
+                         <MarketingFeature imgSrc={ getAbsoluteUrl(config, "assets/icon-pin.svg")} titleKey="component.marketingFeature.cdn.title" descriptionKey="component.marketingFeature.cdn.description" />
                     </div>
                     <div className="col-4">
-                        <MarketingFeature imgSrc="assets/icon-bolt.svg" titleKey="component.marketingFeature.optimization.title" descriptionKey="component.marketingFeature.optimization.description" />
+                        <MarketingFeature imgSrc={ getAbsoluteUrl(config, "assets/icon-bolt.svg")} titleKey="component.marketingFeature.optimization.title" descriptionKey="component.marketingFeature.optimization.description" />
                     </div>
                     <div className="col-4">
-                        <MarketingFeature imgSrc="assets/icon-shield.svg" titleKey="component.marketingFeature.security.title" descriptionKey="component.marketingFeature.security.description" />
+                        <MarketingFeature imgSrc={ getAbsoluteUrl(config, "assets/icon-shield.svg")} titleKey="component.marketingFeature.security.title" descriptionKey="component.marketingFeature.security.description" />
                     </div>
                     <div className="col-4">
-                        <MarketingFeature imgSrc="assets/icon-lock.svg" titleKey="component.marketingFeature.ddos.title" descriptionKey="component.marketingFeature.ddos.description" />
+                        <MarketingFeature imgSrc={ getAbsoluteUrl(config, "assets/icon-lock.svg")} titleKey="component.marketingFeature.ddos.title" descriptionKey="component.marketingFeature.ddos.description" />
                     </div>
                 </div>
             </div>
@@ -110,7 +112,7 @@ class LoginPage extends Component {
 }
 
 function mapStateToProps(state) {
-    return { state: state }
+    return { config: state.config }
 }
 
 export default injectIntl(connect(mapStateToProps)(LoginPage));
