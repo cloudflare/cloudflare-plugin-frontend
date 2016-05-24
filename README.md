@@ -37,9 +37,9 @@ config (./config.js) should remain unchanged.
 
 2. Build your backend data store
 Your backend needs to store the following information about each user:
-* CloudFlare [Client V4 API](https://api.cloudflare.com/) Key
-* CloudFlare Client V4 API Email
-* CloudFlare [Host API](https://www.cloudflare.com/docs/host-api.html) Key
+    * CloudFlare [Client V4 API](https://api.cloudflare.com/) Key
+    * CloudFlare Client V4 API Email
+    * CloudFlare [Host API](https://www.cloudflare.com/docs/host-api.html) Key
 
 3. In `index.html` create a variable in local storage called `cfEmail` which contains
 CloudFlare Client V4 API Email of the current user.
