@@ -5,8 +5,7 @@ import { asyncIntlFetchTranslations } from './intl';
 import { notificationAddError } from './notifications';
 import { isLoggedIn, getEmail } from '../utils/Auth/Auth';
 import { asyncUserLoginSuccess } from '../actions/user';
-
-const ABSOLUTE_URL_BASE = "absoluteUrlBase";
+import { ABSOLUTE_URL_BASE_KEY } from '../reducers/config';
 
 export function configFetch() {
     return {
@@ -43,7 +42,7 @@ export function asyncConfigFetch() {
                      * url path to be used in components/Image. absoluteBaseUrl should be defined globally
                      * on the page where the SPA is loaded.
                      */
-                    dispatch(configUpdateByKey(ABSOLUTE_URL_BASE, absoluteUrlBase));
+                    dispatch(configUpdateByKey(ABSOLUTE_URL_BASE_KEY, absoluteUrlBase));
                 }
                 dispatch(asyncIntlFetchTranslations(config.locale))
                 //log user in if their email is in local storage
