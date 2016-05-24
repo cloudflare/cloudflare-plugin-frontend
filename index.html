@@ -28,21 +28,19 @@
          */
         function RestProxyCallback(opts) {
             //only proxy external REST calls
-            if(opts.url.lastIndexOf("http", 0) === 0) {
-                if(opts.method.toUpperCase() !== "GET") {
-                    if(!opts.body) {
-                        opts.body = {};
-                    }
-                    opts.body['proxyURL'] = opts.url;
-                } else {
-                    if(!opts.parameters) {
-                        opts.parameters = {};
-                    }
-                    opts.parameters['proxyURL'] = opts.url;
+            if(opts.method.toUpperCase() !== "GET") {
+                if(!opts.body) {
+                    opts.body = {};
                 }
-
-                opts.url = "./proxy.live.php";
+                opts.body['proxyURL'] = opts.url;
+            } else {
+                if(!opts.parameters) {
+                    opts.parameters = {};
+                }
+                opts.parameters['proxyURL'] = opts.url;
             }
+
+            opts.url = "http://localhost:8080/proxy";
         }
         </script>
         <div id="root" class="cloudflare-partners site-wrapper"></div>
