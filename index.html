@@ -13,6 +13,7 @@
     </head>
     <body>
         <script>
+        var absoluteUrlBase = location.href.substring(0, location.href.lastIndexOf("/index.html")+1);
         localStorage.cfEmail = '';
         /*
          * A callback for cf-util-http to proxy all calls to our backend

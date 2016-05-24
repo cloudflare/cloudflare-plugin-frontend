@@ -30,8 +30,8 @@ export default class MarketingFeature extends React.Component {
         };
         let columnPStyles = {
             'padding': '10px 0 0 0',
-            'font-size': '12px',
-            'text-align': 'center'
+            'fontSize': '12px',
+            'textAlign': 'center'
         };
 
         return (
