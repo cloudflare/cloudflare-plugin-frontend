@@ -5,10 +5,10 @@ import { Link } from 'react-router';
 import { routeActions } from 'redux-simple-router'
 
 import MarketingFeatureCollection from '../../containers/MarketingFeatureCollection/MarketingFeatureCollection';
-import * as UserActionCreators from '../../actions/user'
-import { SIGN_UP_PAGE, CLOUDFLARE_FORGOT_PASSWORD_PAGE } from '../../constants/UrlPaths.js'
+import { asyncLogin } from '../../actions/user'
+import { CLOUDFLARE_API_KB_ARTICLE_PAGE, CLOUDFLARE_SIGNUP_PAGE } from '../../constants/UrlPaths.js'
 
-class HostLoginPage extends Component {
+class ClientLoginPage extends Component {
 
     handleLoginSubmit(e) {
         e.preventDefault();
@@ -17,12 +17,7 @@ class HostLoginPage extends Component {
         let email = this.refs.email.value;
         let password = this.refs.password.value;
 
-        dispatch(UserActionCreators.asyncLogin(email,password));
-    }
-
-    handleLogout(e) {
-        let { dispatch } = this.props;
-        dispatch(UserActionCreators.logout());
+        dispatch(asyncLogin(email,password));
     }
 
     render() {
@@ -35,41 +30,40 @@ class HostLoginPage extends Component {
                         <form className="form" onSubmit={(e) => this.handleLoginSubmit(e)}>
                             <legend>
                                 <h3 className="form-title">
-                                    <FormattedMessage id="component.login.form.title" />
+                                    <FormattedMessage id="component.clientLogin.form.title" />
                                 </h3>
                             </legend>
                             <fieldset>
                                 <div className="control-group">
                                     <div className="control-label">
                                         <label className="assistive-text">
-                                            <FormattedMessage id="component.login.form.email" />
+                                            <FormattedMessage id="component.clientLogin.form.email" />
                                         </label>
                                     </div>
                                     <div className="controls">
-                                        <input ref="email" type="text" placeholder={formatMessage({id: "component.login.form.email"})} className="width-full"/>
+                                        <input ref="email" type="text" placeholder={formatMessage({id: "component.clientLogin.form.email"})} className="width-full"/>
                                     </div>
                                 </div>
                                 <div className="control-group">
                                     <div className="control-label">
                                         <label className="assistive-text">
-                                            <FormattedMessage id="component.login.form.password" />
+                                            <FormattedMessage id="component.clientLogin.form.password" />
                                         </label>
                                     </div>
                                     <div className="controls">
-                                        <input ref="password" type="password" placeholder={formatMessage({id: "component.login.form.password"})} className="width-full"/>
+                                        <input ref="apiKey" type="text" placeholder={formatMessage({id: "component.clientLogin.form.apiKey"})} className="width-full"/>
                                     </div>
                                 </div>
                                 <div className="control-group">
                                     <div className="controls">
                                         <button type="submit" className="btn btn-success btn-large width-full">
-                                            <FormattedMessage id="component.login.form.button" />
+                                            <FormattedMessage id="component.clientLogin.form.button" />
                                         </button>
                                     </div>
                                 </div>
                                 <div className="control-group">
                                     <div className="row">
-                                        <Link className="pull-left" to={ SIGN_UP_PAGE }><FormattedMessage id="component.login.form.signUp" /></Link>
-                                        <a className="pull-right" href={ CLOUDFLARE_FORGOT_PASSWORD_PAGE } target="_blank"><FormattedMessage id="component.login.form.forgotPassword" /></a>
+                                        <a className="pull-right" href={ CLOUDFLARE_API_KB_ARTICLE_PAGE } target="_blank"><FormattedMessage id="component.clientLogin.form.apiKeyHelp" /></a>
                                     </div>
                                 </div>
                             </fieldset>
@@ -78,7 +72,7 @@ class HostLoginPage extends Component {
                 </section>
                 <div className="row">
                     <div className="col-16">
-                        <p style={{'textAlign': 'center', 'marginBottom': '2.5rem'}}><FormattedMessage id="component.login.cloudflare.description"/></p>
+                        <p style={{'textAlign': 'center', 'marginBottom': '2.5rem'}}><FormattedMessage id="component.clientLogin.cloudflare.description"/> <a href={CLOUDFLARE_SIGNUP_PAGE} target="_blank">CloudFlare.com</a>.</p>
                     </div>
                 </div>
                 <MarketingFeatureCollection/>
@@ -87,4 +81,4 @@ class HostLoginPage extends Component {
     }
 }
 
-export default injectIntl(HostLoginPage);
+export default injectIntl(ClientLoginPage);

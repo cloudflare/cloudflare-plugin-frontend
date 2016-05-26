@@ -5,6 +5,7 @@ import { routeActions } from 'redux-simple-router';
 import { isLoggedIn } from '../../utils/Auth/Auth';
 import { DOMAINS_OVERVIEW_PAGE } from '../../constants/UrlPaths.js';
 import { getConfigValue } from '../../selectors/config';
+import ClientLoginPage from '../../containers/ClientLoginPage/ClientLoginPage';
 import HostLoginPage from '../../containers/HostLoginPage/HostLoginPage';
 
 class LoginPage extends Component {
@@ -21,7 +22,7 @@ class LoginPage extends Component {
         let isHostAPILogin = getConfigValue(config, "useHostAPILogin");
         return (
             <div>
-                {isHostAPILogin ? (<HostLoginPage/>) : null}
+                {isHostAPILogin ? (<HostLoginPage/>) : (<ClientLoginPage/>)}
             </div>
         );
     }
