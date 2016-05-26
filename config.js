@@ -16,5 +16,6 @@
     "featureManagerIsSSLEnabled": false,
     "locale": "en",
     "integrationName": "cpanel",
+    "useHostAPILogin": true,
     "version": "6.0.0"
 }
