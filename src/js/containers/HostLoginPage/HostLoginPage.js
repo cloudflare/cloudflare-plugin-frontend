@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { Link } from 'react-router';
 import { routeActions } from 'redux-simple-router'
 
-import MarketingFeature from '../../components/MarketingFeature/MarketingFeature';
+import MarketingFeatureCollection from '../../containers/MarketingFeatureCollection/MarketingFeatureCollection';
 import * as UserActionCreators from '../../actions/user'
 import { SIGN_UP_PAGE } from '../../constants/UrlPaths.js'
 import { getAbsoluteUrl } from '../../selectors/config';
@@ -29,7 +28,6 @@ class HostLoginPage extends Component {
 
     render() {
         const { formatMessage } = this.props.intl;
-        const { config } = this.props;
 
         return (
             <div>
@@ -84,27 +82,10 @@ class HostLoginPage extends Component {
                         <p style={{'textAlign': 'center', 'marginBottom': '2.5rem'}}><FormattedMessage id="component.login.cloudflare.description"/></p>
                     </div>
                 </div>
-                <div className="row">
-                    <div className="col-4">
-                        <MarketingFeature imgSrc={ getAbsoluteUrl(config, "assets/icon-pin.svg")} titleKey="component.marketingFeature.cdn.title" descriptionKey="component.marketingFeature.cdn.description" />
-                    </div>
-                    <div className="col-4">
-                        <MarketingFeature imgSrc={ getAbsoluteUrl(config, "assets/icon-bolt.svg")} titleKey="component.marketingFeature.optimization.title" descriptionKey="component.marketingFeature.optimization.description" />
-                    </div>
-                    <div className="col-4">
-                        <MarketingFeature imgSrc={ getAbsoluteUrl(config, "assets/icon-shield.svg")} titleKey="component.marketingFeature.security.title" descriptionKey="component.marketingFeature.security.description" />
-                    </div>
-                    <div className="col-4">
-                        <MarketingFeature imgSrc={ getAbsoluteUrl(config, "assets/icon-lock.svg")} titleKey="component.marketingFeature.ddos.title" descriptionKey="component.marketingFeature.ddos.description" />
-                    </div>
-                </div>
+                <MarketingFeatureCollection/>
             </div>
         );
     }
 }
 
-function mapStateToProps(state) {
-    return { config: state.config }
-}
-
-export default injectIntl(connect(mapStateToProps)(HostLoginPage));
+export default injectIntl(HostLoginPage);
