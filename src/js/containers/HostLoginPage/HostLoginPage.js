@@ -87,4 +87,4 @@ class HostLoginPage extends Component {
     }
 }
 
-export default injectIntl(HostLoginPage);
+export default injectIntl(connect()(HostLoginPage));

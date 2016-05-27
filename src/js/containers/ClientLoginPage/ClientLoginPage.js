@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import { routeActions } from 'redux-simple-router'
 
 import MarketingFeatureCollection from '../../containers/MarketingFeatureCollection/MarketingFeatureCollection';
-import { asyncLogin } from '../../actions/user'
+import { asyncAPILogin } from '../../actions/user'
 import { CLOUDFLARE_API_KB_ARTICLE_PAGE, CLOUDFLARE_SIGNUP_PAGE } from '../../constants/UrlPaths.js'
 
 class ClientLoginPage extends Component {
@@ -15,9 +15,9 @@ class ClientLoginPage extends Component {
 
         const { dispatch } = this.props;
         let email = this.refs.email.value;
-        let password = this.refs.password.value;
+        let apiKey = this.refs.apiKey.value;
 
-        dispatch(asyncLogin(email,password));
+        dispatch(asyncAPILogin(email,apiKey));
     }
 
     render() {
@@ -47,7 +47,7 @@ class ClientLoginPage extends Component {
                                 <div className="control-group">
                                     <div className="control-label">
                                         <label className="assistive-text">
-                                            <FormattedMessage id="component.clientLogin.form.password" />
+                                            <FormattedMessage id="component.clientLogin.form.apiKey" />
                                         </label>
                                     </div>
                                     <div className="controls">
@@ -81,4 +81,4 @@ class ClientLoginPage extends Component {
     }
 }
 
-export default injectIntl(ClientLoginPage);
+export default injectIntl(connect()(ClientLoginPage));
