@@ -1,4 +1,7 @@
 export const ANALYTICS_PAGE = "/analytics";
+export const CLOUDFLARE_API_KB_ARTICLE_PAGE = "https://support.cloudflare.com/hc/en-us/articles/200167836-Where-do-I-find-my-CloudFlare-API-key-";
+export const CLOUDFLARE_FORGOT_PASSWORD_PAGE = "https://cloudflare.com/a/forgot-password";
+export const CLOUDFLARE_SIGNUP_PAGE = "https://www.cloudflare.com/a/sign-up";
 export const CLOUDFLARE_UPGRADE_PAGE = "http://cloudflare.com/plans";
 export const DOMAINS_OVERVIEW_PAGE = "/zones";
 export const LOGIN_PAGE = "/login";

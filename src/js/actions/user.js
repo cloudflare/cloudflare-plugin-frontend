@@ -1,5 +1,6 @@
 import { routeActions } from 'redux-simple-router'
 import { userAuth, userCreate, hostAPIResponseOk } from '../utils/CFHostAPI/CFHostAPI';
+import { pluginAccountPost, pluginResponseOk } from '../utils/PluginAPI/PluginAPI';
 import { notificationAddError } from './notifications';
 import * as ActionTypes from '../constants/ActionTypes';
 import * as UrlPaths from '../constants/UrlPaths';
@@ -29,6 +30,7 @@ export function asyncUserLoginSuccess(email) {
     return dispatch => {
         dispatch(userLoginSuccess(email));
         dispatch(asyncFetchZones());
+        dispatch(routeActions.push(UrlPaths.DOMAINS_OVERVIEW_PAGE));
     }
 }
 
@@ -44,15 +46,27 @@ export function asyncLogin(email, password) {
     return dispatch => {
         dispatch(userLogin());
         userAuth({cloudflare_email: email, cloudflare_pass: password}, function(response) {
-
             if(hostAPIResponseOk(response)) {
                 dispatch(asyncUserLoginSuccess(response.body.response.cloudflare_email));
-                dispatch(routeActions.push(UrlPaths.DOMAINS_OVERVIEW_PAGE));
             } else {
                 dispatch(userLoginError());
                 dispatch(notificationAddError(response.body.msg));
             }
         }, function(error) {
+            dispatch(userLoginError());
+            dispatch(notificationAddError(error));
+        });
+    }
+}
+
+export function asyncAPILogin(email, apiKey) {
+    return dispatch => {
+        dispatch(userLogin());
+        pluginAccountPost(email, apiKey, function(response){
+            if(pluginResponseOk(response)) {
+                dispatch(asyncUserLoginSuccess(email));
+            }
+        }, function(error){
             dispatch(userLoginError());
             dispatch(notificationAddError(error));
         });
