@@ -45,7 +45,7 @@ class RailgunCard extends Component {
                                 {_.values(railguns).map(railgun =>
                                     <TableRow key={railgun.id}>
                                         <TableCell>{ railgun.name }</TableCell>
-                                        <TableCell>{ (railgun.active ? <FormattedMessage id="container.railgunCard.table.active" /> : <FormattedMessage id="container.railgunCard.table.inactive" />)}</TableCell>
+                                        <TableCell>{ (railgun.enabled ? <FormattedMessage id="container.railgunCard.table.active" /> : <FormattedMessage id="container.railgunCard.table.inactive" />)}</TableCell>
                                         <TableCell>
                                             <Toggle
                                                 label=""
