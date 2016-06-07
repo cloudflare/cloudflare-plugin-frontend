@@ -1,7 +1,7 @@
 {
-  "name": "cloudflare-cpanel",
-  "version": "1.0.0",
-  "description": "A CloudFlare plugin for CPanel",
+  "name": "cloudflare-plugin-frontend",
+  "version": "1.0.1",
+  "description": "A React/Redux frontend for CloudFlare plugins",
   "main": "gulpfile.js",
   "scripts": {
     "test": "mocha src/js/test/*/*.js --compilers js:babel-register",
@@ -13,7 +13,7 @@
     "url": "ssh://git@github.com:cloudflare/CloudFlare-CPanel.git"
   },
   "keywords": [
-    "cpanel"
+    "cloudflare"
   ],
   "author": "CloudFlare",
   "license": "BSD-3-Clause",
