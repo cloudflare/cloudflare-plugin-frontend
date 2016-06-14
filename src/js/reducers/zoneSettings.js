@@ -30,17 +30,17 @@ export function zoneSettingsReducer(state = initialState, action) {
             })
         case ActionTypes.ZONE_UPDATE_SETTING:
             return Object.assign({}, state, {
-                entities: patchSetting(action.zoneId, action.setting, state),
+                entities: zonePatchSetting(action.zoneId, action.setting, state),
                 isFetching: action.setting.id
             })
         case ActionTypes.ZONE_UPDATE_SETTING_SUCCESS:
             return Object.assign({}, state, {
-                entities: patchSetting(action.zoneId, action.setting, state),
+                entities: zonePatchSetting(action.zoneId, action.setting, state),
                 isFetching: ""
             })
         case ActionTypes.ZONE_UPDATE_SETTING_ERROR:
             return Object.assign({}, state, {
-                entities: patchSetting(action.zoneId, action.setting, state),
+                entities: zonePatchSetting(action.zoneId, action.setting, state),
                 isFetching: ""
             })
         default:
@@ -48,7 +48,7 @@ export function zoneSettingsReducer(state = initialState, action) {
     }
 }
 
-function patchSetting(zoneId, setting, state) {
+function zonePatchSetting(zoneId, setting, state) {
     let patchedEntities = state.entities;
     patchedEntities[zoneId][setting.id] = setting;
     return patchedEntities;
