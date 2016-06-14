@@ -11,6 +11,7 @@ import BrowserCacheTTLCard from '../../containers/BrowserCacheTTLCard/BrowserCac
 import DevelopmentModeCard from '../../containers/DevelopmentModeCard/DevelopmentModeCard';
 import FeatureManager from '../../components/FeatureManager/FeatureManager';
 import IPV6Card from '../../containers/IPV6Card/IPV6Card';
+import IpRewriteCard from '../../containers/IpRewriteCard/IpRewriteCard';
 import MinifyCard from '../../containers/MinifyCard/MinifyCard';
 import PurgeCacheCard from '../../containers/PurgeCacheCard/PurgeCacheCard';
 import RailgunCard from '../../containers/RailgunCard/RailgunCard';
@@ -34,6 +35,10 @@ class PerformancePage extends Component {
 
                         <FeatureManager isEnabled={config.featureManagerIsIpv6Enabled}>
                             <IPV6Card/>
+                        </FeatureManager>
+
+                        <FeatureManager isEnabled={config.featureManagerIsIpRewriteEnabled}>
+                            <IpRewriteCard/>
                         </FeatureManager>
 
                         <FeatureManager isEnabled={config.featureManagerIsCacheLevelEnabled}>
