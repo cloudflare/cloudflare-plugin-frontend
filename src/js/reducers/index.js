@@ -14,6 +14,7 @@ import { zoneRailgunReducer } from './zoneRailgun';
 import { zoneScanReducer } from './zoneScan';
 import { zoneSettingsReducer } from './zoneSettings';
 import { zonesReducer } from './zones';
+import { pluginSettingsReducer } from './pluginSettings'
 
 const rootReducer = combineReducers({
     activeZone: activeZoneReducer,
@@ -30,6 +31,7 @@ const rootReducer = combineReducers({
     zoneRailguns: zoneRailgunReducer,
     zoneScan: zoneScanReducer,
     zoneSettings: zoneSettingsReducer,
+    pluginSettings: pluginSettingsReducer,
 });
 
 export default rootReducer;

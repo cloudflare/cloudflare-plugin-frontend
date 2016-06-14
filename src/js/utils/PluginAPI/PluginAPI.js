@@ -20,6 +20,7 @@ export function pluginResponseOk(response) {
 }
 
 export function pluginAccountPost(email, apiKey, onSuccess, onError) {
+	console.log("pluginAccountPost");
     let opts = {
         body: {
             email: email,
@@ -27,4 +28,21 @@ export function pluginAccountPost(email, apiKey, onSuccess, onError) {
         }
     };
     return http.post(ENDPOINT + "/account/", opts, onSuccess, onError);
+}
+
+export function pluginSettingListGet(zoneId, onSuccess, onError) {
+		console.log("pluginSettingListGet");
+
+    let opts = {};
+
+    return http.get(ENDPOINT + "/plugin/" + zoneId + "/settings/", opts, onSuccess, onError);
+}
+
+export function pluginSettingPatch(zoneId, settingName, value, onSuccess, onError) {
+	console.log("pluginSettingPatch");
+    let opts = {
+    	value: value,
+    };
+    
+    return http.patch(ENDPOINT + "/plugin/" + zoneId + "/settings/" + settingName, opts, onSuccess, onError);
 }
