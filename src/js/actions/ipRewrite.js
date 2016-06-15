@@ -62,15 +62,33 @@ export function asyncPluginFetchSettings(zoneId) {
 
     return dispatch => {
         dispatch(pluginFetchSettings());
-        pluginSettingListGet({zoneId: zoneId}, function(response){
-            if(pluginResponseOk(response)) {
-                dispatch(pluginFetchSettingsSuccess(zoneId, response.body.result));
-            } else {
-                dispatch(notificationAddClientAPIError(pluginFetchSettingsError(),response));
-            }
-        }, function(error) {
-            dispatch(notificationAddClientAPIError(pluginFetchSettingsError(), error));
-        });
+
+        var response = { 
+            "success": true, 
+            "errors": [], 
+            "messages": [],
+            "result": [{ 
+                "id": "ip_rewrite", 
+                "value": true, 
+                "editable": true, 
+                "modified_on": "" 
+            }]
+         }
+
+        console.log("FETCH " + true);
+
+        // Mock
+        dispatch(pluginFetchSettingsSuccess(zoneId, response.result));         
+
+        // pluginSettingListGet({zoneId: zoneId}, function(response){
+        //     if(pluginResponseOk(response)) {
+        //         dispatch(pluginFetchSettingsSuccess(zoneId, response.body.result));
+        //     } else {
+        //         dispatch(notificationAddClientAPIError(pluginFetchSettingsError(),response));
+        //     }
+        // }, function(error) {
+        //     dispatch(notificationAddClientAPIError(pluginFetchSettingsError(), error));
+        // });
     }
 }
 
@@ -86,18 +104,33 @@ export function asyncPluginUpdateSetting(settingName, zoneId, value) {
         console.log("OLD SETTING " + oldSetting);
 
         dispatch(pluginUpdateSetting(zoneId, { 'id': settingName, 'value': value }));
-        pluginSettingPatch(settingName, zoneId, value, function(response) {
-                if(pluginResponseOk(response)) {
-                    console.log("SUCCESS");
-                    dispatch(pluginUpdateSettingSuccess(zoneId, response.body.result));
-                } else {
-                    console.log("ERROR");
-                    dispatch(notificationAddClientAPIError(pluginUpdateSettingError(zoneId, oldSetting), response));
-                }
-            },
-            function(error) {
-                console.log("ERROR2");
-                dispatch(notificationAddClientAPIError(pluginUpdateSettingError(zoneId, oldSetting), error));
-            });
+        
+        var response = { 
+            "success": true, 
+            "errors": [], 
+            "messages": [],
+            "result": { 
+                "id": "ip_rewrite", 
+                "value": value, 
+                "editable": true, 
+                "modified_on": "" 
+            }
+         }
+
+         console.log("UPDATE " + value);
+
+        // Mock
+        dispatch(pluginUpdateSettingSuccess(zoneId, response.result));
+
+        // pluginSettingPatch(settingName, zoneId, value, function(response) {
+        //     if(pluginResponseOk(response)) {
+        //         dispatch(pluginUpdateSettingSuccess(zoneId, response.body.result));
+        //     } else {
+        //         dispatch(notificationAddClientAPIError(pluginUpdateSettingError(zoneId, oldSetting), response));
+        //     }
+        // },
+        // function(error) {
+        //     dispatch(notificationAddClientAPIError(pluginUpdateSettingError(zoneId, oldSetting), error));
+        // });
     }
 }
