@@ -38,28 +38,10 @@ class IpRewriteCard extends Component {
     }
 }
 
-function isset (fn) {
-    var value;
-    try {
-        value = fn();
-    } catch (e) {
-        value = undefined;
-    } finally {
-        return value !== undefined;
-    }
-};
-
 function mapStateToProps(state) {
-    // var ipRewriteTemp = false;
-
-    // if (isset(function () { return state.pluginSettings.entities[state.activeZone.id][SETTING_NAME]; }) !== undefined) {
-    //     ipRewriteTemp = state.pluginSettings.entities[state.activeZone.id][SETTING_NAME].value;
-    // }
-
-
     return {
         activeZoneId: state.activeZone.id,
-        ipRewriteValue: true//state.pluginSettings.entities[state.activeZone.id][SETTING_NAME].value,
+        ipRewriteValue: state.pluginSettings.entities[state.activeZone.id][SETTING_NAME].value,
     }
 }
 export default injectIntl(connect(mapStateToProps)(IpRewriteCard));

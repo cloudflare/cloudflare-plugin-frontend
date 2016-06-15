@@ -19,9 +19,6 @@ export function pluginSettingsReducer(state = initialState, action) {
             let pluginSettingSchema = new Schema(action.zoneId, {idAttribute: 'id'});
             let normalizedPluginSettings = normalize(action.pluginSettings, arrayOf(pluginSettingSchema));
 
-            console.log("PPPPPPP");
-            console.log(JSON.stringify(normalizedPluginSettings));
-
             return Object.assign({}, state, {
                 entities: _.merge(state.entities, normalizedPluginSettings.entities),
                 result: _.merge(state.result, normalizedPluginSettings.result),
