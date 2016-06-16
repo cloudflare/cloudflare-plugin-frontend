@@ -12,11 +12,11 @@ export function pluginFetchSettings() {
     }
 }
 
-export function pluginFetchSettingsSuccess(zoneId, pluginSettings) {
+export function pluginFetchSettingsSuccess(zoneId, setting) {
     return {
         type: ActionTypes.PLUGIN_SETTINGS_FETCH_SUCCESS,
         zoneId,
-        pluginSettings
+        setting
     }
 }
 
@@ -88,7 +88,7 @@ export function asyncPluginUpdateSetting(settingName, zoneId, value) {
     return (dispatch, getState) => {
         let oldSetting = getState().pluginSettings.entities[zoneId][settingName];
 
-        dispatch(pluginUpdateSetting(zoneId, { 'id': settingName, 'value': value }));
+        dispatch(pluginUpdateSetting(zoneId, {'id': settingName, 'value': value }));
         
         var response = { 
             "success": true, 

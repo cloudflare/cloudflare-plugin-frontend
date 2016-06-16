@@ -11,6 +11,9 @@ const initialState = {
 
 export function zoneSettingsReducer(state = initialState, action) {
     switch (action.type) {
+
+        // TODO is fetching should be false and true
+
         case ActionTypes.ZONE_FETCH_SETTINGS:
             return Object.assign({}, state, {
                 isFetching: "fetchAllSettings"
