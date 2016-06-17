@@ -20,8 +20,8 @@ export function pluginSettingsReducer(state = initialState, action) {
             let normalizedPluginSettings = normalize(action.setting, arrayOf(pluginSettingSchema));
 
             return Object.assign({}, state, {
-                entities: normalizedPluginSettings.entities,//_.merge(state.entities, normalizedPluginSettings.entities),
-                result: normalizedPluginSettings.result, //_.merge(state.result, normalizedPluginSettings.result),
+                entities: _.merge(state.entities, normalizedPluginSettings.entities),
+                result: _.merge(state.result, normalizedPluginSettings.result),
                 isFetching: false
             })
         case ActionTypes.PLUGIN_SETTINGS_FETCH_ERROR:
