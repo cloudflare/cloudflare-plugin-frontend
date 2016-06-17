@@ -8,5 +8,3 @@ export function getAbsoluteUrl(config, url) {
 export function getConfigValue(config, key) {
     return config.config[key];
 }
-
-// TODO write a new selector
