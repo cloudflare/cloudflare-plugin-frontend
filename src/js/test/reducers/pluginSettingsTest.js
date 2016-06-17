@@ -79,16 +79,7 @@ describe('Plugin Settings Reducer', () => {
                     modified_on: "",
                 }
             })
-        ).to.eql({
-            entities : {},
-            isFetching: false,
-            result: {
-                "id":"ip_rewrite",
-                "value":true,
-                "editable":true,
-                "modified_on":""
-            }
-        })
+        ).to.eql(initialState)
     })
 
     it('should handle PLUGIN_SETTINGS_FETCH_ERROR ', () => {
