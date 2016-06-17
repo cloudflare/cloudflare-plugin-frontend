@@ -42,7 +42,7 @@ export function pluginUpdateSettingSuccess(zoneId, setting) {
     }
 }
 
-export function PluginUpdateSettingError(zoneId, setting) {
+export function pluginUpdateSettingError(zoneId, setting) {
     return {
         type: ActionTypes.PLUGIN_SETTING_UPDATE_ERROR,
         zoneId,
@@ -54,33 +54,15 @@ export function PluginUpdateSettingError(zoneId, setting) {
 export function asyncPluginFetchSettings(zoneId) {
     return dispatch => {
         dispatch(pluginFetchSettings());
-
-        var response = { 
-            "success": true, 
-            "errors": [], 
-            "messages": [],
-            "result": [{ 
-                "id": "ip_rewrite", 
-                "value": true, 
-                "editable": true, 
-                "modified_on": "" 
-            }]
-         }
-
-        console.log("FETCH " + true);
-
-        // Mock
-        dispatch(pluginFetchSettingsSuccess(zoneId, response.result));         
-
-        // pluginSettingListGet({zoneId: zoneId}, function(response){
-        //     if(pluginResponseOk(response)) {
-        //         dispatch(pluginFetchSettingsSuccess(zoneId, response.body.result));
-        //     } else {
-        //         dispatch(notificationAddClientAPIError(pluginFetchSettingsError(),response));
-        //     }
-        // }, function(error) {
-        //     dispatch(notificationAddClientAPIError(pluginFetchSettingsError(), error));
-        // });
+        pluginSettingListGet({zoneId: zoneId}, function(response){
+            if(pluginResponseOk(response)) {
+                dispatch(pluginFetchSettingsSuccess(zoneId, response.body.result));
+            } else {
+                dispatch(notificationAddClientAPIError(pluginFetchSettingsError(),response));
+            }
+        }, function(error) {
+            dispatch(notificationAddClientAPIError(pluginFetchSettingsError(), error));
+        });
     }
 }
 
@@ -89,33 +71,15 @@ export function asyncPluginUpdateSetting(settingName, zoneId, value) {
         let oldSetting = getState().pluginSettings.entities[zoneId][settingName];
 
         dispatch(pluginUpdateSetting(zoneId, {'id': settingName, 'value': value }));
-        
-        var response = { 
-            "success": true, 
-            "errors": [], 
-            "messages": [],
-            "result": { 
-                "id": "ip_rewrite", 
-                "value": value, 
-                "editable": true, 
-                "modified_on": "" 
+        pluginSettingPatch(zoneId, settingName, value, function(response) {
+            if(pluginResponseOk(response)) {
+                dispatch(pluginUpdateSettingSuccess(zoneId, response.body.result));
+            } else {
+                dispatch(notificationAddClientAPIError(pluginUpdateSettingError(zoneId, oldSetting), response));
             }
-         }
-
-         console.log("UPDATE " + value);
-
-        // Mock
-        dispatch(pluginUpdateSettingSuccess(zoneId, response.result));
-
-        // pluginSettingPatch(settingName, zoneId, value, function(response) {
-        //     if(pluginResponseOk(response)) {
-        //         dispatch(pluginUpdateSettingSuccess(zoneId, response.body.result));
-        //     } else {
-        //         dispatch(notificationAddClientAPIError(pluginUpdateSettingError(zoneId, oldSetting), response));
-        //     }
-        // },
-        // function(error) {
-        //     dispatch(notificationAddClientAPIError(pluginUpdateSettingError(zoneId, oldSetting), error));
-        // });
+        },
+        function(error) {
+            dispatch(notificationAddClientAPIError(pluginUpdateSettingError(zoneId, oldSetting), error));
+        });
     }
 }
