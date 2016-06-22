@@ -40,7 +40,7 @@ class IpRewriteCard extends Component {
 function mapStateToProps(state) {
     return {
         activeZoneId: state.activeZone.id,
-        ipRewriteValue: state.pluginSettings.entities[state.activeZone.id][SETTING_NAME].value,
+        ipRewriteValue: getPluginSettingsValueForZoneId(state.activeZone.id, SETTING_NAME, state),
     }
 }
 export default injectIntl(connect(mapStateToProps)(IpRewriteCard));
