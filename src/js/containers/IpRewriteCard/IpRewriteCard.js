@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { asyncPluginUpdateSetting } from '../../actions/ipRewrite';
+import { asyncPluginUpdateSetting } from '../../actions/pluginSettings';
+import { getPluginSettingsValueForZoneId } from '../../selectors/pluginSettings';
 import { Card, CardSection, CardContent, CardControl, CardDrawers } from 'cf-component-card';
 import Toggle from 'cf-component-toggle';
 

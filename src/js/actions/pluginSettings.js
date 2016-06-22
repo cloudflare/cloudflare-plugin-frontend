@@ -69,7 +69,7 @@ export function asyncPluginFetchSettings(zoneId) {
 export function asyncPluginUpdateSetting(settingName, zoneId, value) {
     return (dispatch, getState) => {
         let oldSetting = getState().pluginSettings.entities[zoneId][settingName];
-
+        
         dispatch(pluginUpdateSetting(zoneId, {'id': settingName, 'value': value }));
         pluginSettingPatch(zoneId, settingName, value, function(response) {
             if(pluginResponseOk(response)) {
