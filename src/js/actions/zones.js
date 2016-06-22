@@ -7,7 +7,6 @@ import { partialZoneSet, hostAPIResponseOk } from '../utils/CFHostAPI/CFHostAPI'
 import { notificationAddError } from './notifications';
 import * as ActionTypes from '../constants/ActionTypes';
 import { zoneSetActiveZoneIfEmpty } from './activeZone';
-import { normalizeZoneGetAll } from '../constants/Schemas';
 import { dnsRecordClearAll } from './zoneDnsRecords';
 
 export function zoneDelete() {
