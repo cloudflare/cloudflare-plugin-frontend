@@ -15,13 +15,15 @@ import IPV6Card from '../../containers/IPV6Card/IPV6Card';
 import IpRewriteCard from '../../containers/IpRewriteCard/IpRewriteCard';
 import MinifyCard from '../../containers/MinifyCard/MinifyCard';
 import PurgeCacheCard from '../../containers/PurgeCacheCard/PurgeCacheCard';
+import ProtocolRewriteCard from '../../containers/ProtocolRewriteCard/ProtocolRewriteCard';
 import RailgunCard from '../../containers/RailgunCard/RailgunCard';
 
 class PerformancePage extends Component {
 
     render() {
         let { activeZoneId, config, zoneSettings } = this.props;
-        let isEmpty = _.isEmpty(zoneSettings[activeZoneId]);
+
+        let isEmpty = _.isEmpty(zoneSettings[activeZoneId]) && _.isEmpty(getPluginSettingsForZoneId(activeZoneId, this.state));
 
         return (
             <div>
@@ -40,6 +42,10 @@ class PerformancePage extends Component {
 
                         <FeatureManager isEnabled={config.featureManagerIsIpRewriteEnabled}>
                             <IpRewriteCard/>
+                        </FeatureManager>
+
+                        <FeatureManager isEnabled={config.featureManagerIsProtocolRewriteEnabled}>
+                            <ProtocolRewriteCard/>
                         </FeatureManager>
 
                         <FeatureManager isEnabled={config.featureManagerIsCacheLevelEnabled}>
