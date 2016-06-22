@@ -14,11 +14,7 @@ describe('Plugin Settings Reducer', () => {
     it('should return the initial state', () => {
         expect(
             pluginSettingsReducer(initialState, {})
-        ).to.eql({
-            entities: {},
-            result: [],
-            isFetching: false
-        })
+        ).to.eql(initialState)
     })
 
     it('should handle PLUGIN_SETTINGS_FETCH', () => {
@@ -27,10 +23,10 @@ describe('Plugin Settings Reducer', () => {
                 type: ActionTypes.PLUGIN_SETTINGS_FETCH
             })
         ).to.eql({
-                entities: {},
-                isFetching: true,
-                result: [],
-            })
+            result: [],
+            entities: {},
+            isFetching: true,
+        })
     })
 
     it('should handle PLUGIN_SETTINGS_FETCH_SUCCESS ', () => {
@@ -38,14 +34,29 @@ describe('Plugin Settings Reducer', () => {
             pluginSettingsReducer(initialState, {
                 type: ActionTypes.PLUGIN_SETTINGS_FETCH_SUCCESS,
                 'zoneId': 'zoneId',
-                'setting': {
-                    id: "ip_rewrite",
-                    value: true,
-                    editable: true,
-                    modified_on: "",
-                }
+                'setting': [{
+                    'id': "zoneSettingId",
+                    'value': true,
+                    'editable': true,
+                    'modified_on': "",
+                }]
             })
-        ).to.eql(initialState)
+        ).to.eql({
+            'entities': {
+                'zoneId': {
+                    'zoneSettingId': {
+                        'id': "zoneSettingId",
+                        'value': true,
+                        'editable': true,
+                        'modified_on': "",
+                    }
+                }
+            },
+            isFetching: false,
+            result: [
+                'zoneSettingId'
+            ]
+        })
     })
 
     it('should handle PLUGIN_SETTINGS_FETCH_ERROR ', () => {
