@@ -1,6 +1,6 @@
-import { normalize, Schema, arrayOf } from 'normalizr';
 import _ from 'lodash';
 import * as ActionTypes from '../constants/ActionTypes';
+import { normalizeZoneByIdGetAll } from '../constants/Schemas';
 
 const initialState = {
     entities: {},
@@ -16,8 +16,7 @@ export function zoneSettingsReducer(state = initialState, action) {
                 isFetching: "fetchAllSettings"
             })
         case ActionTypes.ZONE_FETCH_SETTINGS_SUCCESS:
-            let zoneSettingSchema = new Schema(action.zoneId, {idAttribute: 'id'});
-            let normalizedZoneSettings = normalize(action.zoneSettings, arrayOf(zoneSettingSchema));
+            let normalizedZoneSettings = normalizeZoneByIdGetAll(action.zoneId, action.zoneSettings);
 
             return Object.assign({}, state, {
                 entities: _.merge(state.entities, normalizedZoneSettings.entities),
@@ -30,17 +29,17 @@ export function zoneSettingsReducer(state = initialState, action) {
             })
         case ActionTypes.ZONE_UPDATE_SETTING:
             return Object.assign({}, state, {
-                entities: patchSetting(action.zoneId, action.setting, state),
+                entities: zonePatchSetting(action.zoneId, action.setting, state),
                 isFetching: action.setting.id
             })
         case ActionTypes.ZONE_UPDATE_SETTING_SUCCESS:
             return Object.assign({}, state, {
-                entities: patchSetting(action.zoneId, action.setting, state),
+                entities: zonePatchSetting(action.zoneId, action.setting, state),
                 isFetching: ""
             })
         case ActionTypes.ZONE_UPDATE_SETTING_ERROR:
             return Object.assign({}, state, {
-                entities: patchSetting(action.zoneId, action.setting, state),
+                entities: zonePatchSetting(action.zoneId, action.setting, state),
                 isFetching: ""
             })
         default:
@@ -48,8 +47,8 @@ export function zoneSettingsReducer(state = initialState, action) {
     }
 }
 
-function patchSetting(zoneId, setting, state) {
-    let patchedEntities = state.entities;
+function zonePatchSetting(zoneId, setting, state) {
+    let patchedEntities = Object.assign({}, state.entities);
     patchedEntities[zoneId][setting.id] = setting;
     return patchedEntities;
 }

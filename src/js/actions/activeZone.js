@@ -5,6 +5,7 @@ import { asyncZoneFetchAnalytics } from './zoneAnalytics';
 import { asyncZoneRailgunFetchAll } from './zoneRailgun';
 import { asyncZoneFetchScan } from './zoneScan';
 import { asyncZoneFetchSettings } from './zoneSettings';
+import { asyncPluginFetchSettings } from './ipRewrite';
 
 export function zoneSetActiveZone(zone) {
     return {
@@ -21,6 +22,7 @@ export function asyncZoneSetActiveZone(zone) {
             if(zone.status === 'active') {
                 dispatch(asyncDNSRecordFetchList(zone.id));
                 dispatch(asyncZoneRailgunFetchAll(zone.id));
+                dispatch(asyncPluginFetchSettings(zone.id));
             }
             dispatch(asyncZoneFetchSettings(zone.id));
             dispatch(asyncZoneFetchAnalytics(zone.id));

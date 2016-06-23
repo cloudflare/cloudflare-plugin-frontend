@@ -28,3 +28,19 @@ export function pluginAccountPost(email, apiKey, onSuccess, onError) {
     };
     return http.post(ENDPOINT + "/account/", opts, onSuccess, onError);
 }
+
+export function pluginSettingListGet(zoneId, onSuccess, onError) {
+    let opts = {};
+
+    return http.get(ENDPOINT + "/plugin/" + zoneId['zoneId'] + "/settings/", opts, onSuccess, onError);
+}
+
+export function pluginSettingPatch(zoneId, settingName, value, onSuccess, onError) {
+    let opts = {
+    	body: {
+            value: value,
+        }
+    };
+    
+    return http.patch(ENDPOINT + "/plugin/" + zoneId + "/settings/" + settingName, opts, onSuccess, onError);
+}
