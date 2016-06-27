@@ -5,7 +5,7 @@ import { asyncZoneFetchAnalytics } from './zoneAnalytics';
 import { asyncZoneRailgunFetchAll } from './zoneRailgun';
 import { asyncZoneFetchScan } from './zoneScan';
 import { asyncZoneFetchSettings } from './zoneSettings';
-import { asyncPluginFetchSettings } from './ipRewrite';
+import { asyncPluginFetchSettings } from './pluginSettings';
 
 export function zoneSetActiveZone(zone) {
     return {
