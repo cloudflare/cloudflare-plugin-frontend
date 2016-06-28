@@ -27,7 +27,7 @@ class ProtocolRewriteCard extends Component {
                         <CardControl>
                             <Toggle
                                 label=""
-                                value={(this.props.protocolRewriteValue)}
+                                value={(this.props.protocolRewriteValue == true)}
                                 onChange={this.handleChange.bind(this)}/>
                         </CardControl>
                     </CardSection>

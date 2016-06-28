@@ -27,7 +27,7 @@ class IpRewriteCard extends Component {
                         <CardControl>
                             <Toggle
                                 label=""
-                                value={(this.props.ipRewriteValue)}
+                                value={(this.props.ipRewriteValue == true)}
                                 onChange={this.handleChange.bind(this)}/>
                         </CardControl>
                     </CardSection>
