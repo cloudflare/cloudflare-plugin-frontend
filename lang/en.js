@@ -113,6 +113,7 @@
     "container.performancePage.title": "Performance",
     "container.protocolRewrite.title": "Protocol Rewriting",
     "container.protocolRewrite.description": "Protocol rewriting in this context convert links within your WordPress site to images, stylesheets, and scripts from using either \"http://\" or \"https://\" to using just \"//\". This rewrite tells your browser to load all of these assets using the same protocol as the base page loaded.",
+    "container.purgeCacheCard.dropdown": "Purge Cache",
     "container.purgeCacheCard.button": "Purge Everything",
     "container.purgeCacheCard.title": "Purge Cache",
     "container.purgeCacheCard.description": "Clear cached files to force CloudFlare to fetch a fresh version of those files from your web server.",
