@@ -20,7 +20,26 @@ export function zonePurgeCacheError() {
     }
 }
 
-export function asyncZonePurgeCache(zoneId) {
+export function asyncZonePurgeCacheIndividualFiles(zoneId, files) {
+    return dispatch => {
+        dispatch(zonePurgeCache());
+
+        var formatedFiles = files.replace(/^\s+|\s+$/g,'').split(/\s+/);
+
+        v4ZonePurgeCache({zoneId: zoneId, files: formatedFiles}, function(response){
+            if(v4ResponseOk(response)) {
+                dispatch(zonePurgeCacheSuccess());
+                dispatch(notificationAddSuccess("container.purgeCacheCard.success", true));
+            } else {
+                dispatch(notificationAddClientAPIError(zonePurgeCacheError(), response));
+            }
+        }, function(error){
+            dispatch(notificationAddClientAPIError(zonePurgeCacheError(), error));
+        });
+    }
+}
+
+export function asyncZonePurgeCacheEverything(zoneId) {
     return dispatch => {
         dispatch(zonePurgeCache());
         v4ZonePurgeCache({zoneId: zoneId, purge_everything: true}, function(response){
