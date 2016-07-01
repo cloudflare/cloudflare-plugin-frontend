@@ -2,34 +2,61 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
-import { Button } from 'cf-component-button';
+import { Button, ButtonGroup } from 'cf-component-button';
+import { Dropdown, DropdownLink, DropdownSeparator } from 'cf-component-dropdown';
+
 import { Card, CardSection, CardContent, CardControl, CardDrawers } from 'cf-component-card';
 import { Modal, ModalHeader, ModalTitle, ModalClose, ModalBody, ModalFooter, ModalActions } from 'cf-component-modal';
+import Textarea from 'cf-component-textarea';
 
-import { asyncZonePurgeCache } from '../../actions/zonePurgeCache';
+
+import { asyncZonePurgeCacheEverything, asyncZonePurgeCacheIndividualFiles } from '../../actions/zonePurgeCache';
 
 class PurgeCacheCard extends Component {
     state = {
-        isModalOpen: false
+        isModalOpen: false,
+        isIndividual: false,
+        dropdownOpen: false,
+        textareaValue: '',
+    };
+
+    handleTextareaChange(value, self) {
+        this.setState({ textareaValue: value });
     };
 
     handlePurgeCache() {
-        this.handleRequestClose();
+        this.handleModalClose();        
         let { activeZoneId, dispatch } = this.props;
-        dispatch(asyncZonePurgeCache(activeZoneId));
+        var zonePurge = this.state.isIndividual ? asyncZonePurgeCacheIndividualFiles(activeZoneId, this.state.textareaValue) : asyncZonePurgeCacheEverything(activeZoneId)
+        dispatch(zonePurge);
     }
 
-    handleRequestOpen() {
-        this.setState({ isModalOpen: true });
+    handleModalOpen(individualSelected, self) {
+        this.setState({ 
+            isModalOpen: true,
+            isIndividual: individualSelected,
+        });
     }
 
-    handleRequestClose() {
+    handleModalClose() {
         this.setState({ isModalOpen: false });
+    }
+
+    renderTextarea() {
+        if(!this.state.isIndividual) {
+            return;
+        }
+
+        return (
+            <Textarea
+                name="files"
+                value={this.state.textareaValue}
+                onChange={this.handleTextareaChange.bind(this)} />
+        );
     }
 
     render() {
         const { formatMessage } = this.props.intl;
-
         return (
             <div>
                 <Card>
@@ -38,30 +65,47 @@ class PurgeCacheCard extends Component {
                             <p><FormattedMessage id="container.purgeCacheCard.description" /></p>
                         </CardContent>
                         <CardControl>
-                            <Button type="warning" onClick={ this.handleRequestOpen.bind(this) }>
-                                <FormattedMessage id="container.purgeCacheCard.button"/>
-                            </Button>
+
+                            <ButtonGroup>
+                              <Button type="primary" onClick={() => this.setState({ dropdownOpen: true })}>
+                                <FormattedMessage id="container.purgeCacheCard.dropdown"/> 
+                              </Button>
+
+                              {this.state.dropdownOpen && (
+                                <Dropdown onClose={() => this.setState({ dropdownOpen: false })}>
+                                    <DropdownLink onClick={ this.handleModalOpen.bind(this, false) } >
+                                        <FormattedMessage id="container.purgeCacheCard.button"/>     
+                                    </DropdownLink>
+                                    <DropdownLink onClick={ this.handleModalOpen.bind(this, true) }>
+                                        <FormattedMessage id="container.purgeCacheByURLCard.button"/>
+                                    </DropdownLink>
+                                </Dropdown>
+                              )}
+                            </ButtonGroup>
+
                             <Modal
                                 isOpen={this.state.isModalOpen}
-                                onRequestClose={this.handleRequestClose.bind(this)}>
+                                onRequestClose={this.handleModalClose.bind(this)}>
                                 <ModalHeader>
-                                    <ModalTitle><FormattedMessage id="container.purgeCacheCard.modal.title"/></ModalTitle>
-                                    <ModalClose onClick={this.handleRequestClose.bind(this)}/>
+                                    <ModalTitle><FormattedMessage id={ "container." + (this.state.isIndividual ? "purgeCacheByURLCard" : "purgeCacheCard") + ".modal.title" }/></ModalTitle>
+                                    <ModalClose onClick={this.handleModalClose.bind(this)}/>
                                 </ModalHeader>
                                 <ModalBody>
-                                    <p><FormattedMessage id="container.purgeCacheCard.modal.description"/></p>
+                                        <p><FormattedMessage id={ "container." + (this.state.isIndividual ? "purgeCacheByURLCard" : "purgeCacheCard") + ".modal.description" }/></p>
+                                        {this.renderTextarea()}
                                 </ModalBody>
                                 <ModalFooter>
                                     <ModalActions>
-                                        <Button type="warning" onClick={ this.handlePurgeCache.bind(this) }>
-                                            <FormattedMessage id="container.purgeCacheCard.button"/>
+                                        <Button type="primary" onClick={ this.handlePurgeCache.bind(this) }>
+                                            <FormattedMessage id={ "container." + (this.state.isIndividual ? "purgeCacheByURLCard" : "purgeCacheCard") + ".button" }/>
                                         </Button>
-                                        <Button onClick={this.handleRequestClose.bind(this)}>
-                                            <FormattedMessage id="container.purgeCacheCard.modal.buttonCancel"/>
+                                        <Button onClick={this.handleModalClose.bind(this)}>
+                                            <FormattedMessage id={ "container." + (this.state.isIndividual ? "purgeCacheByURLCard" : "purgeCacheCard") + ".modal.buttonCancel" }/>
                                         </Button>
                                     </ModalActions>
                                 </ModalFooter>
                             </Modal>
+
                         </CardControl>
                     </CardSection>
                 </Card>
