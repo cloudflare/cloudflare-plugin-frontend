@@ -13,7 +13,7 @@ import {
 import Toggle from '../../components/CloudToggle/CloudToggle';
 import _ from 'lodash';
 
-import Loading from '../../components/Loading/Loading';
+import Loading from 'cf-component-loading';
 import { asyncDNSRecordCreate, asyncDNSRecordUpdate } from '../../actions/zoneDnsRecords';
 
 class DNSRecordEditor extends Component {
