@@ -177,5 +177,7 @@
     "container.zoneProvision.modal.buttonCancel": "Cancel",
     "container.ipRewrite.title": "IP Rewrite",
     "container.ipRewrite.description": "Rewrite CloudFlare IP Addresses for actual end-user IP Addresses at the application layer.",
+    "container.imageOptimization.title": "Image Optimization",
+    "container.imageOptimization.description": "Improve image load time and for pages that include images on mobile devices with slow network connections",
     "errors.noActiveZoneSelected": "Please select a domain that is provisioned with CloudFlare."
 }

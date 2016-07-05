@@ -17,6 +17,9 @@ import MinifyCard from '../../containers/MinifyCard/MinifyCard';
 import PurgeCacheCard from '../../containers/PurgeCacheCard/PurgeCacheCard';
 import ProtocolRewriteCard from '../../containers/ProtocolRewriteCard/ProtocolRewriteCard';
 import RailgunCard from '../../containers/RailgunCard/RailgunCard';
+import ImageOptimizationCard from '../../containers/ImageOptimizationCard/ImageOptimizationCard';
+
+
 
 class PerformancePage extends Component {
 
@@ -70,6 +73,10 @@ class PerformancePage extends Component {
 
                         <FeatureManager isEnabled={config.featureManagerIsPurgeCacheEnabled}>
                             <PurgeCacheCard/>
+                        </FeatureManager>
+
+                        <FeatureManager isEnabled={config.featureManagerIsImageOptimizationEnabled}>
+                            <ImageOptimizationCard/>
                         </FeatureManager>
                     </div>
                 )}

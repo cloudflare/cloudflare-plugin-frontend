@@ -7,6 +7,7 @@
     "featureManagerIsChallengePassageEnabled": true,
     "featureManagerIsDevelopmentModeEnabled": true,
     "featureManagerIsFullZoneProvisioningEnabled": false,
+    "featureManagerIsImageOptimizationEnabled": true,
     "featureManagerIsIpv6Enabled": true,
     "featureManagerIsIpRewriteEnabled": true,
     "featureManagerIsMinifyEnabled": true,
