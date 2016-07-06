@@ -17,6 +17,7 @@
     "featureManagerIsScanEnabled": false,
     "featureManagerIsSecurityLevelEnabled": true,
     "featureManagerIsSSLEnabled": false,
+    "featureManagerIsWAFEnabled": true,
     "locale": "en",
     "integrationName": "cpanel",
     "useHostAPILogin": true,

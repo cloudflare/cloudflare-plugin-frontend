@@ -18,6 +18,7 @@ import PurgeCacheCard from '../../containers/PurgeCacheCard/PurgeCacheCard';
 import ProtocolRewriteCard from '../../containers/ProtocolRewriteCard/ProtocolRewriteCard';
 import RailgunCard from '../../containers/RailgunCard/RailgunCard';
 import ImageOptimizationCard from '../../containers/ImageOptimizationCard/ImageOptimizationCard';
+import WAFCard from '../../containers/WAFCard/WAFCard';
 
 
 
@@ -77,6 +78,10 @@ class PerformancePage extends Component {
 
                         <FeatureManager isEnabled={config.featureManagerIsImageOptimizationEnabled}>
                             <ImageOptimizationCard/>
+                        </FeatureManager>
+
+                        <FeatureManager isEnabled={config.featureManagerIsWAFEnabled}>
+                            <WAFCard/>
                         </FeatureManager>
                     </div>
                 )}
