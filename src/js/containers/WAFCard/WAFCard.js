@@ -7,10 +7,11 @@ import { getPluginSettingsValueForZoneId } from '../../selectors/pluginSettings'
 import { Card, CardSection, CardContent, CardDrawers } from 'cf-component-card';
 import CustomCardControl from '../../components/CustomCardControl/CustomCardControl';
 import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
+import { PRO_PLAN } from '../../constants/Plans.js';
 import Toggle from 'cf-component-toggle';
 
 const SETTING_NAME = "waf";
-const MINIMUM_PLAN = "Pro Plan";
+const MINIMUM_PLAN = PRO_PLAN;
 
 class WAFCard extends Component {
 
@@ -35,9 +36,9 @@ class WAFCard extends Component {
                 <Card>
                     <CardSection>
                         <CardContent title={formatMessage({id: 'container.waf.title'})}>
-                            <p><FormattedMessage id="container.waf.description" /></p>
+                            <FormattedMessage id="container.waf.description" />
                         </CardContent>
-                        <CustomCardControl minimumPlan={ MINIMUM_PLAN } currentPlan={ zone.plan.name }>
+                        <CustomCardControl minimumPlan={ MINIMUM_PLAN } currentPlan={ zone.plan.legacy_id }>
                             <Toggle
                                 label=""
                                 value={(this.props.WAFValue == "on")}

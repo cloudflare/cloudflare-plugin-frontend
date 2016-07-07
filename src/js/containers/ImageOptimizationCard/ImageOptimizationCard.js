@@ -7,11 +7,12 @@ import { getPluginSettingsValueForZoneId } from '../../selectors/pluginSettings'
 import { Card, CardSection, CardContent, CardDrawers } from 'cf-component-card';
 import CustomCardControl from '../../components/CustomCardControl/CustomCardControl';
 import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
+import { PRO_PLAN } from '../../constants/Plans.js';
 import Toggle from 'cf-component-toggle';
 
 const SETTING_NAME_MIRAGE = "mirage";
 const SETTING_NAME_POLISH = "polish";
-const MINIMUM_PLAN = "Pro Plan";
+const MINIMUM_PLAN = PRO_PLAN;
 
 class ImageOptimizationCard extends Component {
 
@@ -35,9 +36,9 @@ class ImageOptimizationCard extends Component {
                 <Card>
                     <CardSection>
                         <CardContent title={formatMessage({id: 'container.imageOptimization.title'})}>
-                            <p><FormattedMessage id="container.imageOptimization.description" /></p>
+                            <FormattedMessage id="container.imageOptimization.description" />
                         </CardContent>
-                        <CustomCardControl minimumPlan={ MINIMUM_PLAN } currentPlan={ zone.plan.name }>
+                        <CustomCardControl minimumPlan={ MINIMUM_PLAN } currentPlan={ zone.plan.legacy_id }>
                             <Toggle
                                 label=""
                                 value={(this.props.imageOptimizationValue == "on")}
