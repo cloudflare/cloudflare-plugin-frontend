@@ -5,6 +5,7 @@ import { CardControl } from 'cf-component-card';
 import { Button } from 'cf-component-button';
 import { CLOUDFLARE_UPGRADE_PAGE } from '../../constants/UrlPaths.js';
 import { planNeedsUpgrade, getLocalizedPlanId, FREE_PLAN } from '../../constants/Plans.js';
+import { getConfigValue } from '../../selectors/config.js';
 
 class CustomCardControl extends Component {
     static propTypes = {
@@ -37,7 +38,7 @@ class CustomCardControl extends Component {
 
 function mapStateToProps(state) {
     return {
-        integrationName: state.config.config.integrationName,
+        integrationName: getConfigValue(state.config, "integrationName"),
     }
 }
 export default injectIntl(connect(mapStateToProps)(CustomCardControl));

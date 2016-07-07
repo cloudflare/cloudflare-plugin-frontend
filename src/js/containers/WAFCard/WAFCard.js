@@ -4,6 +4,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import _ from 'lodash';
 import { asyncPluginUpdateSetting } from '../../actions/pluginSettings';
 import { getPluginSettingsValueForZoneId } from '../../selectors/pluginSettings';
+import { getZoneSettingsValueForZoneId } from '../../selectors/zoneSettings';
 import { Card, CardSection, CardContent, CardDrawers } from 'cf-component-card';
 import CustomCardControl from '../../components/CustomCardControl/CustomCardControl';
 import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
@@ -54,7 +55,7 @@ class WAFCard extends Component {
 function mapStateToProps(state) {
     return {
         activeZoneId: state.activeZone.id,
-        WAFValue: state.zoneSettings.entities[state.activeZone.id][SETTING_NAME].value,
+        WAFValue: getZoneSettingsValueForZoneId(state.activeZone.id, SETTING_NAME, state),
 		activeZone: state.activeZone,
         zones: state.zones.entities.zones,
     }

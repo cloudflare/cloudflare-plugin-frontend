@@ -4,6 +4,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import _ from 'lodash';
 import { asyncPluginUpdateSetting } from '../../actions/pluginSettings';
 import { getPluginSettingsValueForZoneId } from '../../selectors/pluginSettings';
+import { getZoneSettingsValueForZoneId } from '../../selectors/zoneSettings';
 import { Card, CardSection, CardContent, CardDrawers } from 'cf-component-card';
 import CustomCardControl from '../../components/CustomCardControl/CustomCardControl';
 import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
@@ -30,6 +31,7 @@ class ImageOptimizationCard extends Component {
             zone = zones[activeZone.name];
         }
 
+        let imageOptimizationValue = (this.props.mirageValue == "on") && (this.props.polishValue == "on");
         const { formatMessage } = this.props.intl;
         return (
             <div>
@@ -41,7 +43,7 @@ class ImageOptimizationCard extends Component {
                         <CustomCardControl minimumPlan={ MINIMUM_PLAN } currentPlan={ zone.plan.legacy_id }>
                             <Toggle
                                 label=""
-                                value={(this.props.imageOptimizationValue == "on")}
+                                value={(imageOptimizationValue == "on")}
                                 onChange={this.handleChange.bind(this)}/>
                         </CustomCardControl>
                     </CardSection>
@@ -52,11 +54,10 @@ class ImageOptimizationCard extends Component {
 }
 
 function mapStateToProps(state) {
-	var imageOptimizationValue = state.zoneSettings.entities[state.activeZone.id][SETTING_NAME_MIRAGE].value && 
-									state.zoneSettings.entities[state.activeZone.id][SETTING_NAME_POLISH].value;
     return {
         activeZoneId: state.activeZone.id,
-        imageOptimizationValue: imageOptimizationValue,
+        mirageValue: getZoneSettingsValueForZoneId(state.activeZone.id, SETTING_NAME_MIRAGE, state),
+        polishValue: getZoneSettingsValueForZoneId(state.activeZone.id, SETTING_NAME_POLISH, state),
 		activeZone: state.activeZone,
         zones: state.zones.entities.zones,
     }
