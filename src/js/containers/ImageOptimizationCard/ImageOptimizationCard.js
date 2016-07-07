@@ -25,12 +25,8 @@ class ImageOptimizationCard extends Component {
     }
 
     render() {
-    	let { activeZone, config, zones } = this.props;
-    	let zone;
-        if(!_.isEmpty(activeZone.name)) {
-            zone = zones[activeZone.name];
-        }
-
+    	let { activeZone, zones } = this.props;
+    	let zone = zones[activeZone.name];
         let imageOptimizationValue = (this.props.mirageValue == "on") && (this.props.polishValue == "on");
         const { formatMessage } = this.props.intl;
         return (

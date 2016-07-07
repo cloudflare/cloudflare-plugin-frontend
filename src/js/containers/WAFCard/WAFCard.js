@@ -23,13 +23,8 @@ class WAFCard extends Component {
     }
 
     render() {
-    	let { activeZone, config, zones } = this.props;
-    	let zone;
-        if(!_.isEmpty(activeZone.name)) {
-            zone = zones[activeZone.name];
-        }
-
-        zone.plan.name = "Pro Plan";
+    	let { activeZone, zones } = this.props;
+    	let zone = zones[activeZone.name];
 
         const { formatMessage } = this.props.intl;
         return (
