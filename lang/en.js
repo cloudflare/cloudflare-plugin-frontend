@@ -6,6 +6,7 @@
     "component.clientLogin.form.signUp": "Sign up",
     "component.clientLogin.form.title": "Enter CloudFlare API Credentials",
     "component.clientLogin.cloudflare.description": "New to CloudFlare?  Sign up at",
+    "component.customcardcontrol.upgrade": "Upgrade to",
     "component.login.form.email": "Email",
     "component.login.form.forgotPassword": "Forgot your password?",
     "component.login.form.password": "Password",
@@ -177,5 +178,12 @@
     "container.zoneProvision.modal.buttonCancel": "Cancel",
     "container.ipRewrite.title": "IP Rewrite",
     "container.ipRewrite.description": "Rewrite CloudFlare IP Addresses for actual end-user IP Addresses at the application layer.",
+    "container.imageOptimization.title": "Image Optimization",
+    "container.imageOptimization.description": "Improve image load time and for pages that include images on mobile devices with slow network connections",
+    "container.waf.title": "Web Application Firewall",
+    "container.waf.description": "Set rules to protect your website from web vulnerabilities.",
+    "constants.plans.pro": "Pro plan",
+    "constants.plans.biz": "Business plan",
+    "constants.plans.ent": "Enterprise plan",
     "errors.noActiveZoneSelected": "Please select a domain that is provisioned with CloudFlare."
 }
