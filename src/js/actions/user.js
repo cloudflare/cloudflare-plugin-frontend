@@ -1,7 +1,7 @@
 import { routeActions } from 'redux-simple-router'
 import { userAuth, userCreate, hostAPIResponseOk } from '../utils/CFHostAPI/CFHostAPI';
 import { pluginAccountPost, pluginResponseOk } from '../utils/PluginAPI/PluginAPI';
-import { notificationAddError } from './notifications';
+import { notificationAddError, notificationAddClientAPIError } from './notifications';
 import * as ActionTypes from '../constants/ActionTypes';
 import * as UrlPaths from '../constants/UrlPaths';
 
@@ -65,6 +65,9 @@ export function asyncAPILogin(email, apiKey) {
         pluginAccountPost(email, apiKey, function(response){
             if(pluginResponseOk(response)) {
                 dispatch(asyncUserLoginSuccess(email));
+            } else {
+                dispatch(userLoginError());
+                dispatch(notificationAddClientAPIError(userLoginError(), response));
             }
         }, function(error){
             dispatch(userLoginError());
