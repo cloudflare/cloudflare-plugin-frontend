@@ -57,18 +57,20 @@ export default class AppNavigation extends Component {
                             </span>
                         </Link>
                     </li>
+                    { (config.integrationName == "wordpress") ?
                     <li className="icon-item">
-                        <Link onClick={() => this.handleClick(UrlPaths.SECURITY_PAGE)}>
+                        <Link onClick={() => this.handleClick(UrlPaths.DOMAINS_OVERVIEW_PAGE)}>
                             <span className="icon">
                                 <svg className="icon-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 40 40">
-                                    <path className="svg-main" d="M27,16v-6H13v6h-2v14h18V16H27z M24,13v3h-8v-3H24z M22,26h-4v-6h4V26z"></path>
+                                    <path className="svg-main" d="M24,12h-8v-2h8V12z M30,12v18H10V12h4v2h12v-2H30z M16,23h-3v3h3V23z M16,18h-3v3h3V18z M27,23h-9v3h9V23z M27,18h-9v3h9V18z"></path>
                                 </svg>
                             </span>
                             <span className="icon-title">
-                                <FormattedMessage id="container.appNavigation.security" />
+                                <FormattedMessage id="container.appNavigation.domainsOverview" />
                             </span>
                         </Link>
                     </li>
+                    : null }
                     <li className="icon-item">
                         <Link onClick={() => this.handleClick(UrlPaths.PERFORMANCE_PAGE)}>
                             <span className="icon">
