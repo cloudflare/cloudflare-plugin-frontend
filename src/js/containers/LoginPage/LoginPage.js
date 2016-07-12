@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { routeActions } from 'redux-simple-router';
 
 import { isLoggedIn } from '../../utils/Auth/Auth';
-import { DOMAINS_OVERVIEW_PAGE } from '../../constants/UrlPaths.js';
+import { HOME_PAGE } from '../../constants/UrlPaths.js';
 import { getConfigValue } from '../../selectors/config';
 import ClientLoginPage from '../../containers/ClientLoginPage/ClientLoginPage';
 import HostLoginPage from '../../containers/HostLoginPage/HostLoginPage';
@@ -13,7 +13,7 @@ class LoginPage extends Component {
     componentWillMount() {
         let { dispatch } = this.props;
         if(isLoggedIn()) {
-            dispatch(routeActions.push(DOMAINS_OVERVIEW_PAGE));
+            dispatch(routeActions.push(HOME_PAGE));
         }
     }
 

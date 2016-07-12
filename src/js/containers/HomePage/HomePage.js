@@ -19,8 +19,8 @@ class HomePage extends Component {
                 {isEmpty && (<FormattedMessage id="errors.noActiveZoneSelected"/>)}
                 {!isEmpty && (
                     <div>
-                        <Heading size={1}><FormattedMessage id="container.performancePage.title"/></Heading>
-
+                        <Heading size={1}><FormattedMessage id="container.appNavigation.home"/></Heading>
+                        
                         { renderCards(config.homePageCards) }
                     </div>
                 )}
