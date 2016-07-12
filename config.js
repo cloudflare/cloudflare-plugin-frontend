@@ -18,6 +18,7 @@
     "featureManagerIsSecurityLevelEnabled": true,
     "featureManagerIsSSLEnabled": false,
     "featureManagerIsWAFEnabled": true,
+    "homePageCards": ["ApplyDefaultSettingsCard", "SSLCard", "PurgeCacheCard"],
     "locale": "en",
     "integrationName": "cpanel",
     "useHostAPILogin": true,

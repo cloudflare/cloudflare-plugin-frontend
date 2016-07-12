@@ -11,6 +11,7 @@ import Login from './containers/LoginPage/LoginPage';
 import PerformancePage from './containers/PerformancePage/PerformancePage';
 import SecurityPage from './containers/SecurityPage/SecurityPage';
 import SignUpPage from './containers/SignUpPage/SignUpPage';
+import HomePage from './containers/HomePage/HomePage';
 
 function requireAuth(nextState, replaceState) {
     if (!isLoggedIn()) {
@@ -23,6 +24,7 @@ export default (
         <IndexRoute component={ Login } />
         <Route path={ UrlPaths.LOGIN_PAGE } component={ Login } />
         <Route path={ UrlPaths.SIGN_UP_PAGE } component= { SignUpPage } />
+        <Route path={ UrlPaths.HOME_PAGE } component={ HomePage } onEnter={ requireAuth } />
         <Route path={ UrlPaths.ANALYTICS_PAGE } component={ AnalyticsPage } onEnter={ requireAuth } />
         <Route path={ UrlPaths.DOMAINS_OVERVIEW_PAGE } component={ DNSManagementPage } onEnter={ requireAuth } />
         <Route path={ UrlPaths.PERFORMANCE_PAGE } component={ PerformancePage } onEnter={ requireAuth } />

@@ -30,7 +30,7 @@ export function asyncUserLoginSuccess(email) {
     return dispatch => {
         dispatch(userLoginSuccess(email));
         dispatch(asyncFetchZones());
-        dispatch(routeActions.push(UrlPaths.DOMAINS_OVERVIEW_PAGE));
+        dispatch(routeActions.push(UrlPaths.HOME_PAGE));
     }
 }
 

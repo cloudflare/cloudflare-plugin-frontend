@@ -41,6 +41,7 @@
     "container.analyticsPage.tabs.threats": "Threats",
     "container.analyticsPage.title": "Analytics",
     "container.App.version": "Version: {version}",
+    "container.appNavigation.home": "Home",
     "container.applydefaultsettingscard.title": "Apply Default Settings",
     "container.applydefaultsettingscard.description": "We recommend you to use default settings",
     "container.applydefaultsettingscard.button": "Apply",
