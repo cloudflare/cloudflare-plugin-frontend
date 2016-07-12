@@ -21,6 +21,18 @@ export default class AppNavigation extends Component {
         return((isLoggedIn() && (
                 <ul className="slider-nav-container apps-nav-container no-arrows" id="app-nav">
                     <li className="icon-item">
+                        <Link onClick={() => this.handleClick(UrlPaths.HOME_PAAGE)}>
+                            <span className="icon">
+                                <svg className="icon-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 40 40">
+                                    <path className="svg-main" d="M24,12h-8v-2h8V12z M30,12v18H10V12h4v2h12v-2H30z M16,23h-3v3h3V23z M16,18h-3v3h3V18z M27,23h-9v3h9V23z M27,18h-9v3h9V18z"></path>
+                                </svg>
+                            </span>
+                            <span className="icon-title">
+                                <FormattedMessage id="container.appNavigation.home" />
+                            </span>
+                        </Link>
+                    </li>
+                    <li className="icon-item">
                         <Link onClick={() => this.handleClick(UrlPaths.DOMAINS_OVERVIEW_PAGE)}>
                             <span className="icon">
                                 <svg className="icon-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 40 40">

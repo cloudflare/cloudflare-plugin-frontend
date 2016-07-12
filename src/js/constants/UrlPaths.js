@@ -4,6 +4,7 @@ export const CLOUDFLARE_FORGOT_PASSWORD_PAGE = "https://cloudflare.com/a/forgot-
 export const CLOUDFLARE_SIGNUP_PAGE = "https://www.cloudflare.com/a/sign-up";
 export const CLOUDFLARE_UPGRADE_PAGE = "http://cloudflare.com/plans";
 export const DOMAINS_OVERVIEW_PAGE = "/zones";
+export const HOME_PAGE = "/home";
 export const LOGIN_PAGE = "/login";
 export const PERFORMANCE_PAGE = "/performance";
 export const SECURITY_PAGE = "/security";
