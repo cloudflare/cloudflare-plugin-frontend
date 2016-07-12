@@ -41,6 +41,7 @@
     "container.analyticsPage.tabs.threats": "Threats",
     "container.analyticsPage.title": "Analytics",
     "container.App.version": "Version: {version}",
+    "container.appNavigation.home": "Home",
     "container.appNavigation.domainsOverview": "Domains Overview",
     "container.appNavigation.analytics": "Analytics",
     "container.appNavigation.performance": "Performance",
