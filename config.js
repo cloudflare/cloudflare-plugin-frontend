@@ -19,6 +19,10 @@
     "featureManagerIsSSLEnabled": false,
     "featureManagerIsWAFEnabled": true,
     "homePageCards": ["ApplyDefaultSettingsCard", "SSLCard", "PurgeCacheCard"],
+    "moreSettingsCards": {
+        "container.moresettings.speed": ["CacheLevelCard", "AlwaysOnlineCard", "ImageOptimizationCard"],
+        "container.moresettings.security": ["SecurityLevelCard"]
+    },
     "locale": "en",
     "integrationName": "cpanel",
     "useHostAPILogin": true,
