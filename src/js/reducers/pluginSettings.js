@@ -16,7 +16,7 @@ export function pluginSettingsReducer(state = initialState, action) {
                 isFetching: true,
             })
         case ActionTypes.PLUGIN_SETTINGS_FETCH_SUCCESS:
-            let normalizedPluginSettings = normalizeZoneByIdGetAll(action.zoneId, action.setting)
+            let normalizedPluginSettings = normalizeZoneByIdGetAll(action.zoneId, action.setting);
 
             return Object.assign({}, state, {
                 entities: _.merge(state.entities, normalizedPluginSettings.entities),

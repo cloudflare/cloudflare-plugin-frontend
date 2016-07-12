@@ -50,7 +50,6 @@ export function pluginUpdateSettingError(zoneId, setting) {
     }
 }
 
-
 export function asyncPluginFetchSettings(zoneId) {
     return dispatch => {
         dispatch(pluginFetchSettings());
