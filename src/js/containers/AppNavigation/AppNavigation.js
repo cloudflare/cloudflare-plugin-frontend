@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import { FormattedMessage } from 'react-intl';
+import { connect } from 'react-redux';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { routeActions } from 'redux-simple-router'
 
 import Link from 'cf-component-link';
@@ -7,7 +8,7 @@ import Link from 'cf-component-link';
 import * as UrlPaths from '../../constants/UrlPaths';
 import { isLoggedIn } from '../../utils/Auth/Auth';
 
-export default class AppNavigation extends Component {
+class AppNavigation extends Component {
     static propTypes = {
         dispatch: PropTypes.func.isRequired
     };
@@ -78,3 +79,11 @@ export default class AppNavigation extends Component {
         );
     }
 }
+
+function mapStateToProps(state) {
+    return { 
+        config: state.config,
+    };
+}
+
+export default injectIntl(connect(mapStateToProps)(AppNavigation));
