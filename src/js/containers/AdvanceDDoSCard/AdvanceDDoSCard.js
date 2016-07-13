@@ -8,9 +8,9 @@ import { getZoneSettingsValueForZoneId } from '../../selectors/zoneSettings';
 import { Card, CardSection, CardContent, CardDrawers } from 'cf-component-card';
 import CustomCardControl from '../../components/CustomCardControl/CustomCardControl';
 import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
-import { PRO_PLAN } from '../../constants/Plans.js';
+import { ENT_PLAN } from '../../constants/Plans.js';
 
-const MINIMUM_PLAN = PRO_PLAN;
+const MINIMUM_PLAN = ENT_PLAN;
 
 class AdvanceDDoSCard extends Component {
     render() {
