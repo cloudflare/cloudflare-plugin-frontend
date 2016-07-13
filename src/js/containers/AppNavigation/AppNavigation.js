@@ -26,8 +26,8 @@ class AppNavigation extends Component {
                     <li className="icon-item">
                         <Link onClick={() => this.handleClick(UrlPaths.HOME_PAGE)}>
                             <span className="icon">
-                                <svg className="icon icon-home" fill="#ffffff" version="1.1" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 40 40">
-                                    <path className="svg-main" d="M32 18.451l-16-12.42-16 12.42v-5.064l16-12.42 16 12.42zM28 18v12h-8v-8h-8v8h-8v-12l12-9z"></path>
+                                <svg className="icon-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 40 40">
+                                    <path className="svg-main" stroke="white" d="M36 21.451l-16-12.42-16 12.42v-5.064l16-12.42 16 12.42zM32 21v12h-8v-8h-8v8h-8v-12l12-9z"></path>
                                 </svg>
                             </span>
                             <span className="icon-title">
