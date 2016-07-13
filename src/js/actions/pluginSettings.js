@@ -3,7 +3,7 @@ import {
     pluginSettingPatch,
     pluginResponseOk
 } from '../utils/PluginAPI/PluginAPI';
-import { notificationAddClientAPIError } from './notifications';
+import { notificationAddSuccess, notificationAddInfo, notificationAddClientAPIError } from './notifications';
 import * as ActionTypes from '../constants/ActionTypes';
 
 export function pluginFetchSettings() {
@@ -68,11 +68,19 @@ export function asyncPluginFetchSettings(zoneId) {
 export function asyncPluginUpdateSetting(settingName, zoneId, value) {
     return (dispatch, getState) => {
         let oldSetting = getState().pluginSettings.entities[zoneId][settingName];
+
+        if (settingName == "default_settings") {
+            dispatch(notificationAddInfo("container.applydefaultsettingscard.info", true));
+        }
         
         dispatch(pluginUpdateSetting(zoneId, {'id': settingName, 'value': value }));
         pluginSettingPatch(zoneId, settingName, value, function(response) {
             if(pluginResponseOk(response)) {
                 dispatch(pluginUpdateSettingSuccess(zoneId, response.body.result));
+
+                if (settingName == "default_settings") {
+                    dispatch(notificationAddSuccess("container.applydefaultsettingscard.success", true));
+                }
             } else {
                 dispatch(notificationAddClientAPIError(pluginUpdateSettingError(zoneId, oldSetting), response));
             }
