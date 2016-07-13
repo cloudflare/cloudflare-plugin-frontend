@@ -11,8 +11,8 @@ import { renderCards } from '../../components/RenderCardsDynamically/RenderCards
 
 class HomePage extends Component {
     render() {
-        let { activeZoneId, config, zoneSettings } = this.props;
-        let isEmpty = _.isEmpty(zoneSettings[activeZoneId]) && _.isEmpty(getPluginSettingsForZoneId(activeZoneId, this.state));
+        let { activeZoneId, config, zoneSettings, zoneScan } = this.props;
+        let isEmpty = _.isEmpty(zoneSettings[activeZoneId]) && _.isEmpty(getPluginSettingsForZoneId(activeZoneId, this.state)) && _.isEmpty(zoneScan.entities[activeZoneId]);
 
         return (
             <div>
@@ -33,7 +33,8 @@ function mapStateToProps(state) {
     return {
         activeZoneId: state.activeZone.id,
         config: state.config.config,
-        zoneSettings: state.zoneSettings.entities
+        zoneSettings: state.zoneSettings.entities,
+        zoneScan: state.zoneScan
     }
 }
 export default injectIntl(connect(mapStateToProps)(HomePage));
