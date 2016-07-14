@@ -38,7 +38,6 @@ function mapStateToProps(state) {
     return {
         activeZoneId: state.activeZone.id,
         showInterstitialValue: state.zoneScan.entities[state.activeZone.id].show_interstitial,
-        isFetching: state.zoneScan.isFetching
     }
 }
 export default injectIntl(connect(mapStateToProps)(ScanCard));
