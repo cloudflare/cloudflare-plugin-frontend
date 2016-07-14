@@ -40,7 +40,6 @@ function mapStateToProps(state) {
     return {
         activeZoneId: state.activeZone.id,
         securityLevelValue: state.zoneSettings.entities[state.activeZone.id][SETTING_NAME].value,
-        isFetching: state.zoneSettings.isFetching
     }
 }
 export default injectIntl(connect(mapStateToProps)(UnderAttackButton));

@@ -10,7 +10,7 @@ import { Modal, ModalHeader, ModalTitle, ModalClose, ModalBody, ModalFooter, Mod
 import { asyncZoneDelete } from '../../actions/zones';
 import { asyncZoneProvisionCname, asyncZoneProvisionFull } from '../../actions/zoneProvision';
 import FeatureManager from '../../components/FeatureManager/FeatureManager';
-import Loading from 'cf-component-loading';
+import Loading from '../../components/Loading/Loading';
 import { zoneSchema } from '../../constants/Schemas';
 
 class ZoneProvisionContainer extends Component {

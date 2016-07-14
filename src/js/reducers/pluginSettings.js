@@ -5,7 +5,7 @@ import { normalizeZoneByIdGetAll } from '../constants/Schemas';
 const initialState = {
     entities: {},
     result: [],
-    isFetching: false
+    isFetching: ""
 };
 
 
@@ -13,7 +13,7 @@ export function pluginSettingsReducer(state = initialState, action) {
     switch (action.type) {
         case ActionTypes.PLUGIN_SETTINGS_FETCH:
             return Object.assign({}, state, {
-                isFetching: true,
+                isFetching: "FETCH ALL PLUGIN SETTINGS"
             })
         case ActionTypes.PLUGIN_SETTINGS_FETCH_SUCCESS:
             let normalizedPluginSettings = normalizeZoneByIdGetAll(action.zoneId, action.setting);
@@ -21,26 +21,26 @@ export function pluginSettingsReducer(state = initialState, action) {
             return Object.assign({}, state, {
                 entities: _.merge(state.entities, normalizedPluginSettings.entities),
                 result: _.merge(state.result, normalizedPluginSettings.result),
-                isFetching: false
+                isFetching: ""
             })
         case ActionTypes.PLUGIN_SETTINGS_FETCH_ERROR:
             return Object.assign({}, state, {
-                isFetching: false
+                isFetching: ""
             })
         case ActionTypes.PLUGIN_SETTING_UPDATE:
             return Object.assign({}, state, {
                 entities: pluginPatchSetting(action.zoneId, action.setting, state),
-                isFetching: true
+                isFetching: action.setting.id
             })
         case ActionTypes.PLUGIN_SETTING_UPDATE_SUCCESS:
             return Object.assign({}, state, {
                 entities: pluginPatchSetting(action.zoneId, action.setting, state),
-                isFetching: false
+                isFetching: ""
             })
         case ActionTypes.PLUGIN_SETTING_UPDATE_ERROR:
             return Object.assign({}, state, {
                 entities: pluginPatchSetting(action.zoneId, action.setting, state),
-                isFetching: false
+                isFetching: ""
             })
         default:
             return state;

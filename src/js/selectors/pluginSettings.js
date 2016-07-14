@@ -4,6 +4,10 @@ export function getPluginSettingsForZoneId(zoneId, state) {
 	return _.get(state, ["pluginSettings", "entities", zoneId]);
 }
 
+export function getPluginSettingsIsFetching(state) {
+	return _.get(state, ["pluginSettings", "isFetching"]);
+}
+
 export function getPluginSettingsValueForZoneId(zoneId, settingId, state) {
 	// return false as default value
 	return _.get(state, ["pluginSettings", "entities", zoneId, settingId, "value"], false);

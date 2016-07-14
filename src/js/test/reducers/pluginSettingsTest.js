@@ -7,7 +7,7 @@ import 'babel-polyfill'; //Object.Assign
 let initialState = {
     result: [],
     entities: {},
-    isFetching: false,
+    isFetching: "",
 };
 
 describe('Plugin Settings Reducer', () => {
@@ -25,7 +25,7 @@ describe('Plugin Settings Reducer', () => {
         ).to.eql({
             result: [],
             entities: {},
-            isFetching: true,
+            isFetching: "FETCH ALL PLUGIN SETTINGS",
         })
     })
 
@@ -52,7 +52,7 @@ describe('Plugin Settings Reducer', () => {
                     }
                 }
             },
-            isFetching: false,
+            isFetching: "",
             result: [
                 'zoneSettingId'
             ]
@@ -75,7 +75,7 @@ describe('Plugin Settings Reducer', () => {
                 type: ActionTypes.PLUGIN_SETTING_UPDATE,
                 'zoneId': 'zoneId',
                 'setting': {
-                    id: "ip_rewrite",
+                    id: "settingName",
                     value: true,
                     editable: true,
                     modified_on: "",
@@ -84,15 +84,15 @@ describe('Plugin Settings Reducer', () => {
         ).to.eql({
             entities : {
                 'zoneId': {
-                    'ip_rewrite': {
-                        id: "ip_rewrite",
+                    'settingName': {
+                        id: "settingName",
                         value: true,
                         editable: true,
                         modified_on: "",
                     }
                 }
             },
-            isFetching: true,
+            isFetching: "settingName",
         })
     })
 
@@ -102,7 +102,7 @@ describe('Plugin Settings Reducer', () => {
                 type: ActionTypes.PLUGIN_SETTING_UPDATE_SUCCESS,
                 'zoneId': 'zoneId',
                 'setting': {
-                    id: "ip_rewrite",
+                    id: "settingName",
                     value: true,
                     editable: true,
                     modified_on: "",
@@ -111,15 +111,15 @@ describe('Plugin Settings Reducer', () => {
         ).to.eql({
             entities : {
                 'zoneId': {
-                    'ip_rewrite': {
-                        id: "ip_rewrite",
+                    'settingName': {
+                        id: "settingName",
                         value: true,
                         editable: true,
                         modified_on: "",
                     }
                 }
             },
-            isFetching: false,
+            isFetching: "",
         })
     })
 
@@ -129,7 +129,7 @@ describe('Plugin Settings Reducer', () => {
                 type: ActionTypes.PLUGIN_SETTING_UPDATE_ERROR,
                 'zoneId': 'zoneId',
                 'setting': {
-                    id: "ip_rewrite",
+                    id: "settingName",
                     value: true,
                     editable: true,
                     modified_on: "",
@@ -138,15 +138,15 @@ describe('Plugin Settings Reducer', () => {
         ).to.eql({
             entities : {
                 'zoneId': {
-                    'ip_rewrite': {
-                        id: "ip_rewrite",
+                    'settingName': {
+                        id: "settingName",
                         value: true,
                         editable: true,
                         modified_on: "",
                     }
                 }
             },
-            isFetching: false,
+            isFetching: "",
         })
     })
 })
