@@ -1,3 +1,4 @@
+import AdvanceDDoSCard from '../containers/AdvanceDDoSCard/AdvanceDDoSCard';
 import AlwaysOnlineCard from '../containers/AlwaysOnlineCard/AlwaysOnlineCard';
 import ApplyDefaultSettingsCard from '../containers/ApplyDefaultSettingsCard/ApplyDefaultSettingsCard';
 import BrowserCacheTTLCard from '../containers/BrowserCacheTTLCard/BrowserCacheTTLCard';
@@ -17,6 +18,7 @@ import SecurityLevelCard from '../containers/SecurityLevelCard/SecurityLevelCard
 import WAFCard from '../containers/WAFCard/WAFCard';
 
 let cardMapper = {
+	"AdvanceDDoSCard": AdvanceDDoSCard,
 	"AlwaysOnlineCard": AlwaysOnlineCard,
 	"ApplyDefaultSettingsCard": ApplyDefaultSettingsCard,
 	"BrowserCacheTTLCard": BrowserCacheTTLCard,

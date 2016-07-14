@@ -50,7 +50,7 @@ class AppContainer extends Component {
                     <div className="col-16">
                         <div className="apps-nav secondary-nav" id="zone-nav">
                             <div role="navigation" className="wrapper" id="zone-nav-container">
-                                <AppNavigation dispatch={this.props.dispatch} />
+                                <AppNavigation />
                             </div>
                         </div>
                     </div>
