@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { asyncPluginUpdateSetting } from '../../actions/pluginSettings';
-import { getPluginSettingsValueForZoneId } from '../../selectors/pluginSettings';
+import { getPluginSettingsValueForZoneId, getPluginSettingsIsFetching } from '../../selectors/pluginSettings';
 import { Card, CardSection, CardContent, CardControl, CardDrawers } from 'cf-component-card';
+import Loading from '../../components/Loading/Loading';
 import { Modal, ModalHeader, ModalTitle, ModalClose, ModalBody, ModalFooter, ModalActions } from 'cf-component-modal';
 import { Button } from 'cf-component-button';
+import _ from 'lodash';
 
 const SETTING_NAME = "default_settings";
 const VALUE = true;
@@ -17,6 +19,8 @@ class ApplyDefaultSettingsCard extends Component {
     };
 
     onButtonClick() {
+        this.setState({ isModalOpen: false });
+
         let { activeZoneId, dispatch } = this.props;
         dispatch(asyncPluginUpdateSetting(SETTING_NAME, activeZoneId, VALUE));
     }
@@ -40,9 +44,13 @@ class ApplyDefaultSettingsCard extends Component {
                             <p><FormattedMessage id="container.applydefaultsettingscard.description" /></p>
                         </CardContent>
                         <CardControl>
+                            { (this.props.isFetching === SETTING_NAME) ? <Loading/> 
+                            : 
                             <Button type="primary" onClick={ this.handleModalOpen.bind(this) }>
                                 <FormattedMessage id="container.applydefaultsettingscard.button" />
                             </Button> 
+                            }
+                            
 
                             <Modal
                                 isOpen={this.state.isModalOpen}
@@ -65,7 +73,6 @@ class ApplyDefaultSettingsCard extends Component {
                                     </ModalActions>
                                 </ModalFooter>
                             </Modal>
-
                         </CardControl>
                     </CardSection>
                 </Card>
@@ -78,6 +85,7 @@ function mapStateToProps(state) {
     return {
         activeZoneId: state.activeZone.id,
         DefaultSettingsValue: getPluginSettingsValueForZoneId(state.activeZone.id, SETTING_NAME, state),
+        isFetching: getPluginSettingsIsFetching(state),
     }
 }
 export default injectIntl(connect(mapStateToProps)(ApplyDefaultSettingsCard));
