@@ -12,6 +12,7 @@ import PerformancePage from './containers/PerformancePage/PerformancePage';
 import SecurityPage from './containers/SecurityPage/SecurityPage';
 import SignUpPage from './containers/SignUpPage/SignUpPage';
 import HomePage from './containers/HomePage/HomePage';
+import MoreSettingsPage from './containers/MoreSettingsPage/MoreSettingsPage';
 
 function requireAuth(nextState, replaceState) {
     if (!isLoggedIn()) {
@@ -29,5 +30,6 @@ export default (
         <Route path={ UrlPaths.DOMAINS_OVERVIEW_PAGE } component={ DNSManagementPage } onEnter={ requireAuth } />
         <Route path={ UrlPaths.PERFORMANCE_PAGE } component={ PerformancePage } onEnter={ requireAuth } />
         <Route path={ UrlPaths.SECURITY_PAGE } component={ SecurityPage } onEnter={ requireAuth } />
+        <Route path={ UrlPaths.MORE_SETTINGS_PAGE } component={ MoreSettingsPage } onEnter={ requireAuth } />
     </Route>
 );

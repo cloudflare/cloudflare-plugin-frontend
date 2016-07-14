@@ -9,9 +9,25 @@ import { getPluginSettingsForZoneId } from '../../selectors/pluginSettings';
 import FeatureManager from '../../components/FeatureManager/FeatureManager';
 import { renderCards } from '../../components/RenderCardsDynamically/RenderCardsDynamically';
 
-class HomePage extends Component {
+class MoreSettingsPage extends Component {
+
+    renderContent() {
+        let { config } = this.props;
+        var count = 0;
+
+        return _.map(config.moreSettingsCards, function(value, key) {
+            var categoryTitle = key;
+            return (
+                <div key={count++}>
+                    <Heading size={1}><FormattedMessage id={ categoryTitle } /></Heading>
+                    { renderCards(value) }
+                </div>
+            ); 
+        });
+    }
+
     render() {
-        let { activeZoneId, config, zoneSettings, zoneScan } = this.props;
+        let { activeZoneId, zoneSettings, zoneScan } = this.props;
         let isEmpty = _.isEmpty(zoneSettings[activeZoneId]) && _.isEmpty(getPluginSettingsForZoneId(activeZoneId, this.state)) && _.isEmpty(zoneScan.entities[activeZoneId]);
 
         return (
@@ -19,9 +35,8 @@ class HomePage extends Component {
                 {isEmpty && (<FormattedMessage id="errors.noActiveZoneSelected"/>)}
                 {!isEmpty && (
                     <div>
-                        <Heading size={1}><FormattedMessage id="container.appNavigation.home"/></Heading>
                         
-                        { renderCards(config.homePageCards) }
+                        { this.renderContent() }
                     </div>
                 )}
             </div>
@@ -37,4 +52,4 @@ function mapStateToProps(state) {
         zoneScan: state.zoneScan
     }
 }
-export default injectIntl(connect(mapStateToProps)(HomePage));
+export default injectIntl(connect(mapStateToProps)(MoreSettingsPage));
