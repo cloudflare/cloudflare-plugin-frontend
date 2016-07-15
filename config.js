@@ -24,7 +24,7 @@
         "container.moresettings.security": ["SecurityLevelCard"]
     },
     "locale": "en",
-    "integrationName": "cpanel",
+    "integrationName": "frontend",
     "useHostAPILogin": true,
-    "version": "6.0.0"
+    "version": "2.0.0"
 }
