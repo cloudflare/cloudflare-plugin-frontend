@@ -8,28 +8,31 @@ import { getZoneSettingsValueForZoneId } from '../../selectors/zoneSettings';
 import { Card, CardSection, CardContent, CardDrawers } from 'cf-component-card';
 import CustomCardControl from '../../components/CustomCardControl/CustomCardControl';
 import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
-import { ENT_PLAN } from '../../constants/Plans.js';
+import { BIZ_PLAN, planNeedsUpgrade } from '../../constants/Plans.js';
 
-const MINIMUM_PLAN = ENT_PLAN;
+const MINIMUM_PLAN = BIZ_PLAN;
 
 class AdvanceDDoSCard extends Component {
     render() {
     	let { activeZone, zones } = this.props;
     	let zone = zones[activeZone.name];
         const { formatMessage } = this.props.intl;
+
+        if (!planNeedsUpgrade(zone.plan.legacy_id, MINIMUM_PLAN)) {
+            return null;
+        }
+
         return (
-            <div>
-                <Card>
-                    <CardSection>
-                        <CardContent title={formatMessage({id: 'container.advanceddos.title'})}>
-                            <FormattedMessage id="container.advanceddos.description" />
-                        </CardContent>
-                        <CustomCardControl minimumPlan={ MINIMUM_PLAN } currentPlan={ zone.plan.legacy_id }>
-                            <FormattedMessage id="container.advanceddos.value" />
-                        </CustomCardControl>
-                    </CardSection>
-                </Card>
-            </div>
+            <Card>
+                <CardSection>
+                    <CardContent title={formatMessage({id: 'container.advanceddos.title'})}>
+                        <FormattedMessage id="container.advanceddos.description" />
+                    </CardContent>
+                    <CustomCardControl minimumPlan={ MINIMUM_PLAN } currentPlan={ zone.plan.legacy_id }>
+                        <FormattedMessage id="container.advanceddos.value" />
+                    </CustomCardControl>
+                </CardSection>
+            </Card>
         );
     }
 }
