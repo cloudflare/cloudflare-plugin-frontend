@@ -30,7 +30,7 @@
     "container.activationCheckCard.status": "Status: {status}",
     "container.activationCheckCard.success": "Your domain is now queued up to be rescanned. Please check back in a few hours.",
     "container.advanceddos.title": "Advance DDoS",
-    "container.advanceddos.description": "Get protected from advance smart attacks",
+    "container.advanceddos.description": "CloudFlare will stand in front of your website regardless of attack size or duration.",
     "container.advanceddos.value": "Visit Cloudflare.com",
     "container.alwaysOnlineCard.title": "Always Online™",
     "container.alwaysOnlineCard.description": "If your server goes down, CloudFlare will serve your website's static pages from our cache.",
