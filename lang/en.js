@@ -133,7 +133,7 @@
     "container.purgeCacheCard.dropdown": "Purge Cache",
     "container.purgeCacheCard.button": "Purge Everything",
     "container.purgeCacheCard.title": "Purge Cache",
-    "container.purgeCacheCard.description": "Clear cached files to force CloudFlare to fetch a fresh version of those files from your web server.",
+    "container.purgeCacheCard.description": "Clear cached files to force CloudFlare to fetch a fresh version of those files from your web server. You can purge files selectively or all at once.",
     "container.purgeCacheCard.success": "Cache was successfully purged.",
     "container.purgeCacheCard.modal.title" : "Confirm Purge All",
     "container.purgeCacheCard.modal.description": "Note: Purging your cache may slow your website temporarily.",
