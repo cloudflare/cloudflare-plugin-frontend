@@ -128,6 +128,8 @@
     "container.moresettings.speed": "Speed",
     "container.moresettings.security": "Security",
     "container.performancePage.title": "Performance",
+    "container.pluginSpecificCacheCard.title": "Automatic Cache",
+    "container.pluginSpecificCacheCard.description": "Purge CloudFlare cache automatically on updating site appearance. Enabling automatic cache purge will clear the entire CloudFlare cache when your site appearance is updated",
     "container.protocolRewrite.title": "Protocol Rewriting",
     "container.protocolRewrite.description": "Protocol rewriting in this context convert links within your WordPress site to images, stylesheets, and scripts from using either \"http://\" or \"https://\" to using just \"//\". This rewrite tells your browser to load all of these assets using the same protocol as the base page loaded.",
     "container.purgeCacheCard.dropdown": "Purge Cache",

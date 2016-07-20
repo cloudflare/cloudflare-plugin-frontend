@@ -16,6 +16,7 @@ import SSLCard from '../containers/SSLCard/SSLCard';
 import ScanCard from '../containers/ScanCard/ScanCard';
 import SecurityLevelCard from '../containers/SecurityLevelCard/SecurityLevelCard';
 import WAFCard from '../containers/WAFCard/WAFCard';
+import PluginSpecificCacheCard from '../containers/PluginSpecificCacheCard/PluginSpecificCacheCard';
 
 let cardMapper = {
 	"AdvanceDDoSCard": AdvanceDDoSCard,
@@ -36,6 +37,7 @@ let cardMapper = {
   	"ScanCard": ScanCard,
 	"SecurityLevelCard": SecurityLevelCard,
   	"WAFCard": WAFCard,
+  	"PluginSpecificCacheCard": PluginSpecificCacheCard,
 };
 
 export { cardMapper };
