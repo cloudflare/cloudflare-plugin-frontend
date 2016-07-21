@@ -13,7 +13,6 @@ const SETTING_NAME = "default_settings";
 const VALUE = true;
 
 class ApplyDefaultSettingsCard extends Component {
-
     state = {
         isModalOpen: false,
     };
@@ -24,7 +23,6 @@ class ApplyDefaultSettingsCard extends Component {
         let { activeZoneId, dispatch } = this.props;
         dispatch(asyncPluginUpdateSetting(SETTING_NAME, activeZoneId, VALUE));
     }
-
 
     handleModalOpen(self) {
         this.setState({ isModalOpen: true });
