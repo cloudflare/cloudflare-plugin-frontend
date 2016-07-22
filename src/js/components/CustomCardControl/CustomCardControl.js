@@ -26,7 +26,7 @@ class CustomCardControl extends Component {
             <CardControl>
                 { needToUpgrade ? (
                         <Button type="primary" onClick={ function(){window.open(upgradeLink); return false;}}>
-                        <FormattedMessage id="component.customcardcontrol.upgrade" /> <FormattedMessage id={ localizedPlanId } />
+                            <FormattedMessage id="component.customcardcontrol.upgrade" /> <FormattedMessage id={ localizedPlanId } />
                         </Button> 
                     ) :
                     this.props.children

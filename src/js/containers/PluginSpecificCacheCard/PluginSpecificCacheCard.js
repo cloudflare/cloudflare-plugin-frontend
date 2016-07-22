@@ -2,34 +2,31 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { asyncPluginUpdateSetting } from '../../actions/pluginSettings';
-import { getPluginSettingsValueForZoneId, getPluginSettingsIsFetching } from '../../selectors/pluginSettings';
+import { getPluginSettingsValueForZoneId } from '../../selectors/pluginSettings';
 import { Card, CardSection, CardContent, CardControl, CardDrawers } from 'cf-component-card';
-import Loading from '../../components/Loading/Loading';
 import { Modal, ModalHeader, ModalTitle, ModalClose, ModalBody, ModalFooter, ModalActions } from 'cf-component-modal';
 import { Button } from 'cf-component-button';
-import _ from 'lodash';
 
-const SETTING_NAME = "default_settings";
-const VALUE = true;
+const SETTING_NAME = "plugin_specific_cache";
 
-class ApplyDefaultSettingsCard extends Component {
+class PluginSpecificCacheCard extends Component {
     state = {
         isModalOpen: false,
     };
 
-    onButtonClick() {
-        this.setState({ isModalOpen: false });
-
-        let { activeZoneId, dispatch } = this.props;
-        dispatch(asyncPluginUpdateSetting(SETTING_NAME, activeZoneId, VALUE));
-    }
-
-    handleModalOpen(self) {
+    handleModalOpen() {
         this.setState({ isModalOpen: true });
     }
 
     handleModalClose() {
         this.setState({ isModalOpen: false });
+    }
+
+    handleChange(value) {
+        this.setState({ isModalOpen: false });
+
+        let { activeZoneId, dispatch } = this.props;
+        dispatch(asyncPluginUpdateSetting(SETTING_NAME, activeZoneId, value));
     }
 
     render() {
@@ -38,35 +35,38 @@ class ApplyDefaultSettingsCard extends Component {
             <div>
                 <Card>
                     <CardSection>
-                        <CardContent title={formatMessage({id: 'container.applydefaultsettingscard.title'})}>
-                            <p><FormattedMessage id="container.applydefaultsettingscard.description" /></p>
+                        <CardContent title={formatMessage({id: 'container.pluginSpecificCacheCard.title'})}>
+                            <p><FormattedMessage id="container.pluginSpecificCacheCard.description" /></p>
                         </CardContent>
                         <CardControl>
-                            { (this.props.isFetching === SETTING_NAME) ? <Loading/> 
-                            : 
-                            <Button type="primary" onClick={ this.handleModalOpen.bind(this) }>
-                                <FormattedMessage id="container.applydefaultsettingscard.button" />
-                            </Button> 
+
+                            { (this.props.cacheCardValue === false) ? (
+                                <Button type="primary" onClick={this.handleModalOpen.bind(this)}>
+                                    <FormattedMessage id="container.pluginSpecificCacheCard.button.enable" />
+                                </Button> 
+                                ) :
+                                <Button onClick={this.handleChange.bind(this, false)}>
+                                    <FormattedMessage id="container.pluginSpecificCacheCard.button.disable" />
+                                </Button> 
                             }
-                            
 
                             <Modal
                                 isOpen={this.state.isModalOpen}
                                 onRequestClose={this.handleModalClose.bind(this)}>
                                 <ModalHeader>
-                                    <ModalTitle><FormattedMessage id="container.applydefaultsettingscard.modal.title"/></ModalTitle>
+                                    <ModalTitle><FormattedMessage id="container.pluginSpecificCacheCard.modal.title"/></ModalTitle>
                                     <ModalClose onClick={this.handleModalClose.bind(this)}/>
                                 </ModalHeader>
                                 <ModalBody>
-                                        <p><FormattedMessage id="container.applydefaultsettingscard.modal.description"/></p>
+                                        <p><FormattedMessage id="container.pluginSpecificCacheCard.modal.description"/></p>
                                 </ModalBody>
                                 <ModalFooter>
                                     <ModalActions>
-                                        <Button type="primary" onClick={ this.onButtonClick.bind(this) }>
-                                            <FormattedMessage id="container.applydefaultsettingscard.modal.button"/>
+                                        <Button type="primary" onClick={ this.handleChange.bind(this, true) }>
+                                            <FormattedMessage id="container.pluginSpecificCacheCard.modal.button"/>
                                         </Button>
                                         <Button onClick={this.handleModalClose.bind(this)}>
-                                            <FormattedMessage id="container.applydefaultsettingscard.modal.buttonCancel"/>
+                                            <FormattedMessage id="container.pluginSpecificCacheCard.modal.buttonCancel"/>
                                         </Button>
                                     </ModalActions>
                                 </ModalFooter>
@@ -82,8 +82,7 @@ class ApplyDefaultSettingsCard extends Component {
 function mapStateToProps(state) {
     return {
         activeZoneId: state.activeZone.id,
-        DefaultSettingsValue: getPluginSettingsValueForZoneId(state.activeZone.id, SETTING_NAME, state),
-        isFetching: getPluginSettingsIsFetching(state),
+        cacheCardValue: getPluginSettingsValueForZoneId(state.activeZone.id, SETTING_NAME, state),
     }
 }
-export default injectIntl(connect(mapStateToProps)(ApplyDefaultSettingsCard));
+export default injectIntl(connect(mapStateToProps)(PluginSpecificCacheCard));
