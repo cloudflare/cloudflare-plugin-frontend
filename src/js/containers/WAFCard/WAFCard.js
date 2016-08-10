@@ -34,7 +34,7 @@ class WAFCard extends Component {
                         <CardContent title={formatMessage({id: 'container.waf.title'})}>
                             <FormattedMessage id="container.waf.description" />
                         </CardContent>
-                        <CustomCardControl minimumPlan={ MINIMUM_PLAN } currentPlan={ zone.plan.legacy_id }>
+                        <CustomCardControl minimumPlan={ MINIMUM_PLAN } currentPlan={ zone.plan.legacy_id } indentifier={ SETTING_NAME }>
                             <Toggle
                                 label=""
                                 value={(this.props.WAFValue == "on")}
