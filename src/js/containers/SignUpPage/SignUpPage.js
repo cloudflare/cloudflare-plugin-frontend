@@ -75,7 +75,8 @@ class SignUpPage extends Component {
         );
     }
 
-    handleSignUpSubmit() {
+    handleSignUpSubmit(e) {
+        e.preventDefault()
         let { dispatch } = this.props;
         let { formatMessage } = this.props.intl;
 
