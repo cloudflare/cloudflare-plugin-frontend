@@ -10,6 +10,7 @@ import CustomCardControl from '../../components/CustomCardControl/CustomCardCont
 import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
 import { BIZ_PLAN, planNeedsUpgrade } from '../../constants/Plans.js';
 
+const SETTING_NAME = "advanceddos"
 const MINIMUM_PLAN = BIZ_PLAN;
 
 class AdvanceDDoSCard extends Component {
@@ -28,7 +29,7 @@ class AdvanceDDoSCard extends Component {
                     <CardContent title={formatMessage({id: 'container.advanceddos.title'})}>
                         <FormattedMessage id="container.advanceddos.description" />
                     </CardContent>
-                    <CustomCardControl minimumPlan={ MINIMUM_PLAN } currentPlan={ zone.plan.legacy_id }>
+                    <CustomCardControl minimumPlan={ MINIMUM_PLAN } currentPlan={ zone.plan.legacy_id } indentifier={ SETTING_NAME }>
                         <FormattedMessage id="container.advanceddos.value" />
                     </CustomCardControl>
                 </CardSection>

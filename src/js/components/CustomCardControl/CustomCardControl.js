@@ -6,6 +6,7 @@ import { Button } from 'cf-component-button';
 import { CLOUDFLARE_UPGRADE_PAGE } from '../../constants/UrlPaths.js';
 import { planNeedsUpgrade, getLocalizedPlanId, FREE_PLAN } from '../../constants/Plans.js';
 import { getConfigValue } from '../../selectors/config.js';
+import { generateUTMLink } from '../../selectors/generateUTMLink.js';
 
 class CustomCardControl extends Component {
     static propTypes = {
@@ -20,12 +21,13 @@ class CustomCardControl extends Component {
         var needToUpgrade = planNeedsUpgrade(currentPlan, minimumPlan);
         var localizedPlanId = getLocalizedPlanId(minimumPlan);
 
-        let upgradeLink = CLOUDFLARE_UPGRADE_PAGE + "?utm_source=pi-" + integrationName + "&utm_medium=plugin&utm_campaign=" + integrationName;
+
+        let upgradeLinkWithUTM = generateUTMLink(CLOUDFLARE_UPGRADE_PAGE, integrationName, integrationName, this.props.indentifier);
         
         return (
             <CardControl>
                 { needToUpgrade ? (
-                        <Button type="primary" onClick={ function(){window.open(upgradeLink); return false;}}>
+                        <Button type="primary" onClick={ function(){window.open(upgradeLinkWithUTM); return false;}}>
                             <FormattedMessage id="component.customcardcontrol.upgrade" /> <FormattedMessage id={ localizedPlanId } />
                         </Button> 
                     ) :

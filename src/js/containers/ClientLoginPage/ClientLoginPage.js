@@ -7,6 +7,9 @@ import { routeActions } from 'redux-simple-router'
 import MarketingFeatureCollection from '../../containers/MarketingFeatureCollection/MarketingFeatureCollection';
 import { asyncAPILogin } from '../../actions/user'
 import { CLOUDFLARE_API_KB_ARTICLE_PAGE, CLOUDFLARE_SIGNUP_PAGE } from '../../constants/UrlPaths.js'
+import { generateUTMLink } from '../../selectors/generateUTMLink.js';
+
+const UTM_CONTENT_IDENTIFIER = "signup_now";
 
 class ClientLoginPage extends Component {
 
@@ -22,6 +25,9 @@ class ClientLoginPage extends Component {
 
     render() {
         const { formatMessage } = this.props.intl;
+        const { config } = this.props;
+
+        let signupLinkWithUTM = generateUTMLink(CLOUDFLARE_SIGNUP_PAGE, config.integrationName, config.integrationName, UTM_CONTENT_IDENTIFIER);
 
         return (
             <div>
@@ -72,7 +78,7 @@ class ClientLoginPage extends Component {
                 </section>
                 <div className="row">
                     <div className="col-16">
-                        <p style={{'textAlign': 'center', 'marginBottom': '2.5rem'}}><FormattedMessage id="component.clientLogin.cloudflare.description"/> <a href={CLOUDFLARE_SIGNUP_PAGE} target="_blank">CloudFlare.com</a>.</p>
+                        <p style={{'textAlign': 'center', 'marginBottom': '2.5rem'}}><FormattedMessage id="component.clientLogin.cloudflare.description"/> <a href={signupLinkWithUTM} target="_blank">CloudFlare.com</a>.</p>
                     </div>
                 </div>
                 <MarketingFeatureCollection/>
@@ -81,4 +87,12 @@ class ClientLoginPage extends Component {
     }
 }
 
-export default injectIntl(connect()(ClientLoginPage));
+
+function mapStateToProps(state) {
+    return {
+        config: state.config.config
+    }
+}
+
+
+export default injectIntl(connect(mapStateToProps)(ClientLoginPage));

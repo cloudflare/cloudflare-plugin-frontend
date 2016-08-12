@@ -13,6 +13,7 @@ import Toggle from 'cf-component-toggle';
 
 const SETTING_NAME_MIRAGE = "mirage";
 const SETTING_NAME_POLISH = "polish";
+const SETTING_NAME = "image_optimization";
 const MINIMUM_PLAN = PRO_PLAN;
 
 class ImageOptimizationCard extends Component {
@@ -29,6 +30,7 @@ class ImageOptimizationCard extends Component {
     	let zone = zones[activeZone.name];
         let imageOptimizationValue = (this.props.mirageValue == "on") && (this.props.polishValue == "on");
         const { formatMessage } = this.props.intl;
+
         return (
             <div>
                 <Card>
@@ -36,7 +38,7 @@ class ImageOptimizationCard extends Component {
                         <CardContent title={formatMessage({id: 'container.imageOptimization.title'})}>
                             <FormattedMessage id="container.imageOptimization.description" />
                         </CardContent>
-                        <CustomCardControl minimumPlan={ MINIMUM_PLAN } currentPlan={ zone.plan.legacy_id }>
+                        <CustomCardControl minimumPlan={ MINIMUM_PLAN } currentPlan={ zone.plan.legacy_id } indentifier={ SETTING_NAME }>
                             <Toggle
                                 label=""
                                 value={(imageOptimizationValue == "on")}
