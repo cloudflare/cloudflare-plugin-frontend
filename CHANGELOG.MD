@@ -2,6 +2,17 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.1.0](#2.1.0) - 2016-08-12
+### Added
+- Added PluginSpecificCacheCard which will turn on plugin specific cache integration. [#19](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/19)
+
+### Changed
+- Advanced DDOS card only shows if the user's plan supports it [#16](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/16)
+- Consolidated logic for generating Google Analytics Tracking Links [#20](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/20)
+
+### Fixed
+- Fixed but which caused signups to fail on Chrome [#21](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/21)
+
 ## [2.0.0](#2.0.0) - 2016-07-15
 ### Added
 - Added the IP Rewrite Card and Protocol Rewrite Card [#5](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/5),[#6](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/6)
