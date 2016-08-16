@@ -17,6 +17,7 @@ import ScanCard from '../containers/ScanCard/ScanCard';
 import SecurityLevelCard from '../containers/SecurityLevelCard/SecurityLevelCard';
 import WAFCard from '../containers/WAFCard/WAFCard';
 import PluginSpecificCacheCard from '../containers/PluginSpecificCacheCard/PluginSpecificCacheCard';
+import PluginSpecificCacheTagCard from '../containers/PluginSpecificCacheTagCard/PluginSpecificCachetTagCard.js';
 
 let cardMapper = {
 	"AdvanceDDoSCard": AdvanceDDoSCard,
@@ -31,13 +32,14 @@ let cardMapper = {
 	"ImageOptimizationCard": ImageOptimizationCard,
 	"IpRewriteCard": IpRewriteCard,
 	"MinifyCard": MinifyCard,
+	"PluginSpecificCacheCard": PluginSpecificCacheCard,
+	"PluginSpecificCacheTagCard": PluginSpecificCacheTagCard,
 	"ProtocolRewriteCard": ProtocolRewriteCard,
 	"PurgeCacheCard": PurgeCacheCard,
 	"SSLCard": SSLCard,
   	"ScanCard": ScanCard,
 	"SecurityLevelCard": SecurityLevelCard,
   	"WAFCard": WAFCard,
-  	"PluginSpecificCacheCard": PluginSpecificCacheCard,
 };
 
 export { cardMapper };

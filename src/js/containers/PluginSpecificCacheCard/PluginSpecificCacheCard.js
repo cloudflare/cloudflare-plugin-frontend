@@ -5,6 +5,7 @@ import { asyncPluginUpdateSetting } from '../../actions/pluginSettings';
 import { getPluginSettingsValueForZoneId } from '../../selectors/pluginSettings';
 import { Card, CardSection, CardContent, CardControl, CardDrawers } from 'cf-component-card';
 import { Modal, ModalHeader, ModalTitle, ModalClose, ModalBody, ModalFooter, ModalActions } from 'cf-component-modal';
+import Toggle from 'cf-component-toggle';
 import { Button } from 'cf-component-button';
 
 const SETTING_NAME = "plugin_specific_cache";
@@ -23,10 +24,14 @@ class PluginSpecificCacheCard extends Component {
     }
 
     handleChange(value) {
-        this.setState({ isModalOpen: false });
+        if(value === true && this.state.isModalOpen === false) {
+            this.handleModalOpen();
+        } else {
+            this.handleModalClose();
 
-        let { activeZoneId, dispatch } = this.props;
-        dispatch(asyncPluginUpdateSetting(SETTING_NAME, activeZoneId, value));
+            let { activeZoneId, dispatch } = this.props;
+            dispatch(asyncPluginUpdateSetting(SETTING_NAME, activeZoneId, value));
+        }
     }
 
     render() {
@@ -39,17 +44,10 @@ class PluginSpecificCacheCard extends Component {
                             <p><FormattedMessage id="container.pluginSpecificCacheCard.description" /></p>
                         </CardContent>
                         <CardControl>
-
-                            { (this.props.cacheCardValue === false) ? (
-                                <Button type="primary" onClick={this.handleModalOpen.bind(this)}>
-                                    <FormattedMessage id="container.pluginSpecificCacheCard.button.enable" />
-                                </Button> 
-                                ) :
-                                <Button onClick={this.handleChange.bind(this, false)}>
-                                    <FormattedMessage id="container.pluginSpecificCacheCard.button.disable" />
-                                </Button> 
-                            }
-
+                            <Toggle label=""
+                                    value={this.props.cacheCardValue}
+                                    onChange={this.handleChange.bind(this)}
+                                    />
                             <Modal
                                 isOpen={this.state.isModalOpen}
                                 onRequestClose={this.handleModalClose.bind(this)}>
@@ -83,6 +81,7 @@ function mapStateToProps(state) {
     return {
         activeZoneId: state.activeZone.id,
         cacheCardValue: getPluginSettingsValueForZoneId(state.activeZone.id, SETTING_NAME, state),
+        integrationName: state.config.config.integrationName
     }
 }
 export default injectIntl(connect(mapStateToProps)(PluginSpecificCacheCard));
