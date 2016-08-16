@@ -27,7 +27,7 @@ class PluginSpecificCacheCard extends Component {
         if(value === true && this.state.isModalOpen === false) {
             this.handleModalOpen();
         } else {
-            this.setState({isModalOpen: false});
+            this.handleModalClose();
 
             let { activeZoneId, dispatch } = this.props;
             dispatch(asyncPluginUpdateSetting(SETTING_NAME, activeZoneId, value));
