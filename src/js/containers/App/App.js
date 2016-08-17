@@ -9,7 +9,7 @@ import ActiveZoneSelector from '../../containers/ActiveZoneSelector/ActiveZoneSe
 import AppNavigation from '../../containers/AppNavigation/AppNavigation';
 import { isLoggedIn } from '../../utils/Auth/Auth';
 import { asyncConfigFetch } from '../../actions/config';
-import NotificationList from '../../containers/NotificationList/NotificationList';
+import GlobalNotifications from '../../containers/GlobalNotifications/GlobalNotifications';
 import UnderAttackButton from '../../containers/UnderAttackButton/UnderAttackButton';
 import { getAbsoluteUrl } from '../../selectors/config';
 
@@ -66,7 +66,7 @@ class AppContainer extends Component {
                     </div>
                 </div>
                 <GatewayDest name="modal"/>
-                <NotificationList {...this.props} />
+                <GlobalNotifications />
             </div>
         );
     }

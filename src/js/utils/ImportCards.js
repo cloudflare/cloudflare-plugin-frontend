@@ -1,3 +1,4 @@
+// Cards
 import AdvanceDDoSCard from '../containers/AdvanceDDoSCard/AdvanceDDoSCard';
 import AlwaysOnlineCard from '../containers/AlwaysOnlineCard/AlwaysOnlineCard';
 import ApplyDefaultSettingsCard from '../containers/ApplyDefaultSettingsCard/ApplyDefaultSettingsCard';
@@ -18,6 +19,10 @@ import SecurityLevelCard from '../containers/SecurityLevelCard/SecurityLevelCard
 import WAFCard from '../containers/WAFCard/WAFCard';
 import PluginSpecificCacheCard from '../containers/PluginSpecificCacheCard/PluginSpecificCacheCard';
 import PluginSpecificCacheTagCard from '../containers/PluginSpecificCacheTagCard/PluginSpecificCachetTagCard.js';
+import RailgunCard from '../containers/RailgunCard/RailgunCard';
+
+// Pages
+import DNSManagementPage from '../containers/DNSManagementPage/DNSManagementPage';
 
 let cardMapper = {
 	"AdvanceDDoSCard": AdvanceDDoSCard,
@@ -40,6 +45,9 @@ let cardMapper = {
   	"ScanCard": ScanCard,
 	"SecurityLevelCard": SecurityLevelCard,
   	"WAFCard": WAFCard,
+  	"PluginSpecificCacheCard": PluginSpecificCacheCard,
+  	"RailgunCard": RailgunCard,  
+  	"DNSManagementPage": DNSManagementPage,
 };
 
 export { cardMapper };

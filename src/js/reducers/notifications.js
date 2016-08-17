@@ -10,7 +10,9 @@ export function notificationsReducer(state = initialState, action) {
                     key: Date.now(),
                     level: action.level,
                     message: action.message,
-                    localized: action.localized
+                    localized: action.localized,
+                    persistant: action.persistant,
+                    delay: action.delay,
                 },
                 ...state
             ];

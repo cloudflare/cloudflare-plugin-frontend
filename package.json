@@ -40,6 +40,7 @@
     "cf-component-list": "^1.0.3",
     "cf-component-loading": "^1.0.7",
     "cf-component-modal": "^3.0.4",
+    "cf-component-notifications": "^1.1.6",
     "cf-component-radio": "^1.0.4",
     "cf-component-select": "^1.0.0",
     "cf-component-table": "^0.1.0",

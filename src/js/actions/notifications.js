@@ -1,28 +1,30 @@
 import * as ActionTypes from '../constants/ActionTypes';
 
-export function notificationAdd(level, message, localized = false) {
+export function notificationAdd(level, message, localized = false, persistant = false, delay = 5000) {
     return {
         type: ActionTypes.NOTIFICATION_ADD,
         level,
         message,
-        localized
+        localized,
+        persistant,
+        delay
     }
 }
 
-export function notificationAddSuccess(message, localized = false) {
-    return notificationAdd("success", message, localized);
+export function notificationAddSuccess(message, localized = false, persistant = false, delay = 5000) {
+    return notificationAdd("success", message, localized, persistant, delay);
 }
 
-export function notificationAddInfo(message, localized = false) {
-    return notificationAdd("info", message, localized);
+export function notificationAddInfo(message, localized = false, persistant = false, delay = 5000) {
+    return notificationAdd("info", message, localized, persistant, delay);
 }
 
-export function notificationAddWarning(message, localized = false) {
-    return notificationAdd("warning", message, localized);
+export function notificationAddWarning(message, localized = false, persistant = false, delay = 5000) {
+    return notificationAdd("warning", message, localized, persistant, delay);
 }
 
-export function notificationAddError(message, localized = false) {
-    return notificationAdd("error", message, localized);
+export function notificationAddError(message, localized = false, persistant = false, delay = 5000) {
+    return notificationAdd("error", message, localized, persistant, delay);
 }
 
 export function notificationRemove(key) {
