@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.1.1](#2.1.1) - 2016-08-16
+### Added
+- Added PluginSpecificCacheTagCard which will turn on the plugin specific cache integration for cache tags. [#22](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/22)
+
 ## [2.1.0](#2.1.0) - 2016-08-12
 ### Added
 - Added PluginSpecificCacheCard which will turn on plugin specific cache integration. [#19](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/19)

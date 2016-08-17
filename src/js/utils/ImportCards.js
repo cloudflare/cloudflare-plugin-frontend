@@ -18,6 +18,7 @@ import ScanCard from '../containers/ScanCard/ScanCard';
 import SecurityLevelCard from '../containers/SecurityLevelCard/SecurityLevelCard';
 import WAFCard from '../containers/WAFCard/WAFCard';
 import PluginSpecificCacheCard from '../containers/PluginSpecificCacheCard/PluginSpecificCacheCard';
+import PluginSpecificCacheTagCard from '../containers/PluginSpecificCacheTagCard/PluginSpecificCachetTagCard.js';
 import RailgunCard from '../containers/RailgunCard/RailgunCard';
 
 // Pages
@@ -36,15 +37,20 @@ let cardMapper = {
 	"ImageOptimizationCard": ImageOptimizationCard,
 	"IpRewriteCard": IpRewriteCard,
 	"MinifyCard": MinifyCard,
+	"PluginSpecificCacheCard": PluginSpecificCacheCard,
+	"PluginSpecificCacheTagCard": PluginSpecificCacheTagCard,
 	"ProtocolRewriteCard": ProtocolRewriteCard,
 	"PurgeCacheCard": PurgeCacheCard,
 	"SSLCard": SSLCard,
   	"ScanCard": ScanCard,
 	"SecurityLevelCard": SecurityLevelCard,
   	"WAFCard": WAFCard,
+<<<<<<< HEAD
   	"PluginSpecificCacheCard": PluginSpecificCacheCard,
   	"RailgunCard": RailgunCard,  
   	"DNSManagementPage": DNSManagementPage,
+=======
+>>>>>>> cebca996091e235570cd7da2b9fc022c60b36b6e
 };
 
 export { cardMapper };
