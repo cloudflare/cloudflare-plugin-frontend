@@ -45,12 +45,9 @@ let cardMapper = {
   	"ScanCard": ScanCard,
 	"SecurityLevelCard": SecurityLevelCard,
   	"WAFCard": WAFCard,
-<<<<<<< HEAD
   	"PluginSpecificCacheCard": PluginSpecificCacheCard,
   	"RailgunCard": RailgunCard,  
   	"DNSManagementPage": DNSManagementPage,
-=======
->>>>>>> cebca996091e235570cd7da2b9fc022c60b36b6e
 };
 
 export { cardMapper };
