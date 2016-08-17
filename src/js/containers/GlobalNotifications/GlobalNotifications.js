@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import { connect } from 'react-redux';
-import { injectIntl, IntlProvider } from 'react-intl';
+import { injectIntl, IntlProvider, FormattedMessage } from 'react-intl';
 import { NotificationGlobalContainer, NotificationList, Notification } from 'cf-component-notifications';
 import * as NotificationActionCreators from '../../actions/notifications';
 
@@ -16,8 +16,6 @@ class GlobalNotifications extends Component {
         let { notifications, dispatch } = this.props;
 
         const newNotifications = notifications.map(n => {
-            console.log(JSON.stringify(n));
-
             return <Notification
                 key={n.key} 
                 type={n.level}
