@@ -11,6 +11,7 @@ import { generateUTMLink } from '../../selectors/generateUTMLink.js';
 class CustomCardControl extends Component {
     static propTypes = {
         name: PropTypes.string,
+        indentifier: PropTypes.string.isRequired,
     };
 
     render() {
