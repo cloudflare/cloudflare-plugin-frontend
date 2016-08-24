@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.2.0](#2.2.0) - 2016-08-24
+### Added
+- Added alert when user is using subdomain. [#23](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/23)
+- Updated french localization. [#24](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/24)
+
 ## [2.1.1](#2.1.1) - 2016-08-16
 ### Added
 - Added PluginSpecificCacheTagCard which will turn on the plugin specific cache integration for cache tags. [#22](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/22)
