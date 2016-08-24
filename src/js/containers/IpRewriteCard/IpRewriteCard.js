@@ -12,6 +12,7 @@ class IpRewriteCard extends Component {
 
     handleChange(value) {
         let { activeZoneId, dispatch } = this.props;
+        value = (value === true ? "on" : "off");
         dispatch(asyncPluginUpdateSetting(SETTING_NAME, activeZoneId, value));
     }
 
@@ -27,7 +28,7 @@ class IpRewriteCard extends Component {
                         <CardControl>
                             <Toggle
                                 label=""
-                                value={(this.props.ipRewriteValue == true)}
+                                value={(this.props.ipRewriteValue === "on")}
                                 onChange={this.handleChange.bind(this)}/>
                         </CardControl>
                     </CardSection>

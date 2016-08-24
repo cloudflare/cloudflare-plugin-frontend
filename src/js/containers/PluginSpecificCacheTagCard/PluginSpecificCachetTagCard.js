@@ -15,6 +15,7 @@ class PluginSpecificCacheTagCard extends Component {
 
     handleChange(value) {
         let { activeZoneId, dispatch } = this.props;
+        value = (value === true ? "on" : "off");
         dispatch(asyncPluginUpdateSetting(SETTING_NAME, activeZoneId, value));
     }
 
@@ -29,7 +30,7 @@ class PluginSpecificCacheTagCard extends Component {
                         </CardContent>
                         <CustomCardControl minimumPlan={ ENT_PLAN } currentPlan={ this.props.activeZonePlan } indentifier={ SETTING_NAME }>
                             <Toggle label=""
-                                    value={this.props.cacheTagCardValue}
+                                    value={(this.props.cacheTagCardValue === "on")}
                                     onChange={this.handleChange.bind(this)}
                                 />
                         </CustomCardControl>

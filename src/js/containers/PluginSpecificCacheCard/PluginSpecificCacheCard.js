@@ -30,6 +30,7 @@ class PluginSpecificCacheCard extends Component {
             this.handleModalClose();
 
             let { activeZoneId, dispatch } = this.props;
+            value = (value === true ? "on" : "off");
             dispatch(asyncPluginUpdateSetting(SETTING_NAME, activeZoneId, value));
         }
     }
@@ -45,7 +46,7 @@ class PluginSpecificCacheCard extends Component {
                         </CardContent>
                         <CardControl>
                             <Toggle label=""
-                                    value={this.props.cacheCardValue}
+                                    value={(this.props.cacheCardValue === "on")}
                                     onChange={this.handleChange.bind(this)}
                                     />
                             <Modal
