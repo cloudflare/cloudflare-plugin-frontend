@@ -19,6 +19,7 @@
     "featureManagerIsSSLEnabled": false,
     "featureManagerIsWAFEnabled": true,
     "isSubdomainCheckEnabled": true,
+    "isDNSPageEnabled": false,
     "homePageCards": ["ApplyDefaultSettingsCard", "SSLCard", "PurgeCacheCard"],
     "moreSettingsCards": {
         "container.moresettings.speed": ["CacheLevelCard", "AlwaysOnlineCard", "ImageOptimizationCard"],

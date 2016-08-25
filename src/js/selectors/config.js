@@ -8,3 +8,7 @@ export function getAbsoluteUrl(config, url) {
 export function getConfigValue(config, key) {
     return config.config[key];
 }
+
+export function isDNSPageEnabled(config) {
+    return (getConfigValue(config, "isDNSPageEnabled") === true);
+}

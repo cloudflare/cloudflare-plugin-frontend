@@ -31,4 +31,14 @@ describe('Config Selector', () => {
             }, "key")
         ).to.eql("value");
     })
+
+    it('isDNSPageEnabled should return true if key is true', () => {
+        expect(
+            getConfigValue({
+                config : {
+                    "isDNSPageEnabled": true
+                }
+            }, "isDNSPageEnabled")
+        ).to.eql(true);
+    })
 })
