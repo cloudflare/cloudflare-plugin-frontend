@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.2.3](#2.2.3) - 2016-08-29
+### Fixed
+- App, ClientLoginPage containers no longer depend on cf.core.css and now exclusively use cf-component-* components. [#28](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/28)
+
 ## [2.2.2](#2.2.2) - 2016-08-25
 ### Fixed
 - Fixed bug where unprovisioned domains could not be provisioned when the DNS page was included on the homepage. [#27](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/27)
