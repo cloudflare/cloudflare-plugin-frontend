@@ -6,7 +6,6 @@ import { routeActions } from 'redux-simple-router'
 
 import { Button } from 'cf-component-button';
 import { Form, FormHeader, FormFooter, FormFieldset, FormLabel, FormFieldError } from 'cf-component-form';
-import { Flex, FlexItem } from 'cf-component-flex';
 import Input from 'cf-component-input';
 import { LayoutContainer, LayoutRow, LayoutColumn } from 'cf-component-layout';
 
@@ -45,52 +44,42 @@ class ClientLoginPage extends Component {
         let signupLinkWithUTM = generateUTMLink(CLOUDFLARE_SIGNUP_PAGE, config.integrationName, config.integrationName, UTM_CONTENT_IDENTIFIER);
 
         return (
-            <div>
-                <Flex spacing="wide">
-                    <FlexItem>&nbsp;</FlexItem>
-                    <FlexItem>
-                        <Form layout="vertical" onSubmit={(e) => this.handleLoginSubmit(e)}>
-                            <Flex spacing="wide">
-                                <FlexItem>
-                                    <FormHeader title={formatMessage({id: "component.clientLogin.form.title"})} style={{textAlign:'center'}}/>
-                                </FlexItem>
-                            </Flex>
+            <div id="cf-login-page">
+                <Form layout="vertical" onSubmit={(e) => this.handleLoginSubmit(e)}>
+                    <LayoutContainer>
+                        <LayoutRow>
+                            <LayoutColumn width={1/1}>
+                                <FormHeader title={formatMessage({id: "component.clientLogin.form.title"})} style={{textAlign:'center'}}/>
+                            </LayoutColumn>
+                        </LayoutRow>
                             <FormFieldset legend="">
-                                <Flex spacing="wide">
-                                    <FlexItem>
-                                        <LayoutContainer>
-                                            <LayoutRow>
-                                                <LayoutColumn width={1/1}>
-                                                    <FormLabel hidden><FormattedMessage id="component.clientLogin.form.email"/></FormLabel>
-                                                    <Input name="email" type="text" value={this.state.email} onChange={this.handleEmailChange} placeholder={formatMessage({id: "component.clientLogin.form.email"})}/>
-                                                </LayoutColumn>
-                                            </LayoutRow>
-                                            <LayoutRow>
-                                                <LayoutColumn width={1/1}>
-                                                    <FormLabel hidden><FormattedMessage id="component.clientLogin.form.apiKey"/></FormLabel>
-                                                    <Input name="apiKey" type="text" value={this.state.apiKey} onChange={this.handleApiKeyChange} placeholder={formatMessage({id: "component.clientLogin.form.apiKey"})}/>
-                                                </LayoutColumn>
-                                            </LayoutRow>
-                                            <LayoutRow>
-                                                <LayoutColumn width={1/1}>
-                                                    <Button submit type="success" onClick={(e) => this.handleLoginSubmit(e)}>
-                                                        <FormattedMessage id="component.clientLogin.form.button" />
-                                                    </Button>
-                                                </LayoutColumn>
-                                            </LayoutRow>
-                                        </LayoutContainer>
-                                    </FlexItem>
-                                </Flex>
+                                <LayoutRow>
+                                    <LayoutColumn width={1/1}>
+                                        <FormLabel hidden><FormattedMessage id="component.clientLogin.form.email"/></FormLabel>
+                                        <Input name="email" type="text" value={this.state.email} onChange={this.handleEmailChange} placeholder={formatMessage({id: "component.clientLogin.form.email"})}/>
+                                    </LayoutColumn>
+                                </LayoutRow>
+                                <LayoutRow>
+                                    <LayoutColumn width={1/1}>
+                                        <FormLabel hidden><FormattedMessage id="component.clientLogin.form.apiKey"/></FormLabel>
+                                        <Input name="apiKey" type="text" value={this.state.apiKey} onChange={this.handleApiKeyChange} placeholder={formatMessage({id: "component.clientLogin.form.apiKey"})}/>
+                                    </LayoutColumn>
+                                </LayoutRow>
+                                <LayoutRow>
+                                    <LayoutColumn width={1/1}>
+                                        <Button submit type="success" onClick={(e) => this.handleLoginSubmit(e)}>
+                                            <FormattedMessage id="component.clientLogin.form.button" />
+                                        </Button>
+                                    </LayoutColumn>
+                                </LayoutRow>
                             </FormFieldset>
-                        </Form>
-                    </FlexItem>
-                    <FlexItem>&nbsp;</FlexItem>
-                </Flex>
-                <Flex spacing="wide">
-                    <FlexItem>
-                        <p style={{'textAlign': 'center', 'marginBottom': '2.5rem'}}><FormattedMessage id="component.clientLogin.cloudflare.description"/> <a href={signupLinkWithUTM} target="_blank">CloudFlare.com</a>.</p>
-                    </FlexItem>
-                </Flex>
+                        <LayoutRow>
+                            <LayoutColumn width={1/1}>
+                                <p style={{'textAlign': 'center', 'marginBottom': '2.5rem'}}><FormattedMessage id="component.clientLogin.cloudflare.description"/> <a href={signupLinkWithUTM} target="_blank">CloudFlare.com</a>.</p>
+                            </LayoutColumn>
+                        </LayoutRow>
+                    </LayoutContainer>
+                </Form>
                 <MarketingFeatureCollection/>
             </div>
         );
