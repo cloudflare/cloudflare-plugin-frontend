@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl, IntlProvider } from 'react-intl';
 import { GatewayDest, GatewayProvider } from 'react-gateway';
 
-import { Flex, FlexItem } from 'cf-component-flex';
+import { LayoutContainer, LayoutRow, LayoutColumn } from 'cf-component-layout';
 
 import ActiveZoneSelector from '../../containers/ActiveZoneSelector/ActiveZoneSelector';
 import AppNavigation from '../../containers/AppNavigation/AppNavigation';
@@ -23,48 +23,44 @@ class AppContainer extends Component {
     render() {
         const { config } = this.props.state;
         return (
-            <div className="wrapper">
-                <Flex spacing="wide">
-                    <FlexItem>
-                        &nbsp;
-                    </FlexItem>
-                    <FlexItem>
-                        <img src={ getAbsoluteUrl(config, "assets/logo.svg") } />
-                    </FlexItem>
-                    <FlexItem>
-                        &nbsp;
-                    </FlexItem>
-                </Flex>
-                <Flex spacing="wide">
-                    <FlexItem>
-                        { isLoggedIn() ? <ActiveZoneSelector/> : <noscript/> }
-                    </FlexItem>
-                    <FlexItem>
-                        &nbsp;
-                    </FlexItem>
-                    <FlexItem>
-                        { (isLoggedIn() && this.props.state.zoneSettings.entities[this.props.state.activeZone.id]) ? <UnderAttackButton/> : <noscript/> }
-                    </FlexItem>
-                </Flex>
-                <Flex spacing="wide">
-                    <FlexItem>
-                        <div className="apps-nav secondary-nav" id="zone-nav">
-                            <div role="navigation" className="wrapper" id="zone-nav-container">
-                                <AppNavigation />
-                            </div>
-                        </div>
-                    </FlexItem>
-                </Flex>
-                <Flex spacing="wide">
-                    <FlexItem>
-                        {this.props.children}
-                    </FlexItem>
-                </Flex>
-                <Flex spacing="wide">
-                    <FlexItem>
-                        <p style={{'textAlign': 'center'}}><FormattedMessage id="container.App.version" values={{'version': this.props.state.config.config.version }}/></p>
-                    </FlexItem>
-                </Flex>
+            <div>
+                <LayoutContainer>
+                    <LayoutRow>
+                        <LayoutColumn width={1/3}>&nbsp;</LayoutColumn>
+                        <LayoutColumn width={1/3}>
+                            <img src={ getAbsoluteUrl(config, "assets/logo.svg") } />
+                        </LayoutColumn>
+                        <LayoutColumn width={1/3}>&nbsp;</LayoutColumn>
+                    </LayoutRow>
+                    <LayoutRow>
+                        <LayoutColumn width={1/4}>
+                            { isLoggedIn() ? <ActiveZoneSelector/> : <noscript/> }
+                        </LayoutColumn>
+                        <LayoutColumn width={2/4}>&nbsp;</LayoutColumn>
+                        <LayoutColumn width={1/4}>
+                            { (isLoggedIn() && this.props.state.zoneSettings.entities[this.props.state.activeZone.id]) ? <UnderAttackButton/> : <noscript/> }
+                        </LayoutColumn>
+                    </LayoutRow>
+                    <LayoutRow>
+                        <LayoutColumn width={1/3}>&nbsp;</LayoutColumn>
+                        <LayoutColumn width={1/3}>
+                            <AppNavigation />
+                        </LayoutColumn>
+                        <LayoutColumn width={1/3}>&nbsp;</LayoutColumn>
+                    </LayoutRow>
+                    <LayoutRow>
+                        <LayoutColumn width={1/4}>&nbsp;</LayoutColumn>
+                        <LayoutColumn width={2/4}>
+                            {this.props.children}
+                        </LayoutColumn>
+                        <LayoutColumn width={1/4}>&nbsp;</LayoutColumn>
+                    </LayoutRow>
+                    <LayoutRow>
+                        <LayoutColumn width={1/1}>
+                            <p style={{'textAlign': 'center'}}><FormattedMessage id="container.App.version" values={{'version': this.props.state.config.config.version }}/></p>
+                        </LayoutColumn>
+                    </LayoutRow>
+                </LayoutContainer>
                 <GatewayDest name="modal"/>
                 <GlobalNotifications />
             </div>

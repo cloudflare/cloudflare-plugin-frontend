@@ -28,6 +28,7 @@ class AppNavigation extends Component {
             margin: "0",
             tableLayout: "fixed",
             width: "100%",
+            textAlign: 'center',
         }
 
         //className="svg-main"
