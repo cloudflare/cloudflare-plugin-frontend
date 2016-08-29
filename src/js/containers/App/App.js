@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl, IntlProvider } from 'react-intl';
 import { GatewayDest, GatewayProvider } from 'react-gateway';
 
-import { LayoutContainer, LayoutRow, LayoutColumn} from 'cf-component-layout';
+import { LayoutContainer, LayoutRow, LayoutColumn } from 'cf-component-layout';
 
 import ActiveZoneSelector from '../../containers/ActiveZoneSelector/ActiveZoneSelector';
 import AppNavigation from '../../containers/AppNavigation/AppNavigation';
@@ -23,48 +23,44 @@ class AppContainer extends Component {
     render() {
         const { config } = this.props.state;
         return (
-            <div className="wrapper">
-                <div className="row">
-                    <div className="col-5">
-                        &nbsp;
-                    </div>
-                    <div className="col-6">
-                        <img src={ getAbsoluteUrl(config, "assets/logo.svg") } />
-                    </div>
-                    <div className="col-5">
-                        &nbsp;
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-5">
-                        { isLoggedIn() ? <ActiveZoneSelector/> : <noscript/> }
-                    </div>
-                    <div className="col-6">
-                        &nbsp;
-                    </div>
-                    <div className="col-5">
-                        { (isLoggedIn() && this.props.state.zoneSettings.entities[this.props.state.activeZone.id]) ? <UnderAttackButton/> : <noscript/> }
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-16">
-                        <div className="apps-nav secondary-nav" id="zone-nav">
-                            <div role="navigation" className="wrapper" id="zone-nav-container">
-                                <AppNavigation />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-16">
-                        {this.props.children}
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-16">
-                        <p style={{'textAlign': 'center'}}><FormattedMessage id="container.App.version" values={{'version': this.props.state.config.config.version }}/></p>
-                    </div>
-                </div>
+            <div>
+                <LayoutContainer>
+                    <LayoutRow>
+                        <LayoutColumn width={1/3}>&nbsp;</LayoutColumn>
+                        <LayoutColumn width={1/3}>
+                            <img src={ getAbsoluteUrl(config, "assets/logo.svg") } />
+                        </LayoutColumn>
+                        <LayoutColumn width={1/3}>&nbsp;</LayoutColumn>
+                    </LayoutRow>
+                    <LayoutRow>
+                        <LayoutColumn width={1/4}>
+                            { isLoggedIn() ? <ActiveZoneSelector/> : <noscript/> }
+                        </LayoutColumn>
+                        <LayoutColumn width={2/4}>&nbsp;</LayoutColumn>
+                        <LayoutColumn width={1/4}>
+                            { (isLoggedIn() && this.props.state.zoneSettings.entities[this.props.state.activeZone.id]) ? <UnderAttackButton/> : <noscript/> }
+                        </LayoutColumn>
+                    </LayoutRow>
+                    <LayoutRow>
+                        <LayoutColumn width={1/3}>&nbsp;</LayoutColumn>
+                        <LayoutColumn width={1/3}>
+                            <AppNavigation />
+                        </LayoutColumn>
+                        <LayoutColumn width={1/3}>&nbsp;</LayoutColumn>
+                    </LayoutRow>
+                    <LayoutRow>
+                        <LayoutColumn width={1/4}>&nbsp;</LayoutColumn>
+                        <LayoutColumn width={2/4}>
+                            {this.props.children}
+                        </LayoutColumn>
+                        <LayoutColumn width={1/4}>&nbsp;</LayoutColumn>
+                    </LayoutRow>
+                    <LayoutRow>
+                        <LayoutColumn width={1/1}>
+                            <p style={{'textAlign': 'center'}}><FormattedMessage id="container.App.version" values={{'version': this.props.state.config.config.version }}/></p>
+                        </LayoutColumn>
+                    </LayoutRow>
+                </LayoutContainer>
                 <GatewayDest name="modal"/>
                 <GlobalNotifications />
             </div>
