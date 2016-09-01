@@ -39,11 +39,11 @@ class ApplyDefaultSettingsCard extends Component {
         const { formatMessage } = this.props.intl;
         let { modifiedDate } = this.props;
 
-        return (
+        return ( 
             <div>
                 <Card>
                     <CardSection>
-                        <CardContent title={formatMessage({id: 'container.applydefaultsettingscard.title'})} footerMessage={"HEEYY"}>
+                        <CardContent title={formatMessage({id: 'container.applydefaultsettingscard.title'})} footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}>
                             <p><FormattedMessage id="container.applydefaultsettingscard.description" /></p>
                         </CardContent>
                         <CardControl>
