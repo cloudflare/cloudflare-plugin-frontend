@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
+import { Card, CardSection, CardContent, CardControl, CardDrawers } from 'cf-component-card';
+import Select from 'cf-component-select';
 
 import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
 import FeatureManager from '../../components/FeatureManager/FeatureManager';
-import { Card, CardSection, CardContent, CardControl, CardDrawers } from 'cf-component-card';
-import Select from 'cf-component-select';
+import { getLastModifiedDate } from '../../utils/utils';
+import { getZoneSettingsValueForZoneId, getZoneSettingsModifiedDateForZoneId } from '../../selectors/zoneSettings';
+
 
 class SSLCard extends Component {
 
@@ -16,11 +19,13 @@ class SSLCard extends Component {
 
     render() {
         const { formatMessage } = this.props.intl;
+        let { modifiedDate } = this.props;
+
         return (
             <div>
                 <Card>
                     <CardSection>
-                        <CardContent  title={formatMessage({id: 'container.sslCard.title'})}>
+                        <CardContent  title={formatMessage({id: 'container.sslCard.title'})} footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}>
                             <p><FormattedMessage id="container.sslCard.description" /></p>
                         </CardContent>
                         <CardControl>
@@ -44,7 +49,8 @@ class SSLCard extends Component {
 function mapStateToProps(state) {
     return {
         activeZoneId: state.activeZone.id,
-        sslValue: state.zoneSettings.entities[state.activeZone.id].ssl.value
+        sslValue: getZoneSettingsValueForZoneId(state.activeZone.id, SETTING_NAME, state),
+        modifiedDate: getZoneSettingsModifiedDateForZoneId(state.activeZone.id, SETTING_NAME, state),
     }
 }
 export default injectIntl(connect(mapStateToProps)(SSLCard));

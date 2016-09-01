@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
-
-import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
 import { Card, CardSection, CardContent, CardControl, CardDrawers } from 'cf-component-card';
 import { CheckboxGroup } from 'cf-component-checkbox';
+
+import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
+import { getLastModifiedDate } from '../../utils/utils';
+import { getZoneSettingsValueForZoneId, getZoneSettingsModifiedDateForZoneId } from '../../selectors/zoneSettings';
+
 
 const SETTING_NAME = "minify";
 
@@ -32,6 +35,7 @@ class MinifyCard extends Component {
 
     render() {
         const { formatMessage } = this.props.intl;
+        let { modifiedDate } = this.props;
 
         this.state.checkboxValues = [];
         //convert on/off to true/false
@@ -45,7 +49,7 @@ class MinifyCard extends Component {
             <div>
                 <Card>
                     <CardSection>
-                        <CardContent  title={formatMessage({id: 'container.minifyCard.title'})}>
+                        <CardContent  title={formatMessage({id: 'container.minifyCard.title'})} footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}>
                             <p><FormattedMessage id="container.minifyCard.description" /></p>
                         </CardContent>
                         <CardControl>
@@ -68,7 +72,8 @@ class MinifyCard extends Component {
 function mapStateToProps(state) {
     return {
         activeZoneId: state.activeZone.id,
-        minifyValues: state.zoneSettings.entities[state.activeZone.id][SETTING_NAME].value,
+        minifyValues: getZoneSettingsValueForZoneId(state.activeZone.id, SETTING_NAME, state),
+        modifiedDate: getZoneSettingsModifiedDateForZoneId(state.activeZone.id, SETTING_NAME, state),
     }
 }
 export default injectIntl(connect(mapStateToProps)(MinifyCard));

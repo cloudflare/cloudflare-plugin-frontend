@@ -2,14 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import _ from 'lodash';
+import { Card, CardSection, CardContent, CardDrawers } from 'cf-component-card';
+import Toggle from 'cf-component-toggle';
+
 import { asyncPluginUpdateSetting } from '../../actions/pluginSettings';
 import { getPluginSettingsValueForZoneId } from '../../selectors/pluginSettings';
-import { getZoneSettingsValueForZoneId } from '../../selectors/zoneSettings';
-import { Card, CardSection, CardContent, CardDrawers } from 'cf-component-card';
+import { getLastModifiedDate } from '../../utils/utils';
+import { getZoneSettingsValueForZoneId, getZoneSettingsModifiedDateForZoneId } from '../../selectors/zoneSettings';
 import CustomCardControl from '../../components/CustomCardControl/CustomCardControl';
 import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
 import { PRO_PLAN } from '../../constants/Plans.js';
-import Toggle from 'cf-component-toggle';
+
 
 const SETTING_NAME = "waf";
 const MINIMUM_PLAN = PRO_PLAN;
@@ -23,7 +26,7 @@ class WAFCard extends Component {
     }
 
     render() {
-    	let { activeZone, zones } = this.props;
+    	let { activeZone, zones, modifiedDate } = this.props;
     	let zone = zones[activeZone.name];
 
         const { formatMessage } = this.props.intl;
@@ -31,7 +34,7 @@ class WAFCard extends Component {
             <div>
                 <Card>
                     <CardSection>
-                        <CardContent title={formatMessage({id: 'container.waf.title'})}>
+                        <CardContent title={formatMessage({id: 'container.waf.title'})} footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}>
                             <FormattedMessage id="container.waf.description" />
                         </CardContent>
                         <CustomCardControl minimumPlan={ MINIMUM_PLAN } currentPlan={ zone.plan.legacy_id } indentifier={ SETTING_NAME }>
@@ -51,6 +54,7 @@ function mapStateToProps(state) {
     return {
         activeZoneId: state.activeZone.id,
         WAFValue: getZoneSettingsValueForZoneId(state.activeZone.id, SETTING_NAME, state),
+        modifiedDate: getZoneSettingsModifiedDateForZoneId(state.activeZone.id, SETTING_NAME, state),
 		activeZone: state.activeZone,
         zones: state.zones.entities.zones,
     }

@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { asyncPluginUpdateSetting } from '../../actions/pluginSettings';
-import { getPluginSettingsValueForZoneId, getPluginSettingsIsFetching } from '../../selectors/pluginSettings';
-import { Card, CardSection, CardContent, CardControl, CardDrawers } from 'cf-component-card';
-import Loading from '../../components/Loading/Loading';
 import { Modal, ModalHeader, ModalTitle, ModalClose, ModalBody, ModalFooter, ModalActions } from 'cf-component-modal';
+import { Card, CardSection, CardContent, CardControl, CardDrawers } from 'cf-component-card';
 import { Button } from 'cf-component-button';
 import _ from 'lodash';
+
+import { getPluginSettingsValueForZoneId, getPluginSettingsIsFetching, getPluginSettingsModifiedDateForZoneId } from '../../selectors/pluginSettings';
+import { asyncPluginUpdateSetting } from '../../actions/pluginSettings';
+import Loading from '../../components/Loading/Loading';
+import { getLastModifiedDate } from '../../utils/utils';
+
 
 const SETTING_NAME = "default_settings";
 const VALUE = true;
@@ -34,11 +37,13 @@ class ApplyDefaultSettingsCard extends Component {
 
     render() {
         const { formatMessage } = this.props.intl;
+        let { modifiedDate } = this.props;
+
         return (
             <div>
                 <Card>
                     <CardSection>
-                        <CardContent title={formatMessage({id: 'container.applydefaultsettingscard.title'})}>
+                        <CardContent title={formatMessage({id: 'container.applydefaultsettingscard.title'})} footerMessage={"HEEYY"}>
                             <p><FormattedMessage id="container.applydefaultsettingscard.description" /></p>
                         </CardContent>
                         <CardControl>
@@ -82,7 +87,8 @@ class ApplyDefaultSettingsCard extends Component {
 function mapStateToProps(state) {
     return {
         activeZoneId: state.activeZone.id,
-        DefaultSettingsValue: getPluginSettingsValueForZoneId(state.activeZone.id, SETTING_NAME, state),
+        // defaultSettingsValue: getPluginSettingsValueForZoneId(state.activeZone.id, SETTING_NAME, state),
+        modifiedDate: getPluginSettingsModifiedDateForZoneId(state.activeZone.id, SETTING_NAME, state),
         isFetching: getPluginSettingsIsFetching(state),
     }
 }

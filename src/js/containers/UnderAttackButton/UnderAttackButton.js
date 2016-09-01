@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
-
 import { Button } from 'cf-component-button';
 
 import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
+import { getZoneSettingsValueForZoneId } from '../../selectors/zoneSettings';
 
 const SETTING_NAME = "security_level";
 
@@ -39,7 +39,7 @@ class UnderAttackButton extends Component {
 function mapStateToProps(state) {
     return {
         activeZoneId: state.activeZone.id,
-        securityLevelValue: state.zoneSettings.entities[state.activeZone.id][SETTING_NAME].value,
+        securityLevelValue: getZoneSettingsValueForZoneId(state.activeZone.id, SETTING_NAME, state),
     }
 }
 export default injectIntl(connect(mapStateToProps)(UnderAttackButton));

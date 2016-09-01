@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
-
-import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
 import { Card, CardSection, CardContent, CardControl, CardDrawers } from 'cf-component-card';
 import Select from 'cf-component-select';
+
+import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
+import { getLastModifiedDate } from '../../utils/utils';
+import { getZoneSettingsValueForZoneId, getZoneSettingsModifiedDateForZoneId } from '../../selectors/zoneSettings';
 
 const SETTING_NAME = "browser_cache_ttl";
 
@@ -17,11 +19,13 @@ class BrowserCacheTTLCard extends Component {
 
     render() {
         const { formatMessage } = this.props.intl;
+        let { modifiedDate } = this.props;
+
         return (
             <div>
                 <Card>
                     <CardSection>
-                        <CardContent  title={formatMessage({id: 'container.browserCacheTTLCard.title'})}>
+                        <CardContent  title={formatMessage({id: 'container.browserCacheTTLCard.title'})} footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}>
                             <p><FormattedMessage id="container.browserCacheTTLCard.description" /></p>
                         </CardContent>
                         <CardControl>
@@ -61,7 +65,8 @@ class BrowserCacheTTLCard extends Component {
 function mapStateToProps(state) {
     return {
         activeZoneId: state.activeZone.id,
-        browserCacheTTLValue: state.zoneSettings.entities[state.activeZone.id][SETTING_NAME].value,
+        browserCacheTTLValue: getZoneSettingsValueForZoneId(state.activeZone.id, SETTING_NAME, state),
+        modifiedDate: getZoneSettingsModifiedDateForZoneId(state.activeZone.id, SETTING_NAME, state),
         isFetching: state.zoneSettings.isFetching
     }
 }
