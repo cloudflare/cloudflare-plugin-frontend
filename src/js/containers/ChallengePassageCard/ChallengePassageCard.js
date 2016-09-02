@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
+import Select from 'cf-component-select';
+import { Card, CardSection, CardContent, CardControl, CardDrawers } from 'cf-component-card';
 
 import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
-import { Card, CardSection, CardContent, CardControl, CardDrawers } from 'cf-component-card';
-import Select from 'cf-component-select';
+import { getLastModifiedDate } from '../../utils/utils';
+import { getZoneSettingsValueForZoneId, getZoneSettingsModifiedDateForZoneId } from '../../selectors/zoneSettings';
 
 const SETTING_NAME = "challenge_ttl";
 
@@ -17,11 +19,13 @@ class ChallengePassageCard extends Component {
 
     render() {
         const { formatMessage } = this.props.intl;
+        let { modifiedDate } = this.props;
+
         return (
             <div>
                 <Card>
                     <CardSection>
-                        <CardContent title={formatMessage({id: 'container.challengePassageCard.title'})}>
+                        <CardContent title={formatMessage({id: 'container.challengePassageCard.title'})} footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}>
                             <p><FormattedMessage id="container.challengePassageCard.description" /></p>
                         </CardContent>
                         <CardControl>
@@ -55,7 +59,8 @@ class ChallengePassageCard extends Component {
 function mapStateToProps(state) {
     return {
         activeZoneId: state.activeZone.id,
-        challengePassageValue: state.zoneSettings.entities[state.activeZone.id].challenge_ttl.value,
+        challengePassageValue: getZoneSettingsValueForZoneId(state.activeZone.id, SETTING_NAME, state),
+        modifiedDate: getZoneSettingsModifiedDateForZoneId(state.activeZone.id, SETTING_NAME, state),
     }
 }
 export default injectIntl(connect(mapStateToProps)(ChallengePassageCard));

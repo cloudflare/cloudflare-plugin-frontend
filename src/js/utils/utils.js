@@ -26,3 +26,17 @@ export function isSubdomain(selectedZoneName) {
 
     return false;
 }
+
+export function getLastModifiedDate(intl, modfiedDate) {
+    const { formatMessage, formatRelative } = intl;
+
+    if (!modfiedDate) {
+        // Once you get the new code try this
+        return null;
+    }
+
+    var formattedModefiedDate = formatRelative(new Date(modfiedDate), {now:Date.now()});
+
+    var value = { date: formattedModefiedDate };
+    return formatMessage({ id: 'utils.utils.lastmodifieddate' }, value);
+}

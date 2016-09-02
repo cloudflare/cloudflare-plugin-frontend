@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
-import { Card, CardSection, CardContent, CardControl, CardDrawers } from 'cf-component-card';
 import Toggle from 'cf-component-toggle';
+import { Card, CardSection, CardContent, CardControl, CardDrawers } from 'cf-component-card';
+
+import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
+import { getLastModifiedDate } from '../../utils/utils';
+import { getZoneSettingsValueForZoneId, getZoneSettingsModifiedDateForZoneId } from '../../selectors/zoneSettings';
 
 const SETTING_NAME = "browser_check";
 
@@ -17,11 +20,13 @@ class BrowserIntegrityCheckCard extends Component {
 
     render() {
         const { formatMessage } = this.props.intl;
+        let { modifiedDate } = this.props;
+        
         return (
             <div>
                 <Card>
                     <CardSection>
-                        <CardContent  title={formatMessage({id: 'container.browserIntegrityCheckCard.title'})}>
+                        <CardContent  title={formatMessage({id: 'container.browserIntegrityCheckCard.title'})} footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}>
                             <p><FormattedMessage id="container.browserIntegrityCheckCard.description" /></p>
                         </CardContent>
                         <CardControl>
@@ -40,7 +45,8 @@ class BrowserIntegrityCheckCard extends Component {
 function mapStateToProps(state) {
     return {
         activeZoneId: state.activeZone.id,
-        browserIntegrityCheckValue: state.zoneSettings.entities[state.activeZone.id].browser_check.value,
+        browserIntegrityCheckValue: getZoneSettingsValueForZoneId(state.activeZone.id, SETTING_NAME, state),
+        modifiedDate: getZoneSettingsModifiedDateForZoneId(state.activeZone.id, SETTING_NAME, state),
     }
 }
 export default injectIntl(connect(mapStateToProps)(BrowserIntegrityCheckCard));

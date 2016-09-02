@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { asyncPluginUpdateSetting } from '../../actions/pluginSettings';
-import { getPluginSettingsValueForZoneId } from '../../selectors/pluginSettings';
 import { Card, CardSection, CardContent, CardControl, CardDrawers } from 'cf-component-card';
 import { Modal, ModalHeader, ModalTitle, ModalClose, ModalBody, ModalFooter, ModalActions } from 'cf-component-modal';
 import Toggle from 'cf-component-toggle';
 import { Button } from 'cf-component-button';
+
+import { asyncPluginUpdateSetting } from '../../actions/pluginSettings';
+import { getPluginSettingsValueForZoneId, getPluginSettingsModifiedDateForZoneId } from '../../selectors/pluginSettings';
+import { getLastModifiedDate } from '../../utils/utils';
 
 const SETTING_NAME = "plugin_specific_cache";
 
@@ -37,11 +39,13 @@ class PluginSpecificCacheCard extends Component {
 
     render() {
         const { formatMessage } = this.props.intl;
+        let { modifiedDate } = this.props;
+        
         return (
             <div>
                 <Card>
                     <CardSection>
-                        <CardContent title={formatMessage({id: 'container.pluginSpecificCacheCard.title'})}>
+                        <CardContent title={formatMessage({id: 'container.pluginSpecificCacheCard.title'})} footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}>
                             <p><FormattedMessage id="container.pluginSpecificCacheCard.description" /></p>
                         </CardContent>
                         <CardControl>
@@ -82,6 +86,7 @@ function mapStateToProps(state) {
     return {
         activeZoneId: state.activeZone.id,
         cacheCardValue: getPluginSettingsValueForZoneId(state.activeZone.id, SETTING_NAME, state),
+        modifiedDate: getPluginSettingsModifiedDateForZoneId(state.activeZone.id, SETTING_NAME, state),
         integrationName: state.config.config.integrationName
     }
 }
