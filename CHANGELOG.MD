@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.3.0](#2.3.0) - 2016-09-05
+### Added
+- Display default settings last applied string [#29](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/29)
+
+### Changed
+- Started using cf-component-loading [#30](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/30)
+
 ## [2.2.3](#2.2.3) - 2016-08-29
 ### Fixed
 - App, ClientLoginPage containers no longer depend on cf.core.css and now exclusively use cf-component-* components. [#28](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/28)
