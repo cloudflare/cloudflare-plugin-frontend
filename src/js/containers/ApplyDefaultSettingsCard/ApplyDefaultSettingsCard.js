@@ -8,7 +8,7 @@ import _ from 'lodash';
 
 import { getPluginSettingsValueForZoneId, getPluginSettingsIsFetching, getPluginSettingsModifiedDateForZoneId } from '../../selectors/pluginSettings';
 import { asyncPluginUpdateSetting } from '../../actions/pluginSettings';
-import Loading from '../../components/Loading/Loading';
+import Loading from 'cf-component-loading';
 import { getLastModifiedDate } from '../../utils/utils';
 
 
