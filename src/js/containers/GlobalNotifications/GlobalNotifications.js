@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-
 import { connect } from 'react-redux';
-import { injectIntl, IntlProvider, FormattedMessage } from 'react-intl';
+import { injectIntl, FormattedMessage } from 'react-intl';
 import { NotificationGlobalContainer, NotificationList, Notification } from 'cf-component-notifications';
 import * as NotificationActionCreators from '../../actions/notifications';
 
@@ -13,7 +11,7 @@ class GlobalNotifications extends Component {
     }
 
     render() {
-        let { notifications, dispatch } = this.props;
+        let { notifications } = this.props;
 
         const newNotifications = notifications.map(n => {
             return <Notification
@@ -22,7 +20,7 @@ class GlobalNotifications extends Component {
                 message={n.localized ? (<FormattedMessage id={n.message}/>) : n.message}
                 delay={n.delay}
                 persist={n.persistant}
-                onClose={this.handleClose.bind(this, n.key)}/>
+                onClose={this.handleClose.bind(this, n.key)}/>;
         });
 
 
@@ -40,7 +38,7 @@ class GlobalNotifications extends Component {
 function mapStateToProps(state) {
     return {
         notifications: state.notifications
-    }
+    };
 }
 
 export default injectIntl(connect(mapStateToProps)(GlobalNotifications));

@@ -10,20 +10,20 @@ import { ABSOLUTE_URL_BASE_KEY } from '../reducers/config';
 export function configFetch() {
     return {
         type: ActionTypes.CONFIG_FETCH
-    }
+    };
 }
 
 export function configFetchSuccess(config) {
     return {
         type: ActionTypes.CONFIG_FETCH_SUCCESS,
         config
-    }
+    };
 }
 
 export function configFetchError() {
     return {
         type: ActionTypes.CONFIG_FETCH_ERROR,
-    }
+    };
 }
 
 export function asyncConfigFetch() {
@@ -31,7 +31,7 @@ export function asyncConfigFetch() {
         dispatch(configFetch());
 
         let opts = {};
-        opts.headers = {'Accept': 'text/javascript'};
+        opts.headers = { Accept: 'text/javascript' };
         http.get('./config.js', opts, function (response) {
                 let config = JSON.parse(response.text);
                 dispatch(configFetchSuccess(config));
@@ -44,7 +44,7 @@ export function asyncConfigFetch() {
                      */
                     dispatch(configUpdateByKey(ABSOLUTE_URL_BASE_KEY, absoluteUrlBase));
                 }
-                dispatch(asyncIntlFetchTranslations(config.locale))
+                dispatch(asyncIntlFetchTranslations(config.locale));
                 //log user in if their email is in local storage
                 if(isLoggedIn()) {
                     dispatch(asyncUserLoginSuccess(getEmail()));
@@ -55,7 +55,7 @@ export function asyncConfigFetch() {
                 dispatch(configFetchError());
                 dispatch(notificationAddError(error));
             });
-    }
+    };
 }
 
 export function configUpdateByKey(key, value) {
@@ -63,5 +63,5 @@ export function configUpdateByKey(key, value) {
         type: ActionTypes.CONFIG_UPDATE_BY_KEY,
         key,
         value
-    }
+    };
 }

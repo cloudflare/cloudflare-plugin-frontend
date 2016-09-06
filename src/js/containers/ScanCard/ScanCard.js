@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { asyncZoneUpdateScan } from '../../actions/zoneScan';
-import { Card, CardSection, CardContent, CardControl, CardDrawers } from 'cf-component-card';
+import { Card, CardSection, CardContent, CardControl } from 'cf-component-card';
 import Toggle from 'cf-component-toggle';
 
 class ScanCard extends Component {
@@ -18,7 +18,7 @@ class ScanCard extends Component {
             <div>
                 <Card>
                     <CardSection>
-                        <CardContent  title={formatMessage({id: 'container.scanCard.title'})}>
+                        <CardContent  title={formatMessage({ id: 'container.scanCard.title' })}>
                             <p><FormattedMessage id="container.scanCard.description" /></p>
                         </CardContent>
                         <CardControl>
@@ -38,6 +38,6 @@ function mapStateToProps(state) {
     return {
         activeZoneId: state.activeZone.id,
         showInterstitialValue: state.zoneScan.entities[state.activeZone.id].show_interstitial,
-    }
+    };
 }
 export default injectIntl(connect(mapStateToProps)(ScanCard));

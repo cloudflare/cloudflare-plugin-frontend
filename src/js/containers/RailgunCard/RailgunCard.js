@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import _ from 'lodash';
 
-import { Button } from 'cf-component-button';
-import { Card, CardSection, CardContent, CardControl, CardDrawers } from 'cf-component-card';
-import { Table, TableHead, TableBody, TableFoot, TableRow, TableHeadCell, TableCell } from 'cf-component-table';
+import { Card, CardSection, CardContent, CardControl } from 'cf-component-card';
+import { Table, TableHead, TableBody, TableRow, TableHeadCell, TableCell } from 'cf-component-table';
 import Toggle from 'cf-component-toggle';
 
 import { asyncZoneRailgunConnectionUpdate } from '../../actions/zoneRailgun';
@@ -25,13 +24,13 @@ class RailgunCard extends Component {
             <div>
                 <Card>
                     <CardSection>
-                        <CardContent  title={formatMessage({id: 'container.railgunCard.title'})}>
+                        <CardContent  title={formatMessage({ id: 'container.railgunCard.title' })}>
                             <p><FormattedMessage id="container.railgunCard.description" /></p>
                         </CardContent>
                         <CardControl></CardControl>
                     </CardSection>
                     <CardSection>
-                        {isRailgunListEmpty && (<p><FormattedMessage id="container.railgunCard.noRailgunsAvailable" values={{'zoneName': activeZone.name}} /></p>)}
+                        {isRailgunListEmpty && (<p><FormattedMessage id="container.railgunCard.noRailgunsAvailable" values={{ 'zoneName': activeZone.name }} /></p>)}
                         {!isRailgunListEmpty && (
                             <Table>
                                 <TableHead>
@@ -49,7 +48,7 @@ class RailgunCard extends Component {
                                         <TableCell>
                                             <Toggle
                                                 label=""
-                                                name={railgun.name + "_connected"}
+                                                name={railgun.name + '_connected'}
                                                 value={railgun.connected}
                                                 onChange={(e) => this.handleToggle(e, railgun)}/>
                                         </TableCell>
@@ -69,7 +68,7 @@ function mapStateToProps(state) {
     return {
         activeZone: state.activeZone,
         railguns: state.zoneRailguns.entities[state.activeZone.id]
-    }
+    };
 }
 export default injectIntl(connect(mapStateToProps)(RailgunCard));
 

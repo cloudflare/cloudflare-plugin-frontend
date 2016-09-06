@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import _ from 'lodash';
 
 import { Button } from 'cf-component-button';
-import { LayoutRow, LayoutColumn} from 'cf-component-layout';
 import { Modal, ModalHeader, ModalTitle, ModalClose, ModalBody, ModalFooter, ModalActions } from 'cf-component-modal';
+import Loading from 'cf-component-loading';
 
 import { asyncZoneDelete } from '../../actions/zones';
 import { asyncZoneProvisionCname, asyncZoneProvisionFull } from '../../actions/zoneProvision';
 import FeatureManager from '../../components/FeatureManager/FeatureManager';
-import Loading from 'cf-component-loading';
-import { zoneSchema } from '../../constants/Schemas';
+
 
 class ZoneProvisionContainer extends Component {
-    state = {
-        isModalOpen: false
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            isModalOpen: false
+        };
+    }
 
     isFetching() {
         let { zoneDeleteIsFetching, zoneProvisionCnameIsFetching, zoneProvisionFullIsFetching } = this.props;
@@ -25,7 +26,7 @@ class ZoneProvisionContainer extends Component {
 
     handleFullZoneProvisioningButtonClick() {
         let { dispatch, zone } = this.props;
-        dispatch(asyncZoneProvisionFull(zone.name));;
+        dispatch(asyncZoneProvisionFull(zone.name));
     }
 
     handleProvisionCNAMEZone() {
@@ -76,13 +77,13 @@ class ZoneProvisionContainer extends Component {
                             </div>
                             <div className="row">
                                 <div className="col-8">
-                                    <Button type="success" onClick={ (e) => this.handleProvisionCNAMEZone() }>
+                                    <Button type="success" onClick={ this.handleProvisionCNAMEZone.bind(this) }>
                                         <FormattedMessage id="container.zoneProvision.button.cname"/>
                                     </Button>
                                 </div>
                                 <div className="col-8">
                                     <FeatureManager isEnabled={this.props.config.featureManagerIsFullZoneProvisioningEnabled}>
-                                        <Button type="success" onClick={ (e) => this.handleFullZoneProvisioningButtonClick() }>
+                                        <Button type="success" onClick={ this.handleFullZoneProvisioningButtonClick.bind(this) }>
                                             <FormattedMessage id="container.zoneProvision.button.full"/>
                                         </Button>
                                     </FeatureManager>
@@ -127,7 +128,7 @@ function mapStateToProps(state) {
         zoneDeleteIsFetching: state.zones.zoneDeleteIsFetching,
         zoneProvisionCnameIsFetching: state.zones.zoneProvisionCnameIsFetching,
         zoneProvisionFullIsFetching: state.zones.zoneProvisionFullIsFetching,
-    }
+    };
 }
 
 export default injectIntl(connect(mapStateToProps)(ZoneProvisionContainer));

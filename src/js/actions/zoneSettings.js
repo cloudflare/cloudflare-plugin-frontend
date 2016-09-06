@@ -3,15 +3,13 @@ import {
     zonePatchSetting,
     v4ResponseOk
 } from '../utils/CFClientV4API/CFClientV4API';
-import { partialZoneSet } from '../utils/CFHostAPI/CFHostAPI';
 import { notificationAddClientAPIError } from './notifications';
 import * as ActionTypes from '../constants/ActionTypes';
-import { asyncDNSRecordFetchList } from '../actions/zoneDnsRecords';
 
 export function zoneFetchSettings() {
     return {
         type: ActionTypes.ZONE_FETCH_SETTINGS
-    }
+    };
 }
 
 export function zoneFetchSettingsSuccess(zoneId, zoneSettings) {
@@ -19,13 +17,13 @@ export function zoneFetchSettingsSuccess(zoneId, zoneSettings) {
         type: ActionTypes.ZONE_FETCH_SETTINGS_SUCCESS,
         zoneId,
         zoneSettings
-    }
+    };
 }
 
 export function zoneFetchSettingsError() {
     return {
         type: ActionTypes.ZONE_FETCH_SETTINGS_ERROR
-    }
+    };
 }
 
 export function asyncZoneFetchSettings(zoneId) {
@@ -33,7 +31,7 @@ export function asyncZoneFetchSettings(zoneId) {
         dispatch(zoneFetchSettings());
         zoneGetSettings(zoneId, function(response){
                 if(v4ResponseOk(response)) {
-                    dispatch(zoneFetchSettingsSuccess(zoneId, response.body.result))
+                    dispatch(zoneFetchSettingsSuccess(zoneId, response.body.result));
                 } else {
                     dispatch(notificationAddClientAPIError(zoneFetchSettingsError(), response));
                 }
@@ -41,7 +39,7 @@ export function asyncZoneFetchSettings(zoneId) {
             function(error){
                 dispatch(notificationAddClientAPIError(zoneFetchSettingsError(), error));
             });
-    }
+    };
 }
 
 export function zoneUpdateSetting(zoneId, setting) {
@@ -49,7 +47,7 @@ export function zoneUpdateSetting(zoneId, setting) {
         type: ActionTypes.ZONE_UPDATE_SETTING,
         zoneId,
         setting
-    }
+    };
 }
 
 export function zoneUpdateSettingSuccess(zoneId, setting) {
@@ -57,7 +55,7 @@ export function zoneUpdateSettingSuccess(zoneId, setting) {
         type: ActionTypes.ZONE_UPDATE_SETTING_SUCCESS,
         zoneId,
         setting
-    }
+    };
 }
 
 export function zoneUpdateSettingError(zoneId, setting) {
@@ -65,14 +63,14 @@ export function zoneUpdateSettingError(zoneId, setting) {
         type: ActionTypes.ZONE_UPDATE_SETTING_ERROR,
         zoneId,
         setting
-    }
+    };
 }
 
 export function asyncZoneUpdateSetting(settingName, zoneId, value) {
     return (dispatch, getState) => {
         let oldSetting = getState().zoneSettings.entities[zoneId][settingName];
 
-        dispatch(zoneUpdateSetting(zoneId, { 'id': settingName, 'value': value }));
+        dispatch(zoneUpdateSetting(zoneId, { id: settingName, value: value }));
         zonePatchSetting(settingName, zoneId, value, function(response) {
                 if(v4ResponseOk(response)) {
                     dispatch(zoneUpdateSettingSuccess(zoneId, response.body.result));
@@ -83,5 +81,5 @@ export function asyncZoneUpdateSetting(settingName, zoneId, value) {
             function(error) {
                 dispatch(notificationAddClientAPIError(zoneUpdateSettingError(zoneId, oldSetting), error));
             });
-    }
+    };
 }

@@ -5,7 +5,7 @@ import rootReducer from '../reducers';
 import { syncHistory } from 'redux-simple-router';
 
 export default function configureStore(history, initialState) {
-    const reduxRouterMiddleware = syncHistory(history)
+    const reduxRouterMiddleware = syncHistory(history);
 
     const logger = createLogger({ collapsed: true });
 

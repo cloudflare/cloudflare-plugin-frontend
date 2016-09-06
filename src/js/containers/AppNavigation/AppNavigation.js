@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage, injectIntl } from 'react-intl';
-import { routeActions } from 'redux-simple-router'
+import { injectIntl } from 'react-intl';
+import { routeActions } from 'redux-simple-router';
 
 import AppNavigationLiNode from '../../components/AppNavigationLiNode/AppNavigationLiNode';
 import * as UrlPaths from '../../constants/UrlPaths';
@@ -9,9 +9,6 @@ import { isLoggedIn } from '../../utils/Auth/Auth';
 import { isDNSPageEnabled } from '../../selectors/config';
 
 class AppNavigation extends Component {
-    static propTypes = {
-        dispatch: PropTypes.func.isRequired
-    };
 
     handleClick(path) {
         let { dispatch } = this.props;
@@ -24,17 +21,17 @@ class AppNavigation extends Component {
          */
         //className="slider-nav-container apps-nav-container no-arrows" id="app-nav"
         let ulStyles = {
-            listStyle: "none",
-            margin: "0",
-            tableLayout: "fixed",
-            width: "100%",
+            listStyle: 'none',
+            margin: '0',
+            tableLayout: 'fixed',
+            width: '100%',
             textAlign: 'center',
-        }
+        };
 
         //className="svg-main"
         let pathStyles = {
-            fill: "#FFF",
-            transition: "all 0.2s ease",
+            fill: '#FFF',
+            transition: 'all 0.2s ease',
         };
 
         let { config } = this.props;
@@ -61,6 +58,10 @@ class AppNavigation extends Component {
         );
     }
 }
+
+AppNavigation.propTypes = {
+    dispatch: PropTypes.func.isRequired
+};
 
 function mapStateToProps(state) {
     return { 

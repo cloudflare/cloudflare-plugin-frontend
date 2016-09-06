@@ -5,7 +5,6 @@ import {
     Table,
     TableHead,
     TableBody,
-    TableFoot,
     TableRow,
     TableHeadCell,
     TableCell
@@ -53,7 +52,7 @@ class DNSRecordEditor extends Component {
                                         :
                                         <Toggle
                                             label="CloudFlare Provisioned"
-                                            name={dnsRecord.name + "_provisioned"}
+                                            name={dnsRecord.name + '_provisioned'}
                                             value={dnsRecord.proxied}
                                             onChange={(e) => this.handleToggle(e, dnsRecord)}/>
                                         }
@@ -71,6 +70,6 @@ function mapStateToProps(state) {
         activeZoneId: state.activeZone.id,
         dnsRecords: state.zoneDnsRecords.entities[state.activeZone.id],
         updateIsFetching: state.zoneDnsRecords.updateIsFetching
-    }
+    };
 }
 export default injectIntl(connect(mapStateToProps)(DNSRecordEditor));

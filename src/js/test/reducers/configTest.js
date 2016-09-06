@@ -10,8 +10,8 @@ describe('Config Reducer', () => {
         ).to.eql({
                 config: {},
                 isFetching: false
-            })
-    })
+            });
+    });
 
     it('should handle CONFIG_FETCH', () => {
         expect(
@@ -22,21 +22,21 @@ describe('Config Reducer', () => {
                 config: {},
                 isFetching: true
             }
-        )
-    })
+        );
+    });
 
     it('should handle CONFIG_FETCH_SUCCESS', () => {
         expect(
             configReducer(undefined, {
                 type: ActionTypes.CONFIG_FETCH_SUCCESS,
-                config: {"key": "value"}
+                config: { 'key': 'value' }
             })
         ).to.eql({
-                config: {"key": "value"},
+                config: { 'key': 'value' },
                 isFetching: false
             }
-        )
-    })
+        );
+    });
 
     it('should handle CONFIG_FETCH_ERROR', () => {
         expect(
@@ -47,20 +47,20 @@ describe('Config Reducer', () => {
                 config: {},
                 isFetching: false
             }
-        )
-    })
+        );
+    });
 
     it('should handle CONFIG_UPDATE_BY_KEY', () => {
         expect(
             configReducer(undefined, {
                 type: ActionTypes.CONFIG_UPDATE_BY_KEY,
-                key: "key",
-                value: "value"
+                key: 'key',
+                value: 'value'
             })
         ).to.eql({
-                config: {"key": "value"},
+                config: { 'key': 'value' },
                 isFetching: false
             }
-        )
-    })
-})
+        );
+    });
+});

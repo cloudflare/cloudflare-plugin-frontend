@@ -11,21 +11,10 @@ import React, { Component, PropTypes } from 'react';
  */
 
 export default class CloudToggle extends React.Component {
-    static propTypes = {
-        label: PropTypes.oneOfType([
-            PropTypes.string,
-            PropTypes.oneOf([false])
-        ]).isRequired,
-        name: PropTypes.string,
-        value: PropTypes.bool,
-        onChange: PropTypes.func,
-        onFocus: PropTypes.func,
-        onBlur: PropTypes.func
-    };
 
-    handleChange = e => {
+    handleChange(e) {
         this.props.onChange(e.target.checked);
-    };
+    }
 
     render() {
         let className = 'proxy';
@@ -37,7 +26,7 @@ export default class CloudToggle extends React.Component {
                     id={this.props.name}
                     name={this.props.name}
                     checked={this.props.value}
-                    onChange={this.handleChange}
+                    onChange={this.handleChange.bind(this)}
                     onFocus={this.props.onFocus}
                     onBlur={this.props.onBlur}/>
                 <span className="cloud">
@@ -47,3 +36,15 @@ export default class CloudToggle extends React.Component {
         );
     }
 }
+
+CloudToggle.propTypes = {
+    label: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.oneOf([false])
+    ]).isRequired,
+    name: PropTypes.string,
+    value: PropTypes.bool,
+    onChange: PropTypes.func,
+    onFocus: PropTypes.func,
+    onBlur: PropTypes.func
+};

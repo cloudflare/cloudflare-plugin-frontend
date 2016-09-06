@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { Card, CardSection, CardContent, CardControl, CardDrawers } from 'cf-component-card';
+import { Card, CardSection, CardContent, CardControl } from 'cf-component-card';
 import Select from 'cf-component-select';
 
 import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
-import FeatureManager from '../../components/FeatureManager/FeatureManager';
 import { getLastModifiedDate } from '../../utils/utils';
 import { getZoneSettingsValueForZoneId, getZoneSettingsModifiedDateForZoneId } from '../../selectors/zoneSettings';
 
@@ -25,17 +24,17 @@ class SSLCard extends Component {
             <div>
                 <Card>
                     <CardSection>
-                        <CardContent  title={formatMessage({id: 'container.sslCard.title'})} footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}>
+                        <CardContent  title={formatMessage({ id: 'container.sslCard.title' })} footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}>
                             <p><FormattedMessage id="container.sslCard.description" /></p>
                         </CardContent>
                         <CardControl>
                             <Select label=""
                                     value={this.props.sslValue}
                                     options={[
-                                        {value: 'off', label: formatMessage({id: 'container.sslCard.select.off'})},
-                                        {value: 'flexible', label: formatMessage({id: 'container.sslCard.select.flexible'})},
-                                        {value: 'full', label: formatMessage({id: 'container.sslCard.select.full'})},
-                                        {value: 'full_strict', label: formatMessage({id: 'container.sslCard.select.full_strict'})}
+                                        { value: 'off', label: formatMessage({ id: 'container.sslCard.select.off' }) },
+                                        { value: 'flexible', label: formatMessage({ id: 'container.sslCard.select.flexible' }) },
+                                        { value: 'full', label: formatMessage({ id: 'container.sslCard.select.full' }) },
+                                        { value: 'full_strict', label: formatMessage({ id: 'container.sslCard.select.full_strict' }) }
                                     ]}
                                     onChange={this.handleChange.bind(this)} />
                         </CardControl>
@@ -51,7 +50,7 @@ function mapStateToProps(state) {
         activeZoneId: state.activeZone.id,
         sslValue: getZoneSettingsValueForZoneId(state.activeZone.id, SETTING_NAME, state),
         modifiedDate: getZoneSettingsModifiedDateForZoneId(state.activeZone.id, SETTING_NAME, state),
-    }
+    };
 }
 export default injectIntl(connect(mapStateToProps)(SSLCard));
 

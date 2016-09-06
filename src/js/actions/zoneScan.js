@@ -9,7 +9,7 @@ import * as ActionTypes from '../constants/ActionTypes';
 export function zoneFetchScan() {
     return {
         type: ActionTypes.ZONE_FETCH_SCAN
-    }
+    };
 }
 
 export function zoneFetchScanSuccess(zoneId, zoneScan) {
@@ -17,13 +17,13 @@ export function zoneFetchScanSuccess(zoneId, zoneScan) {
         type: ActionTypes.ZONE_FETCH_SCAN_SUCCESS,
         zoneId: zoneId,
         zoneScan: zoneScan
-    }
+    };
 }
 
 export function zoneFetchScanError() {
     return {
         type: ActionTypes.ZONE_FETCH_SCAN_ERROR
-    }
+    };
 }
 
 export function asyncZoneFetchScan(zoneId) {
@@ -39,7 +39,7 @@ export function asyncZoneFetchScan(zoneId) {
         function(error) {
             dispatch(notificationAddClientAPIError(zoneFetchScanError(), error));
         });
-    }
+    };
 }
 
 export function zoneUpdateScan(zoneId, zoneScan) {
@@ -47,7 +47,7 @@ export function zoneUpdateScan(zoneId, zoneScan) {
         type: ActionTypes.ZONE_UPDATE_SCAN,
         zoneId,
         zoneScan
-    }
+    };
 }
 
 export function zoneUpdateScanSuccess(zoneId, zoneScan) {
@@ -55,7 +55,7 @@ export function zoneUpdateScanSuccess(zoneId, zoneScan) {
         type: ActionTypes.ZONE_UPDATE_SCAN_SUCCESS,
         zoneId,
         zoneScan
-    }
+    };
 }
 
 export function zoneUpdateScanError(zoneId, zoneScan) {
@@ -63,21 +63,21 @@ export function zoneUpdateScanError(zoneId, zoneScan) {
         type: ActionTypes.ZONE_UPDATE_SCAN_ERROR,
         zoneId,
         zoneScan
-    }
+    };
 }
 
 export function asyncZoneUpdateScan(zoneId, showInterstitial) {
     return dispatch => {
-        dispatch(zoneUpdateScan(zoneId, {'show_interstitial': showInterstitial}));
+        dispatch(zoneUpdateScan(zoneId, { show_interstitial: showInterstitial }));
         zoneScanPut(zoneId, showInterstitial, function(response) {
                 if(v4ResponseOk(response)) {
                     dispatch(zoneUpdateScanSuccess(zoneId, response.body.result));
                 } else {
-                    dispatch(notificationAddClientAPIError(zoneUpdateScanError(zoneId, {'show_interstitial': !showInterstitial}), response));
+                    dispatch(notificationAddClientAPIError(zoneUpdateScanError(zoneId, { show_interstitial: !showInterstitial }), response));
                 }
             },
             function(error) {
-                dispatch(notificationAddClientAPIError(zoneUpdateScanError(zoneId, {'show_interstitial': !showInterstitial}), error));
+                dispatch(notificationAddClientAPIError(zoneUpdateScanError(zoneId, { show_interstitial: !showInterstitial }), error));
             });
-    }
+    };
 }

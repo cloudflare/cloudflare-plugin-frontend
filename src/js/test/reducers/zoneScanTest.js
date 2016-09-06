@@ -21,8 +21,8 @@ describe('Zone Scan Reducer', () => {
     it('should return the initial state', () => {
         expect(
             zoneScanReducer(undefined, {})
-        ).to.eql(initialState)
-    })
+        ).to.eql(initialState);
+    });
 
     it('should handle ZONE_FETCH_SCAN ', () => {
         expect(
@@ -32,8 +32,8 @@ describe('Zone Scan Reducer', () => {
         ).to.eql({
                 entities: {},
                 isFetching: true
-            })
-    })
+            });
+    });
 
     it('should handle ZONE_FETCH_SCAN_SUCCESS ', () => {
         expect(
@@ -42,16 +42,16 @@ describe('Zone Scan Reducer', () => {
                 zoneId,
                 zoneScan
             })
-        ).to.eql({'entities' : reducedEntities, 'isFetching': false})
-    })
+        ).to.eql({ 'entities' : reducedEntities, 'isFetching': false });
+    });
 
     it('should handle ZONE_FETCH_SCAN_ERROR ', () => {
         expect(
             zoneScanReducer(initialState, {
                 type: ActionTypes.ZONE_FETCH_SCAN_ERROR
             })
-        ).to.eql(initialState)
-    })
+        ).to.eql(initialState);
+    });
 
     it('should handle ZONE_UPDATE_SCAN', () => {
         expect(
@@ -60,8 +60,8 @@ describe('Zone Scan Reducer', () => {
                 zoneId,
                 zoneScan
             })
-        ).to.eql({'entities' : reducedEntities, 'isFetching': true})
-    })
+        ).to.eql({ 'entities' : reducedEntities, 'isFetching': true });
+    });
 
     it('should handle ZONE_UPDATE_SCAN_SUCCESS ', () => {
         expect(
@@ -70,8 +70,8 @@ describe('Zone Scan Reducer', () => {
                 zoneId,
                 zoneScan
             })
-        ).to.eql({'entities' : reducedEntities, 'isFetching': false})
-    })
+        ).to.eql({ 'entities' : reducedEntities, 'isFetching': false });
+    });
 
     it('should handle ZONE_UPDATE_SCAN_ERROR', () => {
         expect(
@@ -80,6 +80,6 @@ describe('Zone Scan Reducer', () => {
                 zoneId,
                 zoneScan
             })
-        ).to.eql({'entities' : reducedEntities, 'isFetching': false})
-    })
-})
+        ).to.eql({ 'entities' : reducedEntities, 'isFetching': false });
+    });
+});

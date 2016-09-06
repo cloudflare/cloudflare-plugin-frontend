@@ -4,10 +4,6 @@ import { FormattedMessage } from 'react-intl';
 import Link from 'cf-component-link';
 
 export default class AppNavigationLiNode extends Component {
-    static propTypes = {
-        onClick: PropTypes.func.isRequired,
-        title: PropTypes.string.isRequired
-    };
 
     render() {
 
@@ -16,44 +12,44 @@ export default class AppNavigationLiNode extends Component {
          */
         //li className="icon-item"
         let liStyles = {
-            fontSize: "1rem",
-            textAlign: "center",
-            width: "4.2rem",
-            whiteSpace: "normal",
-            display: "inline-block",
-            verticalAlign: "top",
+            fontSize: '1rem',
+            textAlign: 'center',
+            width: '4.2rem',
+            whiteSpace: 'normal',
+            display: 'inline-block',
+            verticalAlign: 'top',
         };
 
         //span className="icon"
         let spanStyles = {
-            backgroundColor: "#2f7bbf",
-            borderColor: "transparent",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            border: "4px solid transparent",
-            color: "#FFF",
-            display: "block",
-            fontSize: "2.02666rem",
-            height: "3.2rem",
-            lineHeight: "2.8rem",
-            margin: "0 auto 0.8rem auto",
-            overflow: "hidden",
-            width: "3.2rem",
+            backgroundColor: '#2f7bbf',
+            borderColor: 'transparent',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            border: '4px solid transparent',
+            color: '#FFF',
+            display: 'block',
+            fontSize: '2.02666rem',
+            height: '3.2rem',
+            lineHeight: '2.8rem',
+            margin: '0 auto 0.8rem auto',
+            overflow: 'hidden',
+            width: '3.2rem',
         };
 
         //svg className="icon-svg"
         let svgStyles = {
-            transition: "all 0.2s ease-in-out",
-            boxSizing: "border-box",
-            color: "#FFF",
-            fontSize: "2.02666rem",
-            lineHeight: "2.8rem",
+            transition: 'all 0.2s ease-in-out',
+            boxSizing: 'border-box',
+            color: '#FFF',
+            fontSize: '2.02666rem',
+            lineHeight: '2.8rem',
         };
 
         let spanIconTitleStyles = {
-            color: "#333",
-            textAlign: "center",
-            whiteSpace: "normal",
+            color: '#333',
+            textAlign: 'center',
+            whiteSpace: 'normal',
         };
 
         return (
@@ -72,3 +68,8 @@ export default class AppNavigationLiNode extends Component {
         );
     }
 }
+
+AppNavigationLiNode.propTypes = {
+    onClick: PropTypes.func.isRequired,
+    title: PropTypes.string.isRequired
+};

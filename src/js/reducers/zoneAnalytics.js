@@ -11,7 +11,7 @@ export function zoneAnalyticsReducer(state = initialState, action) {
         case ActionTypes.ZONE_FETCH_ANALYTICS:
             return Object.assign({}, state, {
                 isFetching: true
-            })
+            });
         case ActionTypes.ZONE_FETCH_ANALYTICS_SUCCESS:
             let newZoneAnalyticsEntity = {};
             newZoneAnalyticsEntity[action.zoneId] = buildZoneAnalyticsData(action.zoneAnalytics);
@@ -19,11 +19,11 @@ export function zoneAnalyticsReducer(state = initialState, action) {
             return Object.assign({}, state, {
                 entities: _.merge(state.entities, newZoneAnalyticsEntity),
                 isFetching: false
-            })
+            });
         case ActionTypes.ZONE_FETCH_ANALYTICS_ERROR:
             return Object.assign({}, state, {
                 isFetching: false
-            })
+            });
         default:
             return state;
     }

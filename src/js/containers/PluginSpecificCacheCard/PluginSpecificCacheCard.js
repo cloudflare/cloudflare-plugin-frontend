@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { Card, CardSection, CardContent, CardControl, CardDrawers } from 'cf-component-card';
+import { Card, CardSection, CardContent, CardControl } from 'cf-component-card';
 import { Modal, ModalHeader, ModalTitle, ModalClose, ModalBody, ModalFooter, ModalActions } from 'cf-component-modal';
 import Toggle from 'cf-component-toggle';
 import { Button } from 'cf-component-button';
@@ -10,12 +10,15 @@ import { asyncPluginUpdateSetting } from '../../actions/pluginSettings';
 import { getPluginSettingsValueForZoneId, getPluginSettingsModifiedDateForZoneId } from '../../selectors/pluginSettings';
 import { getLastModifiedDate } from '../../utils/utils';
 
-const SETTING_NAME = "plugin_specific_cache";
+const SETTING_NAME = 'plugin_specific_cache';
 
 class PluginSpecificCacheCard extends Component {
-    state = {
-        isModalOpen: false,
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            isModalOpen: false,
+        };
+    }
 
     handleModalOpen() {
         this.setState({ isModalOpen: true });
@@ -32,7 +35,7 @@ class PluginSpecificCacheCard extends Component {
             this.handleModalClose();
 
             let { activeZoneId, dispatch } = this.props;
-            value = (value === true ? "on" : "off");
+            value = (value === true ? 'on' : 'off');
             dispatch(asyncPluginUpdateSetting(SETTING_NAME, activeZoneId, value));
         }
     }
@@ -45,12 +48,12 @@ class PluginSpecificCacheCard extends Component {
             <div>
                 <Card>
                     <CardSection>
-                        <CardContent title={formatMessage({id: 'container.pluginSpecificCacheCard.title'})} footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}>
+                        <CardContent title={formatMessage({ id: 'container.pluginSpecificCacheCard.title' })} footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}>
                             <p><FormattedMessage id="container.pluginSpecificCacheCard.description" /></p>
                         </CardContent>
                         <CardControl>
                             <Toggle label=""
-                                    value={(this.props.cacheCardValue === "on")}
+                                    value={(this.props.cacheCardValue === 'on')}
                                     onChange={this.handleChange.bind(this)}
                                     />
                             <Modal
@@ -88,6 +91,6 @@ function mapStateToProps(state) {
         cacheCardValue: getPluginSettingsValueForZoneId(state.activeZone.id, SETTING_NAME, state),
         modifiedDate: getPluginSettingsModifiedDateForZoneId(state.activeZone.id, SETTING_NAME, state),
         integrationName: state.config.config.integrationName
-    }
+    };
 }
 export default injectIntl(connect(mapStateToProps)(PluginSpecificCacheCard));

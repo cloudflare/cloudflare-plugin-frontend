@@ -14,16 +14,16 @@ class MarketingFeatureCollection extends Component {
         return (
             <Flex spacing="wide">
                 <FlexItem>
-                    <MarketingFeature imgSrc={ getAbsoluteUrl(config, "assets/icon-pin.svg") } titleKey="component.marketingFeature.cdn.title" descriptionKey="component.marketingFeature.cdn.description" />
+                    <MarketingFeature imgSrc={ getAbsoluteUrl(config, 'assets/icon-pin.svg') } titleKey="component.marketingFeature.cdn.title" descriptionKey="component.marketingFeature.cdn.description" />
                 </FlexItem>
                 <FlexItem>
-                    <MarketingFeature imgSrc={ getAbsoluteUrl(config, "assets/icon-bolt.svg") } titleKey="component.marketingFeature.optimization.title" descriptionKey="component.marketingFeature.optimization.description" />
+                    <MarketingFeature imgSrc={ getAbsoluteUrl(config, 'assets/icon-bolt.svg') } titleKey="component.marketingFeature.optimization.title" descriptionKey="component.marketingFeature.optimization.description" />
                 </FlexItem>
                 <FlexItem>
-                    <MarketingFeature imgSrc={ getAbsoluteUrl(config, "assets/icon-shield.svg") } titleKey="component.marketingFeature.security.title" descriptionKey="component.marketingFeature.security.description" />
+                    <MarketingFeature imgSrc={ getAbsoluteUrl(config, 'assets/icon-shield.svg') } titleKey="component.marketingFeature.security.title" descriptionKey="component.marketingFeature.security.description" />
                 </FlexItem>
                 <FlexItem>
-                    <MarketingFeature imgSrc={ getAbsoluteUrl(config, "assets/icon-lock.svg") } titleKey="component.marketingFeature.ddos.title" descriptionKey="component.marketingFeature.ddos.description" />
+                    <MarketingFeature imgSrc={ getAbsoluteUrl(config, 'assets/icon-lock.svg') } titleKey="component.marketingFeature.ddos.title" descriptionKey="component.marketingFeature.ddos.description" />
                 </FlexItem>
             </Flex>
         );
@@ -31,7 +31,7 @@ class MarketingFeatureCollection extends Component {
 }
 
 function mapStateToProps(state) {
-    return { config: state.config }
+    return { config: state.config };
 }
 
 export default connect(mapStateToProps)(MarketingFeatureCollection);

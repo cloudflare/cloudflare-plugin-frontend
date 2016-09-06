@@ -6,7 +6,6 @@ import _ from 'lodash';
 import { Heading } from 'cf-component-heading';
 
 import { getPluginSettingsForZoneId } from '../../selectors/pluginSettings';
-import FeatureManager from '../../components/FeatureManager/FeatureManager';
 import { renderCards } from '../../components/RenderCardsDynamically/RenderCardsDynamically';
 
 class HomePage extends Component {
@@ -35,6 +34,6 @@ function mapStateToProps(state) {
         config: state.config.config,
         zoneSettings: state.zoneSettings.entities,
         zoneScan: state.zoneScan
-    }
+    };
 }
 export default injectIntl(connect(mapStateToProps)(HomePage));
