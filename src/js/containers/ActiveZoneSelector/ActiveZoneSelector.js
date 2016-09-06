@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { injectIntl, IntlProvider } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import _ from 'lodash';
 
 import Select from 'cf-component-select';
 import { notificationAddWarning } from '../../actions/notifications';
-import { getConfigValue } from '../../selectors/config'
+import { getConfigValue } from '../../selectors/config';
 import { asyncZoneSetActiveZone } from '../../actions/activeZone';
 import { isSubdomain } from '../../utils/utils';
 
 class ActiveZoneSelector extends Component {
-    state = {
-        subdomainChecked: false,
+    constructor(props) {
+        super(props);
+        this.state = {
+            subdomainChecked: false,
+        };
     }
 
     handleChange(zoneName) {
@@ -27,10 +30,10 @@ class ActiveZoneSelector extends Component {
     componentWillReceiveProps() {
         let { activeZone, config, dispatch } = this.props;
 
-        var shouldUseSubdomain = getConfigValue(config, "isSubdomainCheckEnabled");
+        var shouldUseSubdomain = getConfigValue(config, 'isSubdomainCheckEnabled');
         if (shouldUseSubdomain && !this.state.subdomainChecked && isSubdomain(activeZone.name)) {
             this.setState({ subdomainChecked: true });
-            dispatch(notificationAddWarning("warning.usingSubdomain", true, true));
+            dispatch(notificationAddWarning('warning.usingSubdomain', true, true));
         }        
     }
 
@@ -43,7 +46,7 @@ class ActiveZoneSelector extends Component {
         return (
             <div>
                 <Select
-                    label={ intl.formatMessage({ id: "container.activeZoneSelector.activeZone" }) }
+                    label={ intl.formatMessage({ id: 'container.activeZoneSelector.activeZone' }) }
                     value={ activeZone.name }
                     options={ zones }
                     onChange={ this.handleChange.bind(this) } />
@@ -57,7 +60,7 @@ function mapStateToProps(state) {
         activeZone: state.activeZone,
         zoneList: state.zones.entities.zones,
         config: state.config,
-    }
+    };
 }
 
 export default injectIntl(connect(mapStateToProps)(ActiveZoneSelector));

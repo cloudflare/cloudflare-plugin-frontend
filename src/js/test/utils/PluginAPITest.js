@@ -10,5 +10,5 @@ describe('PluginAPI', () => {
                 }
             })
         ).to.eql(true);
-    })
-})
+    });
+});

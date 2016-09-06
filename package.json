@@ -5,7 +5,7 @@
   "main": "gulpfile.js",
   "scripts": {
     "test": "mocha src/js/test/*/*.js --compilers js:babel-register",
-    "lint": "eslint src/js/**/*.js",
+    "lint": "./node_modules/.bin/eslint src/js/**/*.js --fix",
     "start": "http-server -a localhost -p 8000 -c-1"
   },
   "repository": {
@@ -19,7 +19,7 @@
   "license": "BSD-3-Clause",
   "devDependencies": {
     "babel-core": "^6.1.21",
-    "babel-eslint": "^4.1.6",
+    "babel-eslint": "^6.0.0",
     "babel-plugin-transform-object-assign": "^6.5.0",
     "babel-polyfill": "^6.5.0",
     "babel-preset-cf": "^1.1.0",
@@ -53,8 +53,8 @@
     "cf-util-http": "^1.0.1",
     "chai": "^3.5.0",
     "dotenv": "^2.0.0",
-    "eslint": "^1.10.1",
-    "eslint-plugin-react": "^3.10.0",
+    "eslint": "^3.4.0",
+    "eslint-plugin-react": "^6.2.0",
     "express": "^4.13.4",
     "gulp": "^3.9.0",
     "gulp-babel": "^6.1.2",

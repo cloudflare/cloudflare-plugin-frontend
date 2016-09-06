@@ -7,7 +7,6 @@ import {
     Table,
     TableHead,
     TableBody,
-    TableFoot,
     TableRow,
     TableHeadCell,
     TableCell
@@ -37,7 +36,7 @@ class DNSManagementPage extends Component {
             zone = zones[activeZone.name];
         }
 
-        let upgradeLink = CLOUDFLARE_UPGRADE_PAGE + "?utm_source=pi-" + config.integrationName + "&utm_medium=plugin&utm_campaign=" + config.integrationName;
+        let upgradeLink = CLOUDFLARE_UPGRADE_PAGE + '?utm_source=pi-' + config.integrationName + '&utm_medium=plugin&utm_campaign=' + config.integrationName;
         let changePlanButton = (<Button type="success" onClick={ function(){window.open(upgradeLink); return false;} }><FormattedMessage id="container.dnsManagementPage.thead.changePlan" /></Button>);
 
         return (
@@ -57,7 +56,7 @@ class DNSManagementPage extends Component {
                         <TableBody>
                             <TableRow>
                                 <TableCell>{zone.name}</TableCell>
-                                <TableCell>{zone.plan.name} &nbsp;&nbsp;&nbsp; {zone.plan.name != "" ? changePlanButton : null}</TableCell>
+                                <TableCell>{zone.plan.name} &nbsp;&nbsp;&nbsp; {zone.plan.name != '' ? changePlanButton : null}</TableCell>
                                 <TableCell>{zone.type}</TableCell>
                                 <TableCell>{zone.status}</TableCell>
                             </TableRow>
@@ -84,7 +83,7 @@ function mapStateToProps(state) {
         zoneDeleteIsFetching: state.zones.zoneDeleteIsFetching,
         zoneProvisionCnameIsFetching: state.zones.zoneProvisionCnameIsFetching,
         zoneProvisionFullIsFetching: state.zones.zoneProvisionFullIsFetching,
-    }
+    };
 }
 
 export default injectIntl(connect(mapStateToProps)(DNSManagementPage));

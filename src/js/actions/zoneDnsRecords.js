@@ -7,14 +7,14 @@ export function dnsRecordClearAll(zoneId) {
     return {
         type: ActionTypes.DNS_RECORD_CLEAR_ALL,
         zoneId
-    }
+    };
 }
 
 export function dnsRecordCreate(name) {
     return {
         type: ActionTypes.DNS_RECORD_CREATE,
         name
-    }
+    };
 }
 
 export function dnsRecordCreateSuccess(zoneId, dnsRecord) {
@@ -22,19 +22,19 @@ export function dnsRecordCreateSuccess(zoneId, dnsRecord) {
         type: ActionTypes.DNS_RECORD_CREATE_SUCCESS,
         zoneId,
         dnsRecord
-    }
+    };
 }
 
 export function dnsRecordCreateError() {
     return {
         type: ActionTypes.DNS_RECORD_CREATE_ERROR
-    }
+    };
 }
 
 export function asyncDNSRecordCreate(zoneId, type, name, content) {
     return dispatch => {
         dispatch(dnsRecordCreate(name));
-        zoneDNSRecordPostNew({zoneId: zoneId, type: type, name: name, content: content}, function(response) {
+        zoneDNSRecordPostNew({ zoneId: zoneId, type: type, name: name, content: content }, function(response) {
             if(v4ResponseOk(response)) {
                 dispatch(dnsRecordCreateSuccess(zoneId, response.body.result));
                 //CloudFlare defaults new records with proxied = false.
@@ -45,13 +45,13 @@ export function asyncDNSRecordCreate(zoneId, type, name, content) {
         }, function(error) {
                 dispatch(notificationAddClientAPIError(dnsRecordCreateError(), error));
         });
-    }
+    };
 }
 
 export function dnsRecordFetchList() {
     return {
         type: ActionTypes.DNS_RECORD_FETCH_LIST
-    }
+    };
 }
 
 export function dnsRecordFetchListSuccess(zoneId, dnsRecords) {
@@ -59,13 +59,13 @@ export function dnsRecordFetchListSuccess(zoneId, dnsRecords) {
         type: ActionTypes.DNS_RECORD_FETCH_LIST_SUCCESS,
         zoneId,
         dnsRecords
-    }
+    };
 }
 
 export function dnsRecordFetchListError() {
     return {
         type: ActionTypes.DNS_RECORD_FETCH_LIST_SUCCESS
-    }
+    };
 }
 
 export function asyncDNSRecordFetchList(zoneId) {
@@ -80,14 +80,14 @@ export function asyncDNSRecordFetchList(zoneId) {
         }, function(error) {
             dispatch(notificationAddClientAPIError(dnsRecordFetchListError(), error));
         });
-    }
+    };
 }
 
 export function dnsRecordUpdate(name) {
     return {
         type: ActionTypes.DNS_RECORD_UPDATE,
         name
-    }
+    };
 }
 
 export function dnsRecordUpdateSuccess(zoneId, dnsRecord) {
@@ -95,19 +95,19 @@ export function dnsRecordUpdateSuccess(zoneId, dnsRecord) {
         type: ActionTypes.DNS_RECORD_UPDATE_SUCCESS,
         zoneId,
         dnsRecord
-    }
+    };
 }
 
 export function dnsRecordUpdateError() {
     return {
         type: ActionTypes.DNS_RECORD_UPDATE_ERROR
-    }
+    };
 }
 
 export function asyncDNSRecordUpdate(zoneId, dnsRecord, proxied) {
     return dispatch => {
         dispatch(dnsRecordUpdate(dnsRecord.name));
-        zoneDNSRecordPatch({zoneId: zoneId, dnsRecordId: dnsRecord.id, proxied: proxied}, function(response){
+        zoneDNSRecordPatch({ zoneId: zoneId, dnsRecordId: dnsRecord.id, proxied: proxied }, function(response){
             if(v4ResponseOk(response)) {
                 dispatch(dnsRecordUpdateSuccess(zoneId, response.body.result));
             } else {
@@ -116,5 +116,5 @@ export function asyncDNSRecordUpdate(zoneId, dnsRecord, proxied) {
         }, function(error){
             dispatch(notificationAddClientAPIError(dnsRecordUpdateError, error));
         });
-    }
+    };
 }

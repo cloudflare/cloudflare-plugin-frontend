@@ -9,16 +9,12 @@ import { getConfigValue } from '../../selectors/config.js';
 import { generateUTMLink } from '../../selectors/generateUTMLink.js';
 
 class CustomCardControl extends Component {
-    static propTypes = {
-        name: PropTypes.string,
-        indentifier: PropTypes.string.isRequired,
-    };
 
     render() {
         let { integrationName } = this.props;
 
-        var currentPlan = this.props.hasOwnProperty("currentPlan") ? this.props.currentPlan : FREE_PLAN;
-        var minimumPlan = this.props.hasOwnProperty("minimumPlan") ? this.props.minimumPlan : FREE_PLAN;
+        var currentPlan = this.props.hasOwnProperty('currentPlan') ? this.props.currentPlan : FREE_PLAN;
+        var minimumPlan = this.props.hasOwnProperty('minimumPlan') ? this.props.minimumPlan : FREE_PLAN;
         var needToUpgrade = planNeedsUpgrade(currentPlan, minimumPlan);
         var localizedPlanId = getLocalizedPlanId(minimumPlan);
 
@@ -39,9 +35,15 @@ class CustomCardControl extends Component {
     }
 }
 
+CustomCardControl.propTypes = {
+    name: PropTypes.string,
+    indentifier: PropTypes.string.isRequired,
+};
+
+
 function mapStateToProps(state) {
     return {
-        integrationName: getConfigValue(state.config, "integrationName"),
-    }
+        integrationName: getConfigValue(state.config, 'integrationName'),
+    };
 }
 export default injectIntl(connect(mapStateToProps)(CustomCardControl));

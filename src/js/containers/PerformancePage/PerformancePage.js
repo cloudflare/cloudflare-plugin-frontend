@@ -95,6 +95,6 @@ function mapStateToProps(state) {
         activeZoneId: state.activeZone.id,
         config: state.config.config,
         zoneSettings: state.zoneSettings.entities
-    }
+    };
 }
 export default injectIntl(connect(mapStateToProps)(PerformancePage));

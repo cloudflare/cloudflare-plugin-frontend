@@ -57,6 +57,6 @@ function mapStateToProps(state) {
         config: state.config.config,
         zoneSettings: state.zoneSettings,
         zoneScan: state.zoneScan
-    }
+    };
 }
 export default injectIntl(connect(mapStateToProps)(SecurityPage));

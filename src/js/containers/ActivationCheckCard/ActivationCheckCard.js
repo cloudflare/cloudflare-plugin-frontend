@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import { asyncZoneActivationCheck } from '../../actions/zoneProvision';
-import { Card, CardSection, CardContent, CardControl, CardDrawers } from 'cf-component-card';
+import { Card, CardSection, CardContent, CardControl } from 'cf-component-card';
 import { Button } from 'cf-component-button';
 import { List, ListItem } from 'cf-component-list';
 
@@ -23,8 +23,8 @@ class ActivationCheckCard extends Component {
             <div>
                 <Card>
                     <CardSection>
-                        <CardContent  title={formatMessage({id: 'container.activationCheckCard.title'})}>
-                            <p><FormattedMessage id="container.activationCheckCard.status" values={ {status: zone.status} }/></p>
+                        <CardContent  title={formatMessage({ id: 'container.activationCheckCard.title' })}>
+                            <p><FormattedMessage id="container.activationCheckCard.status" values={ { status: zone.status } }/></p>
                             <p><FormattedMessage id="container.activationCheckCard.nameServers"/></p>
                             <List>
                                 {zone.name_servers.map(nameserver =>
@@ -49,7 +49,7 @@ function mapStateToProps(state) {
     return {
         activeZone: state.activeZone,
         zone: state.zones.entities.zones[state.activeZone.name]
-    }
+    };
 }
 export default injectIntl(connect(mapStateToProps)(ActivationCheckCard));
 

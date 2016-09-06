@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { Link } from 'react-router';
-import { routeActions } from 'redux-simple-router'
 
 import MarketingFeatureCollection from '../../containers/MarketingFeatureCollection/MarketingFeatureCollection';
-import * as UserActionCreators from '../../actions/user'
-import { SIGN_UP_PAGE, CLOUDFLARE_FORGOT_PASSWORD_PAGE } from '../../constants/UrlPaths.js'
+import * as UserActionCreators from '../../actions/user';
+import { SIGN_UP_PAGE, CLOUDFLARE_FORGOT_PASSWORD_PAGE } from '../../constants/UrlPaths.js';
 
 class HostLoginPage extends Component {
 
@@ -20,7 +19,7 @@ class HostLoginPage extends Component {
         dispatch(UserActionCreators.asyncLogin(email,password));
     }
 
-    handleLogout(e) {
+    handleLogout() {
         let { dispatch } = this.props;
         dispatch(UserActionCreators.logout());
     }
@@ -32,7 +31,7 @@ class HostLoginPage extends Component {
             <div>
                 <section className="center login-form">
                     <div className="login-container">
-                        <form className="form" onSubmit={(e) => this.handleLoginSubmit(e)}>
+                        <form className="form" onSubmit={ this.handleLoginSubmit.bind(this)}>
                             <legend>
                                 <h3 className="form-title">
                                     <FormattedMessage id="component.login.form.title" />
@@ -46,7 +45,7 @@ class HostLoginPage extends Component {
                                         </label>
                                     </div>
                                     <div className="controls">
-                                        <input ref="email" type="text" placeholder={formatMessage({id: "component.login.form.email"})} className="width-full"/>
+                                        <input ref="email" type="text" placeholder={formatMessage({ id: 'component.login.form.email' })} className="width-full"/>
                                     </div>
                                 </div>
                                 <div className="control-group">
@@ -56,7 +55,7 @@ class HostLoginPage extends Component {
                                         </label>
                                     </div>
                                     <div className="controls">
-                                        <input ref="password" type="password" placeholder={formatMessage({id: "component.login.form.password"})} className="width-full"/>
+                                        <input ref="password" type="password" placeholder={formatMessage({ id: 'component.login.form.password' })} className="width-full"/>
                                     </div>
                                 </div>
                                 <div className="control-group">
@@ -78,7 +77,7 @@ class HostLoginPage extends Component {
                 </section>
                 <div className="row">
                     <div className="col-16">
-                        <p style={{'textAlign': 'center', 'marginBottom': '2.5rem'}}><FormattedMessage id="component.login.cloudflare.description"/></p>
+                        <p style={{ 'textAlign': 'center', 'marginBottom': '2.5rem' }}><FormattedMessage id="component.login.cloudflare.description"/></p>
                     </div>
                 </div>
                 <MarketingFeatureCollection/>

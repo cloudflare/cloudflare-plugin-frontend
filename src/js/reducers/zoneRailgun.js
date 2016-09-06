@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import * as ActionTypes from '../constants/ActionTypes';
 import { normalizeZoneRailgunGetAll } from '../constants/Schemas';
 

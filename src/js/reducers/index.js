@@ -14,7 +14,7 @@ import { zoneRailgunReducer } from './zoneRailgun';
 import { zoneScanReducer } from './zoneScan';
 import { zoneSettingsReducer } from './zoneSettings';
 import { zonesReducer } from './zones';
-import { pluginSettingsReducer } from './pluginSettings'
+import { pluginSettingsReducer } from './pluginSettings';
 
 const rootReducer = combineReducers({
     activeZone: activeZoneReducer,

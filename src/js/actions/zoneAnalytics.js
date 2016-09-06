@@ -5,7 +5,7 @@ import * as ActionTypes from '../constants/ActionTypes';
 export function zoneFetchAnalytics() {
     return {
         type: ActionTypes.ZONE_FETCH_ANALYTICS
-    }
+    };
 }
 
 export function zoneFetchAnalyticsSuccess(zoneId, zoneAnalytics) {
@@ -13,19 +13,19 @@ export function zoneFetchAnalyticsSuccess(zoneId, zoneAnalytics) {
         type: ActionTypes.ZONE_FETCH_ANALYTICS_SUCCESS,
         zoneId,
         zoneAnalytics
-    }
+    };
 }
 
 export function zoneFetchAnalyticsError() {
     return {
         type: ActionTypes.ZONE_FETCH_ANALYTICS_ERROR
-    }
+    };
 }
 
 export function asyncZoneFetchAnalytics(zoneId) {
     return dispatch => {
         dispatch(zoneFetchAnalytics());
-        zoneAnalyticsDashboardGet({zoneId: zoneId}, function(response){
+        zoneAnalyticsDashboardGet({ zoneId: zoneId }, function(response){
             if(v4ResponseOk(response)) {
                 dispatch(zoneFetchAnalyticsSuccess(zoneId, response.body.result));
             } else {
@@ -34,5 +34,5 @@ export function asyncZoneFetchAnalytics(zoneId) {
         }, function(error) {
             dispatch(notificationAddClientAPIError(zoneFetchAnalyticsError(), error));
         });
-    }
+    };
 }

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import _ from 'lodash';
 
-import * as UserActionCreators from '../../actions/user'
+import * as UserActionCreators from '../../actions/user';
 import { notificationAddError } from '../../actions/notifications';
 import { TERMS_AND_CONDITIONS_PAGE, PRIVACY_POLICY_PAGE } from '../../constants/UrlPaths';
 
@@ -29,7 +28,7 @@ class SignUpPage extends Component {
                                     </label>
                                 </div>
                                 <div className="controls">
-                                    <input ref="email" type="text" placeholder={formatMessage({id: "container.signup.form.email"})} className="width-full"/>
+                                    <input ref="email" type="text" placeholder={formatMessage({ id: 'container.signup.form.email' })} className="width-full"/>
                                 </div>
                             </div>
                             <div className="control-group">
@@ -39,7 +38,7 @@ class SignUpPage extends Component {
                                     </label>
                                 </div>
                                 <div className="controls">
-                                    <input ref="password" type="password" placeholder={formatMessage({id: "container.signup.form.password"})} className="width-full"/>
+                                    <input ref="password" type="password" placeholder={formatMessage({ id: 'container.signup.form.password' })} className="width-full"/>
                                 </div>
                             </div>
                             <div className="control-group">
@@ -49,7 +48,7 @@ class SignUpPage extends Component {
                                     </label>
                                 </div>
                                 <div className="controls">
-                                    <input ref="password2" type="password" placeholder={formatMessage({id: "container.signup.form.passwordAgain"})} className="width-full"/>
+                                    <input ref="password2" type="password" placeholder={formatMessage({ id: 'container.signup.form.passwordAgain' })} className="width-full"/>
                                 </div>
                             </div>
                             <div className="control-group">
@@ -76,7 +75,7 @@ class SignUpPage extends Component {
     }
 
     handleSignUpSubmit(e) {
-        e.preventDefault()
+        e.preventDefault();
         let { dispatch } = this.props;
         let { formatMessage } = this.props.intl;
 
@@ -86,22 +85,22 @@ class SignUpPage extends Component {
         let isTermsOfServiceChecked = this.refs.termsOfService.value;
 
         if(!isTermsOfServiceChecked) {
-            dispatch(notificationAddError(formatMessage({id: "container.signup.error.termsOfService"})));
+            dispatch(notificationAddError(formatMessage({ id: 'container.signup.error.termsOfService' })));
             return;
         }
 
         if(_.isEmpty(email)) {
-            dispatch(notificationAddError(formatMessage({id: "container.signup.error.emailBlank"})));
+            dispatch(notificationAddError(formatMessage({ id: 'container.signup.error.emailBlank' })));
             return;
         }
 
         if(_.isEmpty(password) || _.isEmpty(password2)) {
-            dispatch(notificationAddError(formatMessage({id: "container.signup.error.passwordBlank"})));
+            dispatch(notificationAddError(formatMessage({ id: 'container.signup.error.passwordBlank' })));
             return;
         }
 
         if(password !== password2) {
-            dispatch(notificationAddError(formatMessage({id: "container.signup.error.passwordsDontMatch"}))) ;
+            dispatch(notificationAddError(formatMessage({ id: 'container.signup.error.passwordsDontMatch' }))) ;
         }
 
         dispatch(UserActionCreators.asyncUserSignup(email, password));
@@ -109,7 +108,7 @@ class SignUpPage extends Component {
 }
 
 function mapStateToProps(state) {
-    return { state: state }
+    return { state: state };
 }
 
 export default injectIntl(connect(mapStateToProps)(SignUpPage));

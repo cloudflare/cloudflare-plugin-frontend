@@ -28,7 +28,7 @@ class AppContainer extends Component {
                     <LayoutRow>
                         <LayoutColumn width={1/3}>&nbsp;</LayoutColumn>
                         <LayoutColumn width={1/3}>
-                            <img src={ getAbsoluteUrl(config, "assets/logo.svg") } />
+                            <img src={ getAbsoluteUrl(config, 'assets/logo.svg') } />
                         </LayoutColumn>
                         <LayoutColumn width={1/3}>&nbsp;</LayoutColumn>
                     </LayoutRow>
@@ -57,7 +57,7 @@ class AppContainer extends Component {
                     </LayoutRow>
                     <LayoutRow>
                         <LayoutColumn width={1/1}>
-                            <p style={{'textAlign': 'center'}}><FormattedMessage id="container.App.version" values={{'version': this.props.state.config.config.version }}/></p>
+                            <p style={{ 'textAlign': 'center' }}><FormattedMessage id="container.App.version" values={{ 'version': this.props.state.config.config.version }}/></p>
                         </LayoutColumn>
                     </LayoutRow>
                 </LayoutContainer>
@@ -69,7 +69,7 @@ class AppContainer extends Component {
 }
 
 function mapStateToProps(state) {
-    return { state: state }
+    return { state: state };
 }
 
 // <IntlProvider> must be instantiated before injectIntl() is used so we wrap AppContainer in AppWrapper
@@ -90,9 +90,9 @@ class AppWrapper extends React.Component {
                     </GatewayProvider>
                 </IntlProvider>
             );
-        } else {
-            return <noscript/>;
-        }
+        } 
+
+        return <noscript/>;
     }
 }
 

@@ -23,7 +23,7 @@ export function v4ResponseOk(response) {
  * @returns {Object} API Response
  */
 export function zoneActivationCheckPutNew(zoneId, onSuccess, onError) {
-    return http.put(ENDPOINT + "/zones/" + zoneId + "/activation_check", {}, onSuccess, onError);
+    return http.put(ENDPOINT + '/zones/' + zoneId + '/activation_check', {}, onSuccess, onError);
 }
 
 /*
@@ -38,16 +38,16 @@ export function zoneActivationCheckPutNew(zoneId, onSuccess, onError) {
  *
  * @returns {Object} API Response
  */
-export function zoneAnalyticsDashboardGet({zoneId, since, until, continuous}, onSuccess, onError) {
+export function zoneAnalyticsDashboardGet({ zoneId, since, until, continuous }, onSuccess, onError) {
     let opts = {
       parameters: {}
     };
 
-    if(since) { opts.parameters.since = since; };
-    if(until) { opts.parameters.until = until; };
-    if(typeof continuous !== 'undefined') { opts.parameters.continuous = continuous; };
+    if(since) { opts.parameters.since = since; }
+    if(until) { opts.parameters.until = until; }
+    if(typeof continuous !== 'undefined') { opts.parameters.continuous = continuous; }
 
-    return http.get(ENDPOINT + "/zones/" + zoneId + "/analytics/dashboard", opts, onSuccess, onError);
+    return http.get(ENDPOINT + '/zones/' + zoneId + '/analytics/dashboard', opts, onSuccess, onError);
 }
 
 /*
@@ -60,7 +60,7 @@ export function zoneAnalyticsDashboardGet({zoneId, since, until, continuous}, on
  * @returns {Object} API Response
  */
 export function zoneDNSRecordGetAll(zoneId, onSuccess, onError) {
-    return http.get(ENDPOINT + "/zones/" + zoneId + "/dns_records", {}, onSuccess, onError);
+    return http.get(ENDPOINT + '/zones/' + zoneId + '/dns_records', {}, onSuccess, onError);
 }
 
 /*
@@ -76,7 +76,7 @@ export function zoneDNSRecordGetAll(zoneId, onSuccess, onError) {
  *
  * @returns {Object} API Response
  */
-export function zoneDNSRecordPostNew({zoneId, type, name, content, ttl}, onSuccess, onError) {
+export function zoneDNSRecordPostNew({ zoneId, type, name, content, ttl }, onSuccess, onError) {
     let opts = {
         body: {
             type: type,
@@ -84,9 +84,9 @@ export function zoneDNSRecordPostNew({zoneId, type, name, content, ttl}, onSucce
             content: content
         }
     };
-    if(ttl) {opts.body.ttl = ttl};
+    if(ttl) {opts.body.ttl = ttl;}
 
-    return http.post(ENDPOINT + "/zones/" + zoneId + "/dns_records", opts, onSuccess, onError);
+    return http.post(ENDPOINT + '/zones/' + zoneId + '/dns_records', opts, onSuccess, onError);
 }
 
 /*
@@ -104,7 +104,7 @@ export function zoneDNSRecordPostNew({zoneId, type, name, content, ttl}, onSucce
  *
  * @returns {Object} API Response
  */
-export function zoneDNSRecordPatch({zoneId, dnsRecordId, type, name, content, proxied, ttl}, onSuccess, onError) {
+export function zoneDNSRecordPatch({ zoneId, dnsRecordId, type, name, content, proxied, ttl }, onSuccess, onError) {
     let opts = {
       body: {}
     };
@@ -115,7 +115,7 @@ export function zoneDNSRecordPatch({zoneId, dnsRecordId, type, name, content, pr
     if(typeof proxied !== 'undefined') { opts.body.proxied = proxied; }
     if(ttl) { opts.body.ttl = ttl; }
 
-    return http.patch(ENDPOINT + "/zones/" + zoneId + "/dns_records/" + dnsRecordId, opts, onSuccess, onError);
+    return http.patch(ENDPOINT + '/zones/' + zoneId + '/dns_records/' + dnsRecordId, opts, onSuccess, onError);
 }
 
 /*
@@ -129,7 +129,7 @@ export function zoneDNSRecordPatch({zoneId, dnsRecordId, type, name, content, pr
  *
  * @returns {Object} API Response
  */
-export function zonePostNew({name, jump_start, organization}, onSuccess, onError) {
+export function zonePostNew({ name, jump_start, organization }, onSuccess, onError) {
     let opts = {
         body: {}
     };
@@ -137,7 +137,7 @@ export function zonePostNew({name, jump_start, organization}, onSuccess, onError
     opts.body.name = name;
     if(typeof jump_start !== 'undefined') { opts.body.jump_start = jump_start; }
     if(organization) { opts.body.organization = organization; }
-    return http.post(ENDPOINT + "/zones", opts, onSuccess, onError);
+    return http.post(ENDPOINT + '/zones', opts, onSuccess, onError);
 }
 
 /*
@@ -152,7 +152,7 @@ export function zonePostNew({name, jump_start, organization}, onSuccess, onError
  *
  * @returns {Object} API Response
  */
-export function zonePurgeCache({zoneId, files, tags, purge_everything}, onSuccess, onError) {
+export function zonePurgeCache({ zoneId, files, tags, purge_everything }, onSuccess, onError) {
     let opts = {
         body: {}
     };
@@ -164,7 +164,7 @@ export function zonePurgeCache({zoneId, files, tags, purge_everything}, onSucces
         if(tags) { opts.body.tags = tags; }
     }
 
-    return http.del(ENDPOINT + "/zones/" + zoneId + "/purge_cache", opts, onSuccess, onError);
+    return http.del(ENDPOINT + '/zones/' + zoneId + '/purge_cache', opts, onSuccess, onError);
 
 }
 
@@ -177,7 +177,7 @@ export function zonePurgeCache({zoneId, files, tags, purge_everything}, onSucces
  * @returns {Object} API Response
  */
 export function zoneGetAll(onSuccess, onError) {
-    return http.get(ENDPOINT + "/zones", {}, onSuccess, onError);
+    return http.get(ENDPOINT + '/zones', {}, onSuccess, onError);
 }
 
 /*
@@ -190,7 +190,7 @@ export function zoneGetAll(onSuccess, onError) {
  * @returns {Object} API Response
  */
 export function zoneGetSettings(zoneId, onSuccess, onError) {
-    return http.get(ENDPOINT + "/zones/" + zoneId + "/settings", {}, onSuccess, onError);
+    return http.get(ENDPOINT + '/zones/' + zoneId + '/settings', {}, onSuccess, onError);
 }
 
 /*
@@ -210,7 +210,7 @@ export function zonePatchSetting(settingName, zoneId, value, onSuccess, onError)
              value: value
          }
     };
-    return http.patch(ENDPOINT + "/zones/" + zoneId + "/settings/" + settingName, opts, onSuccess, onError);
+    return http.patch(ENDPOINT + '/zones/' + zoneId + '/settings/' + settingName, opts, onSuccess, onError);
 }
 
 /*
@@ -223,7 +223,7 @@ export function zonePatchSetting(settingName, zoneId, value, onSuccess, onError)
  * @returns {Object} API Response
  */
 export function zoneDeleteZone(zoneId, onSuccess, onError) {
-    return http.del(ENDPOINT + "/zones/" + zoneId, {}, onSuccess, onError);
+    return http.del(ENDPOINT + '/zones/' + zoneId, {}, onSuccess, onError);
 }
 
 /*
@@ -236,7 +236,7 @@ export function zoneDeleteZone(zoneId, onSuccess, onError) {
  * @returns {Object} API Response
  */
 export function zoneRailgunGetAll(zoneId, onSuccess, onError) {
-    return http.get(ENDPOINT + "/zones/" + zoneId + "/railguns", {}, onSuccess, onError);
+    return http.get(ENDPOINT + '/zones/' + zoneId + '/railguns', {}, onSuccess, onError);
 }
 
 /*
@@ -255,7 +255,7 @@ export function zoneRailgunPatch(zoneId, railgunId, connected, onSuccess, onErro
         }
     };
     
-    return http.patch(ENDPOINT + "/zones/" + zoneId + "/railguns/" + railgunId, opts, onSuccess, onError);
+    return http.patch(ENDPOINT + '/zones/' + zoneId + '/railguns/' + railgunId, opts, onSuccess, onError);
 }
 
 /*
@@ -268,7 +268,7 @@ export function zoneRailgunPatch(zoneId, railgunId, connected, onSuccess, onErro
  * @returns {Object} API Response
  */
 export function zoneScanGet(zoneId, onSuccess, onError) {
-    return http.get(ENDPOINT + "/zones/" + zoneId + "/scan", {}, onSuccess, onError);
+    return http.get(ENDPOINT + '/zones/' + zoneId + '/scan', {}, onSuccess, onError);
 }
 
 /*
@@ -287,5 +287,5 @@ export function zoneScanPut(zoneId, showInterstitial, onSuccess, onError) {
             'show_interstitial': showInterstitial
         }
     };
-    return http.put(ENDPOINT + "/zones/" + zoneId + "/scan", opts, onSuccess, onError);
+    return http.put(ENDPOINT + '/zones/' + zoneId + '/scan', opts, onSuccess, onError);
 }

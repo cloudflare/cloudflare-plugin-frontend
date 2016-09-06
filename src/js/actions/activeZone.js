@@ -1,4 +1,3 @@
-import { notificationAddClientAPIError } from './notifications';
 import * as ActionTypes from '../constants/ActionTypes';
 import { asyncDNSRecordFetchList } from './zoneDnsRecords';
 import { asyncZoneFetchAnalytics } from './zoneAnalytics';
@@ -11,7 +10,7 @@ export function zoneSetActiveZone(zone) {
     return {
         type: ActionTypes.ZONES_SET_ACTIVE_ZONE,
         zone
-    }
+    };
 }
 
 export function asyncZoneSetActiveZone(zone) {
@@ -28,13 +27,13 @@ export function asyncZoneSetActiveZone(zone) {
             dispatch(asyncZoneFetchAnalytics(zone.id));
             dispatch(asyncZoneFetchScan(zone.id));
         }
-    }
+    };
 }
 
 export function zoneSetActiveZoneIfEmpty(zone) {
     return (dispatch, getState) => {
-        if(getState().activeZone.name === "") {
+        if(getState().activeZone.name === '') {
             dispatch(asyncZoneSetActiveZone(zone));
         }
-    }
+    };
 }

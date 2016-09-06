@@ -12,8 +12,8 @@ describe('Zone Railgun Reducer', () => {
     it('should return the initial state', () => {
         expect(
             zoneRailgunReducer(undefined, {})
-        ).to.eql(initialState)
-    })
+        ).to.eql(initialState);
+    });
 
     it('should handle ZONE_RAILGUNS_FETCH_ALL', () => {
         expect(
@@ -23,8 +23,8 @@ describe('Zone Railgun Reducer', () => {
         ).to.eql({
                     entities: {},
                     isFetching: true
-            })
-    })
+            });
+    });
 
     it('should handle ZONE_RAILGUNS_FETCH_ALL_SUCCESS', () => {
         expect(
@@ -33,10 +33,10 @@ describe('Zone Railgun Reducer', () => {
                 'zoneId': 'zoneId',
                 'zoneRailguns': [
                     {
-                        "id": "railgunId",
-                        "name": "railgun name",
-                        "enabled": true,
-                        "connected": true
+                        'id': 'railgunId',
+                        'name': 'railgun name',
+                        'enabled': true,
+                        'connected': true
                     }
                 ]
             })
@@ -44,24 +44,24 @@ describe('Zone Railgun Reducer', () => {
                 'entities': {
                     'zoneId': {
                         'railgunId': {
-                            "id": "railgunId",
-                            "name": "railgun name",
-                            "enabled": true,
-                            "connected": true
+                            'id': 'railgunId',
+                            'name': 'railgun name',
+                            'enabled': true,
+                            'connected': true
                         }
                     }
                 },
                 isFetching: false
-            })
-    })
+            });
+    });
 
     it('should handle ZONE_RAILGUNS_FETCH_ALL_ERROR', () => {
         expect(
             zoneRailgunReducer(undefined, {
                 type: ActionTypes.ZONE_RAILGUNS_FETCH_ALL_ERROR,
             })
-        ).to.eql(initialState)
-    })
+        ).to.eql(initialState);
+    });
 
     it('should handle ZONE_RAILGUNS_CONNECTION_UPDATE', () => {
         expect(
@@ -69,26 +69,26 @@ describe('Zone Railgun Reducer', () => {
                 type: ActionTypes.ZONE_RAILGUNS_CONNECTION_UPDATE,
                 'zoneId': 'zoneId',
                 'zoneRailgun': {
-                    "id": "railgunId",
-                    "name": "railgun name",
-                    "enabled": true,
-                    "connected": true
+                    'id': 'railgunId',
+                    'name': 'railgun name',
+                    'enabled': true,
+                    'connected': true
                 }
             })
         ).to.eql({
                 'entities': {
                     'zoneId': {
                         'railgunId': {
-                            "id": "railgunId",
-                            "name": "railgun name",
-                            "enabled": true,
-                            "connected": true
+                            'id': 'railgunId',
+                            'name': 'railgun name',
+                            'enabled': true,
+                            'connected': true
                         }
                     }
                 },
                 isFetching: true
-            })
-    })
+            });
+    });
 
     it('should handle ZONE_RAILGUNS_CONNECTION_UPDATE_SUCCESSS', () => {
         expect(
@@ -96,26 +96,26 @@ describe('Zone Railgun Reducer', () => {
                 type: ActionTypes.ZONE_RAILGUNS_CONNECTION_UPDATE_SUCCESSS,
                 'zoneId': 'zoneId',
                 'zoneRailgun': {
-                    "id": "railgunId",
-                    "name": "railgun name",
-                    "enabled": true,
-                    "connected": true
+                    'id': 'railgunId',
+                    'name': 'railgun name',
+                    'enabled': true,
+                    'connected': true
                 }
             })
         ).to.eql({
                 'entities': {
                     'zoneId': {
                         'railgunId': {
-                            "id": "railgunId",
-                            "name": "railgun name",
-                            "enabled": true,
-                            "connected": true
+                            'id': 'railgunId',
+                            'name': 'railgun name',
+                            'enabled': true,
+                            'connected': true
                         }
                     }
                 },
                 isFetching: false
-            })
-    })
+            });
+    });
 
     it('should handle ZONE_RAILGUNS_CONNECTION_UPDATE_ERROR', () => {
         expect(
@@ -123,24 +123,24 @@ describe('Zone Railgun Reducer', () => {
                 type: ActionTypes.ZONE_RAILGUNS_CONNECTION_UPDATE_ERROR,
                 'zoneId': 'zoneId',
                 'zoneRailgun': {
-                    "id": "railgunId",
-                    "name": "railgun name",
-                    "enabled": true,
-                    "connected": true
+                    'id': 'railgunId',
+                    'name': 'railgun name',
+                    'enabled': true,
+                    'connected': true
                 }
             })
         ).to.eql({
                 'entities': {
                     'zoneId': {
                         'railgunId': {
-                            "id": "railgunId",
-                            "name": "railgun name",
-                            "enabled": true,
-                            "connected": true
+                            'id': 'railgunId',
+                            'name': 'railgun name',
+                            'enabled': true,
+                            'connected': true
                         }
                     }
                 },
                 isFetching: false
-            })
-    })
-})
+            });
+    });
+});

@@ -8,7 +8,7 @@ import { notificationAddSuccess,notificationAddError } from './notifications';
 import * as ActionTypes from '../constants/ActionTypes';
 import { asyncZoneSetActiveZone } from './activeZone';
 import { normalizeZoneGetAll } from '../constants/Schemas';
-import { zoneFetch, zoneFetchSuccess, zoneFetchError} from './zones';
+import { zoneFetch, zoneFetchSuccess, zoneFetchError } from './zones';
 
 /*
  * Zone Provision actions still use reducers/zones.js as the reducer
@@ -17,19 +17,19 @@ import { zoneFetch, zoneFetchSuccess, zoneFetchError} from './zones';
 export function zoneActivationCheck() {
     return {
         type: ActionTypes.ZONE_ACTIVATION_CHECK
-    }
+    };
 }
 
 export function zoneActivationCheckSuccess() {
     return {
         type: ActionTypes.ZONE_ACTIVATION_CHECK_SUCCESS
-    }
+    };
 }
 
 export function zoneActivationCheckError() {
     return {
         type: ActionTypes.ZONE_ACTIVATION_CHECK_ERROR
-    }
+    };
 }
 
 export function asyncZoneActivationCheck(zoneId) {
@@ -38,39 +38,39 @@ export function asyncZoneActivationCheck(zoneId) {
         zoneActivationCheckPutNew(zoneId, function(response) {
             if(v4ResponseOk(response)) {
                 dispatch(zoneActivationCheckSuccess());
-                dispatch(notificationAddSuccess("container.activationCheckCard.success", true));
+                dispatch(notificationAddSuccess('container.activationCheckCard.success', true));
             } else {
                 dispatch(notificationAddClientAPIError(zoneActivationCheckError(), response));
             }
         }, function(error) {
             dispatch(notificationAddClientAPIError(zoneActivationCheckError(), error));
         });
-    }
+    };
 }
 
 export function zonesProvisionCname() {
     return {
         type: ActionTypes.ZONES_PROVISION_CNAME
-    }
+    };
 }
 
 export function zoneProvisionCnameSuccess() {
     return {
         type: ActionTypes.ZONES_PROVISION_CNAME_SUCCESS
-    }
+    };
 }
 
 export function zoneProvisionCnameError() {
     return {
         type: ActionTypes.ZONES_PROVISION_CNAME_ERROR
-    }
+    };
 }
 
 export function asyncZoneProvisionCname(domainName) {
     return dispatch => {
         dispatch(zonesProvisionCname());
 
-        partialZoneSet({zone_name: domainName}, function(response) {
+        partialZoneSet({ zone_name: domainName }, function(response) {
                 if(hostAPIResponseOk(response)) {
                     dispatch(zoneProvisionCnameSuccess());
                     dispatch(asyncSetHostAPIProvisionedDomainActive(domainName));
@@ -83,31 +83,31 @@ export function asyncZoneProvisionCname(domainName) {
                 dispatch(zoneProvisionCnameError());
                 dispatch(notificationAddError(error));
             }); //zoneProvision http error
-    }// end thunk dispatch
+    };// end thunk dispatch
 }
 
 export function zoneProvisionFull() {
     return {
         type: ActionTypes.ZONES_PROVISION_FULL
-    }
+    };
 }
 
 export function zoneProvisionFullSuccess() {
     return {
         type: ActionTypes.ZONES_PROVISION_FULL_SUCCESS
-    }
+    };
 }
 
 export function zoneProvisionFullError() {
     return {
         type: ActionTypes.ZONES_PROVISION_FULL_ERROR
-    }
+    };
 }
 
 export function asyncZoneProvisionFull(domainName) {
     return dispatch => {
         dispatch(zoneProvisionFull());
-        fullZoneSet({zone_name: domainName}, function(response) {
+        fullZoneSet({ zone_name: domainName }, function(response) {
             if(hostAPIResponseOk(response)) {
                dispatch(zoneProvisionFullSuccess());
                dispatch(asyncSetHostAPIProvisionedDomainActive(domainName));
@@ -120,7 +120,7 @@ export function asyncZoneProvisionFull(domainName) {
             dispatch(zoneProvisionFullError());
             dispatch(notificationAddError(error));
         }); //end fullZoneSet
-    }
+    };
 }
 
 /*
@@ -153,5 +153,5 @@ function asyncSetHostAPIProvisionedDomainActive(domainName) {
                 dispatch(zoneFetchError());
                 dispatch(notificationAddError(error));
             });
-    }
+    };
 }

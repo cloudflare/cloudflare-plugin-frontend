@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Redirect, IndexRoute } from 'react-router';
+import { Route, IndexRoute } from 'react-router';
 import * as UrlPaths from './constants/UrlPaths';
 import { isLoggedIn } from './utils/Auth/Auth';
 

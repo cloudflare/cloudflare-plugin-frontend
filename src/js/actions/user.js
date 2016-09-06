@@ -1,4 +1,4 @@
-import { routeActions } from 'redux-simple-router'
+import { routeActions } from 'redux-simple-router';
 import { userAuth, userCreate, hostAPIResponseOk } from '../utils/CFHostAPI/CFHostAPI';
 import { pluginAccountPost, pluginResponseOk } from '../utils/PluginAPI/PluginAPI';
 import { notificationAddError, notificationAddClientAPIError } from './notifications';
@@ -10,7 +10,7 @@ import { asyncFetchZones } from './zones';
 export function userLogin() {
     return {
         type: ActionTypes.USER_LOGIN
-    }
+    };
 }
 
 /*
@@ -23,7 +23,7 @@ export function userLoginSuccess(email) {
     return {
         type: ActionTypes.USER_LOGIN_SUCCESS,
         email
-    }
+    };
 }
 
 export function asyncUserLoginSuccess(email) {
@@ -31,7 +31,7 @@ export function asyncUserLoginSuccess(email) {
         dispatch(userLoginSuccess(email));
         dispatch(asyncFetchZones());
         dispatch(routeActions.push(UrlPaths.HOME_PAGE));
-    }
+    };
 }
 
 
@@ -39,13 +39,13 @@ export function userLoginError(error) {
     return {
         type: ActionTypes.USER_LOGIN_ERROR,
         error
-    }
+    };
 }
 
 export function asyncLogin(email, password) {
     return dispatch => {
         dispatch(userLogin());
-        userAuth({cloudflare_email: email, cloudflare_pass: password}, function(response) {
+        userAuth({ cloudflare_email: email, cloudflare_pass: password }, function(response) {
             if(hostAPIResponseOk(response)) {
                 dispatch(asyncUserLoginSuccess(response.body.response.cloudflare_email));
             } else {
@@ -56,7 +56,7 @@ export function asyncLogin(email, password) {
             dispatch(userLoginError());
             dispatch(notificationAddError(error));
         });
-    }
+    };
 }
 
 export function asyncAPILogin(email, apiKey) {
@@ -73,37 +73,37 @@ export function asyncAPILogin(email, apiKey) {
             dispatch(userLoginError());
             dispatch(notificationAddError(error));
         });
-    }
+    };
 }
 
 export function userLogout() {
     return {
         type: ActionTypes.USER_LOGOUT
-    }
+    };
 }
 
 export function userSignup() {
     return {
         type: ActionTypes.USER_SIGNUP
-    }
+    };
 }
 
 export function userSignupSuccess() {
     return {
         type: ActionTypes.USER_SIGNUP_SUCCESS,
-    }
+    };
 }
 
 export function userSignupError() {
     return {
         type: ActionTypes.USER_SIGNUP_ERROR
-    }
+    };
 }
 
 export function asyncUserSignup(email, password) {
     return dispatch => {
         dispatch(userSignup());
-        userCreate({cloudflare_email: email, cloudflare_pass: password}, function(response) {
+        userCreate({ cloudflare_email: email, cloudflare_pass: password }, function(response) {
             if(hostAPIResponseOk(response)) {
                 dispatch(userSignupSuccess());
                 dispatch(asyncLogin(email, password));
@@ -117,7 +117,7 @@ export function asyncUserSignup(email, password) {
         });
 
 
-    }
+    };
 }
 
 

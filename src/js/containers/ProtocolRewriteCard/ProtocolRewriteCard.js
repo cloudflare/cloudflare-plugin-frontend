@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { Card, CardSection, CardContent, CardControl, CardDrawers } from 'cf-component-card';
+import { Card, CardSection, CardContent, CardControl } from 'cf-component-card';
 import Toggle from 'cf-component-toggle';
 
 import { asyncPluginUpdateSetting } from '../../actions/pluginSettings';
 import { getPluginSettingsValueForZoneId, getPluginSettingsModifiedDateForZoneId } from '../../selectors/pluginSettings';
 import { getLastModifiedDate } from '../../utils/utils';
 
-const SETTING_NAME = "protocol_rewrite";
+const SETTING_NAME = 'protocol_rewrite';
 
 class ProtocolRewriteCard extends Component {
 
@@ -25,7 +25,7 @@ class ProtocolRewriteCard extends Component {
             <div>
                 <Card>
                     <CardSection>
-                        <CardContent title={formatMessage({id: 'container.protocolRewrite.title'})} footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}>
+                        <CardContent title={formatMessage({ id: 'container.protocolRewrite.title' })} footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}>
                             <p><FormattedMessage id="container.protocolRewrite.description" /></p>
                         </CardContent>
                         <CardControl>
@@ -46,6 +46,6 @@ function mapStateToProps(state) {
         activeZoneId: state.activeZone.id,
         protocolRewriteValue: getPluginSettingsValueForZoneId(state.activeZone.id, SETTING_NAME, state),
         modifiedDate: getPluginSettingsModifiedDateForZoneId(state.activeZone.id, SETTING_NAME, state),
-    }
+    };
 }
 export default injectIntl(connect(mapStateToProps)(ProtocolRewriteCard));

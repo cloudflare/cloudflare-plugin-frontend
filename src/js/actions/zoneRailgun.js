@@ -1,11 +1,11 @@
 import { zoneRailgunGetAll, zoneRailgunPatch, v4ResponseOk } from '../utils/CFClientV4API/CFClientV4API';
-import { notificationAddClientAPIError, notificationAddSuccess } from './notifications';
+import { notificationAddClientAPIError } from './notifications';
 import * as ActionTypes from '../constants/ActionTypes';
 
 export function zoneRailgunFetchAll() {
     return {
         type: ActionTypes.ZONE_RAILGUNS_FETCH_ALL
-    }
+    };
 }
 
 export function zoneRailgunFetchAllSuccess(zoneId, zoneRailguns) {
@@ -13,13 +13,13 @@ export function zoneRailgunFetchAllSuccess(zoneId, zoneRailguns) {
         type: ActionTypes.ZONE_RAILGUNS_FETCH_ALL_SUCCESS,
         zoneId,
         zoneRailguns
-    }
+    };
 }
 
 export function zoneRailgunFetchAllError() {
     return {
         type: ActionTypes.ZONE_RAILGUNS_FETCH_ALL_ERROR
-    }
+    };
 }
 
 export function asyncZoneRailgunFetchAll(zoneId) {
@@ -35,7 +35,7 @@ export function asyncZoneRailgunFetchAll(zoneId) {
         function(error){
             dispatch(notificationAddClientAPIError(zoneRailgunFetchAllError(), error));
         });
-    }
+    };
 }
 
 export function zoneRailgunConnectionUpdate(zoneId, zoneRailgun) {
@@ -43,7 +43,7 @@ export function zoneRailgunConnectionUpdate(zoneId, zoneRailgun) {
         type: ActionTypes.ZONE_RAILGUNS_CONNECTION_UPDATE,
         zoneId,
         zoneRailgun
-    }
+    };
 }
 
 export function zoneRailgunConnectionUpdateSuccess(zoneId, zoneRailgun) {
@@ -51,7 +51,7 @@ export function zoneRailgunConnectionUpdateSuccess(zoneId, zoneRailgun) {
         type: ActionTypes.ZONE_RAILGUNS_CONNECTION_UPDATE_SUCCESSS,
         zoneId,
         zoneRailgun
-    }
+    };
 }
 
 export function zoneRailgunConnectionUpdateError(zoneId, zoneRailgun) {
@@ -59,7 +59,7 @@ export function zoneRailgunConnectionUpdateError(zoneId, zoneRailgun) {
         type: ActionTypes.ZONE_RAILGUNS_CONNECTION_UPDATE_ERROR,
         zoneId,
         zoneRailgun
-    }
+    };
 }
 
 export function asyncZoneRailgunConnectionUpdate(zoneId, railgun, isConnected) {
@@ -76,6 +76,6 @@ export function asyncZoneRailgunConnectionUpdate(zoneId, railgun, isConnected) {
         function(error) {
             dispatch(notificationAddClientAPIError(zoneRailgunConnectionUpdateError(zoneId, oldRailgun), error));
         });
-    }
+    };
 }
 

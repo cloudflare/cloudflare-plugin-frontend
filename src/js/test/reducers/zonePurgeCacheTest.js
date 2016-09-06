@@ -11,8 +11,8 @@ describe('Plugin Settings Reducer', () => {
     it('should return the initial state', () => {
         expect(
             zonePurgeCacheReducer(initialState, {})
-        ).to.eql(initialState)
-    })
+        ).to.eql(initialState);
+    });
 
     it('should handle ZONE_PURGE_CACHE', () => {
         expect(
@@ -21,8 +21,8 @@ describe('Plugin Settings Reducer', () => {
             })
         ).to.eql({
             isFetching: true
-        })
-    })
+        });
+    });
 
     it('should handle ZONE_PURGE_CACHE_SUCCESS', () => {
         expect(
@@ -31,8 +31,8 @@ describe('Plugin Settings Reducer', () => {
             })
         ).to.eql({
             isFetching: false
-        })
-    })
+        });
+    });
 
     it('should handle ZONE_PURGE_CACHE_ERROR', () => {
         expect(
@@ -41,6 +41,6 @@ describe('Plugin Settings Reducer', () => {
             })
         ).to.eql({
             isFetching: false
-        })
-    })
-})
+        });
+    });
+});

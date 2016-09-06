@@ -8,7 +8,7 @@ import { notificationAddError } from './notifications';
 export function intlFetchTranslations() {
     return {
         type: ActionTypes.INTL_FETCH_TRANSLATIONS
-    }
+    };
 }
 
 export function intlFetchTranslationsSuccess(locale, translations) {
@@ -16,14 +16,14 @@ export function intlFetchTranslationsSuccess(locale, translations) {
         type: ActionTypes.INTL_FETCH_TRANSLATIONS_SUCCESS,
         locale,
         translations
-    }
+    };
 }
 
 export function intlFetchTranslationsError(error) {
     return {
         type: ActionTypes.INTL_FETCH_TRANSLATIONS_ERROR,
         error
-    }
+    };
 }
 
 export function asyncIntlFetchTranslations(locale) {
@@ -31,7 +31,7 @@ export function asyncIntlFetchTranslations(locale) {
         dispatch(intlFetchTranslations());
 
         let opts = {};
-        opts.headers = {'Accept': 'text/javascript'};
+        opts.headers = { Accept: 'text/javascript' };
         http.get('./lang/'+locale+'.js',opts,function(response) {
                 let translations = JSON.parse(response.text);
                 dispatch(intlFetchTranslationsSuccess(locale, translations));
@@ -41,5 +41,5 @@ export function asyncIntlFetchTranslations(locale) {
                 dispatch(notificationAddError(error));
             });
 
-    }
+    };
 }

@@ -1,8 +1,8 @@
 import * as ActionTypes from '../constants/ActionTypes';
 
 const initialState = {
-    id: "",
-    name: "",
+    id: '',
+    name: '',
 };
 
 export function activeZoneReducer(state = initialState, action) {
@@ -11,7 +11,7 @@ export function activeZoneReducer(state = initialState, action) {
             return Object.assign({}, state, {
                 id: action.zone.id,
                 name: action.zone.name
-            })
+            });
         default:
             return state;
     }

@@ -2,12 +2,7 @@ import React, { Component, PropTypes } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 
-export default class MarketingFeature extends React.Component {
-    static propTypes = {
-        imgSrc: PropTypes.string.isRequired,
-        titleKey: PropTypes.string.isRequired,
-        descriptionKey: PropTypes.string.isRequired
-    };
+export default class MarketingFeature extends Component {
 
     render() {
         /*
@@ -43,3 +38,9 @@ export default class MarketingFeature extends React.Component {
         );
     }
 }
+
+MarketingFeature.propTypes = {
+    imgSrc: PropTypes.string.isRequired,
+    titleKey: PropTypes.string.isRequired,
+    descriptionKey: PropTypes.string.isRequired
+};

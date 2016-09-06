@@ -8,37 +8,37 @@ describe('Config Selector', () => {
         expect(
             getAbsoluteUrl({
                 config : {
-                    [ABSOLUTE_URL_BASE_KEY]: "http://site.com/"
+                    [ABSOLUTE_URL_BASE_KEY]: 'http://site.com/'
                 }
-            }, "test.html")
-        ).to.eql("http://site.com/test.html");
-    })
+            }, 'test.html')
+        ).to.eql('http://site.com/test.html');
+    });
     
     it('getAbsoluteUrl should return url if no absolute url base is present', () => {
         expect(
             getAbsoluteUrl({
                 config : {}
-            }, "test.html")
-        ).to.eql("test.html");
-    })
+            }, 'test.html')
+        ).to.eql('test.html');
+    });
 
     it('getConfigValue should return value if key exists', () => {
         expect(
             getConfigValue({
                 config : {
-                    "key": "value"
+                    'key': 'value'
                 }
-            }, "key")
-        ).to.eql("value");
-    })
+            }, 'key')
+        ).to.eql('value');
+    });
 
     it('isDNSPageEnabled should return true if key is true', () => {
         expect(
             getConfigValue({
                 config : {
-                    "isDNSPageEnabled": true
+                    'isDNSPageEnabled': true
                 }
-            }, "isDNSPageEnabled")
+            }, 'isDNSPageEnabled')
         ).to.eql(true);
-    })
-})
+    });
+});

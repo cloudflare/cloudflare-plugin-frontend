@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import { Button, ButtonGroup } from 'cf-component-button';
-import { Dropdown, DropdownLink, DropdownSeparator } from 'cf-component-dropdown';
+import { Dropdown, DropdownLink } from 'cf-component-dropdown';
 
-import { Card, CardSection, CardContent, CardControl, CardDrawers } from 'cf-component-card';
+import { Card, CardSection, CardContent, CardControl } from 'cf-component-card';
 import { Modal, ModalHeader, ModalTitle, ModalClose, ModalBody, ModalFooter, ModalActions } from 'cf-component-modal';
 import Textarea from 'cf-component-textarea';
 
@@ -13,25 +13,28 @@ import Textarea from 'cf-component-textarea';
 import { asyncZonePurgeCacheEverything, asyncZonePurgeCacheIndividualFiles } from '../../actions/zonePurgeCache';
 
 class PurgeCacheCard extends Component {
-    state = {
-        isModalOpen: false,
-        isIndividual: false,
-        dropdownOpen: false,
-        textareaValue: '',
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            isModalOpen: false,
+            isIndividual: false,
+            dropdownOpen: false,
+            textareaValue: '',
+        };
+    }
 
-    handleTextareaChange(value, self) {
+    handleTextareaChange(value) {
         this.setState({ textareaValue: value });
-    };
+    }
 
     handlePurgeCache() {
         this.handleModalClose();        
         let { activeZoneId, dispatch } = this.props;
-        var zonePurge = this.state.isIndividual ? asyncZonePurgeCacheIndividualFiles(activeZoneId, this.state.textareaValue) : asyncZonePurgeCacheEverything(activeZoneId)
+        var zonePurge = this.state.isIndividual ? asyncZonePurgeCacheIndividualFiles(activeZoneId, this.state.textareaValue) : asyncZonePurgeCacheEverything(activeZoneId);
         dispatch(zonePurge);
     }
 
-    handleModalOpen(individualSelected, self) {
+    handleModalOpen(individualSelected) {
         this.setState({ 
             isModalOpen: true,
             isIndividual: individualSelected,
@@ -61,7 +64,7 @@ class PurgeCacheCard extends Component {
             <div>
                 <Card>
                     <CardSection>
-                        <CardContent  title={formatMessage({id: 'container.purgeCacheCard.title'})}>
+                        <CardContent  title={formatMessage({ id: 'container.purgeCacheCard.title' })}>
                             <p><FormattedMessage id="container.purgeCacheCard.description" /></p>
                         </CardContent>
                         <CardControl>
@@ -87,20 +90,20 @@ class PurgeCacheCard extends Component {
                                 isOpen={this.state.isModalOpen}
                                 onRequestClose={this.handleModalClose.bind(this)}>
                                 <ModalHeader>
-                                    <ModalTitle><FormattedMessage id={ "container." + (this.state.isIndividual ? "purgeCacheByURLCard" : "purgeCacheCard") + ".modal.title" }/></ModalTitle>
+                                    <ModalTitle><FormattedMessage id={ 'container.' + (this.state.isIndividual ? 'purgeCacheByURLCard' : 'purgeCacheCard') + '.modal.title' }/></ModalTitle>
                                     <ModalClose onClick={this.handleModalClose.bind(this)}/>
                                 </ModalHeader>
                                 <ModalBody>
-                                        <p><FormattedMessage id={ "container." + (this.state.isIndividual ? "purgeCacheByURLCard" : "purgeCacheCard") + ".modal.description" }/></p>
+                                        <p><FormattedMessage id={ 'container.' + (this.state.isIndividual ? 'purgeCacheByURLCard' : 'purgeCacheCard') + '.modal.description' }/></p>
                                         {this.renderTextarea()}
                                 </ModalBody>
                                 <ModalFooter>
                                     <ModalActions>
                                         <Button type="primary" onClick={ this.handlePurgeCache.bind(this) }>
-                                            <FormattedMessage id={ "container." + (this.state.isIndividual ? "purgeCacheByURLCard" : "purgeCacheCard") + ".button" }/>
+                                            <FormattedMessage id={ 'container.' + (this.state.isIndividual ? 'purgeCacheByURLCard' : 'purgeCacheCard') + '.button' }/>
                                         </Button>
                                         <Button onClick={this.handleModalClose.bind(this)}>
-                                            <FormattedMessage id={ "container." + (this.state.isIndividual ? "purgeCacheByURLCard" : "purgeCacheCard") + ".modal.buttonCancel" }/>
+                                            <FormattedMessage id={ 'container.' + (this.state.isIndividual ? 'purgeCacheByURLCard' : 'purgeCacheCard') + '.modal.buttonCancel' }/>
                                         </Button>
                                     </ModalActions>
                                 </ModalFooter>
@@ -117,7 +120,7 @@ class PurgeCacheCard extends Component {
 function mapStateToProps(state) {
     return {
         activeZoneId: state.activeZone.id,
-    }
+    };
 }
 export default injectIntl(connect(mapStateToProps)(PurgeCacheCard));
 

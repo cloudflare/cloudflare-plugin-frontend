@@ -19,7 +19,7 @@ class LoginPage extends Component {
 
     render() {
         const { config } = this.props;
-        let isHostAPILogin = getConfigValue(config, "useHostAPILogin");
+        let isHostAPILogin = getConfigValue(config, 'useHostAPILogin');
         return (
             <div>
                 {isHostAPILogin ? (<HostLoginPage/>) : (<ClientLoginPage/>)}
@@ -29,7 +29,7 @@ class LoginPage extends Component {
 }
 
 function mapStateToProps(state) {
-    return { config: state.config }
+    return { config: state.config };
 }
 
 export default connect(mapStateToProps)(LoginPage);
