@@ -10,7 +10,7 @@ import React, { Component, PropTypes } from 'react';
  * It will eventually be replaced by cf-component-*
  */
 
-export default class CloudToggle extends React.Component {
+export default class CloudToggle extends Component {
 
     handleChange(e) {
         this.props.onChange(e.target.checked);
