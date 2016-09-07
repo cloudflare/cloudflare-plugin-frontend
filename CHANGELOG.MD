@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.4.0](#2.4.0) - 2016-09-07
+### Removed
+- Removed the Zone Scan Card. [#35](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/35)
+
 ## [2.3.1](#2.3.1) - 2016-09-07
 ### Added
 - Added eslint and formatted code. [#32](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/32)
