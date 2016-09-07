@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.3.1](#2.3.1) - 2016-09-07
+### Added
+- Added eslint and formatted code. [#32](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/32)
+
+### Changed
+- Updated translations for ApplyDefaultSettingsCard. [#34](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/34)
+- Updated component.js for modification date [#31](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/31)
+
 ## [2.3.0](#2.3.0) - 2016-09-05
 ### Added
 - Display default settings last applied string [#29](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/29)
