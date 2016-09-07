@@ -31,7 +31,7 @@
     "browserify": "^12.0.1",
     "browserify-derequire": "^0.9.4",
     "cf-component-button": "^2.1.2",
-    "cf-component-card": "^0.2.2",
+    "cf-component-card": "^0.2.3",
     "cf-component-checkbox": "^1.0.3",
     "cf-component-dropdown": "^1.0.8",
     "cf-component-flex": "^1.0.2",
