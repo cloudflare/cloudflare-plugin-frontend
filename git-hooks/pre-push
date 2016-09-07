@@ -3,9 +3,9 @@
 <?php
 echo "Running npm run lint...";
 exec('npm run lint', $output, $returnCode);
-if ($returnCode !== 0) {
+if (count($output) !== 8) { // Hard coded array length to 8 since return code is empty
     echo implode("\n", $output);
-    echo "\nERROR: git push aborted because the lint failed. ";
+    echo "\nERROR: git push aborted because the lint failed.";
     exit(1);
 }
 
@@ -13,7 +13,7 @@ echo "\nRunning npm run test...";
 exec('npm run test', $output, $returnCode);
 if ($returnCode !== 0) {
     echo implode("\n", $output);
-    echo "\nERROR: git push aborted because the tests failed. ";
+    echo "\nERROR: git push aborted because the tests failed.";
     exit(1);
 }
 
