@@ -257,35 +257,3 @@ export function zoneRailgunPatch(zoneId, railgunId, connected, onSuccess, onErro
     
     return http.patch(ENDPOINT + '/zones/' + zoneId + '/railguns/' + railgunId, opts, onSuccess, onError);
 }
-
-/*
- * Get CloudFlare Scan for zone
- *
- * @param {String}   [zoneId]
- * @param {Function} [onSuccess]
- * @param {Function} [onError]
- *
- * @returns {Object} API Response
- */
-export function zoneScanGet(zoneId, onSuccess, onError) {
-    return http.get(ENDPOINT + '/zones/' + zoneId + '/scan', {}, onSuccess, onError);
-}
-
-/*
- * Put show_interstitial CloudFlare Scan for zone
- *
- * @param {String}   [zoneId]
- * @param {Boolean}  [showInterstitial]
- * @param {Function} [onSuccess]
- * @param {Function} [onError]
- *
- * @returns {Object} API Response
- */
-export function zoneScanPut(zoneId, showInterstitial, onSuccess, onError) {
-    let opts = {
-        body: {
-            'show_interstitial': showInterstitial
-        }
-    };
-    return http.put(ENDPOINT + '/zones/' + zoneId + '/scan', opts, onSuccess, onError);
-}

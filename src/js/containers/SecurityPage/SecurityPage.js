@@ -8,21 +8,19 @@ import { Heading } from 'cf-component-heading';
 import BrowserIntegrityCheckCard from '../../containers/BrowserIntegrityCheckCard/BrowserIntegrityCheckCard';
 import ChallengePassageCard from '../../containers/ChallengePassageCard/ChallengePassageCard';
 import FeatureManager from '../../components/FeatureManager/FeatureManager';
-import ScanCard from '../../containers/ScanCard/ScanCard';
 import SecurityLevelCard from '../../containers/SecurityLevelCard/SecurityLevelCard';
 import SSLCard from '../../containers/SSLCard/SSLCard';
 
 class SecurityPage extends Component {
 
     render() {
-        let { activeZoneId, zoneScan, zoneSettings } = this.props;
+        let { activeZoneId, zoneSettings } = this.props;
         let isSettingsEmpty = _.isEmpty(zoneSettings.entities[activeZoneId]);
-        let isScanEmpty = _.isEmpty(zoneScan.entities[activeZoneId]);
 
         return (
             <div>
-                {(isSettingsEmpty || isScanEmpty) && (<FormattedMessage id="errors.noActiveZoneSelected"/>)}
-                {(!isSettingsEmpty && !isScanEmpty) && (
+                {isSettingsEmpty && (<FormattedMessage id="errors.noActiveZoneSelected"/>)}
+                {!isSettingsEmpty && (
                     <div>
                         <Heading size={1}><FormattedMessage id="container.securityPage.title"/></Heading>
                         <FeatureManager isEnabled={this.props.config.featureManagerIsSSLEnabled}>
@@ -56,7 +54,6 @@ function mapStateToProps(state) {
         activeZoneId: state.activeZone.id,
         config: state.config.config,
         zoneSettings: state.zoneSettings,
-        zoneScan: state.zoneScan
     };
 }
 export default injectIntl(connect(mapStateToProps)(SecurityPage));

@@ -10,8 +10,8 @@ import { renderCards } from '../../components/RenderCardsDynamically/RenderCards
 
 class HomePage extends Component {
     render() {
-        let { activeZoneId, config, zoneSettings, zoneScan } = this.props;
-        let isEmpty = _.isEmpty(zoneSettings[activeZoneId]) && _.isEmpty(getPluginSettingsForZoneId(activeZoneId, this.state)) && _.isEmpty(zoneScan.entities[activeZoneId]);
+        let { activeZoneId, config, zoneSettings } = this.props;
+        let isEmpty = _.isEmpty(zoneSettings[activeZoneId]) && _.isEmpty(getPluginSettingsForZoneId(activeZoneId, this.state));
 
         return (
             <div>
@@ -33,7 +33,6 @@ function mapStateToProps(state) {
         activeZoneId: state.activeZone.id,
         config: state.config.config,
         zoneSettings: state.zoneSettings.entities,
-        zoneScan: state.zoneScan
     };
 }
 export default injectIntl(connect(mapStateToProps)(HomePage));
