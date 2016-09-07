@@ -17,4 +17,5 @@ if ($returnCode !== 0) {
     exit(1);
 }
 
+echo "\n";
 exit(0);

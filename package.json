@@ -7,7 +7,7 @@
     "test": "mocha src/js/test/*/*.js --compilers js:babel-register",
     "lint": "./node_modules/.bin/eslint src/js/**/*.js --fix",
     "start": "http-server -a localhost -p 8000 -c-1",
-    "postinstall": "bash .git-hooks/setup.sh"
+    "postinstall": "bash git-hooks/setup.sh"
   },
   "repository": {
     "type": "git",
