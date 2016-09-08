@@ -3,7 +3,7 @@
 <?php
 echo "Running npm run lint...";
 exec('npm run lint', $output, $returnCode);
-if (count($output) !== 8) { // Hard coded array length to 8 since return code is empty
+if (strstr(implode(' ', $output) , "problem")) {
     echo implode("\n", $output);
     echo "\nERROR: git push aborted because the lint failed.";
     exit(1);
