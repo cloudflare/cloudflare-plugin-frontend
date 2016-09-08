@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { injectIntl, FormattedMessage } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import { NotificationGlobalContainer, NotificationList, Notification } from 'cf-component-notifications';
 import * as NotificationActionCreators from '../../actions/notifications';
 
@@ -12,12 +12,13 @@ class GlobalNotifications extends Component {
 
     render() {
         let { notifications } = this.props;
+        const { formatMessage } = this.props.intl;
 
         const newNotifications = notifications.map(n => {
             return <Notification
                 key={n.key} 
                 type={n.level}
-                message={n.localized ? (<FormattedMessage id={n.message}/>) : n.message}
+                message={n.localized ? formatMessage({ id: n.message }) : n.message}
                 delay={n.delay}
                 persist={n.persistant}
                 onClose={this.handleClose.bind(this, n.key)}/>;

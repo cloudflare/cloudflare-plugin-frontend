@@ -5,8 +5,9 @@
   "main": "gulpfile.js",
   "scripts": {
     "test": "mocha src/js/test/*/*.js --compilers js:babel-register",
-    "lint": "./node_modules/.bin/eslint src/js/**/*.js --fix",
-    "start": "http-server -a localhost -p 8000 -c-1"
+    "lint": "gulp lint",
+    "start": "http-server -a localhost -p 8000 -c-1",
+    "postinstall": "bash git-hooks/setup.sh"
   },
   "repository": {
     "type": "git",
@@ -58,6 +59,8 @@
     "express": "^4.13.4",
     "gulp": "^3.9.0",
     "gulp-babel": "^6.1.2",
+    "gulp-eslint": "^3.0.1",
+    "gulp-plumber": "^1.1.0",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-util": "^3.0.7",
     "gulp-wrap": "^0.12.0",

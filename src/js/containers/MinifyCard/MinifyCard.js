@@ -8,7 +8,6 @@ import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
 import { getLastModifiedDate } from '../../utils/utils';
 import { getZoneSettingsValueForZoneId, getZoneSettingsModifiedDateForZoneId } from '../../selectors/zoneSettings';
 
-
 const SETTING_NAME = 'minify';
 
 class MinifyCard extends Component {
