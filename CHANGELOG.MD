@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.4.1](#2.4.1) - 2016-09-08
+### Added
+- Added Eslint. [#35](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/35)
+
+### Changed
+- Fixed bug where localized notifications outputed error to console. [f2c74e](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/33/commits/f2c74ed7d00f1d6950696c37490b41f6481115b2)
+
 ## [2.4.0](#2.4.0) - 2016-09-07
 ### Removed
 - Removed the Zone Scan Card. [#35](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/35)
