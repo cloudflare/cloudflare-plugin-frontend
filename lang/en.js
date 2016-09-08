@@ -159,8 +159,6 @@
     "container.railgunCard.table.active": "Active",
     "container.railgunCard.table.inactive": "Inactive",
     "container.railgunCard.noRailgunsAvailable": "No Railguns are currently configured from your hosting provider for {zoneName}.",
-    "container.scanCard.description": "Show an interstitial to your website visitors if CloudFlare detects Malware on your website.",
-    "container.scanCard.title": "Scan",
     "container.signup.error.emailBlank": "Your Email address cannot be blank.",
     "container.signup.error.passwordBlank": "Your password can not be blank.",
     "container.signup.error.passwordsDontMatch": "The passwords you entered do not match.",
