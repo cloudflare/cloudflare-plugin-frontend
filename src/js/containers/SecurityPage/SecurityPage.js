@@ -38,10 +38,6 @@ class SecurityPage extends Component {
                         <FeatureManager isEnabled={this.props.config.featureManagerIsBrowserIntegrityCheckEnabled}>
                             <BrowserIntegrityCheckCard/>
                         </FeatureManager>
-
-                        <FeatureManager isEnabled={this.props.config.featureManagerIsScanEnabled}>
-                            <ScanCard/>
-                        </FeatureManager>
                     </div>
                 )}
             </div>
