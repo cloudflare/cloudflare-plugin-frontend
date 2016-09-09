@@ -59,16 +59,13 @@ export function asyncLogin(email, password) {
 export function asyncAPILogin(email, apiKey) {
     return dispatch => {
         dispatch(userLogin());
-        pluginAccountPost(email, apiKey, function(response){
+        pluginAccountPost(email, apiKey, function(error, response){
             if(pluginResponseOk(response)) {
                 dispatch(asyncUserLoginSuccess(email));
             } else {
                 dispatch(userLoginError());
-                dispatch(notificationAddClientAPIError(userLoginError(), response));
+                dispatch(notificationAddClientAPIError(userLoginError(), error));
             }
-        }, function(error){
-            dispatch(userLoginError());
-            dispatch(notificationAddError(error));
         });
     };
 }
@@ -100,17 +97,14 @@ export function userSignupError() {
 export function asyncUserSignup(email, password) {
     return dispatch => {
         dispatch(userSignup());
-        userCreate({ cloudflare_email: email, cloudflare_pass: password }, function(response) {
+        userCreate({ cloudflare_email: email, cloudflare_pass: password }, function(error, response) {
             if(hostAPIResponseOk(response)) {
                 dispatch(userSignupSuccess());
                 dispatch(asyncLogin(email, password));
             } else {
                 dispatch(userSignupError());
-                dispatch(notificationAddError(response.body.msg));
+                dispatch(notificationAddError(error));
             }
-        },function(error){
-            dispatch(userSignupError());
-            dispatch(notificationAddError(error));
         });
 
 
