@@ -11,7 +11,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Added Eslint. [#35](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/35)
 
-### Changed
+### Fixed
 - Fixed bug where localized notifications outputed error to console. [f2c74e](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/33/commits/f2c74ed7d00f1d6950696c37490b41f6481115b2)
 
 ## [2.4.0](#2.4.0) - 2016-09-07

@@ -8,7 +8,7 @@ import { notificationAddSuccess,notificationAddError } from './notifications';
 import * as ActionTypes from '../constants/ActionTypes';
 import { asyncZoneSetActiveZone } from './activeZone';
 import { normalizeZoneGetAll } from '../constants/Schemas';
-import { zoneFetch, zoneFetchSuccess, zoneFetchError } from './zones';
+import { zoneFetch, zoneFetchSuccess } from './zones';
 
 /*
  * Zone Provision actions still use reducers/zones.js as the reducer
