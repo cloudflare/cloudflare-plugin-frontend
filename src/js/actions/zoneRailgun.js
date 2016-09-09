@@ -25,15 +25,12 @@ export function zoneRailgunFetchAllError() {
 export function asyncZoneRailgunFetchAll(zoneId) {
     return dispatch => {
         dispatch(zoneRailgunFetchAll());
-        zoneRailgunGetAll(zoneId, function(response) {
+        zoneRailgunGetAll(zoneId, function(error, response) {
             if(v4ResponseOk(response)) {
                 dispatch(zoneRailgunFetchAllSuccess(zoneId, response.body.result));
             } else {
-                dispatch(notificationAddClientAPIError(zoneRailgunFetchAllError(), response));
+                dispatch(notificationAddClientAPIError(zoneRailgunFetchAllError(), error));
             }
-        },
-        function(error){
-            dispatch(notificationAddClientAPIError(zoneRailgunFetchAllError(), error));
         });
     };
 }
@@ -66,15 +63,12 @@ export function asyncZoneRailgunConnectionUpdate(zoneId, railgun, isConnected) {
     return dispatch => {
         let oldRailgun = Object.assign({}, railgun);
         dispatch(zoneRailgunConnectionUpdate(zoneId, Object.assign({}, railgun, { connected: isConnected })));
-        zoneRailgunPatch(zoneId, railgun.id, isConnected, function(response) {
+        zoneRailgunPatch(zoneId, railgun.id, isConnected, function(error, response) {
             if(v4ResponseOk(response)) {
                 dispatch(zoneRailgunConnectionUpdateSuccess(zoneId, response.body.result));
             } else {
-                dispatch(notificationAddClientAPIError(zoneRailgunConnectionUpdateError(zoneId, oldRailgun), response));
+                dispatch(notificationAddClientAPIError(zoneRailgunConnectionUpdateError(zoneId, oldRailgun), error));
             }
-        },
-        function(error) {
-            dispatch(notificationAddClientAPIError(zoneRailgunConnectionUpdateError(zoneId, oldRailgun), error));
         });
     };
 }

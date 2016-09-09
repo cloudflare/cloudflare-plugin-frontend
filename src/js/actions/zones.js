@@ -31,23 +31,17 @@ export function asyncZoneDelete(zoneId) {
     return dispatch => {
         dispatch(zoneDelete(zoneId));
 
-        zoneDeleteZone(zoneId, function(response){
-                if(v4ResponseOk(response)) {
-                    dispatch(zoneDeleteSuccess());
-                    dispatch(dnsRecordClearAll(zoneId));
-                    //after we provision a cname refresh the zone list
-                    dispatch(asyncFetchZones());
-                } else {
-                    dispatch(zoneDeleteError());
-                    response.body.errors.forEach(function(error) {
-                        dispatch(notificationAddError(error.message));
-                    });
-                }
-            },
-            function(error){
-                dispatch(zoneFetchError());
+        zoneDeleteZone(zoneId, function(error, response){
+            if(v4ResponseOk(response)) {
+                dispatch(zoneDeleteSuccess());
+                dispatch(dnsRecordClearAll(zoneId));
+                //after we provision a cname refresh the zone list
+                dispatch(asyncFetchZones());
+            } else {
+                dispatch(zoneDeleteError());
                 dispatch(notificationAddError(error));
-            });
+            }
+        });
     };
 }
 
@@ -72,25 +66,19 @@ export function zoneFetchError(error) {
 }
 
 export function asyncFetchZones() {
-        return dispatch => {
-            dispatch(zoneFetch());
+    return dispatch => {
+        dispatch(zoneFetch());
 
-            zoneGetAll(function (response) {
-                    if (v4ResponseOk(response)) {
-                        dispatch(zoneFetchSuccess(response.body.result));
-                        if(response.body.result[0]) {
-                            dispatch(zoneSetActiveZoneIfEmpty(response.body.result[0]));
-                        }
-                    } else {
-                        dispatch(zoneFetchError());
-                        response.body.errors.forEach(function (error) {
-                            dispatch(notificationAddError(error.message));
-                        });
+        zoneGetAll(function (error, response) {
+                if (v4ResponseOk(response)) {
+                    dispatch(zoneFetchSuccess(response.body.result));
+                    if(response.body.result[0]) {
+                        dispatch(zoneSetActiveZoneIfEmpty(response.body.result[0]));
                     }
-                },
-                function (error) {
+                } else {
                     dispatch(zoneFetchError());
                     dispatch(notificationAddError(error));
-                });
-        };
+                }
+            });
+    };
 }

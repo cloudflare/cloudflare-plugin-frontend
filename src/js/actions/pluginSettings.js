@@ -53,14 +53,12 @@ export function pluginUpdateSettingError(zoneId, setting) {
 export function asyncPluginFetchSettings(zoneId) {
     return dispatch => {
         dispatch(pluginFetchSettings());
-        pluginSettingListGet({ zoneId: zoneId }, function(response){
-            if(pluginResponseOk(response)) {
+        pluginSettingListGet({ zoneId: zoneId }, function(error, response) {
+            if (pluginResponseOk(response)) {
                 dispatch(pluginFetchSettingsSuccess(zoneId, response.body.result));
             } else {
-                dispatch(notificationAddClientAPIError(pluginFetchSettingsError(),response));
+                dispatch(notificationAddClientAPIError(pluginFetchSettingsError(), error));
             }
-        }, function(error) {
-            dispatch(notificationAddClientAPIError(pluginFetchSettingsError(), error));
         });
     };
 }
@@ -70,19 +68,16 @@ export function asyncPluginUpdateSetting(settingName, zoneId, value) {
         let oldSetting = getState().pluginSettings.entities[zoneId][settingName];
 
         dispatch(pluginUpdateSetting(zoneId, { id: settingName, value: value }));
-        pluginSettingPatch(zoneId, settingName, value, function(response) {
-            if(pluginResponseOk(response)) {
+        pluginSettingPatch(zoneId, settingName, value, function(error, response) {
+            if (pluginResponseOk(response)) {
                 dispatch(pluginUpdateSettingSuccess(zoneId, response.body.result));
 
                 if (settingName == 'default_settings') {
                     dispatch(notificationAddSuccess('container.applydefaultsettingscard.success', true));
                 }
             } else {
-                dispatch(notificationAddClientAPIError(pluginUpdateSettingError(zoneId, oldSetting), response));
+                dispatch(notificationAddClientAPIError(pluginUpdateSettingError(zoneId, oldSetting), error));
             }
-        },
-        function(error) {
-            dispatch(notificationAddClientAPIError(pluginUpdateSettingError(zoneId, oldSetting), error));
         });
     };
 }

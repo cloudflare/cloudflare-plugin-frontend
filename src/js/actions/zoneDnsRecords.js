@@ -34,16 +34,14 @@ export function dnsRecordCreateError() {
 export function asyncDNSRecordCreate(zoneId, type, name, content) {
     return dispatch => {
         dispatch(dnsRecordCreate(name));
-        zoneDNSRecordPostNew({ zoneId: zoneId, type: type, name: name, content: content }, function(response) {
+        zoneDNSRecordPostNew({ zoneId: zoneId, type: type, name: name, content: content }, function(error, response) {
             if(v4ResponseOk(response)) {
                 dispatch(dnsRecordCreateSuccess(zoneId, response.body.result));
                 //CloudFlare defaults new records with proxied = false.
                 dispatch(asyncDNSRecordUpdate(zoneId, response.body.result, true));
             } else {
-                dispatch(notificationAddClientAPIError(dnsRecordCreateError(), response));
-            }
-        }, function(error) {
                 dispatch(notificationAddClientAPIError(dnsRecordCreateError(), error));
+            }
         });
     };
 }
@@ -71,14 +69,12 @@ export function dnsRecordFetchListError() {
 export function asyncDNSRecordFetchList(zoneId) {
     return dispatch => {
         dispatch(dnsRecordFetchList());
-        zoneDNSRecordGetAll(zoneId, function(response) {
+        zoneDNSRecordGetAll(zoneId, function(error, response) {
             if(v4ResponseOk(response)) {
                 dispatch(dnsRecordFetchListSuccess(zoneId, response.body.result));
             } else {
-                dispatch(notificationAddClientAPIError(dnsRecordFetchListError(), response));
+                dispatch(notificationAddClientAPIError(dnsRecordFetchListError(), error));
             }
-        }, function(error) {
-            dispatch(notificationAddClientAPIError(dnsRecordFetchListError(), error));
         });
     };
 }
@@ -107,14 +103,12 @@ export function dnsRecordUpdateError() {
 export function asyncDNSRecordUpdate(zoneId, dnsRecord, proxied) {
     return dispatch => {
         dispatch(dnsRecordUpdate(dnsRecord.name));
-        zoneDNSRecordPatch({ zoneId: zoneId, dnsRecordId: dnsRecord.id, proxied: proxied }, function(response){
+        zoneDNSRecordPatch({ zoneId: zoneId, dnsRecordId: dnsRecord.id, proxied: proxied }, function(error, response) {
             if(v4ResponseOk(response)) {
                 dispatch(dnsRecordUpdateSuccess(zoneId, response.body.result));
             } else {
-                dispatch(notificationAddClientAPIError(dnsRecordUpdateError, response));
+                dispatch(notificationAddClientAPIError(dnsRecordUpdateError, error));
             }
-        }, function(error){
-            dispatch(notificationAddClientAPIError(dnsRecordUpdateError, error));
         });
     };
 }

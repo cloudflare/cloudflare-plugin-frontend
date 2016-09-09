@@ -32,14 +32,14 @@ export function asyncIntlFetchTranslations(locale) {
 
         let opts = {};
         opts.headers = { Accept: 'text/javascript' };
-        http.get('./lang/'+locale+'.js',opts,function(response) {
+        http.get('./lang/'+locale+'.js', opts, function(error, response) {
+            if(response) {
                 let translations = JSON.parse(response.text);
                 dispatch(intlFetchTranslationsSuccess(locale, translations));
                 dispatch(applicationInit());
-            },
-            function(error) {
+            } else {
                 dispatch(notificationAddError(error));
-            });
-
+            }
+        });
     };
 }

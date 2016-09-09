@@ -29,16 +29,13 @@ export function zoneFetchSettingsError() {
 export function asyncZoneFetchSettings(zoneId) {
     return dispatch => {
         dispatch(zoneFetchSettings());
-        zoneGetSettings(zoneId, function(response){
-                if(v4ResponseOk(response)) {
-                    dispatch(zoneFetchSettingsSuccess(zoneId, response.body.result));
-                } else {
-                    dispatch(notificationAddClientAPIError(zoneFetchSettingsError(), response));
-                }
-            },
-            function(error){
+        zoneGetSettings(zoneId, function(error, response){
+            if(v4ResponseOk(response)) {
+                dispatch(zoneFetchSettingsSuccess(zoneId, response.body.result));
+            } else {
                 dispatch(notificationAddClientAPIError(zoneFetchSettingsError(), error));
-            });
+            }
+        });
     };
 }
 
@@ -71,15 +68,12 @@ export function asyncZoneUpdateSetting(settingName, zoneId, value) {
         let oldSetting = getState().zoneSettings.entities[zoneId][settingName];
 
         dispatch(zoneUpdateSetting(zoneId, { id: settingName, value: value }));
-        zonePatchSetting(settingName, zoneId, value, function(response) {
-                if(v4ResponseOk(response)) {
-                    dispatch(zoneUpdateSettingSuccess(zoneId, response.body.result));
-                } else {
-                    dispatch(notificationAddClientAPIError(zoneUpdateSettingError(zoneId, oldSetting), response));
-                }
-            },
-            function(error) {
+        zonePatchSetting(settingName, zoneId, value, function(error, response) {
+            if(v4ResponseOk(response)) {
+                dispatch(zoneUpdateSettingSuccess(zoneId, response.body.result));
+            } else {
                 dispatch(notificationAddClientAPIError(zoneUpdateSettingError(zoneId, oldSetting), error));
-            });
+            }
+        });
     };
 }

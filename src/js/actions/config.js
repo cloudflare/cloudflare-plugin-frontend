@@ -32,10 +32,11 @@ export function asyncConfigFetch() {
 
         let opts = {};
         opts.headers = { Accept: 'text/javascript' };
-        http.get('./config.js', opts, function (response) {
+        http.get('./config.js', opts, function (error, response) {
+            if(response) {
                 let config = JSON.parse(response.text);
                 dispatch(configFetchSuccess(config));
-                if(typeof absoluteUrlBase !== 'undefined') {
+                if (typeof absoluteUrlBase !== 'undefined') {
                     /*
                      * Some integrations don't work with relative paths because the URL doesn't match
                      * the actual file path, this function allows integrations to configure a base absolute
@@ -46,15 +47,14 @@ export function asyncConfigFetch() {
                 }
                 dispatch(asyncIntlFetchTranslations(config.locale));
                 //log user in if their email is in local storage
-                if(isLoggedIn()) {
+                if (isLoggedIn()) {
                     dispatch(asyncUserLoginSuccess(getEmail()));
                 }
-
-            },
-            function (error) {
+            } else {
                 dispatch(configFetchError());
                 dispatch(notificationAddError(error));
-            });
+            }
+        });
     };
 }
 
