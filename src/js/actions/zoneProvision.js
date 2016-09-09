@@ -35,15 +35,13 @@ export function zoneActivationCheckError() {
 export function asyncZoneActivationCheck(zoneId) {
     return dispatch => {
         dispatch(zoneActivationCheck());
-        zoneActivationCheckPutNew(zoneId, function(response) {
+        zoneActivationCheckPutNew(zoneId, function(error, response) {
             if(v4ResponseOk(response)) {
                 dispatch(zoneActivationCheckSuccess());
                 dispatch(notificationAddSuccess('container.activationCheckCard.success', true));
             } else {
-                dispatch(notificationAddClientAPIError(zoneActivationCheckError(), response));
+                dispatch(notificationAddClientAPIError(zoneActivationCheckError(), error));
             }
-        }, function(error) {
-            dispatch(notificationAddClientAPIError(zoneActivationCheckError(), error));
         });
     };
 }
@@ -70,19 +68,15 @@ export function asyncZoneProvisionCname(domainName) {
     return dispatch => {
         dispatch(zonesProvisionCname());
 
-        partialZoneSet({ zone_name: domainName }, function(response) {
+        partialZoneSet({ zone_name: domainName }, function(error, response) {
                 if(hostAPIResponseOk(response)) {
                     dispatch(zoneProvisionCnameSuccess());
                     dispatch(asyncSetHostAPIProvisionedDomainActive(domainName));
                 } else {
                     dispatch(zoneProvisionCnameError());
-                    dispatch(notificationAddError(response.body.msg));
+                    dispatch(notificationAddError(error));
                 } // zoneProvision business logic error
-            },
-            function(error) {
-                dispatch(zoneProvisionCnameError());
-                dispatch(notificationAddError(error));
-            }); //zoneProvision http error
+            });
     };// end thunk dispatch
 }
 
@@ -107,7 +101,7 @@ export function zoneProvisionFullError() {
 export function asyncZoneProvisionFull(domainName) {
     return dispatch => {
         dispatch(zoneProvisionFull());
-        fullZoneSet({ zone_name: domainName }, function(response) {
+        fullZoneSet({ zone_name: domainName }, function(error, response) {
             if(hostAPIResponseOk(response)) {
                dispatch(zoneProvisionFullSuccess());
                dispatch(asyncSetHostAPIProvisionedDomainActive(domainName));
@@ -115,10 +109,6 @@ export function asyncZoneProvisionFull(domainName) {
                 dispatch(zoneProvisionFullError());
                 dispatch(notificationAddError(error));
             }
-        },
-        function(error) {
-            dispatch(zoneProvisionFullError());
-            dispatch(notificationAddError(error));
         }); //end fullZoneSet
     };
 }
@@ -137,21 +127,14 @@ export function asyncZoneProvisionFull(domainName) {
 function asyncSetHostAPIProvisionedDomainActive(domainName) {
     return dispatch => {
         dispatch(zoneFetch());
-        zoneGetAll(function (response) {
-                if (v4ResponseOk(response)) {
-                    dispatch(zoneFetchSuccess(response.body.result));
-                    let normalizedZoneList = normalizeZoneGetAll(response.body.result);
-                    dispatch(asyncZoneSetActiveZone(normalizedZoneList.entities.zones[domainName]));
-                } else {
-                    dispatch(zoneFetchError());
-                    response.body.errors.forEach(function (error) {
-                        dispatch(notificationAddError(error.message));
-                    });
-                }
-            },
-            function (error) {
-                dispatch(zoneFetchError());
+        zoneGetAll(function (error, response) {
+            if (v4ResponseOk(response)) {
+                dispatch(zoneFetchSuccess(response.body.result));
+                let normalizedZoneList = normalizeZoneGetAll(response.body.result);
+                dispatch(asyncZoneSetActiveZone(normalizedZoneList.entities.zones[domainName]));
+            } else {
                 dispatch(notificationAddError(error));
-            });
+            }
+        });
     };
 }

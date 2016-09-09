@@ -25,14 +25,12 @@ export function zoneFetchAnalyticsError() {
 export function asyncZoneFetchAnalytics(zoneId) {
     return dispatch => {
         dispatch(zoneFetchAnalytics());
-        zoneAnalyticsDashboardGet({ zoneId: zoneId }, function(response){
+        zoneAnalyticsDashboardGet({ zoneId: zoneId }, function(error, response){
             if(v4ResponseOk(response)) {
                 dispatch(zoneFetchAnalyticsSuccess(zoneId, response.body.result));
             } else {
-                dispatch(notificationAddClientAPIError(zoneFetchAnalyticsError(),response));
+                dispatch(notificationAddClientAPIError(zoneFetchAnalyticsError(), error));
             }
-        }, function(error) {
-            dispatch(notificationAddClientAPIError(zoneFetchAnalyticsError(), error));
         });
     };
 }

@@ -45,16 +45,13 @@ export function userLoginError(error) {
 export function asyncLogin(email, password) {
     return dispatch => {
         dispatch(userLogin());
-        userAuth({ cloudflare_email: email, cloudflare_pass: password }, function(response) {
-            if(hostAPIResponseOk(response)) {
+        userAuth({ cloudflare_email: email, cloudflare_pass: password }, function(error, response) {
+            if (hostAPIResponseOk(response)) {
                 dispatch(asyncUserLoginSuccess(response.body.response.cloudflare_email));
             } else {
                 dispatch(userLoginError());
-                dispatch(notificationAddError(response.body.msg));
+                dispatch(notificationAddError(error));
             }
-        }, function(error) {
-            dispatch(userLoginError());
-            dispatch(notificationAddError(error));
         });
     };
 }
