@@ -21,15 +21,21 @@ class ImageOptimizationCard extends Component {
 
     handleChange(value) {
         let { activeZoneId, dispatch } = this.props;
-        value = (value === true ? 'on' : 'off');
-        dispatch(asyncZoneUpdateSetting(SETTING_NAME_MIRAGE, activeZoneId, value));
-        dispatch(asyncZoneUpdateSetting(SETTING_NAME_POLISH, activeZoneId, value));
+
+        if (value === true) {
+            dispatch(asyncZoneUpdateSetting(SETTING_NAME_MIRAGE, activeZoneId, "on"));
+            dispatch(asyncZoneUpdateSetting(SETTING_NAME_POLISH, activeZoneId, "lossless"));    
+        } else {
+            dispatch(asyncZoneUpdateSetting(SETTING_NAME_MIRAGE, activeZoneId, "off"));
+            dispatch(asyncZoneUpdateSetting(SETTING_NAME_POLISH, activeZoneId, "off"));    
+        }        
     }
 
     render() {
         let { activeZone, zones, modifiedDate } = this.props;
         let zone = zones[activeZone.name];
-        let imageOptimizationValue = (this.props.mirageValue == 'on') && (this.props.polishValue == 'on');
+        let imageOptimizationValue = (this.props.mirageValue === 'on') && (this.props.polishValue === 'lossless');
+
         const { formatMessage } = this.props.intl;
 
         return (
@@ -42,7 +48,7 @@ class ImageOptimizationCard extends Component {
                         <CustomCardControl minimumPlan={ MINIMUM_PLAN } currentPlan={ zone.plan.legacy_id } indentifier={ SETTING_NAME }>
                             <Toggle
                                 label=""
-                                value={(imageOptimizationValue == 'on')}
+                                value={(imageOptimizationValue)}
                                 onChange={this.handleChange.bind(this)}/>
                         </CustomCardControl>
                     </CardSection>
