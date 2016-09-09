@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.4.2](#2.4.2) - 2016-09-08
+### Changed
+- Changed all async actions to use the new cf-util-http method signature. [#37](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/37)
+- Upgraded cf-util-http to fix bug where beforeCallback request method changes were not being persisted. [#36](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/36)
+
 ## [2.4.1](#2.4.1) - 2016-09-08
 ### Added
 - Added Eslint. [#35](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/35)
