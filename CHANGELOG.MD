@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.4.3](#2.4.3) - 2016-09-12
+### Changed
+- Updated ImageOptimizationCard due to polish API changed. [#38](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/38)
+
+### Fixed
+- Fixed a bug where login wasn't using the new cf-util-http method signature [#39](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/39)
+
 ## [2.4.2](#2.4.2) - 2016-09-08
 ### Changed
 - Changed all async actions to use the new cf-util-http method signature. [#37](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/37)
