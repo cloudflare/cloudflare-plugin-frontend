@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.4.4](#2.4.4) - 2016-09-14
+### Fixed
+- Fixed www prefix counting as subdomain. [#40](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/40)
+
 ## [2.4.3](#2.4.3) - 2016-09-12
 ### Changed
 - Updated ImageOptimizationCard due to polish API changed. [#38](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/38)
