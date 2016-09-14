@@ -14,10 +14,15 @@ function extractDomain(url) {
     return domain;
 }
 
+function beginsWith(needle, haystack){
+    return (haystack.substr(0, needle.length) == needle);
+}
+
 export function isSubdomain(selectedZoneName) {
     var currentDomainName = extractDomain(document.URL);
 
     if (currentDomainName.endsWith(selectedZoneName) &&
+        !beginsWith("www.", currentDomainName) &&
         selectedZoneName !== currentDomainName &&
         currentDomainName && selectedZoneName) {
         return true;
