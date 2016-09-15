@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.4.5](#2.4.5) - 2016-09-15
+### Fixed
+- Fixed Updating asyncAction error handling to pass response instead of error variable for business logic error. [#42](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/42)
+
+### Removed
+- Removed ApplyDefaultSettingsCard Modal. [#41](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/41)
+
 ## [2.4.4](#2.4.4) - 2016-09-14
 ### Fixed
 - Fixed www prefix counting as subdomain. [#40](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/40)
