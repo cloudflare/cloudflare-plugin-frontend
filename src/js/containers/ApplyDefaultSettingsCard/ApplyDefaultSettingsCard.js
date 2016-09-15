@@ -14,10 +14,6 @@ const SETTING_NAME = 'default_settings';
 const VALUE = true;
 
 class ApplyDefaultSettingsCard extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     onButtonClick() {
         let { activeZoneId, dispatch } = this.props;
         dispatch(asyncPluginUpdateSetting(SETTING_NAME, activeZoneId, VALUE));
