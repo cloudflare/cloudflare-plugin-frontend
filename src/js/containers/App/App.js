@@ -49,11 +49,11 @@ class AppContainer extends Component {
                         <LayoutColumn width={1/3}>&nbsp;</LayoutColumn>
                     </LayoutRow>
                     <LayoutRow>
-                        <LayoutColumn width={1/4}>&nbsp;</LayoutColumn>
-                        <LayoutColumn width={2/4}>
+                        <LayoutColumn width={1/5}>&nbsp;</LayoutColumn>
+                        <LayoutColumn width={3/5}>
                             {this.props.children}
                         </LayoutColumn>
-                        <LayoutColumn width={1/4}>&nbsp;</LayoutColumn>
+                        <LayoutColumn width={1/5}>&nbsp;</LayoutColumn>
                     </LayoutRow>
                     <LayoutRow>
                         <LayoutColumn width={1/1}>
