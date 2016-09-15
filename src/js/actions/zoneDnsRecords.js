@@ -40,7 +40,7 @@ export function asyncDNSRecordCreate(zoneId, type, name, content) {
                 //CloudFlare defaults new records with proxied = false.
                 dispatch(asyncDNSRecordUpdate(zoneId, response.body.result, true));
             } else {
-                dispatch(notificationAddClientAPIError(dnsRecordCreateError(), error));
+                dispatch(notificationAddClientAPIError(dnsRecordCreateError(), response));
             }
         });
     };
@@ -73,7 +73,7 @@ export function asyncDNSRecordFetchList(zoneId) {
             if(v4ResponseOk(response)) {
                 dispatch(dnsRecordFetchListSuccess(zoneId, response.body.result));
             } else {
-                dispatch(notificationAddClientAPIError(dnsRecordFetchListError(), error));
+                dispatch(notificationAddClientAPIError(dnsRecordFetchListError(), response));
             }
         });
     };
@@ -107,7 +107,7 @@ export function asyncDNSRecordUpdate(zoneId, dnsRecord, proxied) {
             if(v4ResponseOk(response)) {
                 dispatch(dnsRecordUpdateSuccess(zoneId, response.body.result));
             } else {
-                dispatch(notificationAddClientAPIError(dnsRecordUpdateError, error));
+                dispatch(notificationAddClientAPIError(dnsRecordUpdateError, response));
             }
         });
     };

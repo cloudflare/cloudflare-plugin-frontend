@@ -39,7 +39,7 @@ export function asyncZoneDelete(zoneId) {
                 dispatch(asyncFetchZones());
             } else {
                 dispatch(zoneDeleteError());
-                dispatch(notificationAddError(error));
+                dispatch(notificationAddError(response));
             }
         });
     };
@@ -77,7 +77,7 @@ export function asyncFetchZones() {
                     }
                 } else {
                     dispatch(zoneFetchError());
-                    dispatch(notificationAddError(error));
+                    dispatch(notificationAddError(response));
                 }
             });
     };

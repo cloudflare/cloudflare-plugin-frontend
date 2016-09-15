@@ -57,7 +57,7 @@ export function asyncPluginFetchSettings(zoneId) {
             if (pluginResponseOk(response)) {
                 dispatch(pluginFetchSettingsSuccess(zoneId, response.body.result));
             } else {
-                dispatch(notificationAddClientAPIError(pluginFetchSettingsError(), error));
+                dispatch(notificationAddClientAPIError(pluginFetchSettingsError(), response));
             }
         });
     };
@@ -76,7 +76,7 @@ export function asyncPluginUpdateSetting(settingName, zoneId, value) {
                     dispatch(notificationAddSuccess('container.applydefaultsettingscard.success', true));
                 }
             } else {
-                dispatch(notificationAddClientAPIError(pluginUpdateSettingError(zoneId, oldSetting), error));
+                dispatch(notificationAddClientAPIError(pluginUpdateSettingError(zoneId, oldSetting), response));
             }
         });
     };

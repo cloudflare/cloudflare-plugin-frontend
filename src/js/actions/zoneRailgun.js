@@ -29,7 +29,7 @@ export function asyncZoneRailgunFetchAll(zoneId) {
             if(v4ResponseOk(response)) {
                 dispatch(zoneRailgunFetchAllSuccess(zoneId, response.body.result));
             } else {
-                dispatch(notificationAddClientAPIError(zoneRailgunFetchAllError(), error));
+                dispatch(notificationAddClientAPIError(zoneRailgunFetchAllError(), response));
             }
         });
     };
@@ -67,7 +67,7 @@ export function asyncZoneRailgunConnectionUpdate(zoneId, railgun, isConnected) {
             if(v4ResponseOk(response)) {
                 dispatch(zoneRailgunConnectionUpdateSuccess(zoneId, response.body.result));
             } else {
-                dispatch(notificationAddClientAPIError(zoneRailgunConnectionUpdateError(zoneId, oldRailgun), error));
+                dispatch(notificationAddClientAPIError(zoneRailgunConnectionUpdateError(zoneId, oldRailgun), response));
             }
         });
     };

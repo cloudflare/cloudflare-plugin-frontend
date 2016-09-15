@@ -29,7 +29,7 @@ export function asyncZoneFetchAnalytics(zoneId) {
             if(v4ResponseOk(response)) {
                 dispatch(zoneFetchAnalyticsSuccess(zoneId, response.body.result));
             } else {
-                dispatch(notificationAddClientAPIError(zoneFetchAnalyticsError(), error));
+                dispatch(notificationAddClientAPIError(zoneFetchAnalyticsError(), response));
             }
         });
     };

@@ -40,7 +40,7 @@ export function asyncZoneActivationCheck(zoneId) {
                 dispatch(zoneActivationCheckSuccess());
                 dispatch(notificationAddSuccess('container.activationCheckCard.success', true));
             } else {
-                dispatch(notificationAddClientAPIError(zoneActivationCheckError(), error));
+                dispatch(notificationAddClientAPIError(zoneActivationCheckError(), response));
             }
         });
     };
@@ -74,7 +74,7 @@ export function asyncZoneProvisionCname(domainName) {
                     dispatch(asyncSetHostAPIProvisionedDomainActive(domainName));
                 } else {
                     dispatch(zoneProvisionCnameError());
-                    dispatch(notificationAddError(error));
+                    dispatch(notificationAddError(response));
                 } // zoneProvision business logic error
             });
     };// end thunk dispatch
@@ -107,7 +107,7 @@ export function asyncZoneProvisionFull(domainName) {
                dispatch(asyncSetHostAPIProvisionedDomainActive(domainName));
             } else {
                 dispatch(zoneProvisionFullError());
-                dispatch(notificationAddError(error));
+                dispatch(notificationAddError(response));
             }
         }); //end fullZoneSet
     };
@@ -133,7 +133,7 @@ function asyncSetHostAPIProvisionedDomainActive(domainName) {
                 let normalizedZoneList = normalizeZoneGetAll(response.body.result);
                 dispatch(asyncZoneSetActiveZone(normalizedZoneList.entities.zones[domainName]));
             } else {
-                dispatch(notificationAddError(error));
+                dispatch(notificationAddError(response));
             }
         });
     };

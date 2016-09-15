@@ -33,7 +33,7 @@ export function asyncZoneFetchSettings(zoneId) {
             if(v4ResponseOk(response)) {
                 dispatch(zoneFetchSettingsSuccess(zoneId, response.body.result));
             } else {
-                dispatch(notificationAddClientAPIError(zoneFetchSettingsError(), error));
+                dispatch(notificationAddClientAPIError(zoneFetchSettingsError(), response));
             }
         });
     };
@@ -72,7 +72,7 @@ export function asyncZoneUpdateSetting(settingName, zoneId, value) {
             if(v4ResponseOk(response)) {
                 dispatch(zoneUpdateSettingSuccess(zoneId, response.body.result));
             } else {
-                dispatch(notificationAddClientAPIError(zoneUpdateSettingError(zoneId, oldSetting), error));
+                dispatch(notificationAddClientAPIError(zoneUpdateSettingError(zoneId, oldSetting), response));
             }
         });
     };
