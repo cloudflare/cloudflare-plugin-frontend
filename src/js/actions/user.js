@@ -50,7 +50,7 @@ export function asyncLogin(email, password) {
                 dispatch(asyncUserLoginSuccess(response.body.response.cloudflare_email));
             } else {
                 dispatch(userLoginError());
-                dispatch(notificationAddError(error));
+                dispatch(notificationAddError(response));
             }
         });
     };
@@ -64,7 +64,7 @@ export function asyncAPILogin(email, apiKey) {
                 dispatch(asyncUserLoginSuccess(email));
             } else {
                 dispatch(userLoginError());
-                dispatch(notificationAddClientAPIError(userLoginError(), error));
+                dispatch(notificationAddClientAPIError(userLoginError(), response));
             }
         });
     };
@@ -103,7 +103,7 @@ export function asyncUserSignup(email, password) {
                 dispatch(asyncLogin(email, password));
             } else {
                 dispatch(userSignupError());
-                dispatch(notificationAddError(error));
+                dispatch(notificationAddError(response));
             }
         });
 

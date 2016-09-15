@@ -33,7 +33,7 @@ export function asyncZonePurgeCacheIndividualFiles(zoneId, files) {
                 dispatch(zonePurgeCacheSuccess());
                 dispatch(notificationAddSuccess('container.purgeCacheCard.success', true));
             } else {
-                dispatch(notificationAddClientAPIError(zonePurgeCacheError(), error));
+                dispatch(notificationAddClientAPIError(zonePurgeCacheError(), response));
             }
         });
     };
@@ -47,7 +47,7 @@ export function asyncZonePurgeCacheEverything(zoneId) {
                 dispatch(zonePurgeCacheSuccess());
                 dispatch(notificationAddSuccess('container.purgeCacheByURLCard.success', true));
             } else {
-                dispatch(notificationAddClientAPIError(zonePurgeCacheError(), error));
+                dispatch(notificationAddClientAPIError(zonePurgeCacheError(), response));
             }
         });
     };
