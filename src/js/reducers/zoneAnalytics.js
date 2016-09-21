@@ -63,7 +63,7 @@ function buildZoneAnalyticsData(zoneAnalyticsResponse) {
             data.threats[0].push(analyticsInterval.threats.all);
         }
         if(typeof analyticsInterval.uniques !== 'undefined') {
-            data.uniques[0].push(analyticsInterval.threats.all);
+            data.uniques[0].push(analyticsInterval.uniques.all);
         }
     });
     return data;
