@@ -34,7 +34,8 @@ class ImageOptimizationCard extends Component {
     render() {
         let { activeZone, zones, modifiedDate } = this.props;
         let zone = zones[activeZone.name];
-        let imageOptimizationValue = (this.props.mirageValue === 'on') && (this.props.polishValue === 'lossless');
+
+        let imageOptimizationValue = (this.props.mirageValue === 'on') && (this.props.polishValue === 'lossless' || this.props.polishValue === 'lossy');
 
         const { formatMessage } = this.props.intl;
 
