@@ -2,6 +2,15 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.5.0](#2.5.0) - 2016-09-26
+### Added
+- Added AutomaticHTTPSRewritesCard [#46](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/46)
+
+### Fixed
+- Fixed bug in Analytics tab showing threats incorrectly [#43](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/43)
+- Fixed bug in SSLCard [#44](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/44)
+- Fixed bug in ImageOptimization not showing "on" when lossly select [#45](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/45)
+
 ## [2.4.5](#2.4.5) - 2016-09-15
 ### Fixed
 - Fixed Updating asyncAction error handling to pass response instead of error variable for business logic error. [#42](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/42)
