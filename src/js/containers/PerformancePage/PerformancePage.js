@@ -15,7 +15,6 @@ import IPV6Card from '../../containers/IPV6Card/IPV6Card';
 import IpRewriteCard from '../../containers/IpRewriteCard/IpRewriteCard';
 import MinifyCard from '../../containers/MinifyCard/MinifyCard';
 import PurgeCacheCard from '../../containers/PurgeCacheCard/PurgeCacheCard';
-import ProtocolRewriteCard from '../../containers/ProtocolRewriteCard/ProtocolRewriteCard';
 import RailgunCard from '../../containers/RailgunCard/RailgunCard';
 import ImageOptimizationCard from '../../containers/ImageOptimizationCard/ImageOptimizationCard';
 import WAFCard from '../../containers/WAFCard/WAFCard';
@@ -46,10 +45,6 @@ class PerformancePage extends Component {
 
                         <FeatureManager isEnabled={config.featureManagerIsIpRewriteEnabled}>
                             <IpRewriteCard/>
-                        </FeatureManager>
-
-                        <FeatureManager isEnabled={config.featureManagerIsProtocolRewriteEnabled}>
-                            <ProtocolRewriteCard/>
                         </FeatureManager>
 
                         <FeatureManager isEnabled={config.featureManagerIsCacheLevelEnabled}>
