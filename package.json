@@ -48,7 +48,7 @@
     "cf-component-radio": "^1.0.4",
     "cf-component-select": "^1.0.0",
     "cf-component-table": "^0.1.0",
-    "cf-component-tabs": "^1.0.1",
+    "cf-component-tabs": "^1.0.5",
     "cf-component-textarea": "^1.1.2",
     "cf-component-toggle": "^1.0.0",
     "cf-util-http": "^2.0.1",
