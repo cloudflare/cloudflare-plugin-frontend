@@ -3,28 +3,31 @@ import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { CardControl } from 'cf-component-card';
 import { Button } from 'cf-component-button';
-import { CLOUDFLARE_UPGRADE_PAGE } from '../../constants/UrlPaths.js';
+import { CLOUDFLARE_DASHBOARD_PAGE } from '../../constants/UrlPaths.js';
 import { planNeedsUpgrade, getLocalizedPlanId, FREE_PLAN } from '../../constants/Plans.js';
 import { getConfigValue } from '../../selectors/config.js';
 import { generateUTMLink } from '../../selectors/generateUTMLink.js';
 
 class CustomCardControl extends Component {
 
+    openUpgradePlanLink(upgradeLinkWithUTM) {
+        window.open(upgradeLinkWithUTM, 'wordpress', 'toolbar=0,status=0,width=548,height=325');
+    }
+
     render() {
-        let { integrationName } = this.props;
+        let { integrationName, activeZone } = this.props;
 
         var currentPlan = this.props.hasOwnProperty('currentPlan') ? this.props.currentPlan : FREE_PLAN;
         var minimumPlan = this.props.hasOwnProperty('minimumPlan') ? this.props.minimumPlan : FREE_PLAN;
         var needToUpgrade = planNeedsUpgrade(currentPlan, minimumPlan);
         var localizedPlanId = getLocalizedPlanId(minimumPlan);
 
-
-        let upgradeLinkWithUTM = generateUTMLink(CLOUDFLARE_UPGRADE_PAGE, integrationName, integrationName, this.props.indentifier);
+        let upgradeLinkWithUTM = generateUTMLink(CLOUDFLARE_DASHBOARD_PAGE + activeZone.name, integrationName, integrationName, this.props.indentifier);
         
         return (
             <CardControl>
                 { needToUpgrade ? (
-                        <Button type="primary" onClick={ function(){window.open(upgradeLinkWithUTM); return false;}}>
+                        <Button type="primary" onClick={ this.openUpgradePlanLink.bind(this, upgradeLinkWithUTM) }>
                             <FormattedMessage id="component.customcardcontrol.upgrade" /> <FormattedMessage id={ localizedPlanId } />
                         </Button> 
                     ) :
@@ -44,6 +47,7 @@ CustomCardControl.propTypes = {
 function mapStateToProps(state) {
     return {
         integrationName: getConfigValue(state.config, 'integrationName'),
+        activeZone: state.activeZone,
     };
 }
 export default injectIntl(connect(mapStateToProps)(CustomCardControl));

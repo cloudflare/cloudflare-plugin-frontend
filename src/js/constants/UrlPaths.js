@@ -3,6 +3,7 @@ export const CLOUDFLARE_API_KB_ARTICLE_PAGE = 'https://support.cloudflare.com/hc
 export const CLOUDFLARE_FORGOT_PASSWORD_PAGE = 'https://cloudflare.com/a/forgot-password';
 export const CLOUDFLARE_SIGNUP_PAGE = 'https://www.cloudflare.com/a/sign-up';
 export const CLOUDFLARE_UPGRADE_PAGE = 'http://cloudflare.com/plans';
+export const CLOUDFLARE_DASHBOARD_PAGE = 'http://cloudflare.com/a/overview/';
 export const DOMAINS_OVERVIEW_PAGE = '/zones';
 export const HOME_PAGE = '/home';
 export const MORE_SETTINGS_PAGE = '/more-settings';
