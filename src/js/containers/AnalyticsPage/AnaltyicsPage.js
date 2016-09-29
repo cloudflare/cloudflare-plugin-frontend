@@ -119,6 +119,9 @@ class AnaltyicsPage extends Component {
                                       tick: {
                                           format: xformat
                                       }
+                                  },
+                                  y: {
+                                      label: formatMessage({ id: 'container.analyticsPage.tabs.requests' }) 
                                   }
                                 }
                               }}/>
@@ -162,6 +165,9 @@ class AnaltyicsPage extends Component {
                                       tick: {
                                           format: xformat
                                       }
+                                  },
+                                  y: {
+                                      label: formatMessage({ id: 'container.analyticsPage.tabs.bandwidth' }) 
                                   }
                                 }
                               }}/>
@@ -204,6 +210,9 @@ class AnaltyicsPage extends Component {
                                         tick: {
                                             format: xformat
                                         }
+                                    },
+                                    y: {
+                                        label: formatMessage({ id: 'container.analyticsPage.tabs.uniques' }) 
                                     }
                                   }
                                 }}/>
@@ -246,6 +255,9 @@ class AnaltyicsPage extends Component {
                                         tick: {
                                             format: xformat
                                         }
+                                    },
+                                    y: {
+                                        label: formatMessage({ id: 'container.analyticsPage.tabs.threats' }) 
                                     }
                                   }
                                 }}/>
