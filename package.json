@@ -53,6 +53,7 @@
     "cf-component-toggle": "^1.0.0",
     "cf-util-http": "^2.0.1",
     "chai": "^3.5.0",
+    "d3-format": "^1.0.2",
     "dotenv": "^2.0.0",
     "eslint": "^3.4.0",
     "eslint-plugin-react": "^6.2.0",

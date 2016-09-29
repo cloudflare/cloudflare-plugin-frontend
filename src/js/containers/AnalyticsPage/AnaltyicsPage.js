@@ -4,6 +4,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { Tabs, TabsPanel } from 'cf-component-tabs';
 import { LayoutContainer, LayoutRow, LayoutColumn } from 'cf-component-layout';
 import { Heading } from 'cf-component-heading';
+import { format } from 'd3-format';
 
 import C3Wrapper from 'react-c3-wrapper';
 import _ from 'lodash';
@@ -18,8 +19,20 @@ const THREATS_TAB = 'threats';
 class AnaltyicsPage extends Component {
   constructor(props) {
         super(props);
+
+        var bytesToString = function (bytes) {
+            var fmt = format('.0f');
+
+            var splited = humanFileSize(bytes).split(' ');
+            var unit = splited[1];
+            var size = splited[0];
+
+            return fmt(size) + unit;
+        }
+
         this.state = {
-            activeTab: REQUESTS_TAB
+            activeTab: REQUESTS_TAB,
+            bytesToString: bytesToString
         };
     }
 
@@ -167,7 +180,10 @@ class AnaltyicsPage extends Component {
                                       }
                                   },
                                   y: {
-                                      label: formatMessage({ id: 'container.analyticsPage.tabs.bandwidth' }) 
+                                      label: formatMessage({ id: 'container.analyticsPage.tabs.bandwidth' }),
+                                      tick: {
+                                          format: this.state.bytesToString
+                                      }
                                   }
                                 }
                               }}/>
