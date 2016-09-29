@@ -31,6 +31,7 @@ export function zoneAnalyticsReducer(state = initialState, action) {
 
 function buildZoneAnalyticsData(zoneAnalyticsResponse) {
     let data = {
+        totals: [],
         timeSeries: [],
         requests: [
             [],
@@ -49,6 +50,7 @@ function buildZoneAnalyticsData(zoneAnalyticsResponse) {
 
     };
 
+    data.totals = _.clone(zoneAnalyticsResponse.totals);
     zoneAnalyticsResponse.timeseries.forEach(function(analyticsInterval){
         data.timeSeries.push(new Date(analyticsInterval.since));
         if(typeof analyticsInterval.requests !== 'undefined') {
@@ -66,5 +68,6 @@ function buildZoneAnalyticsData(zoneAnalyticsResponse) {
             data.uniques[0].push(analyticsInterval.uniques.all);
         }
     });
+
     return data;
 }
