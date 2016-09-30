@@ -8,6 +8,9 @@
 3. In command line run `node server.js`.
 4. Load `index.html` in your browser.
 
+# Production
+For production run `gulp compress` to get a minified version of compiled.js
+
 # Building Your Own Backend
 This repository serves as the front end for all of our 3rd party integrations.
 It is intended to be backend agnostic with the intention of making it as easy as
