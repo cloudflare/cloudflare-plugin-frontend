@@ -10,6 +10,8 @@ import assign from 'lodash.assign';
 import wrap from 'gulp-wrap';
 import eslint from 'gulp-eslint';
 import plumber from'gulp-plumber';
+import uglify from 'gulp-uglify';
+import pump from 'pump';
 
 //custom browserify options
 var customOpts = {
@@ -25,8 +27,9 @@ var b = watchify(browserify(opts));
 //transformations
 b.transform(babelify);
 
-gulp.task('lint', lint); // so you can run `gulp lint` to lint the file
-gulp.task('js', bundle); // so you can run `gulp js` to build the file
+gulp.task('lint', lint); // run `gulp lint` to lint the file
+gulp.task('js', bundle); // run `gulp js` to build the file continuously
+gulp.task('compress', compress); // run `gulp compress` to compress the file
 b.on('update', bundle); // on any dep update, runs the bundler
 b.on('log', gutil.log); // output build logs to terminal
 
@@ -44,6 +47,16 @@ function bundle() {
         // Add transformation tasks to the pipeline here.
         .pipe(sourcemaps.write('./')) // writes .map file
         .pipe(gulp.dest('./'));
+}
+
+function compress(cb) {
+  pump([
+        gulp.src('compiled.js'),
+        uglify(),
+        gulp.dest('./')
+    ],
+    cb
+  );
 }
 
 function fixErrorHandling() {
