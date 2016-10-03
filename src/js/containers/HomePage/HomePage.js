@@ -12,9 +12,7 @@ import { renderCards } from '../../components/RenderCardsDynamically/RenderCards
 
 class HomePage extends Component {
 
-    componentDidUpdate(prevProps, prevState) {
-        // We don't care about the prev props and states
-        // this.props gives us the information we need
+    componentDidUpdate() {
         let { notifications, developmentmode, dispatch } = this.props;
 
         var notificationKey = null;
