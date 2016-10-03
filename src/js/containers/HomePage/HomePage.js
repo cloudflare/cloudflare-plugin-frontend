@@ -5,10 +5,34 @@ import _ from 'lodash';
 
 import { Heading } from 'cf-component-heading';
 
+import { notificationAddWarning, notificationRemove } from '../../actions/notifications';
 import { getPluginSettingsForZoneId } from '../../selectors/pluginSettings';
+import { getZoneSettingsValueForZoneId } from '../../selectors/zoneSettings';
 import { renderCards } from '../../components/RenderCardsDynamically/RenderCardsDynamically';
 
 class HomePage extends Component {
+
+    componentDidUpdate(prevProps, prevState) {
+        // We don't care about the prev props and states
+        // this.props gives us the information we need
+        let { notifications, developmentmode, dispatch } = this.props;
+
+        var notificationKey = null;
+        _.forEach(notifications, function(notification) {
+            if (notification["level"] === "warning" && notification["message"] === "warning.developmentmode") {
+                notificationKey = notification["key"];
+            }
+        });
+
+        if (developmentmode === "on" && notificationKey === null) {
+            dispatch(notificationAddWarning('warning.developmentmode', true, true));
+        } 
+
+        if (developmentmode === "off" && notificationKey !== null) {
+            dispatch(notificationRemove(notificationKey));
+        }
+    }
+
     render() {
         let { activeZoneId, config, zoneSettings } = this.props;
         let isEmpty = _.isEmpty(zoneSettings[activeZoneId]) && _.isEmpty(getPluginSettingsForZoneId(activeZoneId, this.state));
@@ -33,6 +57,8 @@ function mapStateToProps(state) {
         activeZoneId: state.activeZone.id,
         config: state.config.config,
         zoneSettings: state.zoneSettings.entities,
+        notifications: state.notifications,
+        developmentmode: getZoneSettingsValueForZoneId(state.activeZone.id, "development_mode", state),
     };
 }
 export default injectIntl(connect(mapStateToProps)(HomePage));
