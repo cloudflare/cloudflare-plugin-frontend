@@ -3,7 +3,7 @@ import {
     zonePatchSetting,
     v4ResponseOk
 } from '../utils/CFClientV4API/CFClientV4API';
-import { notificationAddClientAPIError } from './notifications';
+import { notificationAddClientAPIError, notificationHandleDevelopmentMode } from './notifications';
 import * as ActionTypes from '../constants/ActionTypes';
 
 export function zoneFetchSettings() {
@@ -32,6 +32,9 @@ export function asyncZoneFetchSettings(zoneId) {
         zoneGetSettings(zoneId, function(error, response){
             if(v4ResponseOk(response)) {
                 dispatch(zoneFetchSettingsSuccess(zoneId, response.body.result));
+
+                // Lastly check if development mode value and add/remove notification
+                dispatch(notificationHandleDevelopmentMode(zoneId));
             } else {
                 dispatch(notificationAddClientAPIError(zoneFetchSettingsError(), response));
             }
@@ -71,6 +74,9 @@ export function asyncZoneUpdateSetting(settingName, zoneId, value) {
         zonePatchSetting(settingName, zoneId, value, function(error, response) {
             if(v4ResponseOk(response)) {
                 dispatch(zoneUpdateSettingSuccess(zoneId, response.body.result));
+
+                // Lastly check if development mode value and add/remove notification
+                dispatch(notificationHandleDevelopmentMode(zoneId));
             } else {
                 dispatch(notificationAddClientAPIError(zoneUpdateSettingError(zoneId, oldSetting), response));
             }

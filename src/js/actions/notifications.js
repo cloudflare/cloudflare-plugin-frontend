@@ -1,4 +1,6 @@
 import * as ActionTypes from '../constants/ActionTypes';
+import { getZoneSettingsValueForZoneId } from '../selectors/zoneSettings';
+import _ from 'lodash';
 
 export function notificationAdd(level, message, localized = false, persistant = false, delay = 5000) {
     return {
@@ -45,4 +47,26 @@ export function notificationAddClientAPIError(errorAction, errorMessage) {
             });
         }
     };
+}
+
+export function notificationHandleDevelopmentMode(activeZoneId) {
+    return (dispatch, getState) => {
+        let notifications = getState().notifications;
+        let developmentModeValue = getZoneSettingsValueForZoneId(activeZoneId, "development_mode", getState());
+
+        var notificationKey = null;
+        _.forEach(notifications, function(notification) {
+            if (notification["level"] === "warning" && notification["message"] === "warning.developmentmode") {
+                notificationKey = notification["key"];
+            }
+        });
+
+        if (developmentModeValue === "on" && notificationKey === null) {
+            dispatch(notificationAddWarning('warning.developmentmode', true, true));
+        } 
+
+        if (developmentModeValue === "off" && notificationKey !== null) {
+            dispatch(notificationRemove(notificationKey));
+        }
+    }
 }
