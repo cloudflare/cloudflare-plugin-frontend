@@ -2,6 +2,18 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.5.1](#2.5.1) - 2016-10-5
+### Added
+- Added "gulp compress" command [#51](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/51)
+- Added notifications if Development Mode is "ON" [#52](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/52)
+
+### Changed
+- Changed Analytics Page to mimic cloudflare.com dashboard [#48](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/48)
+- Changed upgrade button to redirect "clouldflare.com/a/ACTIVE_ZONE/overview" [#50](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/50)
+
+### Fixed
+- Fixed active zone selector not showing [#53](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/53)
+
 ## [2.5.0](#2.5.0) - 2016-09-26
 ### Added
 - Added AutomaticHTTPSRewritesCard [#46](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/46)
