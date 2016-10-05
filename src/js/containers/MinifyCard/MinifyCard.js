@@ -18,6 +18,17 @@ class MinifyCard extends Component {
         };
     }
 
+    componentWillMount() {
+        let checkboxValues = [];
+        //convert on/off to true/false
+        for (var key in this.props.minifyValues) {
+            if(this.props.minifyValues[key] === 'on') {
+                checkboxValues.push(key);
+            }
+        }
+        this.setState({ checkboxValues: checkboxValues });
+    }
+
     handleCheckboxChange(checkboxValueList) {
         let apiValueList = {
             'js': 'off',
@@ -38,14 +49,6 @@ class MinifyCard extends Component {
     render() {
         const { formatMessage } = this.props.intl;
         let { modifiedDate } = this.props;
-
-        this.state.checkboxValues = []; 
-        //convert on/off to true/false
-        for (var key in this.props.minifyValues) {
-            if(this.props.minifyValues[key] === 'on') {
-                this.state.checkboxValues.push(key);
-            }
-        }
 
         return (
             <div>

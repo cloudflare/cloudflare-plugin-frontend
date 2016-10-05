@@ -8,6 +8,9 @@ export default class MarketingFeature extends Component {
         /*
          * These styles are stolen from the marketing site and aren't in our CSS
          */
+        let divStyles = {
+            'padding':'5px',
+        };
         let iconStyles = {
             'display': 'block',
             'width': '40px',
@@ -30,7 +33,7 @@ export default class MarketingFeature extends Component {
         };
 
         return (
-            <div>
+            <div style={ divStyles }>
                 <img src={ this.props.imgSrc } style={ iconStyles }/>
                 <span style={ largeLinkStyles } href="#"><FormattedMessage id={ this.props.titleKey } /></span>
                 <p style={ columnPStyles }><FormattedMessage id={ this.props.descriptionKey } /></p>
