@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { Flex, FlexItem } from 'cf-component-flex';
+import { LayoutContainer, LayoutRow, LayoutColumn } from 'cf-component-layout';
 
 import MarketingFeature from '../../components/MarketingFeature/MarketingFeature';
 import { getAbsoluteUrl } from '../../selectors/config';
@@ -12,20 +12,22 @@ class MarketingFeatureCollection extends Component {
         const { config } = this.props;
 
         return (
-            <Flex spacing="wide">
-                <FlexItem>
-                    <MarketingFeature imgSrc={ getAbsoluteUrl(config, 'assets/icon-pin.svg') } titleKey="component.marketingFeature.cdn.title" descriptionKey="component.marketingFeature.cdn.description" />
-                </FlexItem>
-                <FlexItem>
-                    <MarketingFeature imgSrc={ getAbsoluteUrl(config, 'assets/icon-bolt.svg') } titleKey="component.marketingFeature.optimization.title" descriptionKey="component.marketingFeature.optimization.description" />
-                </FlexItem>
-                <FlexItem>
-                    <MarketingFeature imgSrc={ getAbsoluteUrl(config, 'assets/icon-shield.svg') } titleKey="component.marketingFeature.security.title" descriptionKey="component.marketingFeature.security.description" />
-                </FlexItem>
-                <FlexItem>
-                    <MarketingFeature imgSrc={ getAbsoluteUrl(config, 'assets/icon-lock.svg') } titleKey="component.marketingFeature.ddos.title" descriptionKey="component.marketingFeature.ddos.description" />
-                </FlexItem>
-            </Flex>
+            <LayoutContainer>
+                <LayoutRow>
+                    <LayoutColumn width={1/4}>
+                        <MarketingFeature imgSrc={ getAbsoluteUrl(config, 'assets/icon-pin.svg') } titleKey="component.marketingFeature.cdn.title" descriptionKey="component.marketingFeature.cdn.description" />
+                    </LayoutColumn>
+                    <LayoutColumn  width={1/4}>
+                        <MarketingFeature imgSrc={ getAbsoluteUrl(config, 'assets/icon-bolt.svg') } titleKey="component.marketingFeature.optimization.title" descriptionKey="component.marketingFeature.optimization.description" />
+                    </LayoutColumn>
+                    <LayoutColumn width={1/4}>
+                        <MarketingFeature imgSrc={ getAbsoluteUrl(config, 'assets/icon-shield.svg') } titleKey="component.marketingFeature.security.title" descriptionKey="component.marketingFeature.security.description" />
+                    </LayoutColumn>
+                    <LayoutColumn width={1/4}>
+                        <MarketingFeature imgSrc={ getAbsoluteUrl(config, 'assets/icon-lock.svg') } titleKey="component.marketingFeature.ddos.title" descriptionKey="component.marketingFeature.ddos.description" />
+                    </LayoutColumn>
+                </LayoutRow>
+            </LayoutContainer>
         );
     }
 }
