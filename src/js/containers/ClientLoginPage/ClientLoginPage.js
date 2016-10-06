@@ -43,42 +43,54 @@ class ClientLoginPage extends Component {
 
         let signupLinkWithUTM = generateUTMLink(CLOUDFLARE_SIGNUP_PAGE, config.integrationName, config.integrationName, UTM_CONTENT_IDENTIFIER);
 
+        var overflowStyle = { overflow: "hidden" };
+
         return (
             <div>
                 <div id="cf-login-page">
                     <Form layout="vertical" onSubmit={(e) => this.handleLoginSubmit(e)}>
                         <LayoutContainer>
-                            <LayoutRow>
-                                <LayoutColumn width={1/1}>
-                                    <FormHeader title={formatMessage({ id: 'component.clientLogin.form.title' })} style={{ textAlign:'center' }}/>
-                                </LayoutColumn>
-                            </LayoutRow>
+                            <div style={overflowStyle}>
+                                <LayoutRow>
+                                    <LayoutColumn width={1/1}>
+                                        <FormHeader title={formatMessage({ id: 'component.clientLogin.form.title' })} style={{ textAlign:'center' }}/>
+                                    </LayoutColumn>
+                                </LayoutRow>
+                            </div>
                                 <FormFieldset legend="">
-                                    <LayoutRow>
-                                        <LayoutColumn width={1/1}>
-                                            <FormLabel hidden><FormattedMessage id="component.clientLogin.form.email"/></FormLabel>
-                                            <Input name="email" type="text" value={this.state.email} onChange={this.handleEmailChange.bind(this)} placeholder={formatMessage({ id: 'component.clientLogin.form.email' })}/>
-                                        </LayoutColumn>
-                                    </LayoutRow>
-                                    <LayoutRow>
-                                        <LayoutColumn width={1/1}>
-                                            <FormLabel hidden><FormattedMessage id="component.clientLogin.form.apiKey"/></FormLabel>
-                                            <Input name="apiKey" type="text" value={this.state.apiKey} onChange={this.handleApiKeyChange.bind(this)} placeholder={formatMessage({ id: 'component.clientLogin.form.apiKey' })}/>
-                                        </LayoutColumn>
-                                    </LayoutRow>
-                                    <LayoutRow>
-                                        <LayoutColumn width={1/1}>
-                                            <Button submit type="success" onClick={(e) => this.handleLoginSubmit(e)}>
-                                                <FormattedMessage id="component.clientLogin.form.button" />
-                                            </Button>
-                                        </LayoutColumn>
-                                    </LayoutRow>
+                                    <div style={overflowStyle}>
+                                        <LayoutRow style={{ overflow: 'hidden' }}>
+                                            <LayoutColumn width={1/1}>
+                                                <FormLabel hidden><FormattedMessage id="component.clientLogin.form.email"/></FormLabel>
+                                                <Input name="email" type="text" value={this.state.email} onChange={this.handleEmailChange.bind(this)} placeholder={formatMessage({ id: 'component.clientLogin.form.email' })}/>
+                                            </LayoutColumn>
+                                        </LayoutRow>
+                                    </div>
+                                    <div style={overflowStyle}>
+                                        <LayoutRow>
+                                            <LayoutColumn width={1/1}>
+                                                <FormLabel hidden><FormattedMessage id="component.clientLogin.form.apiKey"/></FormLabel>
+                                                <Input name="apiKey" type="text" value={this.state.apiKey} onChange={this.handleApiKeyChange.bind(this)} placeholder={formatMessage({ id: 'component.clientLogin.form.apiKey' })}/>
+                                            </LayoutColumn>
+                                        </LayoutRow>
+                                    </div>
+                                    <div style={overflowStyle}>
+                                        <LayoutRow>
+                                            <LayoutColumn width={1/1}>
+                                                <Button submit type="success" onClick={(e) => this.handleLoginSubmit(e)}>
+                                                    <FormattedMessage id="component.clientLogin.form.button" />
+                                                </Button>
+                                            </LayoutColumn>
+                                        </LayoutRow>
+                                    </div>
                                 </FormFieldset>
-                            <LayoutRow>
-                                <LayoutColumn width={1/1}>
-                                    <p style={{ textAlign: 'center', marginBottom: '2.5rem' }}><FormattedMessage id="component.clientLogin.cloudflare.description"/> <a href={signupLinkWithUTM} target="_blank">CloudFlare.com</a>.</p>
-                                </LayoutColumn>
-                            </LayoutRow>
+                            <div style={overflowStyle}>
+                                <LayoutRow>
+                                    <LayoutColumn width={1/1}>
+                                        <p style={{ textAlign: 'center', marginBottom: '2.5rem' }}><FormattedMessage id="component.clientLogin.cloudflare.description"/> <a href={signupLinkWithUTM} target="_blank">CloudFlare.com</a>.</p>
+                                    </LayoutColumn>
+                                </LayoutRow>
+                            </div>
                         </LayoutContainer>
                     </Form>
                 </div>
