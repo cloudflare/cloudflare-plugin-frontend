@@ -30,6 +30,8 @@ class ActiveZoneSelector extends Component {
     componentWillReceiveProps() {
         let { activeZone, config, dispatch } = this.props;
 
+        // If the current active zone is a subdomain show a notification
+        // regarding that the changes are made to the original zone.
         var shouldUseSubdomain = getConfigValue(config, 'isSubdomainCheckEnabled');
         if (shouldUseSubdomain && !this.state.subdomainChecked && isSubdomain(activeZone.name)) {
             this.setState({ subdomainChecked: true });

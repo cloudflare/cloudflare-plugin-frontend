@@ -25,7 +25,7 @@ export function zoneFetchAnalyticsError() {
 export function asyncZoneFetchAnalytics(zoneId) {
     return dispatch => {
         dispatch(zoneFetchAnalytics());
-        zoneAnalyticsDashboardGet({ zoneId: zoneId }, function(error, response){
+        zoneAnalyticsDashboardGet({ zoneId: zoneId, since: -43200 }, function(error, response){
             if(v4ResponseOk(response)) {
                 dispatch(zoneFetchAnalyticsSuccess(zoneId, response.body.result));
             } else {
