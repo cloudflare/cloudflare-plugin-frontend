@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.5.3](#2.5.3) - 2016-10-6
+### Fixed
+- Fixed login page styles. [#55](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/55)
+
 ## [2.5.2](#2.5.2) - 2016-10-5
 ### Fixed
 - Switched MarketingFeatureCollection from cf-component-flex to cf-component-layout to fix style bugs. [#54](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/54)
