@@ -282,19 +282,20 @@ class AnaltyicsPage extends Component {
                             </LayoutContainer> 
                         </TabsPanel>
                     </Tabs>
+                  
+                    <LayoutRow>
+                      <LayoutColumn width={31/64}>
+                        <AnalyticCard title={ formatMessage({ id: 'container.analyticCard.ssl.title' }) } description={ formatMessage({ id: 'container.analyticCard.duration' }) } data={ analytics.totals.requests.ssl } dataType={ formatMessage({ id: 'container.analyticCard.ssl.datatype' }) } />
+                      </LayoutColumn>
+                      <LayoutColumn width={2/64}>&nbsp;</LayoutColumn>
+                      <LayoutColumn width={31/64}>
+                        <AnalyticCard title={ formatMessage({ id: 'container.analyticCard.bandwidth.title' }) } description={ formatMessage({ id: 'container.analyticCard.duration' }) } data={ analytics.totals.bandwidth } dataType={ formatMessage({ id: 'container.analyticCard.bandwidth.datatype' }) } />
+                      </LayoutColumn>
+                    </LayoutRow>
 
-                    <LayoutContainer>
-                      <LayoutRow>
-                        <LayoutColumn width={1/4}>&nbsp;</LayoutColumn>
-                        <LayoutColumn width={1/2}>
-                          <AnalyticCard title="Traffic Served Over SSL" description={ formatMessage({ id: 'container.analyticsPage.tabs.threats' }) } data={ analytics.totals.requests.ssl } dataType="SSL" />
-                        </LayoutColumn>
-                        <LayoutColumn width={1/4}>&nbsp;</LayoutColumn>
-                        <LayoutColumn width={1/3}>
-                          <AnalyticCard title="Bandwidth Saved" description={ formatMessage({ id: 'container.analyticsPage.tabs.threats' }) } data={ analytics.totals.bandwidth } dataType="Bandwidth" />
-                        </LayoutColumn>
-                      </LayoutRow>
-                    </LayoutContainer>
+                    <LayoutRow>
+                      &nbsp;
+                    </LayoutRow>
 
                     </div>                    
                 )}

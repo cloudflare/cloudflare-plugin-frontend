@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
-import { CardControl, CardContent } from 'cf-component-card';
+import { Card, CardSection, CardContent } from 'cf-component-card';
+import Text from 'cf-component-text';
 import C3Wrapper from 'react-c3-wrapper';
 
 import { humanFileSize } from '../../utils/utils';
@@ -9,6 +10,7 @@ import { humanFileSize } from '../../utils/utils';
 class AnalyticCard extends Component {
     render() {
         let { title, description, data, dataType } = this.props;
+        const { formatMessage } = this.props.intl;
 
         var firstData, secondData, firstText, secondText;
         var percentage = 100;
@@ -18,53 +20,65 @@ class AnalyticCard extends Component {
             }
             firstData = data.cached;
             secondData = data.all - data.cached;
-            firstText = humanFileSize(data.cached) + " saved";
-            secondText = humanFileSize(data.all) + " total bandwidth";
+            firstText = humanFileSize(data.cached) + " " + formatMessage({ id: 'container.analyticCard.bandwidth.firstText'});
+            secondText = humanFileSize(data.all) + " " + formatMessage({ id: 'container.analyticCard.bandwidth.secondText'});
         } else if (dataType === "SSL") {
             if (data.unencrypted !== 0) {
                 percentage = (data.encrypted / (data.encrypted + data.unencrypted)) * 100;
             }
             firstData = data.encrypted;
             secondData = data.unencrypted;
-            firstText = data.encrypted + " SSL secured request";
-            secondText = data.unencrypted + " unsecured requests";
+            firstText = data.encrypted + " " + formatMessage({ id: 'container.analyticCard.ssl.firstText'});
+            secondText = data.unencrypted + " " + formatMessage({ id: 'container.analyticCard.ssl.secondText'});
         }
         
         let formatedTitle = percentage.toFixed(1) + "%";
 
         return (
-            <CardControl>
+          <div style={{ backgroundColor: '#FFFFFF' }}>
+            <Card>
+              <CardSection>
                 <CardContent title={ title }>
-                    <p>{ description }</p>
-                </CardContent>
-                <C3Wrapper config={{
-                 data: {
-                    type : 'donut',
-                     columns: [
-                        ['firstData', firstData],
-                        ['secondData', secondData],
-                    ],
-                    colors: {
-                        secondData: '#dddddd',
-                    },
-                  },
-                  donut: {
-                      title: formatedTitle,
-                      label: {
+                  <Text size="small" type="muted">{ description }</Text>
+                  <hr style={{ margin: '1rem 0' }} align="left" width="100%"/>
+                  <div style={{ textAlign: 'center' }}>
+                    <C3Wrapper config={{
+                     data: {
+                        type : 'donut',
+                         columns: [
+                            ['firstData', firstData],
+                            ['secondData', secondData],
+                        ],
+                        colors: {
+                            secondData: '#dddddd',
+                        },
+                      },
+                      size: {
+                        height: 150,
+                        width: 150
+                      },
+                      donut: {
+                          title: formatedTitle,
+                          label: {
+                              show: false
+                          },
+                      },
+                      tooltip: {
                           show: false
                       },
-                  },
-                  tooltip: {
-                      show: false
-                  },
-                  legend: {
-                      show: false
-                  }
+                      legend: {
+                          show: false
+                      }
 
-                }}/>
-                <b><p>{ firstText }</p></b>
-                <p>{ secondText }</p>
-            </CardControl>
+                    }}/>
+
+                    <Text><b>{ firstText }</b></Text>
+                    <Text>{ secondText }</Text>
+                  </div>
+                </CardContent>
+              </CardSection>                
+            </Card>
+          </div>
         );
     }
 }
