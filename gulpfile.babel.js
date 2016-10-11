@@ -29,9 +29,13 @@ b.transform(babelify);
 
 gulp.task('lint', lint); // run `gulp lint` to lint the file
 gulp.task('js', bundle); // run `gulp js` to build the file continuously
-gulp.task('compress', compress); // run `gulp compress` to compress the file
+gulp.task('compress', ['set-prod-node-env'], compress); // run `gulp compress` to compress the file
 b.on('update', bundle); // on any dep update, runs the bundler
 b.on('log', gutil.log); // output build logs to terminal
+
+gulp.task('set-prod-node-env', function() {
+    return process.env.NODE_ENV = 'production';
+});
 
 function bundle() {
     return b.bundle()
