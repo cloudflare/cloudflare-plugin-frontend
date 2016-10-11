@@ -31,7 +31,7 @@ export function asyncConfigFetch() {
         dispatch(configFetch());
 
         let opts = {};
-        opts.headers = { Accept: 'text/javascript' };
+        opts.headers = { Accept: 'application/javascript' };
         http.get('./config.js', opts, function (error, response) {
             if(response) {
                 let config = JSON.parse(response.text);

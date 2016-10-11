@@ -31,7 +31,7 @@ export function asyncIntlFetchTranslations(locale) {
         dispatch(intlFetchTranslations());
 
         let opts = {};
-        opts.headers = { Accept: 'text/javascript' };
+        opts.headers = { Accept: 'application/javascript' };
         http.get('./lang/'+locale+'.js', opts, function(error, response) {
             if(response) {
                 let translations = JSON.parse(response.text);
