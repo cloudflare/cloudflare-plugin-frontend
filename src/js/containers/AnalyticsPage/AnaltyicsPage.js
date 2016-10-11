@@ -10,6 +10,7 @@ import C3Wrapper from 'react-c3-wrapper';
 import _ from 'lodash';
 
 import { humanFileSize } from '../../utils/utils';
+import AnalyticCard from '../../components/AnalyticCard/AnalyticCard';
 
 const REQUESTS_TAB = 'requests';
 const BANDWIDTH_TAB = 'bandwidth';
@@ -281,7 +282,18 @@ class AnaltyicsPage extends Component {
                             </LayoutContainer> 
                         </TabsPanel>
                     </Tabs>
-                    </div>
+                  
+                    <LayoutRow>
+                      <LayoutColumn width={74/150}>
+                        <AnalyticCard title={ formatMessage({ id: 'container.analyticCard.ssl.title' }) } description={ formatMessage({ id: 'container.analyticCard.duration' }) } data={ analytics.totals.requests.ssl } dataType={ formatMessage({ id: 'container.analyticCard.ssl.datatype' }) } />
+                      </LayoutColumn>
+                      <LayoutColumn width={2/150}>&nbsp;</LayoutColumn>
+                      <LayoutColumn width={74/150}>
+                        <AnalyticCard title={ formatMessage({ id: 'container.analyticCard.bandwidth.title' }) } description={ formatMessage({ id: 'container.analyticCard.duration' }) } data={ analytics.totals.bandwidth } dataType={ formatMessage({ id: 'container.analyticCard.bandwidth.datatype' }) } />
+                      </LayoutColumn>
+                    </LayoutRow>
+
+                    </div>                    
                 )}
             </div>
         );
