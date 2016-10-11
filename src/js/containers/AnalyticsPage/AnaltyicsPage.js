@@ -284,17 +284,13 @@ class AnaltyicsPage extends Component {
                     </Tabs>
                   
                     <LayoutRow>
-                      <LayoutColumn width={31/64}>
+                      <LayoutColumn width={74/150}>
                         <AnalyticCard title={ formatMessage({ id: 'container.analyticCard.ssl.title' }) } description={ formatMessage({ id: 'container.analyticCard.duration' }) } data={ analytics.totals.requests.ssl } dataType={ formatMessage({ id: 'container.analyticCard.ssl.datatype' }) } />
                       </LayoutColumn>
-                      <LayoutColumn width={2/64}>&nbsp;</LayoutColumn>
-                      <LayoutColumn width={31/64}>
+                      <LayoutColumn width={2/150}>&nbsp;</LayoutColumn>
+                      <LayoutColumn width={74/150}>
                         <AnalyticCard title={ formatMessage({ id: 'container.analyticCard.bandwidth.title' }) } description={ formatMessage({ id: 'container.analyticCard.duration' }) } data={ analytics.totals.bandwidth } dataType={ formatMessage({ id: 'container.analyticCard.bandwidth.datatype' }) } />
                       </LayoutColumn>
-                    </LayoutRow>
-
-                    <LayoutRow>
-                      &nbsp;
                     </LayoutRow>
 
                     </div>                    
