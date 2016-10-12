@@ -30,7 +30,7 @@ class UnderAttackButton extends Component {
 
         return (
             <div style={{ fontSize: "75%", padding: "0.5rem", textAlign: "right" }}>
-                <span style={{ marginRight: "0.5rem"}}>
+                <span style={{ marginRight: "0.5rem" }}>
                     <FormattedMessage id="container.underAttackButton.description"/>
                 </span>
 
