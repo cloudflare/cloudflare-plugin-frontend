@@ -40,15 +40,14 @@ class ActiveZoneSelector extends Component {
     }
 
     render() {
-        let { activeZone, intl, zoneList } = this.props;
+        let { activeZone, zoneList } = this.props;
         let zones = _.values(zoneList).map(zone => {
             return { value: zone.name, label: zone.name };
         });
 
         return (
-            <div>
+            <div style={{ margin: "3px auto 0" }}>
                 <Select
-                    label={ intl.formatMessage({ id: 'container.activeZoneSelector.activeZone' }) }
                     value={ activeZone.name }
                     options={ zones }
                     onChange={ this.handleChange.bind(this) } />
