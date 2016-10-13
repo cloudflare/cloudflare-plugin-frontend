@@ -14,3 +14,4 @@ export const SIGN_UP_PAGE = '/sign-up';
 export const SUPPORT_PAGE = 'https://support.cloudflare.com/hc/en-us/';
 export const TERMS_AND_CONDITIONS_PAGE = 'https://www.cloudflare.com/terms';
 export const PRIVACY_POLICY_PAGE = 'https://www.cloudflare.com/security-policy';
+export const CLOUDFLARE_ACCOUNT_PAGE = 'https://www.cloudflare.com/a/account/my-account';

@@ -9,10 +9,11 @@ import { LayoutContainer, LayoutRow, LayoutColumn } from 'cf-component-layout';
 
 import MarketingFeatureCollection from '../../containers/MarketingFeatureCollection/MarketingFeatureCollection';
 import { asyncAPILogin } from '../../actions/user';
-import { CLOUDFLARE_SIGNUP_PAGE } from '../../constants/UrlPaths.js';
+import { CLOUDFLARE_SIGNUP_PAGE, CLOUDFLARE_ACCOUNT_PAGE } from '../../constants/UrlPaths.js';
 import { generateUTMLink } from '../../selectors/generateUTMLink.js';
 
-const UTM_CONTENT_IDENTIFIER = 'signup_now';
+const SIGNUP_UTM_CONTENT_IDENTIFIER = 'signup_now';
+const COPY_API_KEY_UTM_CONTENT_IDENTIFIER = 'copy_api_key';
 
 class ClientLoginPage extends Component {
     constructor(props) {
@@ -21,6 +22,10 @@ class ClientLoginPage extends Component {
             email: '',
             apiKey: ''
         };
+    }
+
+    openLinkInWindow(link) {
+        window.open(link, 'wordpress', 'toolbar=0,status=0,width=720,height=700');
     }
 
     handleEmailChange(email) {
@@ -41,7 +46,8 @@ class ClientLoginPage extends Component {
         const { formatMessage } = this.props.intl;
         const { config } = this.props;
 
-        let signupLinkWithUTM = generateUTMLink(CLOUDFLARE_SIGNUP_PAGE, config.integrationName, config.integrationName, UTM_CONTENT_IDENTIFIER);
+        let signupLinkWithUTM = generateUTMLink(CLOUDFLARE_SIGNUP_PAGE, config.integrationName, config.integrationName, SIGNUP_UTM_CONTENT_IDENTIFIER);
+        let accountLinkWithUTM = generateUTMLink(CLOUDFLARE_ACCOUNT_PAGE, config.integrationName, config.integrationName, COPY_API_KEY_UTM_CONTENT_IDENTIFIER);
 
         var overflowStyle = { overflow: "hidden" };
 
@@ -87,7 +93,8 @@ class ClientLoginPage extends Component {
                             <div style={overflowStyle}>
                                 <LayoutRow>
                                     <LayoutColumn width={1/1}>
-                                        <p style={{ textAlign: 'center', marginBottom: '2.5rem' }}><FormattedMessage id="component.clientLogin.cloudflare.description"/> <a href={signupLinkWithUTM} target="_blank">CloudFlare.com</a>.</p>
+                                        <p style={{ textAlign: 'center', marginBottom: '-1rem' }}><FormattedMessage id="component.clientLogin.cloudflare.description"/> <a onClick={ this.openLinkInWindow.bind(this, signupLinkWithUTM) }>CloudFlare.com</a>.</p>
+                                        <p style={{ textAlign: 'center', marginBottom: '2.5rem' }}><FormattedMessage id="component.clientLogin.form.apiKeyHelp"/> <a onClick={ this.openLinkInWindow.bind(this, accountLinkWithUTM) }>here</a>.</p>
                                     </LayoutColumn>
                                 </LayoutRow>
                             </div>
