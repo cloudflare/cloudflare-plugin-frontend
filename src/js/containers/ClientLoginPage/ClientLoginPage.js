@@ -23,6 +23,10 @@ class ClientLoginPage extends Component {
         };
     }
 
+    openSignUpLink(signupLinkWithUTM) {
+        window.open(signupLinkWithUTM, 'wordpress', 'toolbar=0,status=0,width=720,height=700');
+    }
+
     handleEmailChange(email) {
         this.setState({ email });
     }
@@ -87,7 +91,7 @@ class ClientLoginPage extends Component {
                             <div style={overflowStyle}>
                                 <LayoutRow>
                                     <LayoutColumn width={1/1}>
-                                        <p style={{ textAlign: 'center', marginBottom: '2.5rem' }}><FormattedMessage id="component.clientLogin.cloudflare.description"/> <a href={signupLinkWithUTM} target="_blank">CloudFlare.com</a>.</p>
+                                        <p style={{ textAlign: 'center', marginBottom: '2.5rem' }}><FormattedMessage id="component.clientLogin.cloudflare.description"/> <a onClick={ this.openSignUpLink.bind(this, signupLinkWithUTM) }>CloudFlare.com</a>.</p>
                                     </LayoutColumn>
                                 </LayoutRow>
                             </div>
