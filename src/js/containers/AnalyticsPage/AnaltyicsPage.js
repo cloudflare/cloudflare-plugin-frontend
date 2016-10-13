@@ -4,6 +4,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { Tabs, TabsPanel } from 'cf-component-tabs';
 import { LayoutContainer, LayoutRow, LayoutColumn } from 'cf-component-layout';
 import { Heading } from 'cf-component-heading';
+import Loading from 'cf-component-loading';
 import { format } from 'd3-format';
 
 import C3Wrapper from 'react-c3-wrapper';
@@ -82,7 +83,10 @@ class AnaltyicsPage extends Component {
         return (
             <div>
                 {isEmpty && (
-                    <FormattedMessage id="errors.noActiveZoneSelected"/>
+                    <div style={{ textAlign: "center" }}>
+                        <Loading/>
+                    </div>
+                    
                 )}
                 {!isEmpty && (
                     <div>

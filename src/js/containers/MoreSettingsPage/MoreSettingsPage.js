@@ -4,6 +4,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import _ from 'lodash';
 
 import { Heading } from 'cf-component-heading';
+import Loading from 'cf-component-loading';
 
 import { getPluginSettingsForZoneId } from '../../selectors/pluginSettings';
 import { renderCards } from '../../components/RenderCardsDynamically/RenderCardsDynamically';
@@ -31,7 +32,12 @@ class MoreSettingsPage extends Component {
 
         return (
             <div>
-                {isEmpty && (<FormattedMessage id="errors.noActiveZoneSelected"/>)}
+                {isEmpty && (
+                    <div style={{ textAlign: "center" }}>
+                        <Loading/>
+                    </div>
+                    
+                )}
                 {!isEmpty && (
                     <div>
                         
