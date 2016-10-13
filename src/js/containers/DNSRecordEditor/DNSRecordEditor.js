@@ -51,7 +51,7 @@ class DNSRecordEditor extends Component {
                                         <Loading/>
                                         :
                                         <Toggle
-                                            label="CloudFlare Provisioned"
+                                            label="Cloudflare Provisioned"
                                             name={dnsRecord.name + '_provisioned'}
                                             value={dnsRecord.proxied}
                                             onChange={(e) => this.handleToggle(e, dnsRecord)}/>
