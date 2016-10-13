@@ -1,7 +1,7 @@
 {
   "name": "cloudflare-plugin-frontend",
   "version": "2.5.3",
-  "description": "A React/Redux frontend for CloudFlare plugins",
+  "description": "A React/Redux frontend for Cloudflare plugins",
   "main": "gulpfile.js",
   "scripts": {
     "test": "mocha src/js/test/*/*.js --compilers js:babel-register",
@@ -16,7 +16,7 @@
   "keywords": [
     "cloudflare"
   ],
-  "author": "CloudFlare",
+  "author": "Cloudflare",
   "license": "BSD-3-Clause",
   "devDependencies": {
     "babel-core": "^6.1.21",
