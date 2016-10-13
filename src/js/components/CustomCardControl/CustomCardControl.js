@@ -11,7 +11,7 @@ import { generateUTMLink } from '../../selectors/generateUTMLink.js';
 class CustomCardControl extends Component {
 
     openUpgradePlanLink(upgradeLinkWithUTM) {
-        window.open(upgradeLinkWithUTM, 'wordpress', 'toolbar=0,status=0,width=548,height=325');
+        window.open(upgradeLinkWithUTM, 'wordpress', 'toolbar=0,status=0,width=720,height=700');
     }
 
     render() {
