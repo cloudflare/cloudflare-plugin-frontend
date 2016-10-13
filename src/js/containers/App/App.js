@@ -25,52 +25,54 @@ class AppContainer extends Component {
         return (
             <div>
                 <LayoutContainer>
-                    <LayoutRow>
-                        <header id="header" className="header app-header">
-                            <div className="gradient-bar-header">
-                                <div className="header-main" style={{ borderBottom: "1px solid #ddd", backgroundColor: "#f9f9f9" }}>
-                                    <LayoutColumn width={3/8}>
-                                        <LayoutColumn width={3/8}>
-                                            <img style={{ margin: "4.95px auto 0", width: "170px", height: "30px" }} src={ getAbsoluteUrl(config, 'assets/logo.svg') } />
-                                        </LayoutColumn>
-                                        <LayoutColumn width={5/8}>
-                                            { isLoggedIn() ? <ActiveZoneSelector/> : <noscript/> }                                            
-                                        </LayoutColumn>
-                                    </LayoutColumn>     
-                                    <LayoutColumn width={5/8}>
-                                        <div style={{ float: "right" }}>
-                                            { (isLoggedIn() && this.props.state.zoneSettings.entities[this.props.state.activeZone.id]) ? <UnderAttackButton/> : <noscript/> }
-                                        </div>
-                                    </LayoutColumn>
-                                </div>
-                            </div>
-                        </header>
-                    </LayoutRow>
-
-                    <div style={{ marginTop: "-8px" }}>
+                    <div style={{ border: "0.5px solid #ddd", marginTop: "8px", borderTop: "none" }}>
                         <LayoutRow>
-                            <div style={{ display: "flex", padding: "1rem", backgroundColor: "#FFF" }}>
-                                <LayoutColumn width={1/3}>&nbsp;</LayoutColumn>
-                                <LayoutColumn width={1/3}>
-                                    <AppNavigation />
-                                </LayoutColumn>
-                                <LayoutColumn width={1/3}>&nbsp;</LayoutColumn>
-                            </div>
+                            <header id="header" className="header app-header">
+                                <div className="gradient-bar-header">
+                                    <div className="header-main" style={{ borderBottom: "1px solid #ddd", backgroundColor: "#f9f9f9" }}>
+                                        <LayoutColumn width={3/8}>
+                                            <LayoutColumn width={3/8}>
+                                                <img style={{ margin: "4.95px auto 0", width: "170px", height: "30px" }} src={ getAbsoluteUrl(config, 'assets/logo.svg') } />
+                                            </LayoutColumn>
+                                            <LayoutColumn width={5/8}>
+                                                { isLoggedIn() ? <ActiveZoneSelector/> : <noscript/> }                                            
+                                            </LayoutColumn>
+                                        </LayoutColumn>     
+                                        <LayoutColumn width={5/8}>
+                                            <div style={{ float: "right" }}>
+                                                { (isLoggedIn() && this.props.state.zoneSettings.entities[this.props.state.activeZone.id]) ? <UnderAttackButton/> : <noscript/> }
+                                            </div>
+                                        </LayoutColumn>
+                                    </div>
+                                </div>
+                            </header>
+                        </LayoutRow>
+
+                        <div style={{ marginTop: "-8px" }}>
+                            <LayoutRow>
+                                <div style={{ display: "flex", padding: "1rem", backgroundColor: "#FFF" }}>
+                                    <LayoutColumn width={1/3}>&nbsp;</LayoutColumn>
+                                    <LayoutColumn width={1/3}>
+                                        <AppNavigation />
+                                    </LayoutColumn>
+                                    <LayoutColumn width={1/3}>&nbsp;</LayoutColumn>
+                                </div>
+                            </LayoutRow>
+                        </div>
+
+                        <LayoutRow>
+                            <LayoutColumn width={3/20}>&nbsp;</LayoutColumn>
+                            <LayoutColumn width={14/20}>
+                                {this.props.children}
+                            </LayoutColumn>
+                            <LayoutColumn width={3/20}>&nbsp;</LayoutColumn>
+                        </LayoutRow>
+                        <LayoutRow>
+                            <LayoutColumn width={1/1}>
+                                <p style={{ 'textAlign': 'center' }}><FormattedMessage id="container.App.version" values={{ 'version': this.props.state.config.config.version }}/></p>
+                            </LayoutColumn>
                         </LayoutRow>
                     </div>
-
-                    <LayoutRow>
-                        <LayoutColumn width={3/20}>&nbsp;</LayoutColumn>
-                        <LayoutColumn width={14/20}>
-                            {this.props.children}
-                        </LayoutColumn>
-                        <LayoutColumn width={3/20}>&nbsp;</LayoutColumn>
-                    </LayoutRow>
-                    <LayoutRow>
-                        <LayoutColumn width={1/1}>
-                            <p style={{ 'textAlign': 'center' }}><FormattedMessage id="container.App.version" values={{ 'version': this.props.state.config.config.version }}/></p>
-                        </LayoutColumn>
-                    </LayoutRow>
                 </LayoutContainer>
                 <GatewayDest name="modal"/>
                 <GlobalNotifications />
