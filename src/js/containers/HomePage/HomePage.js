@@ -4,6 +4,8 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import _ from 'lodash';
 
 import { Heading } from 'cf-component-heading';
+import Loading from 'cf-component-loading';
+import Text from 'cf-component-text';
 
 import { getPluginSettingsForZoneId } from '../../selectors/pluginSettings';
 import { renderCards } from '../../components/RenderCardsDynamically/RenderCardsDynamically';
@@ -15,7 +17,9 @@ class HomePage extends Component {
 
         return (
             <div>
-                {isEmpty && (<FormattedMessage id="errors.noActiveZoneSelected"/>)}
+                {isEmpty && (
+                    <Text align="center"><Loading/></Text>
+                )}
                 {!isEmpty && (
                     <div>
                         <Heading size={1}><FormattedMessage id="container.appNavigation.home"/></Heading>

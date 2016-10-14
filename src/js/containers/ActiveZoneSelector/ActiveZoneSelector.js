@@ -40,18 +40,25 @@ class ActiveZoneSelector extends Component {
     }
 
     render() {
-        let { activeZone, intl, zoneList } = this.props;
+        let { activeZone, zoneList } = this.props;
         let zones = _.values(zoneList).map(zone => {
             return { value: zone.name, label: zone.name };
         });
 
+        let singleZoneStyle = { margin: "9px auto 0" };
+        let listZoneStyle = { margin: "3px auto 0" };
+
+        let activeZoneName = activeZone.name
+        let isSingleZone = zones.length < 2;
+
         return (
-            <div>
-                <Select
-                    label={ intl.formatMessage({ id: 'container.activeZoneSelector.activeZone' }) }
-                    value={ activeZone.name }
+            <div style={ isSingleZone ? singleZoneStyle : listZoneStyle }>
+            { isSingleZone ? activeZoneName : 
+                ( <Select
+                    value={ activeZoneName }
                     options={ zones }
-                    onChange={ this.handleChange.bind(this) } />
+                    onChange={ this.handleChange.bind(this) } /> )
+            }
             </div>
         );
     }

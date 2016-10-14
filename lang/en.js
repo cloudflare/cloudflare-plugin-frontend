@@ -74,7 +74,7 @@
     "container.applydefaultsettingscard.button": "Apply",
     "container.applydefaultsettingscard.success": "Your default settings have been successfully set.",
     "container.appNavigation.home": "Home",
-    "container.appNavigation.moresettings": "More Settings",
+    "container.appNavigation.moresettings": "Settings",
     "container.appNavigation.domainsOverview": "Domains Overview",
     "container.appNavigation.analytics": "Analytics",
     "container.appNavigation.performance": "Performance",

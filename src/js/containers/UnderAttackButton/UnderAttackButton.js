@@ -26,14 +26,20 @@ class UnderAttackButton extends Component {
         let { value } = this.state;
         let buttonText = (value === 'under_attack') ? 'container.underAttackButton.turnOn' : 'container.underAttackButton.turnOff';
         let buttonValue = (value === 'under_attack') ? 'essentially_off' : 'under_attack';
-        let buttonType = (value === 'under_attack') ? 'warning' : 'default';
+        let buttonType = (value === 'under_attack') ? 'warning' : 'primary';
 
         return (
-            <div>
-                <label><FormattedMessage id="container.underAttackButton.description"/></label>
+            <div style={{ fontSize: "75%", padding: "0.5rem", textAlign: "right" }}>
+                <span style={{ marginRight: "0.5rem" }}>
+                    <FormattedMessage id="container.underAttackButton.description"/>
+                </span>
+
                 <Button type={buttonType} onClick={ this.handleChange.bind(this, buttonValue) }>
-                    <FormattedMessage id={buttonText}/>
+                    <div style={{ fontSize: "75%" }}>
+                        <FormattedMessage id={buttonText}/>
+                    </div>
                 </Button>
+                
             </div>
         );
     }
