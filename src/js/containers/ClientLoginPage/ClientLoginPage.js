@@ -53,7 +53,7 @@ class ClientLoginPage extends Component {
 
         return (
             <div>
-                <div id="cf-login-page">
+                <div id="cf-login-page" style={{ margin: "2rem auto" }}>
                     <Form layout="vertical" onSubmit={(e) => this.handleLoginSubmit(e)}>
                         <LayoutContainer>
                             <div style={overflowStyle}>
