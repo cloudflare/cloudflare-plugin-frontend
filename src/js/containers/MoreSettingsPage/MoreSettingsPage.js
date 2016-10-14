@@ -5,6 +5,7 @@ import _ from 'lodash';
 
 import { Heading } from 'cf-component-heading';
 import Loading from 'cf-component-loading';
+import Text from 'cf-component-text';
 
 import { getPluginSettingsForZoneId } from '../../selectors/pluginSettings';
 import { renderCards } from '../../components/RenderCardsDynamically/RenderCardsDynamically';
@@ -33,10 +34,7 @@ class MoreSettingsPage extends Component {
         return (
             <div>
                 {isEmpty && (
-                    <div style={{ textAlign: "center" }}>
-                        <Loading/>
-                    </div>
-                    
+                    <Text align="center"><Loading/></Text>
                 )}
                 {!isEmpty && (
                     <div>

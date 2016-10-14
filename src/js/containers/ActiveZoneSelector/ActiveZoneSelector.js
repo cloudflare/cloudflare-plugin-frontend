@@ -45,26 +45,20 @@ class ActiveZoneSelector extends Component {
             return { value: zone.name, label: zone.name };
         });
 
-        let activeZoneName = activeZone.name;
-        let customStyle = { margin: "9px auto 0" };
-        if (zones.length > 1) {
-            customStyle = { margin: "3px auto 0" };
-        }
+        let singleZoneStyle = { margin: "9px auto 0" };
+        let listZoneStyle = { margin: "3px auto 0" };
 
-        if (zones.length < 2) {
-            return (
-                <div style={ customStyle }>
-                    { activeZoneName }
-                </div>
-            );            
-        }
+        let activeZoneName = activeZone.name
+        let isSingleZone = zones.length < 2;
 
         return (
-            <div style={ customStyle }>
-                <Select
+            <div style={ isSingleZone ? singleZoneStyle : listZoneStyle }>
+            { isSingleZone ? activeZoneName : 
+                ( <Select
                     value={ activeZoneName }
                     options={ zones }
-                    onChange={ this.handleChange.bind(this) } />
+                    onChange={ this.handleChange.bind(this) } /> )
+            }
             </div>
         );
     }
