@@ -72,7 +72,7 @@ class ClientLoginPage extends Component {
                                             </LayoutColumn>
                                         </LayoutRow>
                                     </div>
-                                    <div style={overflowStyle}>
+                                    <div style={{ overflow: "hidden", paddingBottom: "1px" }}>
                                         <LayoutRow>
                                             <LayoutColumn width={1/1}>
                                                 <FormLabel hidden><FormattedMessage id="component.clientLogin.form.apiKey"/></FormLabel>
