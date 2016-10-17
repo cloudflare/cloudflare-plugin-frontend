@@ -5,7 +5,6 @@ import { GatewayDest, GatewayProvider } from 'react-gateway';
 
 import { LayoutContainer, LayoutRow, LayoutColumn } from 'cf-component-layout';
 import { Flex } from 'cf-component-flex';
-import Text from 'cf-component-text';
 
 import ActiveZoneSelector from '../../containers/ActiveZoneSelector/ActiveZoneSelector';
 import AppNavigation from '../../containers/AppNavigation/AppNavigation';
@@ -41,9 +40,7 @@ class AppContainer extends Component {
                                             </LayoutColumn>
                                         </LayoutColumn>     
                                         <LayoutColumn width={5/8}>
-                                            <Text align="right">
-                                                { (isLoggedIn() && this.props.state.zoneSettings.entities[this.props.state.activeZone.id]) ? <UnderAttackButton/> : <noscript/> }
-                                            </Text>
+                                            { (isLoggedIn() && this.props.state.zoneSettings.entities[this.props.state.activeZone.id]) ? <UnderAttackButton/> : <noscript/> }
                                         </LayoutColumn>
                                     </div>
                                 </div>
