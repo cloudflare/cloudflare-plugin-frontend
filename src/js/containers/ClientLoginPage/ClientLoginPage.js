@@ -93,7 +93,7 @@ class ClientLoginPage extends Component {
                             <div style={overflowStyle}>
                                 <LayoutRow>
                                     <LayoutColumn width={1/1}>
-                                        <p style={{ textAlign: 'center', marginBottom: '-1rem' }}><FormattedMessage id="component.clientLogin.cloudflare.description"/> <a onClick={ this.openLinkInWindow.bind(this, signupLinkWithUTM) }>CloudFlare.com</a>.</p>
+                                        <p style={{ textAlign: 'center', marginBottom: '-1rem' }}><FormattedMessage id="component.clientLogin.cloudflare.description"/> <a onClick={ this.openLinkInWindow.bind(this, signupLinkWithUTM) }>cloudflare.com</a>.</p>
                                         <p style={{ textAlign: 'center', marginBottom: '2.5rem' }}><FormattedMessage id="component.clientLogin.form.apiKeyHelp"/> <a onClick={ this.openLinkInWindow.bind(this, accountLinkWithUTM) }>here</a>.</p>
                                     </LayoutColumn>
                                 </LayoutRow>
