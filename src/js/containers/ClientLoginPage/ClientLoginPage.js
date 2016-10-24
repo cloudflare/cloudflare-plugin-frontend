@@ -53,7 +53,7 @@ class ClientLoginPage extends Component {
 
         return (
             <div>
-                <div id="cf-login-page">
+                <div id="cf-login-page" style={{ margin: "2rem auto" }}>
                     <Form layout="vertical" onSubmit={(e) => this.handleLoginSubmit(e)}>
                         <LayoutContainer>
                             <div style={overflowStyle}>
@@ -72,7 +72,7 @@ class ClientLoginPage extends Component {
                                             </LayoutColumn>
                                         </LayoutRow>
                                     </div>
-                                    <div style={overflowStyle}>
+                                    <div style={{ overflow: "hidden", paddingBottom: "1px" }}>
                                         <LayoutRow>
                                             <LayoutColumn width={1/1}>
                                                 <FormLabel hidden><FormattedMessage id="component.clientLogin.form.apiKey"/></FormLabel>
@@ -93,7 +93,7 @@ class ClientLoginPage extends Component {
                             <div style={overflowStyle}>
                                 <LayoutRow>
                                     <LayoutColumn width={1/1}>
-                                        <p style={{ textAlign: 'center', marginBottom: '-1rem' }}><FormattedMessage id="component.clientLogin.cloudflare.description"/> <a onClick={ this.openLinkInWindow.bind(this, signupLinkWithUTM) }>CloudFlare.com</a>.</p>
+                                        <p style={{ textAlign: 'center', marginBottom: '-1rem' }}><FormattedMessage id="component.clientLogin.cloudflare.description"/> <a onClick={ this.openLinkInWindow.bind(this, signupLinkWithUTM) }>cloudflare.com</a>.</p>
                                         <p style={{ textAlign: 'center', marginBottom: '2.5rem' }}><FormattedMessage id="component.clientLogin.form.apiKeyHelp"/> <a onClick={ this.openLinkInWindow.bind(this, accountLinkWithUTM) }>here</a>.</p>
                                     </LayoutColumn>
                                 </LayoutRow>

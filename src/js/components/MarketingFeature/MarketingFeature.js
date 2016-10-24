@@ -9,7 +9,7 @@ export default class MarketingFeature extends Component {
          * These styles are stolen from the marketing site and aren't in our CSS
          */
         let divStyles = {
-            'padding':'5px',
+            'padding':'30px 15px 30px 15px',
         };
         let iconStyles = {
             'display': 'block',

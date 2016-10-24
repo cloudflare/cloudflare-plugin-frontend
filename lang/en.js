@@ -1,6 +1,6 @@
 {
     "component.clientLogin.form.email": "Email",
-    "component.clientLogin.form.apiKeyHelp": "Already have an account? Copy your API Key from",
+    "component.clientLogin.form.apiKeyHelp": "Already have an account? Get your API Key from",
     "component.clientLogin.form.apiKey": "API Key",
     "component.clientLogin.form.button": "Save API Credentials",
     "component.clientLogin.form.signUp": "Sign up",

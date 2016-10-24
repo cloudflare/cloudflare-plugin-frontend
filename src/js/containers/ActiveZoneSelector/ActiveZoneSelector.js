@@ -28,19 +28,19 @@ class ActiveZoneSelector extends Component {
     }
 
     componentWillReceiveProps() {
-        let { activeZone, config, dispatch } = this.props;
+        let { activeZoneName, config, dispatch } = this.props;
 
         // If the current active zone is a subdomain show a notification
         // regarding that the changes are made to the original zone.
         var shouldUseSubdomain = getConfigValue(config, 'isSubdomainCheckEnabled');
-        if (shouldUseSubdomain && !this.state.subdomainChecked && isSubdomain(activeZone.name)) {
+        if (shouldUseSubdomain && !this.state.subdomainChecked && isSubdomain(activeZoneName)) {
             this.setState({ subdomainChecked: true });
             dispatch(notificationAddWarning('warning.usingSubdomain', true, true));
         }        
     }
 
     render() {
-        let { activeZone, zoneList } = this.props;
+        let { activeZoneName, zoneList } = this.props;
         let zones = _.values(zoneList).map(zone => {
             return { value: zone.name, label: zone.name };
         });
@@ -48,7 +48,6 @@ class ActiveZoneSelector extends Component {
         let singleZoneStyle = { margin: "9px auto 0" };
         let listZoneStyle = { margin: "3px auto 0" };
 
-        let activeZoneName = activeZone.name
         let isSingleZone = zones.length < 2;
 
         return (
@@ -66,7 +65,7 @@ class ActiveZoneSelector extends Component {
 
 function mapStateToProps(state) {
     return {
-        activeZone: state.activeZone,
+        activeZoneName: state.activeZone.name,
         zoneList: state.zones.entities.zones,
         config: state.config,
     };

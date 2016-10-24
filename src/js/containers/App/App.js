@@ -4,6 +4,7 @@ import { FormattedMessage, injectIntl, IntlProvider } from 'react-intl';
 import { GatewayDest, GatewayProvider } from 'react-gateway';
 
 import { LayoutContainer, LayoutRow, LayoutColumn } from 'cf-component-layout';
+import { Flex } from 'cf-component-flex';
 
 import ActiveZoneSelector from '../../containers/ActiveZoneSelector/ActiveZoneSelector';
 import AppNavigation from '../../containers/AppNavigation/AppNavigation';
@@ -39,41 +40,50 @@ class AppContainer extends Component {
                                             </LayoutColumn>
                                         </LayoutColumn>     
                                         <LayoutColumn width={5/8}>
-                                            <div style={{ float: "right" }}>
-                                                { (isLoggedIn() && this.props.state.zoneSettings.entities[this.props.state.activeZone.id]) ? <UnderAttackButton/> : <noscript/> }
-                                            </div>
+                                            { (isLoggedIn() && this.props.state.zoneSettings.entities[this.props.state.activeZone.id]) ? <UnderAttackButton/> : <noscript/> }
                                         </LayoutColumn>
                                     </div>
                                 </div>
                             </header>
                         </LayoutRow>
 
-                        <div style={{ marginTop: "-8px" }}>
-                            <LayoutRow>
-                                <div style={{ display: "flex", padding: "1rem", backgroundColor: "#FFF" }}>
-                                    <LayoutColumn width={1/3}>&nbsp;</LayoutColumn>
-                                    <LayoutColumn width={1/3}>
-                                        <AppNavigation />
-                                    </LayoutColumn>
-                                    <LayoutColumn width={1/3}>&nbsp;</LayoutColumn>
-                                </div>
-                            </LayoutRow>
-                        </div>
+                        { isLoggedIn() ? 
+                            <div style={{ marginTop: "-8px" }}>
+                                <LayoutRow>
+                                    <div style={{ padding: "1rem", backgroundColor: "#FFF" }}>
+                                        <Flex spacing={false}>
+                                            <LayoutColumn width={1/3}>&nbsp;</LayoutColumn>
+                                            <LayoutColumn width={1/3}>
+                                                <AppNavigation />
+                                            </LayoutColumn>
+                                            <LayoutColumn width={1/3}>&nbsp;</LayoutColumn>
+                                        </Flex>
+                                    </div>
+                                </LayoutRow>
+                            </div> : null
+                        }
 
+                        { isLoggedIn() ?
                         <LayoutRow>
-                            <LayoutColumn width={3/20}>&nbsp;</LayoutColumn>
-                            <LayoutColumn width={14/20}>
-                                {this.props.children}
-                            </LayoutColumn>
-                            <LayoutColumn width={3/20}>&nbsp;</LayoutColumn>
+                            <Flex spacing={false}>
+                                <LayoutColumn width={3/20}>&nbsp;</LayoutColumn>
+                                <LayoutColumn width={14/20}>
+                                    {this.props.children}
+                                </LayoutColumn>
+                                <LayoutColumn width={3/20}>&nbsp;</LayoutColumn>
+                            </Flex>
                         </LayoutRow>
-                        <LayoutRow>
-                            <LayoutColumn width={1/1}>
-                                <p style={{ 'textAlign': 'center' }}><FormattedMessage id="container.App.version" values={{ 'version': this.props.state.config.config.version }}/></p>
-                            </LayoutColumn>
-                        </LayoutRow>
+                        : <LayoutRow>{this.props.children}</LayoutRow>
+                        }
                     </div>
                 </LayoutContainer>
+
+                <LayoutRow>
+                    <LayoutColumn width={1/1}>
+                        <p style={{ 'textAlign': 'center' }}><FormattedMessage id="container.App.version" values={{ 'version': this.props.state.config.config.version }}/></p>
+                    </LayoutColumn>
+                </LayoutRow>
+
                 <GatewayDest name="modal"/>
                 <GlobalNotifications />
             </div>
