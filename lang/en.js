@@ -146,6 +146,7 @@
     "container.minifyCard.css": "CSS",
     "container.minifyCard.html": "HTML",
     "container.minifyCard.javascript": "JavaScript",
+    "container.moresettings.performance": "Performance",
     "container.moresettings.speed": "Speed",
     "container.moresettings.security": "Security",
     "container.performancePage.title": "Performance",
