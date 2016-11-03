@@ -45,19 +45,16 @@ class ActiveZoneSelector extends Component {
             return { value: zone.name, label: zone.name };
         });
 
-        let singleZoneStyle = { margin: "9px auto 0" };
-        let listZoneStyle = { margin: "3px auto 0" };
-
         let isSingleZone = zones.length < 2;
 
         return (
-            <div style={ isSingleZone ? singleZoneStyle : listZoneStyle }>
-            { isSingleZone ? activeZoneName : 
-                ( <Select
-                    value={ activeZoneName }
-                    options={ zones }
-                    onChange={ this.handleChange.bind(this) } /> )
-            }
+            <div className={"active-zone-selector__" + (isSingleZone ? "singlezone" : "multiplezone")}>
+                { isSingleZone ? activeZoneName : 
+                    ( <Select
+                        value={ activeZoneName }
+                        options={ zones }
+                        onChange={ this.handleChange.bind(this) } /> )
+                }
             </div>
         );
     }
