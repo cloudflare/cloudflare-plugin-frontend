@@ -29,7 +29,7 @@ class UnderAttackButton extends Component {
         let buttonType = (value === 'under_attack') ? 'warning' : 'primary';
 
         return (
-            <div style={{ fontSize: "75%", padding: "0.5rem", textAlign: "right" }}>
+            <div className="under-attack-button">
                 <span style={{ marginRight: "0.5rem" }}>
                     <FormattedMessage id="container.underAttackButton.description"/>
                 </span>

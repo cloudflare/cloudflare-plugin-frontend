@@ -101,7 +101,7 @@ class ZoneProvisionContainer extends Component {
                         <ModalTitle><FormattedMessage id="container.zoneProvision.modal.title"/></ModalTitle>
                         <ModalClose onClick={this.handleRequestClose.bind(this)}/>
                     </ModalHeader>
-                    <ModalBody>
+                    <ModalBody> 
                         <p><FormattedMessage id="container.zoneProvision.modal.description" values={{ 'zoneName': this.props.activeZoneName }} /></p>
                     </ModalBody>
                     <ModalFooter>

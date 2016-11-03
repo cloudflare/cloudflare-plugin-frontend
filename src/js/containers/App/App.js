@@ -50,7 +50,7 @@ class AppContainer extends Component {
                         { isLoggedIn() ? 
                             <div style={{ marginTop: "-8px" }}>
                                 <LayoutRow>
-                                    <div style={{ padding: "1rem", backgroundColor: "#FFF" }}>
+                                    <div className="app-navigation-tabs-wrapper">
                                         <Flex spacing={false}>
                                             <LayoutColumn width={1/3}>&nbsp;</LayoutColumn>
                                             <LayoutColumn width={1/3}>
