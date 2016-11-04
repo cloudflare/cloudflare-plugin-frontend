@@ -2,6 +2,21 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.6.0](#2.6.0) - 2016-11-4
+### Added
+- Added pie charts to analytics tab. [#56](https://github.com/cloudflare/Cloudflare-FrontEnd/pull/56)
+- Added popup window when clicking signup. [#61](https://github.com/cloudflare/Cloudflare-FrontEnd/pull/61)
+- Added link to fetch API Key. [#63](https://github.com/cloudflare/Cloudflare-FrontEnd/pull/63)
+
+### Changed
+- Changed text/javascript to application/javascript [#59](https://github.com/cloudflare/Cloudflare-FrontEnd/pull/59)
+- Changed UI to look more cloudflarish [#60](https://github.com/cloudflare/Cloudflare-FrontEnd/pull/60)
+- Changed CloudFlare to Cloudflare [#64](https://github.com/cloudflare/Cloudflare-FrontEnd/pull/64)
+- Changed active zone selector to disable when there is single zone [#65](https://github.com/cloudflare/Cloudflare-FrontEnd/pull/65)
+
+### Fixed
+- Fixed node_env showing development when calling gulp compress. [#58](https://github.com/cloudflare/Cloudflare-FrontEnd/pull/58)
+
 ## [2.5.3](#2.5.3) - 2016-10-6
 ### Fixed
 - Fixed login page styles. [#55](https://github.com/cloudflare/Cloudflare-FrontEnd/pull/55)
