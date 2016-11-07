@@ -22,7 +22,7 @@ var customOpts = {
     ],
 };
 var opts = assign({}, watchify.args, customOpts);
-var b = watchify(browserify(opts));
+var b = browserify(opts);
 
 //transformations
 b.transform(babelify);
@@ -38,6 +38,10 @@ gulp.task('set-prod-node-env', function() {
 });
 
 function bundle() {
+    if (process.env.NODE_ENV !== 'production') {
+        watchify(b);    
+    }
+
     return b.bundle()
         // log errors if they happen
         .on('error', gutil.log.bind(gutil, 'Browserify Error'))
@@ -54,13 +58,14 @@ function bundle() {
 }
 
 function compress(cb) {
-  pump([
-        gulp.src('compiled.js'),
-        uglify(),
-        gulp.dest('./')
-    ],
-    cb
-  );
+    pump([
+            bundle(),
+            gulp.src('compiled.js'),
+            uglify(),
+            gulp.dest('./')
+        ],
+        cb
+    );
 }
 
 function fixErrorHandling() {
