@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.6.1](#2.6.1) - 2016-11-22
+### Fixed
+- Gulp compress no longer watches files [#72](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/72)
+
+## Changed
+- Removed unused stylesheets, updated cf.core.css to only contain CSS for Header, AppNavigation [#74](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/74)
+
 ## [2.6.0](#2.6.0) - 2016-11-4
 ### Added
 - Added pie charts to analytics tab. [#56](https://github.com/cloudflare/Cloudflare-FrontEnd/pull/56)
