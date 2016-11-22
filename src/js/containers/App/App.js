@@ -23,7 +23,7 @@ class AppContainer extends Component {
 
     render() {
         return (
-            <div className="site-wrapper">
+            <div className="site-wrapper" style={{ paddingBottom: "20px" }}>
                 <LayoutContainer>
                     <LayoutRow>
                         <Header/>
