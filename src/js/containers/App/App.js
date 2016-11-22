@@ -5,14 +5,11 @@ import { GatewayDest, GatewayProvider } from 'react-gateway';
 
 import { LayoutContainer, LayoutRow, LayoutColumn } from 'cf-component-layout';
 
-import ActiveZoneSelector from '../../containers/ActiveZoneSelector/ActiveZoneSelector';
 import AppNavigation from '../../containers/AppNavigation/AppNavigation';
 import { isLoggedIn } from '../../utils/Auth/Auth';
 import { asyncConfigFetch } from '../../actions/config';
 import GlobalNotifications from '../../containers/GlobalNotifications/GlobalNotifications';
 import Header from '../../containers/Header/Header';
-import UnderAttackButton from '../../containers/UnderAttackButton/UnderAttackButton';
-import { getAbsoluteUrl } from '../../selectors/config';
 
 //Safari Intl Polyfill
 if (!global.Intl) {

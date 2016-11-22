@@ -1,11 +1,11 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
 
 import ActiveZoneSelector from '../../containers/ActiveZoneSelector/ActiveZoneSelector';
 import { isLoggedIn } from '../../utils/Auth/Auth';
 import { getAbsoluteUrl } from '../../selectors/config';
-import { LayoutContainer, LayoutRow, LayoutColumn } from 'cf-component-layout';
+import { LayoutRow, LayoutColumn } from 'cf-component-layout';
 import UnderAttackButton from '../../containers/UnderAttackButton/UnderAttackButton';
 
 class Header extends Component {
