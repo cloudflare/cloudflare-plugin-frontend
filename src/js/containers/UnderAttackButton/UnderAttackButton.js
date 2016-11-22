@@ -28,8 +28,15 @@ class UnderAttackButton extends Component {
         let buttonValue = (value === 'under_attack') ? 'essentially_off' : 'under_attack';
         let buttonType = (value === 'under_attack') ? 'warning' : 'primary';
 
+        let underAttackStyles = {
+            lineHeight: "60px",
+            fontSize: "75%",
+            textAlign: "right",
+            marginRight: "5px"
+        };
+
         return (
-            <div className="under-attack-button">
+            <div className="under-attack-button" style={ underAttackStyles }>
                 <span style={{ marginRight: "0.5rem" }}>
                     <FormattedMessage id="container.underAttackButton.description"/>
                 </span>
@@ -39,7 +46,6 @@ class UnderAttackButton extends Component {
                         <FormattedMessage id={buttonText}/>
                     </div>
                 </Button>
-                
             </div>
         );
     }
