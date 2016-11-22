@@ -48,7 +48,7 @@ class ActiveZoneSelector extends Component {
         let isSingleZone = zones.length < 2;
 
         return (
-            <div className={"active-zone-selector__" + (isSingleZone ? "singlezone" : "multiplezone")}>
+            <div className={"active-zone-selector__" + (isSingleZone ? "singlezone" : "multiplezone")} style={{ lineHeight: "60px" }}>
                 { isSingleZone ? activeZoneName : 
                     ( <Select
                         value={ activeZoneName }
