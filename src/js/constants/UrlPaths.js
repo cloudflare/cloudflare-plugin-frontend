@@ -8,7 +8,6 @@ export const DOMAINS_OVERVIEW_PAGE = '/zones';
 export const HOME_PAGE = '/home';
 export const MORE_SETTINGS_PAGE = '/more-settings';
 export const LOGIN_PAGE = '/login';
-export const PERFORMANCE_PAGE = '/performance';
 export const SECURITY_PAGE = '/security';
 export const SIGN_UP_PAGE = '/sign-up';
 export const SUPPORT_PAGE = 'https://support.cloudflare.com/hc/en-us/';
