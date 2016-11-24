@@ -27,11 +27,13 @@ let cardMapper = {
     AdvanceDDoSCard: AdvanceDDoSCard,
     AlwaysOnlineCard: AlwaysOnlineCard,
     ApplyDefaultSettingsCard: ApplyDefaultSettingsCard,
+    AutomaticHTTPSRewritesCard: AutomaticHTTPSRewritesCard,
     BrowserCacheTTLCard: BrowserCacheTTLCard,
     BrowserIntegrityCheckCard: BrowserIntegrityCheckCard,
     CacheLevelCard: CacheLevelCard,
     ChallengePassageCard: ChallengePassageCard,
     DevelopmentModeCard: DevelopmentModeCard,
+    DNSManagementPage: DNSManagementPage,
     IPV6Card: IPV6Card,
     ImageOptimizationCard: ImageOptimizationCard,
     IpRewriteCard: IpRewriteCard,
@@ -39,12 +41,10 @@ let cardMapper = {
     PluginSpecificCacheCard: PluginSpecificCacheCard,
     PluginSpecificCacheTagCard: PluginSpecificCacheTagCard,
     PurgeCacheCard: PurgeCacheCard,
+    RailgunCard: RailgunCard,
     SSLCard: SSLCard,
     SecurityLevelCard: SecurityLevelCard,
     WAFCard: WAFCard,
-    RailgunCard: RailgunCard,
-    DNSManagementPage: DNSManagementPage,
-    AutomaticHTTPSRewritesCard: AutomaticHTTPSRewritesCard
 };
 
 export { cardMapper };
