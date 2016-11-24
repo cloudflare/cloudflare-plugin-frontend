@@ -75,7 +75,6 @@
     "container.signup.form.password": "Wachtwoord",
     "container.signup.form.passwordAgain": "Wachtwoord (opnieuw)",
     "container.signup.form.button": "Schrijf in voor Cloudflare",
-    "container.securityPage.title": "Veiligheidsinstellingen",
     "container.securityLevelCard.description": "Pas het veiligheidslevel van uw website aan om te bepalen welke bezoekers een uitdagingspagina zullen ontvangen.",
     "container.securityLevelCard.select.essentiallyOff": "Voornamelijk Af",
     "container.securityLevelCard.select.low": "laag",

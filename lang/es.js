@@ -75,7 +75,6 @@
     "container.signup.form.password": "Contraseña",
     "container.signup.form.passwordAgain": "Contraseña (de nuevo)",
     "container.signup.form.button": "Registrarse en Cloudflare",
-    "container.securityPage.title": "Ajustes de seguridad",
     "container.securityLevelCard.description": "Ajusta el nivel de seguridad de tu sitio web para determinar qué visitantes recibirán una página de desafío.",
     "container.securityLevelCard.select.essentiallyOff": "Fundamentalmente off",
     "container.securityLevelCard.select.low": "Bajo",

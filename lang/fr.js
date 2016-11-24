@@ -75,7 +75,6 @@
     "container.signup.form.password": "Mot de passe",
     "container.signup.form.passwordAgain": "Mot de passe (encore)",
     "container.signup.form.button": "Inscrivez-vous chez Cloudflare",
-    "container.securityPage.title": "Paramètres de sécurité",
     "container.securityLevelCard.description": "Ajuste le niveau de sécurité de votre site web pour déterminer quels visiteurs devront passer un test.",
     "container.securityLevelCard.select.essentiallyOff": "Essentiellement désactivé",
     "container.securityLevelCard.select.low": "Faible",
