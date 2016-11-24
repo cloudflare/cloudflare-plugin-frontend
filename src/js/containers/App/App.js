@@ -34,11 +34,11 @@ class AppContainer extends Component {
 
                     { isLoggedIn() ?
                         <LayoutRow>
-                            <LayoutColumn width={3/20}>&nbsp;</LayoutColumn>
-                            <LayoutColumn width={14/20}>
+                            <LayoutColumn width={2/20}>&nbsp;</LayoutColumn>
+                            <LayoutColumn width={16/20}>
                                 {this.props.children}
                             </LayoutColumn>
-                            <LayoutColumn width={3/20}>&nbsp;</LayoutColumn>
+                            <LayoutColumn width={2/20}>&nbsp;</LayoutColumn>
                         </LayoutRow>
                         : <LayoutRow>{this.props.children}</LayoutRow>
                     }
