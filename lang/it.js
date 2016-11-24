@@ -63,7 +63,6 @@
     "container.minifyCard.css": "CSS",
     "container.minifyCard.html": "HTML",
     "container.minifyCard.javascript": "JavaScript",
-    "container.performancePage.title": "Performance",
     "container.purgeCacheCard.button": "Cancella Tutto",
     "container.purgeCacheCard.title": "Svuota Cache",
     "container.purgeCacheCard.description": "Cancella i file nella cache per forzare Cloudflare a recuperare una versione aggiornata di tali file dal tuo web server.",
