@@ -1,12 +1,35 @@
 {
     "debug": false,
     "featureManagerIsFullZoneProvisioningEnabled": false,
+    "isDNSPageEnabled": true,
     "isSubdomainCheckEnabled": true,
-    "isDNSPageEnabled": false,
-    "homePageCards": ["ApplyDefaultSettingsCard", "SSLCard", "PurgeCacheCard"],
+    "homePageCards": [
+        "ApplyDefaultSettingsCard",
+        "AutomaticHTTPSRewritesCard",
+        "IpRewriteCard",
+        "PluginSpecificCacheCard",
+        "PluginSpecificCacheTagCard"
+    ],
     "moreSettingsCards": {
-        "container.moresettings.speed": ["CacheLevelCard", "AlwaysOnlineCard", "ImageOptimizationCard"],
-        "container.moresettings.security": ["SecurityLevelCard"]
+        "container.moresettings.speed": [
+            "AlwaysOnlineCard",
+            "BrowserCacheTTLCard",
+            "CacheLevelCard",
+            "DevelopmentModeCard",
+            "IPV6Card",
+            "ImageOptimizationCard",
+            "MinifyCard",
+            "PurgeCacheCard",
+            "RailgunCard"
+        ],
+        "container.moresettings.security": [
+            "AdvanceDDoSCard",
+            "BrowserIntegrityCheckCard",
+            "ChallengePassageCard",
+            "SecurityLevelCard",
+            "SSLCard",
+            "WAFCard"
+        ]
     },
     "locale": "en",
     "integrationName": "frontend",
