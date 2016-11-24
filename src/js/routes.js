@@ -8,7 +8,6 @@ import AnalyticsPage from './containers/AnalyticsPage/AnaltyicsPage';
 import App from './containers/App/App';
 import DNSManagementPage from './containers/DNSManagementPage/DNSManagementPage';
 import Login from './containers/LoginPage/LoginPage';
-import SecurityPage from './containers/SecurityPage/SecurityPage';
 import SignUpPage from './containers/SignUpPage/SignUpPage';
 import HomePage from './containers/HomePage/HomePage';
 import MoreSettingsPage from './containers/MoreSettingsPage/MoreSettingsPage';
@@ -27,7 +26,6 @@ export default (
         <Route path={ UrlPaths.HOME_PAGE } component={ HomePage } onEnter={ requireAuth } />
         <Route path={ UrlPaths.ANALYTICS_PAGE } component={ AnalyticsPage } onEnter={ requireAuth } />
         <Route path={ UrlPaths.DOMAINS_OVERVIEW_PAGE } component={ DNSManagementPage } onEnter={ requireAuth } />
-        <Route path={ UrlPaths.SECURITY_PAGE } component={ SecurityPage } onEnter={ requireAuth } />
         <Route path={ UrlPaths.MORE_SETTINGS_PAGE } component={ MoreSettingsPage } onEnter={ requireAuth } />
     </Route>
 );

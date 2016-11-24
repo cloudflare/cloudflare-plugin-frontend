@@ -75,7 +75,6 @@
     "container.signup.form.password": "Password",
     "container.signup.form.passwordAgain": "Password (di nuovo)",
     "container.signup.form.button": "Registrati su Cloudflare",
-    "container.securityPage.title": "Impostazioni di Sicurezza",
     "container.securityLevelCard.description": "Regola il Livello di Sicurezza del tuo sito web per decidere quali visitatori raggiungeranno una pagina di sfida.",
     "container.securityLevelCard.select.essentiallyOff": "Essentially Disattivato",
     "container.securityLevelCard.select.low": "Bassa",

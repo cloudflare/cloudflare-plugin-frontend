@@ -194,7 +194,6 @@
     "container.signup.form.termsAndConditions.and": "and",
     "container.signup.form.termsAndConditions.privacyPolicy": "privacy policy",
     "container.signup.form.termsAndConditions.period": ".",
-    "container.securityPage.title": "Security Settings",
     "container.securityLevelCard.description": "Adjust your website's Security Level to determine which visitors will receive a challenge page.",
     "container.securityLevelCard.select.essentiallyOff": "Essentially Off",
     "container.securityLevelCard.select.low": "Low",
