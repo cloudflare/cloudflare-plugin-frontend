@@ -6,6 +6,7 @@ import ActiveZoneSelector from '../../containers/ActiveZoneSelector/ActiveZoneSe
 import { isLoggedIn } from '../../utils/Auth/Auth';
 import { getAbsoluteUrl } from '../../selectors/config';
 import UnderAttackButton from '../../containers/UnderAttackButton/UnderAttackButton';
+import { LayoutColumn } from 'cf-component-layout';
 
 class Header extends Component {
 
