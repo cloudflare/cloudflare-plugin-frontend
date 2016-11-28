@@ -18,10 +18,14 @@ function beginsWith(needle, haystack){
     return (haystack.substr(0, needle.length) == needle);
 }
 
+function endsWith(str, suffix) {
+    return str.indexOf(suffix, str.length - suffix.length) !== -1;
+}
+
 export function isSubdomain(selectedZoneName) {
     var currentDomainName = extractDomain(document.URL);
 
-    if (currentDomainName.endsWith(selectedZoneName) &&
+    if (endsWith(currentDomainName, selectedZoneName) &&
         !beginsWith("www.", currentDomainName) &&
         selectedZoneName !== currentDomainName &&
         currentDomainName && selectedZoneName) {
