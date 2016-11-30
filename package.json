@@ -21,6 +21,8 @@
   "devDependencies": {
     "babel-core": "^6.1.21",
     "babel-eslint": "^6.0.0",
+    "babel-plugin-transform-object-assign": "^6.8.0",
+    "babel-plugin-transform-object-rest-spread": "^6.19.0",
     "babel-polyfill": "^6.5.0",
     "babel-preset-es2015": "^6.1.18",
     "babel-preset-react": "^6.1.18",
