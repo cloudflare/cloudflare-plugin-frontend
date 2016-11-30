@@ -1,7 +1,6 @@
 import { expect } from 'chai';
 import { getAbsoluteUrl, getConfigValue } from '../../selectors/config';
 import { ABSOLUTE_URL_BASE_KEY } from '../../reducers/config.js';
-import 'babel-polyfill'; //Object.Assign
 
 describe('Config Selector', () => {
     it('getAbsoluteUrl should concatenate the absolute URL', () => {

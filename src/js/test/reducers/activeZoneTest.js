@@ -1,7 +1,6 @@
 import { expect } from 'chai';
 import { activeZoneReducer } from '../../reducers/activeZone';
 import * as ActionTypes from '../../constants/ActionTypes';
-import 'babel-polyfill'; //Object.Assign
 
 describe('Active Zone Reducer', () => {
     it('should return the initial state', () => {

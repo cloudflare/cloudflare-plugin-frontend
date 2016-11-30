@@ -1,7 +1,6 @@
 import { expect } from 'chai';
 import { configReducer } from '../../reducers/config';
 import * as ActionTypes from '../../constants/ActionTypes';
-import 'babel-polyfill'; //Object.Assign
 
 describe('Config Reducer', () => {
     it('should return the initial state', () => {

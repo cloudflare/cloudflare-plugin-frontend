@@ -1,7 +1,6 @@
 import { expect } from 'chai';
 import { zoneRailgunReducer } from '../../reducers/zoneRailgun';
 import * as ActionTypes from '../../constants/ActionTypes';
-import 'babel-polyfill'; //Object.Assign
 
 const initialState = {
     entities: {},
