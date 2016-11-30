@@ -1,8 +1,6 @@
 import { expect } from 'chai';
 import { pluginSettingsReducer } from '../../reducers/pluginSettings';
 import * as ActionTypes from '../../constants/ActionTypes';
-import 'babel-polyfill'; //Object.Assign
-
 
 let initialState = {
     result: [],

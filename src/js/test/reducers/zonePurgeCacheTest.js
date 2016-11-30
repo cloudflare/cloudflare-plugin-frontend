@@ -1,7 +1,6 @@
 import { expect } from 'chai';
 import { zonePurgeCacheReducer } from '../../reducers/zonePurgeCache';
 import * as ActionTypes from '../../constants/ActionTypes';
-import 'babel-polyfill'; //Object.Assign
 
 let initialState = {
     isFetching: false,
