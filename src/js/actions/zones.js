@@ -32,14 +32,14 @@ export function asyncZoneDelete(zoneId) {
         dispatch(zoneDelete(zoneId));
 
         zoneDeleteZone(zoneId, function(error, response){
-            if(v4ResponseOk(response)) {
+            if(response) {
                 dispatch(zoneDeleteSuccess());
                 dispatch(dnsRecordClearAll(zoneId));
                 //after we provision a cname refresh the zone list
                 dispatch(asyncFetchZones());
             } else {
                 dispatch(zoneDeleteError());
-                dispatch(notificationAddError(response.body.errors[0].message));
+                dispatch(notificationAddError(error.body.errors[0].message));
             }
         });
     };

@@ -14,21 +14,26 @@ export function v4ResponseOk(response) {
 }
 
 /*
- * Our actions expect a single response because
- * cf-util-http used to accept onSuccess(response), onError(response)
- * and now accepts callback(error, response).  This callback will always
- * pass errors as the response so they continue to work with our existing
- * logic.  Also our backend returns errors with HTTP code 200 so
- * cf-util-http doesn't recognize them as errors.
+ * Response body for errors and success responses is
+ * occasionally returned in response.text instead of
+ * response.body.
  *
  * @param {Function} callback
  *
  * @returns {Function} callback that passes correct error
  */
-export function v4callback(callback) {
+export function v4Callback(callback) {
     return function(error, response) {
-        if(response.text) {
+        //return business logic errors as errors
+        if(response && !v4ResponseOk(response)) {
+            error = response;
+            response = null;
+        }
+        if(response && response.text) {
             response.body = JSON.parse(response.text);
+        }
+        if(error && error.text) {
+            error.body = JSON.parse(error.text);
         }
         return callback(error, response);
     }
@@ -244,7 +249,7 @@ export function zonePatchSetting(settingName, zoneId, value, onSuccess, onError)
  * @returns {Object} API Response
  */
 export function zoneDeleteZone(zoneId, callback) {
-    return http.del(ENDPOINT + '/zones/' + zoneId, {}, v4callback(callback));
+    return http.del(ENDPOINT + '/zones/' + zoneId, {}, v4Callback(callback));
 }
 
 /*
