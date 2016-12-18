@@ -39,7 +39,7 @@ export function asyncZoneDelete(zoneId) {
                 dispatch(asyncFetchZones());
             } else {
                 dispatch(zoneDeleteError());
-                dispatch(notificationAddError(response));
+                dispatch(notificationAddError(response.body.errors[0].message));
             }
         });
     };
