@@ -4,7 +4,7 @@ import {
     v4ResponseOk
 } from '../utils/CFClientV4API/CFClientV4API';
 import { partialZoneSet, fullZoneSet, hostAPIResponseOk } from '../utils/CFHostAPI/CFHostAPI';
-import { notificationAddSuccess,notificationAddError } from './notifications';
+import { notificationAddSuccess, notificationAddError, notificationAddClientAPIError } from './notifications';
 import * as ActionTypes from '../constants/ActionTypes';
 import { asyncZoneSetActiveZone } from './activeZone';
 import { normalizeZoneGetAll } from '../constants/Schemas';
@@ -36,11 +36,11 @@ export function asyncZoneActivationCheck(zoneId) {
     return dispatch => {
         dispatch(zoneActivationCheck());
         zoneActivationCheckPutNew(zoneId, function(error, response) {
-            if(v4ResponseOk(response)) {
+            if(response) {
                 dispatch(zoneActivationCheckSuccess());
                 dispatch(notificationAddSuccess('container.activationCheckCard.success', true));
             } else {
-                dispatch(notificationAddClientAPIError(zoneActivationCheckError(), response));
+                dispatch(notificationAddClientAPIError(zoneActivationCheckError(), error));
             }
         });
     };

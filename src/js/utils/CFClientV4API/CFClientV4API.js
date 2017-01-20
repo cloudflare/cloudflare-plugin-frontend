@@ -48,8 +48,8 @@ export function v4Callback(callback) {
  *
  * @returns {Object} API Response
  */
-export function zoneActivationCheckPutNew(zoneId, onSuccess, onError) {
-    return http.put(ENDPOINT + '/zones/' + zoneId + '/activation_check', {}, onSuccess, onError);
+export function zoneActivationCheckPutNew(zoneId, callback) {
+    return http.put(ENDPOINT + '/zones/' + zoneId + '/activation_check', {}, v4Callback(callback));
 }
 
 /*
