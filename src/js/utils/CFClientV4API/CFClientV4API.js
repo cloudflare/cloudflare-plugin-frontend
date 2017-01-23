@@ -43,8 +43,7 @@ export function v4Callback(callback) {
  * Check if a zone has been activated
  *
  * @param {String}   [zoneId]
- * @param {Function} [onSuccess]
- * @param {Function} [onError]
+ * @param {Function} [callback]
  *
  * @returns {Object} API Response
  */
@@ -59,8 +58,7 @@ export function zoneActivationCheckPutNew(zoneId, callback) {
  * @param {String}   [since]
  * @param {String}   [until]
  * @param {Boolean}  [continuous]
- * @param {Function} [onSuccess]
- * @param {Function} [onError]
+ * @param {Function} [callback]
  *
  * @returns {Object} API Response
  */
@@ -80,8 +78,7 @@ export function zoneAnalyticsDashboardGet({ zoneId, since, until, continuous }, 
  * Get all the DNS records for a zone
  *
  * @param {String}   [zoneId]
- * @param {Function} [onSuccess]
- * @param {Function} [onError]
+ * @param {Function} [callback]
  *
  * @returns {Object} API Response
  */
@@ -97,8 +94,7 @@ export function zoneDNSRecordGetAll(zoneId, callback) {
  * @param {String}   [name]
  * @param {String}   [content]
  * @param {String}   [ttl]
- * @param {Function} [onSuccess]
- * @param {Function} [onError]
+ * @param {Function} [callback]
  *
  * @returns {Object} API Response
  */
@@ -125,8 +121,7 @@ export function zoneDNSRecordPostNew({ zoneId, type, name, content, ttl }, callb
  * @param {String}   [content]
  * @param {Boolean}  [proxied]
  * @param {String}   [ttl]
- * @param {Function} [onSuccess]
- * @param {Function} [onError]
+ * @param {Function} [callback]
  *
  * @returns {Object} API Response
  */
@@ -151,8 +146,7 @@ export function zoneDNSRecordPatch({ zoneId, dnsRecordId, type, name, content, p
  * @param {Object}   [files]
  * @param {Object}   [tags]
  * @param {Boolean}  [purge_everything]
- * @param {Function} [onSuccess]
- * @param {Function} [onError]
+ * @param {Function} [callback]
  *
  * @returns {Object} API Response
  */
@@ -175,8 +169,7 @@ export function zonePurgeCache({ zoneId, files, tags, purge_everything }, callba
 /*
  * Get all a customer's zones
  *
- * @param {Function} [onSuccess]
- * @param {Function} [onError]
+ * @param {Function} [callback]
  *
  * @returns {Object} API Response
  */
@@ -188,8 +181,7 @@ export function zoneGetAll(callback) {
  * Get settings for a zone
  *
  * @param {String}   [zoneId]
- * @param {Function} [onSuccess]
- * @param {Function} [onError]
+ * @param {Function} [callback]
  *
  * @returns {Object} API Response
  */
@@ -203,8 +195,7 @@ export function zoneGetSettings(zoneId, callback) {
  * @param {String}   [settingName]
  * @param {String}   [zoneId]
  * @param {String}   [value]
- * @param {Function} [onSuccess]
- * @param {Function} [onError]
+ * @param {Function} [callback]
  *
  * @returns {Object} API Response
  */
@@ -221,8 +212,7 @@ export function zonePatchSetting(settingName, zoneId, value, callback) {
  * Delete a customer's zone
  *
  * @param {String}   [zoneId]
- * @param {Function} [onSuccess]
- * @param {Function} [onError]
+ * @param {Function} [callback]
  *
  * @returns {Object} API Response
  */
@@ -234,30 +224,28 @@ export function zoneDeleteZone(zoneId, callback) {
  * Get all available railguns for a zone
  *
  * @param {String}   [zoneId]
- * @param {Function} [onSuccess]
- * @param {Function} [onError]
+ * @param {Function} [callback]
  *
  * @returns {Object} API Response
  */
-export function zoneRailgunGetAll(zoneId, onSuccess, onError) {
-    return http.get(ENDPOINT + '/zones/' + zoneId + '/railguns', {}, onSuccess, onError);
+export function zoneRailgunGetAll(zoneId, callback) {
+    return http.get(ENDPOINT + '/zones/' + zoneId + '/railguns', {}, v4Callback(callback));
 }
 
 /*
  * Get all available railguns for a zone
  *
  * @param {String}   [zoneId]
- * @param {Function} [onSuccess]
- * @param {Function} [onError]
+ * @param {Function} [callback]
  *
  * @returns {Object} API Response
  */
-export function zoneRailgunPatch(zoneId, railgunId, connected, onSuccess, onError) {
+export function zoneRailgunPatch(zoneId, railgunId, connected, callback) {
     let opts = {
         body: {
             'connected': connected
         }
     };
     
-    return http.patch(ENDPOINT + '/zones/' + zoneId + '/railguns/' + railgunId, opts, onSuccess, onError);
+    return http.patch(ENDPOINT + '/zones/' + zoneId + '/railguns/' + railgunId, opts, v4Callback(callback));
 }
