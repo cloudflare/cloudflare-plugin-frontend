@@ -1,4 +1,4 @@
-import { zoneAnalyticsDashboardGet, v4ResponseOk } from '../utils/CFClientV4API/CFClientV4API';
+import { zoneAnalyticsDashboardGet } from '../utils/CFClientV4API/CFClientV4API';
 import { notificationAddClientAPIError } from './notifications';
 import * as ActionTypes from '../constants/ActionTypes';
 
@@ -26,10 +26,10 @@ export function asyncZoneFetchAnalytics(zoneId) {
     return dispatch => {
         dispatch(zoneFetchAnalytics());
         zoneAnalyticsDashboardGet({ zoneId: zoneId, since: -43200 }, function(error, response){
-            if(v4ResponseOk(response)) {
+            if(response) {
                 dispatch(zoneFetchAnalyticsSuccess(zoneId, response.body.result));
             } else {
-                dispatch(notificationAddClientAPIError(zoneFetchAnalyticsError(), response));
+                dispatch(notificationAddClientAPIError(zoneFetchAnalyticsError(), error));
             }
         });
     };

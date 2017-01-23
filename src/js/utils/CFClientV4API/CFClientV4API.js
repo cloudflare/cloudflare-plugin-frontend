@@ -64,7 +64,7 @@ export function zoneActivationCheckPutNew(zoneId, callback) {
  *
  * @returns {Object} API Response
  */
-export function zoneAnalyticsDashboardGet({ zoneId, since, until, continuous }, onSuccess, onError) {
+export function zoneAnalyticsDashboardGet({ zoneId, since, until, continuous }, callback) {
     let opts = {
       parameters: {}
     };
@@ -73,7 +73,7 @@ export function zoneAnalyticsDashboardGet({ zoneId, since, until, continuous }, 
     if(until) { opts.parameters.until = until; }
     if(typeof continuous !== 'undefined') { opts.parameters.continuous = continuous; }
 
-    return http.get(ENDPOINT + '/zones/' + zoneId + '/analytics/dashboard', opts, onSuccess, onError);
+    return http.get(ENDPOINT + '/zones/' + zoneId + '/analytics/dashboard', opts, v4Callback(callback));
 }
 
 /*
