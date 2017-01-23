@@ -156,7 +156,7 @@ export function zoneDNSRecordPatch({ zoneId, dnsRecordId, type, name, content, p
  *
  * @returns {Object} API Response
  */
-export function zonePurgeCache({ zoneId, files, tags, purge_everything }, onSuccess, onError) {
+export function zonePurgeCache({ zoneId, files, tags, purge_everything }, callback) {
     let opts = {
         body: {}
     };
@@ -168,7 +168,7 @@ export function zonePurgeCache({ zoneId, files, tags, purge_everything }, onSucc
         if(tags) { opts.body.tags = tags; }
     }
 
-    return http.del(ENDPOINT + '/zones/' + zoneId + '/purge_cache', opts, onSuccess, onError);
+    return http.del(ENDPOINT + '/zones/' + zoneId + '/purge_cache', opts, v4Callback(callback));
 
 }
 
