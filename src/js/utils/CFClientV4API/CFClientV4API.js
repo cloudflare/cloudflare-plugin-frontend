@@ -193,8 +193,8 @@ export function zoneGetAll(callback) {
  *
  * @returns {Object} API Response
  */
-export function zoneGetSettings(zoneId, onSuccess, onError) {
-    return http.get(ENDPOINT + '/zones/' + zoneId + '/settings', {}, onSuccess, onError);
+export function zoneGetSettings(zoneId, callback) {
+    return http.get(ENDPOINT + '/zones/' + zoneId + '/settings', {}, v4Callback(callback));
 }
 
 /*
@@ -208,13 +208,13 @@ export function zoneGetSettings(zoneId, onSuccess, onError) {
  *
  * @returns {Object} API Response
  */
-export function zonePatchSetting(settingName, zoneId, value, onSuccess, onError) {
+export function zonePatchSetting(settingName, zoneId, value, callback) {
     let opts = {
          body: {
              value: value
          }
     };
-    return http.patch(ENDPOINT + '/zones/' + zoneId + '/settings/' + settingName, opts, onSuccess, onError);
+    return http.patch(ENDPOINT + '/zones/' + zoneId + '/settings/' + settingName, opts, v4Callback(callback));
 }
 
 /*
