@@ -3,7 +3,7 @@ import {
     zoneDeleteZone,
     v4ResponseOk
 } from '../utils/CFClientV4API/CFClientV4API';
-import { notificationAddError } from './notifications';
+import { notificationAddClientAPIError } from './notifications';
 import * as ActionTypes from '../constants/ActionTypes';
 import { zoneSetActiveZoneIfEmpty } from './activeZone';
 import { dnsRecordClearAll } from './zoneDnsRecords';
@@ -38,8 +38,7 @@ export function asyncZoneDelete(zoneId) {
                 //after we provision a cname refresh the zone list
                 dispatch(asyncFetchZones());
             } else {
-                dispatch(zoneDeleteError());
-                dispatch(notificationAddError(error.body.errors[0].message));
+                dispatch(notificationAddClientAPIError(zoneDeleteError(), error));
             }
         });
     };
@@ -76,8 +75,7 @@ export function asyncFetchZones() {
                         dispatch(zoneSetActiveZoneIfEmpty(response.body.result[0]));
                     }
                 } else {
-                    dispatch(zoneFetchError());
-                    dispatch(notificationAddError(response));
+                    dispatch(notificationAddClientAPIError(zoneFetchError(), error));
                 }
             });
     };
