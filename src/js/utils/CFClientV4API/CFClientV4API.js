@@ -24,16 +24,16 @@ export function v4ResponseOk(response) {
  */
 export function v4Callback(callback) {
     return function(error, response) {
-        //return business logic errors as errors
-        if(response && !v4ResponseOk(response)) {
-            error = response;
-            response = null;
-        }
         if(response && response.text) {
             response.body = JSON.parse(response.text);
         }
         if(error && error.text) {
             error.body = JSON.parse(error.text);
+        }
+        //return business logic errors as errors
+        if(response && !v4ResponseOk(response)) {
+            error = response;
+            response = null;
         }
         return callback(error, response);
     }

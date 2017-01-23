@@ -39,12 +39,23 @@ export function notificationRemove(key) {
 export function notificationAddClientAPIError(errorAction, errorMessage) {
     return dispatch => {
         dispatch(errorAction);
-        if(typeof errorMesages === 'string') {
-            dispatch(notificationAddError(errorMessages));
+        if(typeof errorMessage === 'string') {
+            dispatch(notificationAddError(errorMessage));
         } else {
             errorMessage.body.errors.forEach(function(error) {
                 dispatch(notificationAddError(error.message));
             });
+        }
+    };
+}
+
+export function notificationAddHostAPIError(errorAction, errorMessage) {
+    return dispatch => {
+        dispatch(errorAction);
+        if(typeof errorMessage === 'string') {
+            dispatch(notificationAddError(errorMessage));
+        } else {
+            dispatch(notificationAddError(errorMessage.body.msg));
         }
     };
 }

@@ -1,10 +1,9 @@
 import {
     zoneGetAll,
-    zoneActivationCheckPutNew,
-    v4ResponseOk
+    zoneActivationCheckPutNew
 } from '../utils/CFClientV4API/CFClientV4API';
-import { partialZoneSet, fullZoneSet, hostAPIResponseOk } from '../utils/CFHostAPI/CFHostAPI';
-import { notificationAddSuccess, notificationAddError, notificationAddClientAPIError } from './notifications';
+import { partialZoneSet, fullZoneSet } from '../utils/CFHostAPI/CFHostAPI';
+import { notificationAddSuccess, notificationAddError, notificationAddHostAPIError, notificationAddClientAPIError } from './notifications';
 import * as ActionTypes from '../constants/ActionTypes';
 import { asyncZoneSetActiveZone } from './activeZone';
 import { normalizeZoneGetAll } from '../constants/Schemas';
@@ -69,12 +68,11 @@ export function asyncZoneProvisionCname(domainName) {
         dispatch(zonesProvisionCname());
 
         partialZoneSet({ zone_name: domainName }, function(error, response) {
-                if(hostAPIResponseOk(response)) {
+                if(response) {
                     dispatch(zoneProvisionCnameSuccess());
                     dispatch(asyncSetHostAPIProvisionedDomainActive(domainName));
                 } else {
-                    dispatch(zoneProvisionCnameError());
-                    dispatch(notificationAddError(response));
+                    dispatch(notificationAddHostAPIError(zoneProvisionCnameError(), error));
                 } // zoneProvision business logic error
             });
     };// end thunk dispatch
@@ -102,12 +100,11 @@ export function asyncZoneProvisionFull(domainName) {
     return dispatch => {
         dispatch(zoneProvisionFull());
         fullZoneSet({ zone_name: domainName }, function(error, response) {
-            if(hostAPIResponseOk(response)) {
+            if(response) {
                dispatch(zoneProvisionFullSuccess());
                dispatch(asyncSetHostAPIProvisionedDomainActive(domainName));
             } else {
-                dispatch(zoneProvisionFullError());
-                dispatch(notificationAddError(response));
+                dispatch(notificationAddHostAPIError(zoneProvisionFullError(), error));
             }
         }); //end fullZoneSet
     };
@@ -128,12 +125,12 @@ function asyncSetHostAPIProvisionedDomainActive(domainName) {
     return dispatch => {
         dispatch(zoneFetch());
         zoneGetAll(function (error, response) {
-            if (v4ResponseOk(response)) {
+            if (response) {
                 dispatch(zoneFetchSuccess(response.body.result));
                 let normalizedZoneList = normalizeZoneGetAll(response.body.result);
                 dispatch(asyncZoneSetActiveZone(normalizedZoneList.entities.zones[domainName]));
             } else {
-                dispatch(notificationAddError(response));
+                dispatch(notificationAddError(error));
             }
         });
     };
