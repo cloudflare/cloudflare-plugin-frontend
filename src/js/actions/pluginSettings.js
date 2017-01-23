@@ -1,7 +1,6 @@
 import {
     pluginSettingListGet,
-    pluginSettingPatch,
-    pluginResponseOk
+    pluginSettingPatch
 } from '../utils/PluginAPI/PluginAPI';
 import { notificationAddSuccess, notificationAddClientAPIError } from './notifications';
 import * as ActionTypes from '../constants/ActionTypes';
@@ -54,10 +53,10 @@ export function asyncPluginFetchSettings(zoneId) {
     return dispatch => {
         dispatch(pluginFetchSettings());
         pluginSettingListGet({ zoneId: zoneId }, function(error, response) {
-            if (pluginResponseOk(response)) {
+            if (response) {
                 dispatch(pluginFetchSettingsSuccess(zoneId, response.body.result));
             } else {
-                dispatch(notificationAddClientAPIError(pluginFetchSettingsError(), response));
+                dispatch(notificationAddClientAPIError(pluginFetchSettingsError(), error));
             }
         });
     };
@@ -69,14 +68,14 @@ export function asyncPluginUpdateSetting(settingName, zoneId, value) {
 
         dispatch(pluginUpdateSetting(zoneId, { id: settingName, value: value }));
         pluginSettingPatch(zoneId, settingName, value, function(error, response) {
-            if (pluginResponseOk(response)) {
+            if (response) {
                 dispatch(pluginUpdateSettingSuccess(zoneId, response.body.result));
 
                 if (settingName == 'default_settings') {
                     dispatch(notificationAddSuccess('container.applydefaultsettingscard.success', true));
                 }
             } else {
-                dispatch(notificationAddClientAPIError(pluginUpdateSettingError(zoneId, oldSetting), response));
+                dispatch(notificationAddClientAPIError(pluginUpdateSettingError(zoneId, oldSetting), error));
             }
         });
     };
