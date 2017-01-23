@@ -180,8 +180,8 @@ export function zonePurgeCache({ zoneId, files, tags, purge_everything }, callba
  *
  * @returns {Object} API Response
  */
-export function zoneGetAll(onSuccess, onError) {
-    return http.get(ENDPOINT + '/zones', {}, onSuccess, onError);
+export function zoneGetAll(callback) {
+    return http.get(ENDPOINT + '/zones', {}, v4Callback(callback));
 }
 
 /*

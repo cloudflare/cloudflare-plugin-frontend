@@ -1,7 +1,6 @@
 import {
     zoneGetAll,
-    zoneDeleteZone,
-    v4ResponseOk
+    zoneDeleteZone
 } from '../utils/CFClientV4API/CFClientV4API';
 import { notificationAddClientAPIError } from './notifications';
 import * as ActionTypes from '../constants/ActionTypes';
@@ -69,7 +68,7 @@ export function asyncFetchZones() {
         dispatch(zoneFetch());
 
         zoneGetAll(function (error, response) {
-                if (v4ResponseOk(response)) {
+                if (response) {
                     dispatch(zoneFetchSuccess(response.body.result));
                     if(response.body.result[0]) {
                         dispatch(zoneSetActiveZoneIfEmpty(response.body.result[0]));
