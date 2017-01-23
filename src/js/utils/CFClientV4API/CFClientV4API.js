@@ -145,28 +145,6 @@ export function zoneDNSRecordPatch({ zoneId, dnsRecordId, type, name, content, p
 }
 
 /*
- * Create a new zone
- *
- * @param {String}   [name]
- * @param {Boolean}  [jump_start]
- * @param {Object}   [organization]
- * @param {Function} [onSuccess]
- * @param {Function} [onError]
- *
- * @returns {Object} API Response
- */
-export function zonePostNew({ name, jump_start, organization }, onSuccess, onError) {
-    let opts = {
-        body: {}
-    };
-
-    opts.body.name = name;
-    if(typeof jump_start !== 'undefined') { opts.body.jump_start = jump_start; }
-    if(organization) { opts.body.organization = organization; }
-    return http.post(ENDPOINT + '/zones', opts, onSuccess, onError);
-}
-
-/*
  * Purge the cache for a zone
  *
  * @param {String}   [zoneId]
