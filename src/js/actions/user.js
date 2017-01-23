@@ -1,9 +1,10 @@
 import { routeActions } from 'redux-simple-router';
 import { userAuth, userCreate } from '../utils/CFHostAPI/CFHostAPI';
-import { pluginAccountPost } from '../utils/PluginAPI/PluginAPI';
+import { pluginAccountPost, pluginResponseOk } from '../utils/PluginAPI/PluginAPI';
 import { notificationAddHostAPIError, notificationAddClientAPIError } from './notifications';
 import * as ActionTypes from '../constants/ActionTypes';
 import * as UrlPaths from '../constants/UrlPaths';
+import { getConfigValue } from '../selectors/config';
 
 import { asyncFetchZones } from './zones';
 
@@ -27,10 +28,14 @@ export function userLoginSuccess(email) {
 }
 
 export function asyncUserLoginSuccess(email) {
-    return dispatch => {
+    return (dispatch, getState) => {
         dispatch(userLoginSuccess(email));
         dispatch(asyncFetchZones());
-        dispatch(routeActions.push(UrlPaths.HOME_PAGE));
+        let route = UrlPaths.HOME_PAGE;
+        if(getConfigValue(getState().config, 'integrationName') === 'cpanel') {
+          route = UrlPaths.DOMAINS_OVERVIEW_PAGE;
+        }
+        dispatch(routeActions.push(route));
     };
 }
 
