@@ -85,8 +85,8 @@ export function zoneAnalyticsDashboardGet({ zoneId, since, until, continuous }, 
  *
  * @returns {Object} API Response
  */
-export function zoneDNSRecordGetAll(zoneId, onSuccess, onError) {
-    return http.get(ENDPOINT + '/zones/' + zoneId + '/dns_records', {}, onSuccess, onError);
+export function zoneDNSRecordGetAll(zoneId, callback) {
+    return http.get(ENDPOINT + '/zones/' + zoneId + '/dns_records', {}, v4Callback(callback));
 }
 
 /*
@@ -102,7 +102,7 @@ export function zoneDNSRecordGetAll(zoneId, onSuccess, onError) {
  *
  * @returns {Object} API Response
  */
-export function zoneDNSRecordPostNew({ zoneId, type, name, content, ttl }, onSuccess, onError) {
+export function zoneDNSRecordPostNew({ zoneId, type, name, content, ttl }, callback) {
     let opts = {
         body: {
             type: type,
@@ -112,7 +112,7 @@ export function zoneDNSRecordPostNew({ zoneId, type, name, content, ttl }, onSuc
     };
     if(ttl) {opts.body.ttl = ttl;}
 
-    return http.post(ENDPOINT + '/zones/' + zoneId + '/dns_records', opts, onSuccess, onError);
+    return http.post(ENDPOINT + '/zones/' + zoneId + '/dns_records', opts, v4Callback(callback));
 }
 
 /*
@@ -130,7 +130,7 @@ export function zoneDNSRecordPostNew({ zoneId, type, name, content, ttl }, onSuc
  *
  * @returns {Object} API Response
  */
-export function zoneDNSRecordPatch({ zoneId, dnsRecordId, type, name, content, proxied, ttl }, onSuccess, onError) {
+export function zoneDNSRecordPatch({ zoneId, dnsRecordId, type, name, content, proxied, ttl }, callback) {
     let opts = {
       body: {}
     };
@@ -141,7 +141,7 @@ export function zoneDNSRecordPatch({ zoneId, dnsRecordId, type, name, content, p
     if(typeof proxied !== 'undefined') { opts.body.proxied = proxied; }
     if(ttl) { opts.body.ttl = ttl; }
 
-    return http.patch(ENDPOINT + '/zones/' + zoneId + '/dns_records/' + dnsRecordId, opts, onSuccess, onError);
+    return http.patch(ENDPOINT + '/zones/' + zoneId + '/dns_records/' + dnsRecordId, opts, v4Callback(callback));
 }
 
 /*
