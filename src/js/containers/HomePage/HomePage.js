@@ -13,7 +13,7 @@ import { renderCards } from '../../components/RenderCardsDynamically/RenderCards
 
 class HomePage extends Component {
     render() {
-        let { activeZone, zoneSettings } = this.props;
+        let { activeZone, zoneSettings, config } = this.props;
         let isZoneOnCloudflare = isActiveZoneOnCloudflare(activeZone);
         let isSettingsEmpty = _.isEmpty(zoneSettings[activeZone.id]) && _.isEmpty(getPluginSettingsForZoneId(activeZone.id, this.state));
 
