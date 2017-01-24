@@ -33,7 +33,7 @@ export function asyncUserLoginSuccess(email) {
         dispatch(asyncFetchZones());
         let route = UrlPaths.HOME_PAGE;
         if(getConfigValue(getState().config, 'integrationName') === 'cpanel') {
-          route = UrlPaths.DOMAINS_OVERVIEW_PAGE;
+          //route = UrlPaths.DOMAINS_OVERVIEW_PAGE;
         }
         dispatch(routeActions.push(route));
     };

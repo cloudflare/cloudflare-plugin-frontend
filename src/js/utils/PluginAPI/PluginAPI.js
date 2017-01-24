@@ -33,7 +33,7 @@ export function pluginAccountPost(email, apiKey, callback) {
     return http.post(ENDPOINT + '/account/', opts, pluginCallback(callback));
 }
 
-export function pluginSettingListGet(zoneId, onSuccess, onError) {
+export function pluginSettingListGet(zoneId, callback) {
     let opts = {};
 
     return http.get(ENDPOINT + '/plugin/' + zoneId['zoneId'] + '/settings/', opts, pluginCallback(callback));

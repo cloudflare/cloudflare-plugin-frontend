@@ -7,20 +7,25 @@ import { Heading } from 'cf-component-heading';
 import Loading from 'cf-component-loading';
 import Text from 'cf-component-text';
 
+import { isActiveZoneOnCloudflare } from '../../selectors/activeZone';
 import { getPluginSettingsForZoneId } from '../../selectors/pluginSettings';
 import { renderCards } from '../../components/RenderCardsDynamically/RenderCardsDynamically';
 
 class HomePage extends Component {
     render() {
-        let { activeZoneId, config, zoneSettings } = this.props;
-        let isEmpty = _.isEmpty(zoneSettings[activeZoneId]) && _.isEmpty(getPluginSettingsForZoneId(activeZoneId, this.state));
+        let { activeZone, zoneSettings } = this.props;
+        let isZoneOnCloudflare = isActiveZoneOnCloudflare(activeZone);
+        let isSettingsEmpty = _.isEmpty(zoneSettings[activeZone.id]) && _.isEmpty(getPluginSettingsForZoneId(activeZone.id, this.state));
 
         return (
-            <div>
-                {isEmpty && (
-                    <Text align="center"><Loading/></Text>
-                )}
-                {!isEmpty && (
+          <div>
+              {isSettingsEmpty && isZoneOnCloudflare && (
+                <Text align="center"><Loading/></Text>
+              )}
+              {isSettingsEmpty && !isZoneOnCloudflare && (
+                <Text align="center"><FormattedMessage id="errors.noActiveZoneSelected" /></Text>
+              )}
+              {!isSettingsEmpty && isZoneOnCloudflare && (
                     <div>
                         <Heading size={1}><FormattedMessage id="container.appNavigation.home"/></Heading>
                         
@@ -34,7 +39,7 @@ class HomePage extends Component {
 
 function mapStateToProps(state) {
     return {
-        activeZoneId: state.activeZone.id,
+        activeZone: state.activeZone,
         config: state.config.config,
         zoneSettings: state.zoneSettings.entities,
     };

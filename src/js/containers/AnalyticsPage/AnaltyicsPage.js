@@ -11,6 +11,7 @@ import { format } from 'd3-format';
 import C3Wrapper from 'react-c3-wrapper';
 import _ from 'lodash';
 
+import { isActiveZoneOnCloudflare } from '../../selectors/activeZone';
 import { humanFileSize } from '../../utils/utils';
 import AnalyticCard from '../../components/AnalyticCard/AnalyticCard';
 
@@ -47,17 +48,18 @@ class AnaltyicsPage extends Component {
 
         const { formatMessage } = this.props.intl;
 
-        let { activeZoneId, allZoneAnalytics } = this.props;
-        let analytics = Object.assign({}, allZoneAnalytics[activeZoneId]);
+        let { activeZone, allZoneAnalytics } = this.props;
+        let analytics = Object.assign({}, allZoneAnalytics[activeZone.id]);
 
-        let isEmpty = _.isEmpty(analytics);
+        let isZoneOnCloudflare = isActiveZoneOnCloudflare(activeZone);
+        let isSettingsEmpty = _.isEmpty(analytics);
 
         let cached = formatMessage({ id: 'containers.analyticsPage.cached' });
         let unCached = formatMessage({ id: 'containers.analyticsPage.uncached' });
         let threats = formatMessage({ id: 'containers.analyticsPage.threats' });
         let uniques = formatMessage({ id: 'containers.analyticsPage.uniques' });
 
-        if (!isEmpty) {
+        if (!isSettingsEmpty) {
           // Get Top Country Threat 
           var threatsTopCountry = "N/A";
           var tempThreatsTopCountryValue = 0;
@@ -83,10 +85,13 @@ class AnaltyicsPage extends Component {
 
         return (
             <div>
-                {isEmpty && (
-                    <Text align="center"><Loading/></Text>
-                )}
-                {!isEmpty && (
+              {isSettingsEmpty && isZoneOnCloudflare && (
+                <Text align="center"><Loading/></Text>
+              )}
+              {isSettingsEmpty && !isZoneOnCloudflare && (
+                <Text align="center"><FormattedMessage id="errors.noActiveZoneSelected" /></Text>
+              )}
+              {!isSettingsEmpty && isZoneOnCloudflare && (
                     <div>
                     <Heading size={1}><FormattedMessage id="container.analyticsPage.title"/></Heading>
                     <Tabs
@@ -303,7 +308,7 @@ class AnaltyicsPage extends Component {
 }
 function mapStateToProps(state) {
     return {
-        activeZoneId: state.activeZone.id,
+        activeZone: state.activeZone,
         allZoneAnalytics: state.zoneAnalytics.entities,
     };
 }
