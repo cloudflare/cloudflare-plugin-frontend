@@ -1,7 +1,6 @@
 import {
     zoneGetSettings,
-    zonePatchSetting,
-    v4ResponseOk
+    zonePatchSetting
 } from '../utils/CFClientV4API/CFClientV4API';
 import { notificationAddClientAPIError, notificationHandleDevelopmentMode } from './notifications';
 import * as ActionTypes from '../constants/ActionTypes';
@@ -30,13 +29,13 @@ export function asyncZoneFetchSettings(zoneId) {
     return dispatch => {
         dispatch(zoneFetchSettings());
         zoneGetSettings(zoneId, function(error, response){
-            if(v4ResponseOk(response)) {
+            if(response) {
                 dispatch(zoneFetchSettingsSuccess(zoneId, response.body.result));
 
                 // Lastly check if development mode value and add/remove notification
                 dispatch(notificationHandleDevelopmentMode(zoneId));
             } else {
-                dispatch(notificationAddClientAPIError(zoneFetchSettingsError(), response));
+                dispatch(notificationAddClientAPIError(zoneFetchSettingsError(), error));
             }
         });
     };
@@ -72,13 +71,13 @@ export function asyncZoneUpdateSetting(settingName, zoneId, value) {
 
         dispatch(zoneUpdateSetting(zoneId, { id: settingName, value: value }));
         zonePatchSetting(settingName, zoneId, value, function(error, response) {
-            if(v4ResponseOk(response)) {
+            if(response) {
                 dispatch(zoneUpdateSettingSuccess(zoneId, response.body.result));
 
                 // Lastly check if development mode value and add/remove notification
                 dispatch(notificationHandleDevelopmentMode(zoneId));
             } else {
-                dispatch(notificationAddClientAPIError(zoneUpdateSettingError(zoneId, oldSetting), response));
+                dispatch(notificationAddClientAPIError(zoneUpdateSettingError(zoneId, oldSetting), error));
             }
         });
     };

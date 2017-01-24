@@ -1,9 +1,8 @@
 import {
     zoneGetAll,
-    zoneDeleteZone,
-    v4ResponseOk
+    zoneDeleteZone
 } from '../utils/CFClientV4API/CFClientV4API';
-import { notificationAddError } from './notifications';
+import { notificationAddClientAPIError } from './notifications';
 import * as ActionTypes from '../constants/ActionTypes';
 import { zoneSetActiveZoneIfEmpty } from './activeZone';
 import { dnsRecordClearAll } from './zoneDnsRecords';
@@ -32,14 +31,13 @@ export function asyncZoneDelete(zoneId) {
         dispatch(zoneDelete(zoneId));
 
         zoneDeleteZone(zoneId, function(error, response){
-            if(v4ResponseOk(response)) {
+            if(response) {
                 dispatch(zoneDeleteSuccess());
                 dispatch(dnsRecordClearAll(zoneId));
                 //after we provision a cname refresh the zone list
                 dispatch(asyncFetchZones());
             } else {
-                dispatch(zoneDeleteError());
-                dispatch(notificationAddError(response));
+                dispatch(notificationAddClientAPIError(zoneDeleteError(), error));
             }
         });
     };
@@ -70,14 +68,13 @@ export function asyncFetchZones() {
         dispatch(zoneFetch());
 
         zoneGetAll(function (error, response) {
-                if (v4ResponseOk(response)) {
+                if (response) {
                     dispatch(zoneFetchSuccess(response.body.result));
                     if(response.body.result[0]) {
                         dispatch(zoneSetActiveZoneIfEmpty(response.body.result[0]));
                     }
                 } else {
-                    dispatch(zoneFetchError());
-                    dispatch(notificationAddError(response));
+                    dispatch(notificationAddClientAPIError(zoneFetchError(), error));
                 }
             });
     };

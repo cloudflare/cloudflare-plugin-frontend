@@ -20,6 +20,32 @@ export function hostAPIResponseOk(response) {
 }
 
 /*
+ * Response body for errors and success responses is
+ * occasionally returned in response.text instead of
+ * response.body.
+ *
+ * @param {Function} callback
+ *
+ * @returns {Function} callback that passes correct error
+ */
+export function hostCallback(callback) {
+  return function(error, response) {
+      if(response && response.text) {
+        response.body = JSON.parse(response.text);
+      }
+      if(error && error.text) {
+        error.body = JSON.parse(error.text);
+      }
+      //return business logic errors as errors
+      if(response && !hostAPIResponseOk(response)) {
+        error = response;
+        response = null;
+      }
+      return callback(error, response);
+    }
+}
+
+/*
  * Create a user
  *
  * @param {Object} [opts]
@@ -33,7 +59,7 @@ export function hostAPIResponseOk(response) {
  *
  * @returns {Object} API Response
  */
-export function userCreate({ cloudflare_email, cloudflare_pass, cloudflare_username, unique_id, clobber_unique_id }, onSuccess, onError) {
+export function userCreate({ cloudflare_email, cloudflare_pass, cloudflare_username, unique_id, clobber_unique_id }, callback) {
     let opts = {
         body: {
             act: 'user_create',
@@ -46,7 +72,7 @@ export function userCreate({ cloudflare_email, cloudflare_pass, cloudflare_usern
     if (unique_id) { opts.body.unique_id = unique_id; }
     if (clobber_unique_id) { opts.body.clobber_unique_id = clobber_unique_id; }
 
-    return send('POST', opts, onSuccess, onError);
+    return send('POST', opts, callback);
 }
 
 /*
@@ -62,7 +88,7 @@ export function userCreate({ cloudflare_email, cloudflare_pass, cloudflare_usern
 *
 * @returns {Object} API Response
 */
-export function userAuth({ cloudflare_email, cloudflare_pass, unique_id, clobber_unique_id }, onSuccess, onError) {
+export function userAuth({ cloudflare_email, cloudflare_pass, unique_id, clobber_unique_id }, callback) {
     let opts = {
         body: {
             act: 'user_auth',
@@ -74,7 +100,7 @@ export function userAuth({ cloudflare_email, cloudflare_pass, unique_id, clobber
     if (unique_id) { opts.body.unique_id = unique_id; }
     if (clobber_unique_id) { opts.body.clobber_unique_id = clobber_unique_id; }
 
-    return send('POST', opts, onSuccess, onError);
+    return send('POST', opts, callback);
 }
 
 /*
@@ -90,7 +116,7 @@ export function userAuth({ cloudflare_email, cloudflare_pass, unique_id, clobber
  *
  * @returns {Object} API Response
  */
-export function partialZoneSet({ user_key, zone_name, resolve_to, subdomains }, onSuccess, onError) {
+export function partialZoneSet({ user_key, zone_name, resolve_to, subdomains }, callback) {
     let opts = {
         body: {
             act: 'zone_set',
@@ -100,7 +126,7 @@ export function partialZoneSet({ user_key, zone_name, resolve_to, subdomains }, 
             subdomains: subdomains
         }
     };
-    return send('POST', opts, onSuccess, onError);
+    return send('POST', opts, callback);
 }
 
 /*
@@ -114,7 +140,7 @@ export function partialZoneSet({ user_key, zone_name, resolve_to, subdomains }, 
  *
  * @returns {Object} API Response
  */
-export function fullZoneSet({ user_key, zone_name }, onSuccess, onError) {
+export function fullZoneSet({ user_key, zone_name }, callback) {
     let opts = {
         body: {
             act: 'full_zone_set',
@@ -123,14 +149,14 @@ export function fullZoneSet({ user_key, zone_name }, onSuccess, onError) {
         }
     };
 
-    return send('POST', opts, onSuccess, onError);
+    return send('POST', opts, callback);
 }
 
-function send(method, opts, onSuccess, onError) {
+function send(method, opts, callback) {
     if (method.toUpperCase() === 'GET') {
         opts.parameters.host_key = hostKey;
     } else {
         opts.body.host_key = hostKey;
     }
-    return http.request(method, ENDPOINT, opts, onSuccess, onError);
+    return http.request(method, ENDPOINT, opts, hostCallback(callback));
 }

@@ -1,5 +1,5 @@
 import * as ActionTypes from '../constants/ActionTypes';
-import { zoneDNSRecordGetAll, zoneDNSRecordPostNew, zoneDNSRecordPatch, v4ResponseOk } from '../utils/CFClientV4API/CFClientV4API';
+import { zoneDNSRecordGetAll, zoneDNSRecordPostNew, zoneDNSRecordPatch } from '../utils/CFClientV4API/CFClientV4API';
 import { notificationAddClientAPIError } from './notifications';
 
 
@@ -35,12 +35,12 @@ export function asyncDNSRecordCreate(zoneId, type, name, content) {
     return dispatch => {
         dispatch(dnsRecordCreate(name));
         zoneDNSRecordPostNew({ zoneId: zoneId, type: type, name: name, content: content }, function(error, response) {
-            if(v4ResponseOk(response)) {
+            if(response) {
                 dispatch(dnsRecordCreateSuccess(zoneId, response.body.result));
                 //CloudFlare defaults new records with proxied = false.
                 dispatch(asyncDNSRecordUpdate(zoneId, response.body.result, true));
             } else {
-                dispatch(notificationAddClientAPIError(dnsRecordCreateError(), response));
+                dispatch(notificationAddClientAPIError(dnsRecordCreateError(), error));
             }
         });
     };
@@ -62,7 +62,7 @@ export function dnsRecordFetchListSuccess(zoneId, dnsRecords) {
 
 export function dnsRecordFetchListError() {
     return {
-        type: ActionTypes.DNS_RECORD_FETCH_LIST_SUCCESS
+        type: ActionTypes.DNS_RECORD_FETCH_LIST_ERROR
     };
 }
 
@@ -70,10 +70,10 @@ export function asyncDNSRecordFetchList(zoneId) {
     return dispatch => {
         dispatch(dnsRecordFetchList());
         zoneDNSRecordGetAll(zoneId, function(error, response) {
-            if(v4ResponseOk(response)) {
+            if(response) {
                 dispatch(dnsRecordFetchListSuccess(zoneId, response.body.result));
             } else {
-                dispatch(notificationAddClientAPIError(dnsRecordFetchListError(), response));
+                dispatch(notificationAddClientAPIError(dnsRecordFetchListError(), error));
             }
         });
     };
@@ -104,10 +104,10 @@ export function asyncDNSRecordUpdate(zoneId, dnsRecord, proxied) {
     return dispatch => {
         dispatch(dnsRecordUpdate(dnsRecord.name));
         zoneDNSRecordPatch({ zoneId: zoneId, dnsRecordId: dnsRecord.id, proxied: proxied }, function(error, response) {
-            if(v4ResponseOk(response)) {
+            if(response) {
                 dispatch(dnsRecordUpdateSuccess(zoneId, response.body.result));
             } else {
-                dispatch(notificationAddClientAPIError(dnsRecordUpdateError, response));
+                dispatch(notificationAddClientAPIError(dnsRecordUpdateError(), error));
             }
         });
     };

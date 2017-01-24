@@ -1,9 +1,10 @@
 import { routeActions } from 'redux-simple-router';
-import { userAuth, userCreate, hostAPIResponseOk } from '../utils/CFHostAPI/CFHostAPI';
-import { pluginAccountPost, pluginResponseOk } from '../utils/PluginAPI/PluginAPI';
-import { notificationAddError, notificationAddClientAPIError } from './notifications';
+import { userAuth, userCreate } from '../utils/CFHostAPI/CFHostAPI';
+import { pluginAccountPost } from '../utils/PluginAPI/PluginAPI';
+import { notificationAddHostAPIError, notificationAddClientAPIError } from './notifications';
 import * as ActionTypes from '../constants/ActionTypes';
 import * as UrlPaths from '../constants/UrlPaths';
+import { getConfigValue } from '../selectors/config';
 
 import { asyncFetchZones } from './zones';
 
@@ -27,10 +28,14 @@ export function userLoginSuccess(email) {
 }
 
 export function asyncUserLoginSuccess(email) {
-    return dispatch => {
+    return (dispatch, getState) => {
         dispatch(userLoginSuccess(email));
         dispatch(asyncFetchZones());
-        dispatch(routeActions.push(UrlPaths.HOME_PAGE));
+        let route = UrlPaths.HOME_PAGE;
+        if(getConfigValue(getState().config, 'integrationName') === 'cpanel') {
+          route = UrlPaths.DOMAINS_OVERVIEW_PAGE;
+        }
+        dispatch(routeActions.push(route));
     };
 }
 
@@ -46,11 +51,10 @@ export function asyncLogin(email, password) {
     return dispatch => {
         dispatch(userLogin());
         userAuth({ cloudflare_email: email, cloudflare_pass: password }, function(error, response) {
-            if (hostAPIResponseOk(response)) {
+            if (response) {
                 dispatch(asyncUserLoginSuccess(response.body.response.cloudflare_email));
             } else {
-                dispatch(userLoginError());
-                dispatch(notificationAddError(response));
+                dispatch(notificationAddHostAPIError(userLoginError(), error));
             }
         });
     };
@@ -60,11 +64,11 @@ export function asyncAPILogin(email, apiKey) {
     return dispatch => {
         dispatch(userLogin());
         pluginAccountPost(email, apiKey, function(error, response){
-            if(pluginResponseOk(response)) {
+            if(response) {
                 dispatch(asyncUserLoginSuccess(email));
             } else {
                 dispatch(userLoginError());
-                dispatch(notificationAddClientAPIError(userLoginError(), response));
+                dispatch(notificationAddClientAPIError(userLoginError(), error));
             }
         });
     };
@@ -98,12 +102,11 @@ export function asyncUserSignup(email, password) {
     return dispatch => {
         dispatch(userSignup());
         userCreate({ cloudflare_email: email, cloudflare_pass: password }, function(error, response) {
-            if(hostAPIResponseOk(response)) {
+            if(response) {
                 dispatch(userSignupSuccess());
                 dispatch(asyncLogin(email, password));
             } else {
-                dispatch(userSignupError());
-                dispatch(notificationAddError(response));
+                dispatch(notificationAddHostAPIError(userSignupError(), error));
             }
         });
 

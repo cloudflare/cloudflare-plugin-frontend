@@ -1,4 +1,4 @@
-import { zoneRailgunGetAll, zoneRailgunPatch, v4ResponseOk } from '../utils/CFClientV4API/CFClientV4API';
+import { zoneRailgunGetAll, zoneRailgunPatch } from '../utils/CFClientV4API/CFClientV4API';
 import { notificationAddClientAPIError } from './notifications';
 import * as ActionTypes from '../constants/ActionTypes';
 
@@ -26,10 +26,10 @@ export function asyncZoneRailgunFetchAll(zoneId) {
     return dispatch => {
         dispatch(zoneRailgunFetchAll());
         zoneRailgunGetAll(zoneId, function(error, response) {
-            if(v4ResponseOk(response)) {
+            if(response) {
                 dispatch(zoneRailgunFetchAllSuccess(zoneId, response.body.result));
             } else {
-                dispatch(notificationAddClientAPIError(zoneRailgunFetchAllError(), response));
+                dispatch(notificationAddClientAPIError(zoneRailgunFetchAllError(), error));
             }
         });
     };
@@ -64,10 +64,10 @@ export function asyncZoneRailgunConnectionUpdate(zoneId, railgun, isConnected) {
         let oldRailgun = Object.assign({}, railgun);
         dispatch(zoneRailgunConnectionUpdate(zoneId, Object.assign({}, railgun, { connected: isConnected })));
         zoneRailgunPatch(zoneId, railgun.id, isConnected, function(error, response) {
-            if(v4ResponseOk(response)) {
+            if(response) {
                 dispatch(zoneRailgunConnectionUpdateSuccess(zoneId, response.body.result));
             } else {
-                dispatch(notificationAddClientAPIError(zoneRailgunConnectionUpdateError(zoneId, oldRailgun), response));
+                dispatch(notificationAddClientAPIError(zoneRailgunConnectionUpdateError(zoneId, oldRailgun), error));
             }
         });
     };
