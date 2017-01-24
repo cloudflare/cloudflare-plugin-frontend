@@ -47,8 +47,16 @@ class ActiveZoneSelector extends Component {
 
         let isSingleZone = zones.length < 2;
 
+        //vertically center the active zone selector
+        let activeZoneSelectorStyles = {
+            position: 'absolute',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            width: '200px'
+        };
+
         return (
-            <div className={"active-zone-selector__" + (isSingleZone ? "singlezone" : "multiplezone")} style={{ lineHeight: "60px" }}>
+            <div className={"active-zone-selector__" + (isSingleZone ? "singlezone" : "multiplezone")} style={ activeZoneSelectorStyles }>
                 { isSingleZone ? activeZoneName : 
                     ( <Select
                         value={ activeZoneName }
