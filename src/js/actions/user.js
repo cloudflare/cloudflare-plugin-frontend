@@ -1,6 +1,6 @@
 import { routeActions } from 'redux-simple-router';
 import { userAuth, userCreate } from '../utils/CFHostAPI/CFHostAPI';
-import { pluginAccountPost, pluginResponseOk } from '../utils/PluginAPI/PluginAPI';
+import { pluginAccountPost } from '../utils/PluginAPI/PluginAPI';
 import { notificationAddHostAPIError, notificationAddClientAPIError } from './notifications';
 import * as ActionTypes from '../constants/ActionTypes';
 import * as UrlPaths from '../constants/UrlPaths';
