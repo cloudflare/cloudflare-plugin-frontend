@@ -21,7 +21,7 @@ class AppNavigation extends Component {
 
         return((isLoggedIn() && (
                 <div className="apps-nav secondary-nav">
-                    <div className="wrapper" style={{'backgroundColor' : 'white', 'paddingTop': '5px'}}>
+                    <div className="wrapper" style={{ 'backgroundColor' : 'white', 'paddingTop': '5px' }}>
                         <ul className="slider-nav-container apps-nav-container no-arrows">
                             <li className="slider-nav-prev">
                                 <a href="#" className="btn btn-secondary disabled" title="Previous"><span className="icon icon-caret-left"></span></a>
