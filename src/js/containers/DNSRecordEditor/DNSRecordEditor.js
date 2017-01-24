@@ -9,7 +9,7 @@ import {
     TableHeadCell,
     TableCell
 } from 'cf-component-table';
-import Toggle from '../../components/CloudToggle/CloudToggle';
+import Toggle from 'cf-component-toggle';
 import _ from 'lodash';
 
 import Loading from 'cf-component-loading';
