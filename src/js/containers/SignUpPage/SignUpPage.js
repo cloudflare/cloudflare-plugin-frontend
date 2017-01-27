@@ -6,109 +6,134 @@ import _ from 'lodash';
 import * as UserActionCreators from '../../actions/user';
 import { notificationAddError } from '../../actions/notifications';
 import { TERMS_AND_CONDITIONS_PAGE, PRIVACY_POLICY_PAGE } from '../../constants/UrlPaths';
+import { Form, FormHeader, FormFieldset, FormLabel } from 'cf-component-form';
+import { LayoutContainer, LayoutRow, LayoutColumn } from 'cf-component-layout';
+import { Button } from 'cf-component-button';
+import Input from 'cf-component-input';
+import { Checkbox } from 'cf-component-checkbox';
 
 class SignUpPage extends Component {
-    render() {
-        let { formatMessage } = this.props.intl;
+  constructor(props) {
+    super(props);
 
-        return (
-            <section className="center login-form">
-                <div className="login-container">
-                    <form className="form" onSubmit={(e) => this.handleSignUpSubmit(e)}>
-                        <legend>
-                            <h3 className="form-title">
-                                <FormattedMessage id="container.signup.form.title" />
-                            </h3>
-                        </legend>
-                        <fieldset>
-                            <div className="control-group">
-                                <div className="control-label">
-                                    <label className="assistive-text">
-                                        <FormattedMessage id="container.signup.form.email" />
-                                    </label>
-                                </div>
-                                <div className="controls">
-                                    <input ref="email" type="text" placeholder={formatMessage({ id: 'container.signup.form.email' })} className="width-full"/>
-                                </div>
-                            </div>
-                            <div className="control-group">
-                                <div className="control-label">
-                                    <label className="assistive-text">
-                                        <FormattedMessage id="component.login.form.password" />
-                                    </label>
-                                </div>
-                                <div className="controls">
-                                    <input ref="password" type="password" placeholder={formatMessage({ id: 'container.signup.form.password' })} className="width-full"/>
-                                </div>
-                            </div>
-                            <div className="control-group">
-                                <div className="control-label">
-                                    <label className="assistive-text">
-                                        <FormattedMessage id="component.login.form.password" />
-                                    </label>
-                                </div>
-                                <div className="controls">
-                                    <input ref="password2" type="password" placeholder={formatMessage({ id: 'container.signup.form.passwordAgain' })} className="width-full"/>
-                                </div>
-                            </div>
-                            <div className="control-group">
-                                <div className="controls">
-                                    <label className="checkbox"><input ref="termsOfService" required="required" type="checkbox"/>
-                                        <div className="controls">
-                                            <p><FormattedMessage id="container.signup.form.termsAndConditions.iAgreeTo"/> <a href={TERMS_AND_CONDITIONS_PAGE} target="_blank"><FormattedMessage id="container.signup.form.termsAndConditions.cloudFlaresTermsAndConditions"/></a> <FormattedMessage id="container.signup.form.termsAndConditions.and"/> <a href={PRIVACY_POLICY_PAGE} target="_blank"><FormattedMessage id="container.signup.form.termsAndConditions.privacyPolicy"/></a><FormattedMessage id="container.signup.form.termsAndConditions.period"/></p>
-                                        </div>
-                                    </label>
-                                    </div>
-                                </div>
-                            <div className="control-group">
-                                <div className="controls">
-                                    <button type="submit" className="btn btn-success btn-large width-full">
-                                        <FormattedMessage id="container.signup.form.button" />
-                                    </button>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </form>
+    this.state = {
+      email: '',
+      password: '',
+      passwordConfirm: '',
+      termsOfService: false
+    };
+  }
+
+  render() {
+    let { formatMessage } = this.props.intl;
+
+    let overflowStyle = { overflow: "hidden", marginBottom: '2.5rem' };
+
+    return (
+        <div id="cf-login-page" style={{ margin: "2rem auto", maxWidth: '400px' }}>
+          <Form layout="vertical" onSubmit={(e) => this.handleSignUpSubmit(e)}>
+            <LayoutContainer>
+              <div style={overflowStyle}>
+                <LayoutRow>
+                  <LayoutColumn width={1/1}>
+                    <FormHeader title={formatMessage({ id: 'container.signup.form.title' })}/>
+                  </LayoutColumn>
+                </LayoutRow>
+              </div>
+              <FormFieldset legend="">
+                <div style={overflowStyle}>
+                  <LayoutRow>
+                    <LayoutColumn width={1/1}>
+                      <FormLabel hidden><FormattedMessage id="container.signup.form.email"/></FormLabel>
+                      <Input name="email" type="text" value={this.state.email} onChange={email => this.setState({ email: email })} placeholder={formatMessage({ id: 'container.signup.form.email' })}/>
+                    </LayoutColumn>
+                  </LayoutRow>
                 </div>
-            </section>
-        );
+
+                <div style={overflowStyle}>
+                  <LayoutRow>
+                    <LayoutColumn width={1/1}>
+                      <FormLabel hidden><FormattedMessage id="component.login.form.password"/></FormLabel>
+                      <Input name="password" type="password" value={this.state.password} onChange={password => this.setState({ password: password })} placeholder={formatMessage({ id: 'container.signup.form.password' })}/>
+                    </LayoutColumn>
+                  </LayoutRow>
+                </div>
+
+                <div style={overflowStyle}>
+                  <LayoutRow>
+                    <LayoutColumn width={1/1}>
+                      <FormLabel hidden><FormattedMessage id="container.signup.form.passwordAgain"/></FormLabel>
+                      <Input name="passwordConfirm" type="password" value={this.state.passwordConfirm} onChange={passwordConfirm => this.setState({ passwordConfirm: passwordConfirm })} placeholder={formatMessage({ id: 'container.signup.form.passwordAgain' })}/>
+                    </LayoutColumn>
+                  </LayoutRow>
+                </div>
+
+                <div style={overflowStyle}>
+                  <LayoutRow>
+                    <LayoutColumn width={1/1}>
+                      <Checkbox
+                        label={false}
+                        name="termsOfService"
+                        value="termsOfService"
+                        checked={this.state.termsOfService}
+                        onChange={termsOfService => this.setState({ termsOfService: termsOfService })}/>
+                      <FormLabel><FormattedMessage id="container.signup.form.termsAndConditions.iAgreeTo"/><a href={TERMS_AND_CONDITIONS_PAGE} target="_blank"><FormattedMessage id="container.signup.form.termsAndConditions.cloudFlaresTermsAndConditions"/></a> <FormattedMessage id="container.signup.form.termsAndConditions.and"/> <a href={PRIVACY_POLICY_PAGE} target="_blank"><FormattedMessage id="container.signup.form.termsAndConditions.privacyPolicy"/></a><FormattedMessage id="container.signup.form.termsAndConditions.period"/></FormLabel>
+                    </LayoutColumn>
+                  </LayoutRow>
+                </div>
+
+                <div style={overflowStyle}>
+                  <LayoutRow>
+                    <LayoutColumn width={1/1}>
+                      <Button submit type="success" onClick={(e) => this.handleSignUpSubmit(e)}>
+                        <FormattedMessage id="container.signup.form.button" />
+                      </Button>
+                    </LayoutColumn>
+                  </LayoutRow>
+                </div>
+              </FormFieldset>
+            </LayoutContainer>
+          </Form>
+        </div>
+    );
+  }
+
+  handleSignUpSubmit(e) {
+    e.preventDefault();
+    let { dispatch } = this.props;
+    let { formatMessage } = this.props.intl;
+
+    let email = this.state.email;
+    let password = this.state.password;
+    let password2 = this.state.passwordConfirm;
+    let isTermsOfServiceChecked = this.state.termsOfService;
+
+    if(!isTermsOfServiceChecked) {
+      dispatch(notificationAddError(formatMessage({ id: 'container.signup.error.termsOfService' })));
+      return;
     }
 
-    handleSignUpSubmit(e) {
-        e.preventDefault();
-        let { dispatch } = this.props;
-        let { formatMessage } = this.props.intl;
-
-        let email = this.refs.email.value;
-        let password = this.refs.password.value;
-        let password2 = this.refs.password2.value;
-        let isTermsOfServiceChecked = this.refs.termsOfService.value;
-
-        if(!isTermsOfServiceChecked) {
-            dispatch(notificationAddError(formatMessage({ id: 'container.signup.error.termsOfService' })));
-            return;
-        }
-
-        if(_.isEmpty(email)) {
-            dispatch(notificationAddError(formatMessage({ id: 'container.signup.error.emailBlank' })));
-            return;
-        }
-
-        if(_.isEmpty(password) || _.isEmpty(password2)) {
-            dispatch(notificationAddError(formatMessage({ id: 'container.signup.error.passwordBlank' })));
-            return;
-        }
-
-        if(password !== password2) {
-            dispatch(notificationAddError(formatMessage({ id: 'container.signup.error.passwordsDontMatch' }))) ;
-        }
-
-        dispatch(UserActionCreators.asyncUserSignup(email, password));
+    if(_.isEmpty(email)) {
+      dispatch(notificationAddError(formatMessage({ id: 'container.signup.error.emailBlank' })));
+      return;
     }
+
+    if(_.isEmpty(password) || _.isEmpty(password2)) {
+      dispatch(notificationAddError(formatMessage({ id: 'container.signup.error.passwordBlank' })));
+      return;
+    }
+
+    if(password !== password2) {
+      dispatch(notificationAddError(formatMessage({ id: 'container.signup.error.passwordsDontMatch' })));
+      return;
+    }
+
+    dispatch(UserActionCreators.asyncUserSignup(email, password));
+  }
 }
 
 function mapStateToProps(state) {
-    return { state: state };
+  return { state: state };
 }
 
 export default injectIntl(connect(mapStateToProps)(SignUpPage));
