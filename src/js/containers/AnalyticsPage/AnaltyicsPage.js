@@ -14,6 +14,8 @@ import _ from 'lodash';
 import { isActiveZoneOnCloudflare } from '../../selectors/activeZone';
 import { humanFileSize } from '../../utils/utils';
 import AnalyticCard from '../../components/AnalyticCard/AnalyticCard';
+import WaitForSettings from '../../components/WaitForSettings/WaitForSettings';
+import { getZoneAnalyticsForZoneId } from '../../selectors/zoneAnalytics';
 
 const REQUESTS_TAB = 'requests';
 const BANDWIDTH_TAB = 'bandwidth';
@@ -22,109 +24,109 @@ const THREATS_TAB = 'threats';
 
 class AnaltyicsPage extends Component {
   constructor(props) {
-        super(props);
+    super(props);
 
-        var bytesToString = function (bytes) {
-            var fmt = format('.0f');
+    var bytesToString = function (bytes) {
+      var fmt = format('.0f');
 
-            var splited = humanFileSize(bytes).split(' ');
-            var unit = splited[1];
-            var size = splited[0];
+      var splited = humanFileSize(bytes).split(' ');
+      var unit = splited[1];
+      var size = splited[0];
 
-            return fmt(size) + unit;
-        }
-
-        this.state = {
-            activeTab: REQUESTS_TAB,
-            bytesToString: bytesToString
-        };
+      return fmt(size) + unit;
     }
 
-    handleTabChange(id) {
-        this.setState({ activeTab: id });
+    this.state = {
+      activeTab: REQUESTS_TAB,
+      bytesToString: bytesToString
+    };
+  }
+
+  handleTabChange(id) {
+    this.setState({ activeTab: id });
+  }
+
+  render() {
+
+    const { formatMessage } = this.props.intl;
+
+    let { activeZone, allZoneAnalytics } = this.props;
+    let analytics = Object.assign({}, getZoneAnalyticsForZoneId(activeZone.id, allZoneAnalytics));
+
+    let isZoneOnCloudflare = isActiveZoneOnCloudflare(activeZone);
+    let isSettingsEmpty = _.isEmpty(analytics);
+
+    let cached = formatMessage({ id: 'containers.analyticsPage.cached' });
+    let unCached = formatMessage({ id: 'containers.analyticsPage.uncached' });
+    let threats = formatMessage({ id: 'containers.analyticsPage.threats' });
+    let uniques = formatMessage({ id: 'containers.analyticsPage.uniques' });
+
+    if (!isSettingsEmpty) {
+      // Get Top Country Threat
+      var threatsTopCountry = "N/A";
+      var tempThreatsTopCountryValue = 0;
+      _.forEach(analytics.totals.threats.country, function(value, key) {
+        if (tempThreatsTopCountryValue < value) {
+          tempThreatsTopCountryValue = value;
+          threatsTopCountry = key;
+        }
+      });
+
+      var threatsTopType = "N/A";
+      var tempThreatsTopTypeValue = 0;
+      _.forEach(analytics.totals.threats.country, function(value, key) {
+        if (tempThreatsTopTypeValue < value) {
+          tempThreatsTopTypeValue = value;
+          threatsTopType = key;
+        }
+      });
     }
 
-    render() {
+    //for some reason this only renders correctly if we put the xformat in data AND axis
+    let xformat = '%m/%d';
 
-        const { formatMessage } = this.props.intl;
-
-        let { activeZone, allZoneAnalytics } = this.props;
-        let analytics = Object.assign({}, allZoneAnalytics[activeZone.id]);
-
-        let isZoneOnCloudflare = isActiveZoneOnCloudflare(activeZone);
-        let isSettingsEmpty = _.isEmpty(analytics);
-
-        let cached = formatMessage({ id: 'containers.analyticsPage.cached' });
-        let unCached = formatMessage({ id: 'containers.analyticsPage.uncached' });
-        let threats = formatMessage({ id: 'containers.analyticsPage.threats' });
-        let uniques = formatMessage({ id: 'containers.analyticsPage.uniques' });
-
-        if (!isSettingsEmpty) {
-          // Get Top Country Threat 
-          var threatsTopCountry = "N/A";
-          var tempThreatsTopCountryValue = 0;
-          _.forEach(analytics.totals.threats.country, function(value, key) {
-            if (tempThreatsTopCountryValue < value) {
-              tempThreatsTopCountryValue = value;
-              threatsTopCountry = key;
-            }
-          });
-          
-          var threatsTopType = "N/A";
-          var tempThreatsTopTypeValue = 0;
-          _.forEach(analytics.totals.threats.country, function(value, key) {
-            if (tempThreatsTopTypeValue < value) {
-              tempThreatsTopTypeValue = value;
-              threatsTopType = key;
-            }
-          });
-        }
-        
-        //for some reason this only renders correctly if we put the xformat in data AND axis
-        let xformat = '%m/%d';
-
-        return (
-            <div>
-              {isSettingsEmpty && isZoneOnCloudflare && (
-                <Text align="center"><Loading/></Text>
-              )}
-              {isSettingsEmpty && !isZoneOnCloudflare && (
-                <Text align="center"><FormattedMessage id="errors.noActiveZoneSelected" /></Text>
-              )}
-              {!isSettingsEmpty && isZoneOnCloudflare && (
-                    <div>
-                    <Heading size={1}><FormattedMessage id="container.analyticsPage.title"/></Heading>
-                    <Tabs
-                        activeTab={this.state.activeTab}
-                        tabs={[
+    return (
+      <WaitForSettings activeZone={activeZone} analytics={getZoneAnalyticsForZoneId(activeZone.id, allZoneAnalytics)}>
+        {isSettingsEmpty && isZoneOnCloudflare && (
+          <Text align="center"><Loading/></Text>
+        )}
+        {isSettingsEmpty && !isZoneOnCloudflare && (
+          <Text align="center"><FormattedMessage id="errors.noActiveZoneSelected" /></Text>
+        )}
+        {!isSettingsEmpty && isZoneOnCloudflare && (
+          <div>
+            <Heading size={1}><FormattedMessage id="container.analyticsPage.title"/></Heading>
+            <Tabs
+              activeTab={this.state.activeTab}
+              tabs={[
                           { id: REQUESTS_TAB, label: formatMessage({ id: 'container.analyticsPage.tabs.requests' }) },
                           { id: BANDWIDTH_TAB, label: formatMessage({ id: 'container.analyticsPage.tabs.bandwidth' }) },
                           { id: UNIQUES_TAB, label: formatMessage({ id: 'container.analyticsPage.tabs.uniques' }) },
                           { id: THREATS_TAB, label: formatMessage({ id: 'container.analyticsPage.tabs.threats' }) }
                         ]}
-                        onChange={this.handleTabChange.bind(this)}>
+              onChange={this.handleTabChange.bind(this)}>
 
-                        <TabsPanel id={ REQUESTS_TAB }>
-                          <LayoutContainer>
-                            <LayoutRow>
-                              <LayoutColumn width={1}><h3>{formatMessage({ id: 'container.analyticsPage.tabs.requests.title' }) }</h3></LayoutColumn>
-                            </LayoutRow>
-                            <LayoutRow> 
-                              <LayoutColumn width={1/3}>
-                                  <h5>{formatMessage({ id: 'container.analyticsPage.tabs.requests.total' }) }</h5>
-                                  { analytics.totals.requests.all }
-                              </LayoutColumn>
-                              <LayoutColumn width={1/3}>
-                                  <h5>{formatMessage({ id: 'container.analyticsPage.tabs.requests.cached' }) }</h5>
-                                  { analytics.totals.requests.cached }
-                              </LayoutColumn>
-                              <LayoutColumn width={1/3}>
-                                  <h5>{formatMessage({ id: 'container.analyticsPage.tabs.requests.uncached' }) }</h5>
-                                  { analytics.totals.requests.uncached }
-                              </LayoutColumn>
-                            </LayoutRow>
-                            <LayoutRow>
-                              <C3Wrapper config={{
+              <TabsPanel id={ REQUESTS_TAB }>
+                <LayoutContainer>
+                  <LayoutRow>
+                    <LayoutColumn width={1}><h3>{formatMessage({ id: 'container.analyticsPage.tabs.requests.title' }) }</h3></LayoutColumn>
+                  </LayoutRow>
+                  <LayoutRow>
+                    <LayoutColumn width={1/3}>
+                      <h5>{formatMessage({ id: 'container.analyticsPage.tabs.requests.total' }) }</h5>
+                      { analytics.totals.requests.all }
+                    </LayoutColumn>
+                    <LayoutColumn width={1/3}>
+                      <h5>{formatMessage({ id: 'container.analyticsPage.tabs.requests.cached' }) }</h5>
+                      { analytics.totals.requests.cached }
+                    </LayoutColumn>
+                    <LayoutColumn width={1/3}>
+                      <h5>{formatMessage({ id: 'container.analyticsPage.tabs.requests.uncached' }) }</h5>
+                      { analytics.totals.requests.uncached }
+                    </LayoutColumn>
+                  </LayoutRow>
+                  <LayoutRow>
+                    <C3Wrapper config={{
                                 data: {
                                   x: 'x',
                                   xFormat: xformat,
@@ -146,31 +148,31 @@ class AnaltyicsPage extends Component {
                                   }
                                 }
                               }}/>
-                            </LayoutRow>
-                          </LayoutContainer>                            
-                        </TabsPanel>
+                  </LayoutRow>
+                </LayoutContainer>
+              </TabsPanel>
 
-                        <TabsPanel id={ BANDWIDTH_TAB }>
-                          <LayoutContainer>
-                            <LayoutRow>
-                              <LayoutColumn width={1}><h3>{formatMessage({ id: 'container.analyticsPage.tabs.bandwidth.title' }) }</h3></LayoutColumn>
-                            </LayoutRow>
-                            <LayoutRow> 
-                              <LayoutColumn width={1/3}>
-                                  <h5>{formatMessage({ id: 'container.analyticsPage.tabs.bandwidth.total' }) }</h5>
-                                  { humanFileSize(analytics.totals.bandwidth.all) }
-                              </LayoutColumn>
-                              <LayoutColumn width={1/3}>
-                                  <h5>{formatMessage({ id: 'container.analyticsPage.tabs.bandwidth.cached' }) }</h5>
-                                  { humanFileSize(analytics.totals.bandwidth.cached) }
-                              </LayoutColumn>
-                              <LayoutColumn width={1/3}>
-                                  <h5>{formatMessage({ id: 'container.analyticsPage.tabs.bandwidth.uncached' }) }</h5>
-                                  { humanFileSize(analytics.totals.bandwidth.uncached) }
-                              </LayoutColumn>
-                            </LayoutRow>
-                            <LayoutRow>
-                              <C3Wrapper config={{
+              <TabsPanel id={ BANDWIDTH_TAB }>
+                <LayoutContainer>
+                  <LayoutRow>
+                    <LayoutColumn width={1}><h3>{formatMessage({ id: 'container.analyticsPage.tabs.bandwidth.title' }) }</h3></LayoutColumn>
+                  </LayoutRow>
+                  <LayoutRow>
+                    <LayoutColumn width={1/3}>
+                      <h5>{formatMessage({ id: 'container.analyticsPage.tabs.bandwidth.total' }) }</h5>
+                      { humanFileSize(analytics.totals.bandwidth.all) }
+                    </LayoutColumn>
+                    <LayoutColumn width={1/3}>
+                      <h5>{formatMessage({ id: 'container.analyticsPage.tabs.bandwidth.cached' }) }</h5>
+                      { humanFileSize(analytics.totals.bandwidth.cached) }
+                    </LayoutColumn>
+                    <LayoutColumn width={1/3}>
+                      <h5>{formatMessage({ id: 'container.analyticsPage.tabs.bandwidth.uncached' }) }</h5>
+                      { humanFileSize(analytics.totals.bandwidth.uncached) }
+                    </LayoutColumn>
+                  </LayoutRow>
+                  <LayoutRow>
+                    <C3Wrapper config={{
                                 data: {
                                   x: 'x',
                                   xFormat: xformat,
@@ -195,31 +197,31 @@ class AnaltyicsPage extends Component {
                                   }
                                 }
                               }}/>
-                            </LayoutRow>
-                          </LayoutContainer>   
-                        </TabsPanel>
+                  </LayoutRow>
+                </LayoutContainer>
+              </TabsPanel>
 
-                        <TabsPanel id={ UNIQUES_TAB }>
-                          <LayoutContainer>
-                              <LayoutRow>
-                                <LayoutColumn width={1}><h3>{formatMessage({ id: 'container.analyticsPage.tabs.uniques.title' }) }</h3></LayoutColumn>
-                              </LayoutRow>
-                              <LayoutRow> 
-                                <LayoutColumn width={1/3}>
-                                    <h5>{formatMessage({ id: 'container.analyticsPage.tabs.uniques.total' }) }</h5>
-                                    { analytics.totals.uniques.all }
-                                </LayoutColumn>
-                                <LayoutColumn width={1/3}>
-                                    <h5>{formatMessage({ id: 'container.analyticsPage.tabs.uniques.maximum' }) }</h5>
-                                    { _.max(analytics.uniques[0]) }
-                                </LayoutColumn>
-                                <LayoutColumn width={1/3}>
-                                    <h5>{formatMessage({ id: 'container.analyticsPage.tabs.uniques.minimum' }) }</h5>
-                                    { _.min(analytics.uniques[0]) }
-                                </LayoutColumn>
-                              </LayoutRow>
-                              <LayoutRow>
-                                <C3Wrapper config={{
+              <TabsPanel id={ UNIQUES_TAB }>
+                <LayoutContainer>
+                  <LayoutRow>
+                    <LayoutColumn width={1}><h3>{formatMessage({ id: 'container.analyticsPage.tabs.uniques.title' }) }</h3></LayoutColumn>
+                  </LayoutRow>
+                  <LayoutRow>
+                    <LayoutColumn width={1/3}>
+                      <h5>{formatMessage({ id: 'container.analyticsPage.tabs.uniques.total' }) }</h5>
+                      { analytics.totals.uniques.all }
+                    </LayoutColumn>
+                    <LayoutColumn width={1/3}>
+                      <h5>{formatMessage({ id: 'container.analyticsPage.tabs.uniques.maximum' }) }</h5>
+                      { _.max(analytics.uniques[0]) }
+                    </LayoutColumn>
+                    <LayoutColumn width={1/3}>
+                      <h5>{formatMessage({ id: 'container.analyticsPage.tabs.uniques.minimum' }) }</h5>
+                      { _.min(analytics.uniques[0]) }
+                    </LayoutColumn>
+                  </LayoutRow>
+                  <LayoutRow>
+                    <C3Wrapper config={{
                                   data: {
                                     x: 'x',
                                     xFormat: xformat,
@@ -240,31 +242,31 @@ class AnaltyicsPage extends Component {
                                     }
                                   }
                                 }}/>
-                              </LayoutRow>
-                            </LayoutContainer>  
-                        </TabsPanel>
+                  </LayoutRow>
+                </LayoutContainer>
+              </TabsPanel>
 
-                        <TabsPanel id={ THREATS_TAB }>
-                          <LayoutContainer>
-                              <LayoutRow>
-                                <LayoutColumn width={1}><h3>{formatMessage({ id: 'container.analyticsPage.tabs.threats.title' }) }</h3></LayoutColumn>
-                              </LayoutRow>
-                              <LayoutRow> 
-                                <LayoutColumn width={1/3}>
-                                    <h5>{formatMessage({ id: 'container.analyticsPage.tabs.threats.total' }) }</h5>
-                                    { analytics.totals.threats.total ? analytics.totals.threats.total : 0 }
-                                </LayoutColumn>
-                                <LayoutColumn width={1/3}>
-                                    <h5>{formatMessage({ id: 'container.analyticsPage.tabs.threats.country' }) }</h5>
-                                    { threatsTopCountry }
-                                </LayoutColumn>
-                                <LayoutColumn width={1/3}>
-                                    <h5>{formatMessage({ id: 'container.analyticsPage.tabs.threats.type' }) }</h5>
-                                    { threatsTopType }
-                                </LayoutColumn> 
-                              </LayoutRow>
-                              <LayoutRow>
-                                <C3Wrapper config={{
+              <TabsPanel id={ THREATS_TAB }>
+                <LayoutContainer>
+                  <LayoutRow>
+                    <LayoutColumn width={1}><h3>{formatMessage({ id: 'container.analyticsPage.tabs.threats.title' }) }</h3></LayoutColumn>
+                  </LayoutRow>
+                  <LayoutRow>
+                    <LayoutColumn width={1/3}>
+                      <h5>{formatMessage({ id: 'container.analyticsPage.tabs.threats.total' }) }</h5>
+                      { analytics.totals.threats.total ? analytics.totals.threats.total : 0 }
+                    </LayoutColumn>
+                    <LayoutColumn width={1/3}>
+                      <h5>{formatMessage({ id: 'container.analyticsPage.tabs.threats.country' }) }</h5>
+                      { threatsTopCountry }
+                    </LayoutColumn>
+                    <LayoutColumn width={1/3}>
+                      <h5>{formatMessage({ id: 'container.analyticsPage.tabs.threats.type' }) }</h5>
+                      { threatsTopType }
+                    </LayoutColumn>
+                  </LayoutRow>
+                  <LayoutRow>
+                    <C3Wrapper config={{
                                  data: {
                                     x: 'x',
                                     xFormat: xformat,
@@ -285,32 +287,32 @@ class AnaltyicsPage extends Component {
                                     }
                                   }
                                 }}/>
-                              </LayoutRow>
-                            </LayoutContainer> 
-                        </TabsPanel>
-                    </Tabs>
-                  
-                    <LayoutRow>
-                      <LayoutColumn width={74/150}>
-                        <AnalyticCard title={ formatMessage({ id: 'container.analyticCard.ssl.title' }) } description={ formatMessage({ id: 'container.analyticCard.duration' }) } data={ analytics.totals.requests.ssl } dataType={ formatMessage({ id: 'container.analyticCard.ssl.datatype' }) } />
-                      </LayoutColumn>
-                      <LayoutColumn width={2/150}>&nbsp;</LayoutColumn>
-                      <LayoutColumn width={74/150}>
-                        <AnalyticCard title={ formatMessage({ id: 'container.analyticCard.bandwidth.title' }) } description={ formatMessage({ id: 'container.analyticCard.duration' }) } data={ analytics.totals.bandwidth } dataType={ formatMessage({ id: 'container.analyticCard.bandwidth.datatype' }) } />
-                      </LayoutColumn>
-                    </LayoutRow>
+                  </LayoutRow>
+                </LayoutContainer>
+              </TabsPanel>
+            </Tabs>
 
-                    </div>                    
-                )}
-            </div>
-        );
-    }
+            <LayoutRow>
+              <LayoutColumn width={74/150}>
+                <AnalyticCard title={ formatMessage({ id: 'container.analyticCard.ssl.title' }) } description={ formatMessage({ id: 'container.analyticCard.duration' }) } data={ analytics.totals.requests.ssl } dataType={ formatMessage({ id: 'container.analyticCard.ssl.datatype' }) } />
+              </LayoutColumn>
+              <LayoutColumn width={2/150}>&nbsp;</LayoutColumn>
+              <LayoutColumn width={74/150}>
+                <AnalyticCard title={ formatMessage({ id: 'container.analyticCard.bandwidth.title' }) } description={ formatMessage({ id: 'container.analyticCard.duration' }) } data={ analytics.totals.bandwidth } dataType={ formatMessage({ id: 'container.analyticCard.bandwidth.datatype' }) } />
+              </LayoutColumn>
+            </LayoutRow>
+
+          </div>
+        )}
+      </WaitForSettings>
+    );
+  }
 }
 function mapStateToProps(state) {
-    return {
-        activeZone: state.activeZone,
-        allZoneAnalytics: state.zoneAnalytics.entities,
-    };
+  return {
+    activeZone: state.activeZone,
+    allZoneAnalytics: state.zoneAnalytics,
+  };
 }
 
 export default injectIntl(connect(mapStateToProps)(AnaltyicsPage));
