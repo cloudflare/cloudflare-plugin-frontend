@@ -26,7 +26,7 @@ class LoginPage extends Component {
 
         this.state = {
             email: '',
-            apiKey: ''
+            secret: ''
         };
     }
 
@@ -45,8 +45,8 @@ class LoginPage extends Component {
         this.setState({ email });
     }
 
-    handleApiKeyChange(apiKey) {
-        this.setState({ apiKey });
+    handleSecretChange(secret) {
+        this.setState({ secret });
     }
 
     handleLoginSubmit(e) {
@@ -55,10 +55,11 @@ class LoginPage extends Component {
 
         let isHostAPILogin = getConfigValue(config, 'useHostAPILogin');
         if(isHostAPILogin) {
-            //apiKey will actually be password here
-            dispatch(asyncLogin(this.state.email , this.state.apiKey));
+            //secret is the password here
+            dispatch(asyncLogin(this.state.email , this.state.secret));
         } else {
-            dispatch(asyncAPILogin(this.state.email, this.state.apiKey));
+            //secret is the API Key here
+            dispatch(asyncAPILogin(this.state.email, this.state.secret));
         }
     }
 
@@ -111,7 +112,7 @@ class LoginPage extends Component {
                                   <LayoutRow>
                                       <LayoutColumn width={1/1}>
                                           <FormLabel hidden><FormattedMessage id={ inputLabel }/></FormLabel>
-                                          <Input name="apiKey" type={ inputType } value={this.state.apiKey} onChange={this.handleApiKeyChange.bind(this)} placeholder={formatMessage({ id: inputLabel })}/>
+                                          <Input name="apiKey" type={ inputType } value={this.state.secret} onChange={this.handleSecretChange.bind(this)} placeholder={formatMessage({ id: inputLabel })}/>
                                       </LayoutColumn>
                                   </LayoutRow>
                               </div>
