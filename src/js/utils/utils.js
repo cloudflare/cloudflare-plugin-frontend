@@ -62,3 +62,7 @@ export function humanFileSize(bytes) {
     } while(Math.abs(bytes) >= thresh && u < units.length - 1);
     return bytes.toFixed(1)+' '+units[u];
 }
+
+export function openWindow720x720(link) {
+    window.open(link, 'wordpress', 'toolbar=0,status=0,width=720,height=700');
+}
