@@ -5,10 +5,8 @@ import _ from 'lodash';
 
 import { Heading } from 'cf-component-heading';
 
-import { getPluginSettingsForZoneId } from '../../selectors/pluginSettings';
-import { getAllZoneSettingsForZoneId } from '../../selectors/zoneSettings';
 import { renderCards } from '../../components/RenderCardsDynamically/RenderCardsDynamically';
-import WaitForSettings from '../../components/WaitForSettings/WaitForSettings';
+import WaitForSettings from '../../containers/WaitForSettings/WaitForSettings';
 
 class MoreSettingsPage extends Component {
 
@@ -28,10 +26,8 @@ class MoreSettingsPage extends Component {
   }
 
   render() {
-    let { activeZone, zoneSettings, pluginSettings } = this.props;
-
     return (
-      <WaitForSettings activeZone={activeZone} settings={getAllZoneSettingsForZoneId(activeZone.id, zoneSettings)} pluginSettings={getPluginSettingsForZoneId(activeZone.id, pluginSettings)}>
+      <WaitForSettings settings pluginSettings>
         { this.renderContent() }
       </WaitForSettings>
     );
@@ -40,10 +36,7 @@ class MoreSettingsPage extends Component {
 
 function mapStateToProps(state) {
   return {
-    activeZone: state.activeZone,
     config: state.config.config,
-    zoneSettings: state.zoneSettings,
-    pluginSettings: state.pluginSettings
   };
 }
 export default injectIntl(connect(mapStateToProps)(MoreSettingsPage));
