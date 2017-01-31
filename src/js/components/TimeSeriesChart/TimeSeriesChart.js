@@ -21,8 +21,11 @@ export default class TimeSeriesChart extends Component {
     //First row of columms is the x axis key
     //The first element in the remaining rows column has to be the label
     for(let i = 0; i < xAxisValues.length; i++) {
-      if(xAxisValues[i].values) {
-        columns.push([xAxisValues[i].label].concat(xAxisValues[i].values));
+      let label = xAxisValues[i].label;
+      let values = xAxisValues[i].values;
+
+      if(label && values) {
+        columns.push([label].concat(values));
       }
     }
 
