@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
 export function getPluginSettingsForZoneId(zoneId, state) {
-    return _.get(state, ['pluginSettings', 'entities', zoneId]);
+    return _.get(state, ['entities', zoneId], false);
 }
 
 export function getPluginSettingsIsFetching(state) {

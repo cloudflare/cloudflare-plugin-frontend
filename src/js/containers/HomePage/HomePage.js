@@ -1,47 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import _ from 'lodash';
 
 import { Heading } from 'cf-component-heading';
-import Loading from 'cf-component-loading';
-import Text from 'cf-component-text';
 
-import { isActiveZoneOnCloudflare } from '../../selectors/activeZone';
-import { getPluginSettingsForZoneId } from '../../selectors/pluginSettings';
 import { renderCards } from '../../components/RenderCardsDynamically/RenderCardsDynamically';
+import WaitForSettings from '../../containers/WaitForSettings/WaitForSettings';
 
 class HomePage extends Component {
-    render() {
-        let { activeZone, zoneSettings, config } = this.props;
-        let isZoneOnCloudflare = isActiveZoneOnCloudflare(activeZone);
-        let isSettingsEmpty = _.isEmpty(zoneSettings[activeZone.id]) && _.isEmpty(getPluginSettingsForZoneId(activeZone.id, this.state));
+  render() {
+    let { config } = this.props;
 
-        return (
-          <div>
-              {isSettingsEmpty && isZoneOnCloudflare && (
-                <Text align="center"><Loading/></Text>
-              )}
-              {isSettingsEmpty && !isZoneOnCloudflare && (
-                <Text align="center"><FormattedMessage id="errors.noActiveZoneSelected" /></Text>
-              )}
-              {!isSettingsEmpty && isZoneOnCloudflare && (
-                    <div>
-                        <Heading size={1}><FormattedMessage id="container.appNavigation.home"/></Heading>
-                        
-                        { renderCards(config.homePageCards) }
-                    </div>
-                )}
-            </div>
-        );
-    }
+    return (
+      <WaitForSettings settings pluginSettings>
+        <Heading size={1}><FormattedMessage id="container.appNavigation.home"/></Heading>
+        { renderCards(config.homePageCards) }
+      </WaitForSettings>
+    );
+  }
 }
 
 function mapStateToProps(state) {
-    return {
-        activeZone: state.activeZone,
-        config: state.config.config,
-        zoneSettings: state.zoneSettings.entities,
-    };
+  return {
+    config: state.config.config
+  };
 }
 export default injectIntl(connect(mapStateToProps)(HomePage));
