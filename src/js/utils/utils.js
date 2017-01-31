@@ -64,5 +64,5 @@ export function humanFileSize(bytes) {
 }
 
 export function openWindow720x720(link) {
-    window.open(link, 'wordpress', 'toolbar=0,status=0,width=720,height=700');
+    window.open(link, '_blank', 'toolbar=0,status=0,width=720,height=700');
 }
