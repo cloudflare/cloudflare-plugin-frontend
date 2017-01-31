@@ -18,9 +18,15 @@ import { Button } from 'cf-component-button';
 import ActivationCheckCard from '../../containers/ActivationCheckCard/ActivationCheckCard';
 import DNSRecordEditor from '../../containers/DNSRecordEditor/DNSRecordEditor';
 import ZoneProvisionContainer from '../../containers/ZoneProvisionContainer/ZoneProvisionContainer';
+import { generateUTMLink } from '../../selectors/generateUTMLink.js';
 import { CLOUDFLARE_UPGRADE_PAGE } from '../../constants/UrlPaths.js';
+import { openWindow720x720 } from '../../utils/utils.js';
 
 class DNSManagementPage extends Component {
+    constructor(props) {
+        super(props);
+        this.className = "DNSManagementPage";
+    }
 
     render() {
         let { activeZone, config, dnsRecords, zones } = this.props;
@@ -36,8 +42,8 @@ class DNSManagementPage extends Component {
             zone = zones[activeZone.name];
         }
 
-        let upgradeLink = CLOUDFLARE_UPGRADE_PAGE + '?utm_source=pi-' + config.integrationName + '&utm_medium=plugin&utm_campaign=' + config.integrationName;
-        let changePlanButton = (<Button type="success" onClick={ function(){window.open(upgradeLink); return false;} }><FormattedMessage id="container.dnsManagementPage.thead.changePlan" /></Button>);
+        let upgradeLinkWithUTM = generateUTMLink(CLOUDFLARE_UPGRADE_PAGE, config.integrationName, config.integrationName, this.className);
+        let changePlanButton = (<Button type="success" onClick={ openWindow720x720.bind(this, upgradeLinkWithUTM) }><FormattedMessage id="container.dnsManagementPage.thead.changePlan" /></Button>);
 
         return (
             <div>

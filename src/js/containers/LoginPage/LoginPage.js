@@ -15,10 +15,10 @@ import { getConfigValue } from '../../selectors/config';
 import { isLoggedIn } from '../../utils/Auth/Auth';
 import { Link } from 'react-router';
 import { routeActions } from 'redux-simple-router';
+import { openWindow720x720 } from '../../utils/utils.js';
 
 const SIGNUP_UTM_CONTENT_IDENTIFIER = 'signup_now';
 const COPY_API_KEY_UTM_CONTENT_IDENTIFIER = 'copy_api_key';
-
 
 class LoginPage extends Component {
     constructor(props) {
@@ -35,10 +35,6 @@ class LoginPage extends Component {
         if(isLoggedIn()) {
             dispatch(routeActions.push(HOME_PAGE));
         }
-    }
-
-    openLinkInWindow(link) {
-        window.open(link, '_blank', 'toolbar=0,status=0,width=720,height=700');
     }
 
     handleEmailChange(email) {
@@ -136,8 +132,8 @@ class LoginPage extends Component {
                                       </div>
                                         :
                                       <div>
-                                        <p style={{ textAlign: 'center' }}><FormattedMessage id="component.clientLogin.cloudflare.description"/> <a onClick={ this.openLinkInWindow.bind(this, signupLinkWithUTM) }>cloudflare.com</a>.</p>
-                                        <p style={{ textAlign: 'center' }}><FormattedMessage id="component.clientLogin.form.apiKeyHelp"/> <a onClick={ this.openLinkInWindow.bind(this, accountLinkWithUTM) }>here</a>.</p>
+                                        <p style={{ textAlign: 'center' }}><FormattedMessage id="component.clientLogin.cloudflare.description"/> <a onClick={ openWindow720x720.bind(this, signupLinkWithUTM) }>cloudflare.com</a>.</p>
+                                        <p style={{ textAlign: 'center' }}><FormattedMessage id="component.clientLogin.form.apiKeyHelp"/> <a onClick={ openWindow720x720.bind(this, accountLinkWithUTM) }>here</a>.</p>
                                       </div>
                                     }
                                   </LayoutColumn>
