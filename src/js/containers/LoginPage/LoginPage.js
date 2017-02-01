@@ -99,16 +99,16 @@ class LoginPage extends Component {
                               <div style={overflowStyle}>
                                   <LayoutRow style={overflowStyle}>
                                       <LayoutColumn width={1/1}>
-                                          <FormLabel hidden><FormattedMessage id="component.clientLogin.form.email"/></FormLabel>
-                                          <Input name="email" type="text" value={this.state.email} onChange={this.handleEmailChange.bind(this)} placeholder={formatMessage({ id: 'component.clientLogin.form.email' })}/>
+                                          <FormLabel><FormattedMessage id="component.clientLogin.form.email"/></FormLabel>
+                                          <Input name="email" type="text" value={this.state.email} onChange={this.handleEmailChange.bind(this)}/>
                                       </LayoutColumn>
                                   </LayoutRow>
                               </div>
                               <div style={{ overflow: "hidden", paddingBottom: "1px" }}>
                                   <LayoutRow>
                                       <LayoutColumn width={1/1}>
-                                          <FormLabel hidden><FormattedMessage id={ inputLabel }/></FormLabel>
-                                          <Input name="apiKey" type={ inputType } value={this.state.secret} onChange={this.handleSecretChange.bind(this)} placeholder={formatMessage({ id: inputLabel })}/>
+                                          <FormLabel><FormattedMessage id={ inputLabel }/></FormLabel>
+                                          <Input name="apiKey" type={ inputType } value={this.state.secret} onChange={this.handleSecretChange.bind(this)}/>
                                       </LayoutColumn>
                                   </LayoutRow>
                               </div>
