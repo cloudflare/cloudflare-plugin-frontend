@@ -29,10 +29,12 @@ class UnderAttackButton extends Component {
         let buttonType = (value === 'under_attack') ? 'warning' : 'primary';
 
         let underAttackStyles = {
-            lineHeight: "60px",
             fontSize: "75%",
             textAlign: "right",
-            marginRight: "5px"
+            position: "absolute",
+            top: "50%",
+            width: "73%",
+            transform: "translateY(-50%)",
         };
 
         return (
