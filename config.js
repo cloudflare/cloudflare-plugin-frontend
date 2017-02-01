@@ -34,5 +34,5 @@
     "locale": "en",
     "integrationName": "frontend",
     "useHostAPILogin": true,
-    "version": "2.6.1"
+    "version": "2.6.2"
 }

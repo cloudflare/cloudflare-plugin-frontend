@@ -2,6 +2,18 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.6.2](#2.6.2) - 2017-2-1
+### Fixed
+- Style changes [#76](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/76) [#85](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/85)
+- fixed bug in IE11 [#77](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/77)
+- fixed errors not showing properly [#79](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/79)
+
+### Changed
+- Plan Upgrade button redirects to a new page [#84](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/84)
+
+### Removed
+- Removed unused pages [#75](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/75) [#78] (https://github.com/cloudflare/CloudFlare-FrontEnd/pull/78)
+
 ## [2.6.1](#2.6.1) - 2016-11-22
 ### Fixed
 - Gulp compress no longer watches files [#72](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/72)
