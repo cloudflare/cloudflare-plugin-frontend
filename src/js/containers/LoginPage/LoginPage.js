@@ -81,7 +81,7 @@ class LoginPage extends Component {
         let signupLinkWithUTM = generateUTMLink(CLOUDFLARE_SIGNUP_PAGE, config.integrationName, config.integrationName, SIGNUP_UTM_CONTENT_IDENTIFIER);
         let accountLinkWithUTM = generateUTMLink(CLOUDFLARE_ACCOUNT_PAGE, config.integrationName, config.integrationName, COPY_API_KEY_UTM_CONTENT_IDENTIFIER);
 
-        var overflowStyle = { overflow: "hidden", marginBottom: '2.5rem' };
+        var overflowStyle = { overflow: "hidden" };
 
         return (
           <div>
@@ -97,7 +97,7 @@ class LoginPage extends Component {
                           </div>
                           <FormFieldset legend="">
                               <div style={overflowStyle}>
-                                  <LayoutRow style={{ overflow: 'hidden' }}>
+                                  <LayoutRow style={overflowStyle}>
                                       <LayoutColumn width={1/1}>
                                           <FormLabel hidden><FormattedMessage id="component.clientLogin.form.email"/></FormLabel>
                                           <Input name="email" type="text" value={this.state.email} onChange={this.handleEmailChange.bind(this)} placeholder={formatMessage({ id: 'component.clientLogin.form.email' })}/>

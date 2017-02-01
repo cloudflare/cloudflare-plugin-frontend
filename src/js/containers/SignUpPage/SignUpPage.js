@@ -27,7 +27,7 @@ class SignUpPage extends Component {
   render() {
     let { formatMessage } = this.props.intl;
 
-    let overflowStyle = { overflow: "hidden", marginBottom: '2.5rem' };
+    let overflowStyle = { overflow: "hidden" };
 
     return (
         <div id="cf-login-page" style={{ margin: "2rem auto", maxWidth: '400px' }}>
