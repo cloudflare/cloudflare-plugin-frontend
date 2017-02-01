@@ -13,12 +13,20 @@ class Header extends Component {
     render() {
         let { config, activeZone, zoneSettings } = this.props;
 
+        var logoStyle = {
+            width: "170px",
+            height: "30px",
+            position: "absolute",
+            top: "50%", 
+            transform: "translateY(-50%)"
+        }
+
         return(
             <header id="header" className="header app-header">
                 <div className="gradient-bar-header"></div>
                 <div id="header-global" className="header-main">
                     <LayoutColumn width={1/8}>
-                        <img style={{ margin: "15px 0", width: "170px", height: "30px" }} src={ getAbsoluteUrl(config, 'assets/logo.svg') } />
+                        <img style={logoStyle} src={ getAbsoluteUrl(config, 'assets/logo.svg') } />
                     </LayoutColumn>
                     <LayoutColumn width={1/8}>
                         <ActiveZoneSelector/>
