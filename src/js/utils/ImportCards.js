@@ -19,6 +19,7 @@ import PluginSpecificCacheCard from '../containers/PluginSpecificCacheCard/Plugi
 import PluginSpecificCacheTagCard from '../containers/PluginSpecificCacheTagCard/PluginSpecificCachetTagCard.js';
 import RailgunCard from '../containers/RailgunCard/RailgunCard';
 import AutomaticHTTPSRewritesCard from '../containers/AutomaticHTTPSRewritesCard/AutomaticHTTPSRewritesCard';
+import BypassCacheByCookieCard from '../containers/BypassCacheByCookieCard/BypassCacheByCookieCard';
 
 // Pages
 import DNSManagementPage from '../containers/DNSManagementPage/DNSManagementPage';
@@ -30,6 +31,7 @@ let cardMapper = {
     AutomaticHTTPSRewritesCard: AutomaticHTTPSRewritesCard,
     BrowserCacheTTLCard: BrowserCacheTTLCard,
     BrowserIntegrityCheckCard: BrowserIntegrityCheckCard,
+    BypassCacheByCookieCard: BypassCacheByCookieCard,
     CacheLevelCard: CacheLevelCard,
     ChallengePassageCard: ChallengePassageCard,
     DevelopmentModeCard: DevelopmentModeCard,

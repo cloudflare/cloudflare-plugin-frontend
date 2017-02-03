@@ -9,7 +9,6 @@ import { PRO_PLAN } from '../../constants/Plans.js';
 import { getLastModifiedDate } from '../../utils/utils';
 import { getZoneSettingsValueForZoneId, getZoneSettingsModifiedDateForZoneId } from '../../selectors/zoneSettings';
 
-
 import Toggle from 'cf-component-toggle';
 
 const SETTING_NAME_MIRAGE = 'mirage';
