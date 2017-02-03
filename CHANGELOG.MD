@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.6.3](#2.6.3) - 2017-2-3
+### Added
+- Bypass Cache By Cookie Card added [#86](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/86)
+
 ## [2.6.2](#2.6.2) - 2017-2-1
 ### Fixed
 - Style changes [#76](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/76) [#85](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/85)
