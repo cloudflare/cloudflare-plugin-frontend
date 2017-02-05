@@ -1,5 +1,6 @@
 module.exports = {
   entry: "./src/js/index.js",
+  devtool: 'cheap-module-source-map',
   output: {
     path: __dirname,
     filename: "compiled.js"
