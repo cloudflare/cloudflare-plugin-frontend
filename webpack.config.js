@@ -1,10 +1,24 @@
+var webpack = require('webpack');
+
+var isDev = process.env.NODE_ENV !== 'production';
+var plugins = [];
+
+if(!isDev) {
+  plugins.push(new webpack.optimize.UglifyJsPlugin({
+      compress: isDev,
+      mangle: false
+    })
+  );
+}
+
 module.exports = {
   entry: "./src/js/index.js",
-  devtool: 'cheap-module-source-map',
+  devtool: isDev ? 'cheap-module-source-map' : false,
   output: {
     path: __dirname,
     filename: "compiled.js"
   },
+  watch: isDev,
   module: {
     loaders: [
       {
@@ -24,5 +38,6 @@ module.exports = {
         }],
       }
     ]
-  }
+  },
+  plugins: plugins
 };
