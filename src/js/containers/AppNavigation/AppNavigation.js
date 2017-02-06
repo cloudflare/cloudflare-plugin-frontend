@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
-import { routeActions } from 'redux-simple-router';
+import { push } from 'react-router-redux';
 
 import AppNavigationLiNode from '../../components/AppNavigationLiNode/AppNavigationLiNode';
 import * as UrlPaths from '../../constants/UrlPaths';
@@ -12,7 +12,7 @@ class AppNavigation extends Component {
 
     handleClick(path) {
         let { dispatch } = this.props;
-        dispatch(routeActions.push(path));
+        dispatch(push(path));
     }
 
     render() {
