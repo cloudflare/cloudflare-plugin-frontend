@@ -1,6 +1,15 @@
 # Build
 1. `npm install`
-2. `gulp js`
+2. `npm run build`
+
+# Development Tasks
+```
+$ npm run build
+$ npm run build:production
+$ npm run lint
+$ npm run format
+$ npm run test
+```
 
 # Run
 1. Rename `.env_sample` -> `.env`.
@@ -9,7 +18,7 @@
 4. Load `index.html` in your browser.
 
 # Production
-For production run `gulp compress` to get a minified version of compiled.js
+For production run `npm run build:production` to get a minified version of compiled.js
 
 # Building Your Own Backend
 This repository serves as the front end for all of our 3rd party integrations.
