@@ -14,7 +14,7 @@ class ChallengePassageCard extends Component {
 
     handleChange(value) {
         let { activeZoneId, dispatch } = this.props;
-        dispatch(asyncZoneUpdateSetting(SETTING_NAME, activeZoneId, value));
+        dispatch(asyncZoneUpdateSetting(SETTING_NAME, activeZoneId, value.value));
     }
 
     render() {

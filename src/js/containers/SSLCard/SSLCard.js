@@ -14,7 +14,7 @@ class SSLCard extends Component {
 
     handleChange(value) {
         let { dispatch } = this.props;
-        dispatch(asyncZoneUpdateSetting('ssl', this.props.activeZoneId, value));
+        dispatch(asyncZoneUpdateSetting('ssl', this.props.activeZoneId, value.value));
     }
 
     render() {

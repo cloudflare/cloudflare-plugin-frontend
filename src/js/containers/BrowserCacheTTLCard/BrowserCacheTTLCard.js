@@ -14,7 +14,7 @@ class BrowserCacheTTLCard extends Component {
 
     handleChange(value) {
         let { dispatch } = this.props;
-        dispatch(asyncZoneUpdateSetting(SETTING_NAME, this.props.activeZoneId, value));
+        dispatch(asyncZoneUpdateSetting(SETTING_NAME, this.props.activeZoneId, value.value));
     }
 
     render() {
