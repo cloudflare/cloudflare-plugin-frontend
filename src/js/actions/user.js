@@ -1,4 +1,4 @@
-import { routeActions } from 'redux-simple-router';
+import { push } from 'react-router-redux';
 import { userAuth, userCreate } from '../utils/CFHostAPI/CFHostAPI';
 import { pluginAccountPost } from '../utils/PluginAPI/PluginAPI';
 import { notificationAddHostAPIError, notificationAddClientAPIError } from './notifications';
@@ -35,7 +35,7 @@ export function asyncUserLoginSuccess(email) {
         if(getConfigValue(getState().config, 'integrationName') === 'cpanel') {
           route = UrlPaths.DOMAINS_OVERVIEW_PAGE;
         }
-        dispatch(routeActions.push(route));
+        dispatch(push(route));
     };
 }
 

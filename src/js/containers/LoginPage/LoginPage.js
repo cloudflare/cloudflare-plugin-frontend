@@ -14,7 +14,7 @@ import { generateUTMLink } from '../../selectors/generateUTMLink.js';
 import { getConfigValue } from '../../selectors/config';
 import { isLoggedIn } from '../../utils/Auth/Auth';
 import { Link } from 'react-router';
-import { routeActions } from 'redux-simple-router';
+import { push } from 'react-router-redux';
 import { openWindow720x720 } from '../../utils/utils.js';
 
 const SIGNUP_UTM_CONTENT_IDENTIFIER = 'signup_now';
@@ -33,7 +33,7 @@ class LoginPage extends Component {
     componentWillMount() {
         let { dispatch } = this.props;
         if(isLoggedIn()) {
-            dispatch(routeActions.push(HOME_PAGE));
+            dispatch(push(HOME_PAGE));
         }
     }
 

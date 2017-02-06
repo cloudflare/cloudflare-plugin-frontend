@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux';
-import { routeReducer } from 'redux-simple-router';
-
+import { routerReducer } from 'react-router-redux';
 import { activeZoneReducer } from './activeZone';
 import { appReducer } from './app';
 import { configReducer } from './config';
@@ -22,7 +21,7 @@ const rootReducer = combineReducers({
     intl: intlReducer,
     user: userReducer,
     notifications: notificationsReducer,
-    routing: routeReducer,
+    routing: routerReducer,
     zones: zonesReducer,
     zoneAnalytics: zoneAnalyticsReducer,
     zoneDnsRecords: dnsRecordsReducer,
