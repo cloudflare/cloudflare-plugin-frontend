@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
 import { Card, CardSection, CardContent } from 'cf-component-card';
 import Text from 'cf-component-text';
-import C3Wrapper from 'react-c3-wrapper';
+import C3Wrapper from '../C3Wrapper/C3Wrapper';
 
 import { humanFileSize } from '../../utils/utils';
 
