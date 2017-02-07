@@ -31,7 +31,7 @@
     "body-parser": "^1.15.1",
     "cf-component-button": "^3.0.0",
     "cf-component-card": "^1.1.0",
-    "cf-component-checkbox": "^2.0.0",
+    "cf-component-checkbox": "^3.0.0",
     "cf-component-dropdown": "^2.0.0",
     "cf-component-flex": "^2.0.0",
     "cf-component-form": "^3.0.3",
