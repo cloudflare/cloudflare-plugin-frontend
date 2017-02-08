@@ -12,8 +12,10 @@ const SETTING_NAME = 'ssl';
 
 class SSLCard extends Component {
 
-    handleChange(value) {
+    handleChange(option) {
         let { dispatch } = this.props;
+        let { value } = option;
+
         dispatch(asyncZoneUpdateSetting('ssl', this.props.activeZoneId, value));
     }
 

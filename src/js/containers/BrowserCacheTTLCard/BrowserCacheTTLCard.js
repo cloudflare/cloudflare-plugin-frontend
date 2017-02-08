@@ -12,8 +12,9 @@ const SETTING_NAME = 'browser_cache_ttl';
 
 class BrowserCacheTTLCard extends Component {
 
-    handleChange(value) {
+    handleChange(option) {
         let { dispatch } = this.props;
+        let { value } = option;
         dispatch(asyncZoneUpdateSetting(SETTING_NAME, this.props.activeZoneId, value));
     }
 

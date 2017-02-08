@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import C3Wrapper from 'react-c3-wrapper';
+import C3Wrapper from '../C3Wrapper/C3Wrapper';
 
 export default class TimeSeriesChart extends Component {
 
