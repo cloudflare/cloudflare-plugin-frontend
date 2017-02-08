@@ -162,6 +162,7 @@ class AnaltyicsPage extends Component {
         <div>
           <Heading size={1}><FormattedMessage id="container.analyticsPage.title"/></Heading>
           <Tabs
+            active={REQUESTS_TAB}
             activeTab={this.state.activeTab}
             tabs={[
                           { id: REQUESTS_TAB, label: formatMessage({ id: 'container.analyticsPage.tabs.requests' }) },

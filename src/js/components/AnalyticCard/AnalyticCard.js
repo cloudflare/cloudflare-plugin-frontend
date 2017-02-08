@@ -40,7 +40,7 @@ class AnalyticCard extends Component {
               <CardSection>
                 <CardContent title={ title }>
                   <Text size="small" type="muted">{ description }</Text>
-                  <hr style={{ margin: '1rem 0' }} align="left" width="100%"/>
+                  <hr style={{ margin: '1rem 0' }} width="100%"/>
                   <div style={{ textAlign: 'center' }}>
                     <C3Wrapper config={{
                      data: {

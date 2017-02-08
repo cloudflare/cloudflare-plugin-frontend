@@ -20,7 +20,7 @@ export default class C3Wrapper extends Component {
   }
 
   componentWillUnmount() {
-    this.chart.destroy();
+    this._chart.destroy();
   }
 
   render() {
