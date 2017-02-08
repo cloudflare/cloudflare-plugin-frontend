@@ -12,9 +12,10 @@ const SETTING_NAME = 'challenge_ttl';
 
 class ChallengePassageCard extends Component {
 
-    handleChange(value) {
+    handleChange(option) {
         let { activeZoneId, dispatch } = this.props;
-        dispatch(asyncZoneUpdateSetting(SETTING_NAME, activeZoneId, value.value));
+        let { value } = option;
+        dispatch(asyncZoneUpdateSetting(SETTING_NAME, activeZoneId, value));
     }
 
     render() {

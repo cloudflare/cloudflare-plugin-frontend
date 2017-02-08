@@ -24,7 +24,7 @@ export default class C3Wrapper extends Component {
   }
 
   render() {
-    return <div ref={c => this._container = c}/>;
+    return <div ref={chart => this._container = chart}/>;
   }
 }
 

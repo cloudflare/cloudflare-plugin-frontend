@@ -12,9 +12,10 @@ const SETTING_NAME = 'security_level';
 
 class SecurityLevelCard extends Component {
 
-    handleChange(value) {
+    handleChange(option) {
         let { dispatch } = this.props;
-        dispatch(asyncZoneUpdateSetting(SETTING_NAME, this.props.activeZoneId, value.value));
+        let { value } = option;
+        dispatch(asyncZoneUpdateSetting(SETTING_NAME, this.props.activeZoneId, value));
     }
 
     render() {
