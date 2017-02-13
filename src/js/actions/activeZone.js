@@ -16,12 +16,9 @@ export function asyncZoneSetActiveZone(zone) {
     return dispatch => {
         dispatch(zoneSetActiveZone(zone));
         if (typeof zone.id !== 'undefined') {
-            //no zone id means domain isn't on cloudflare.
-            if(zone.status === 'active') {
-                dispatch(asyncDNSRecordFetchList(zone.id));
-                dispatch(asyncZoneRailgunFetchAll(zone.id));
-                dispatch(asyncPluginFetchSettings(zone.id));
-            }
+            dispatch(asyncDNSRecordFetchList(zone.id));
+            dispatch(asyncZoneRailgunFetchAll(zone.id));
+            dispatch(asyncPluginFetchSettings(zone.id));
             dispatch(asyncZoneFetchSettings(zone.id));
             dispatch(asyncZoneFetchAnalytics(zone.id));
         }
