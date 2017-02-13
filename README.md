@@ -1,14 +1,14 @@
-# Build
-1. `npm install`
-2. `npm run build`
+# Build using [Yarn](https://yarnpkg.com/en/docs/install)
+1. `yarn install`
+2. `yarn run build`
 
 # Development Tasks
 ```
-$ npm run build
-$ npm run build:production
-$ npm run lint
-$ npm run format
-$ npm run test
+$ yarn run build
+$ yarn run build:production
+$ yarn run lint
+$ yarn run format
+$ yarn run test
 ```
 
 # Run

@@ -2,8 +2,8 @@ language: node_js
 node_js: 'node'
 
 before_script:
-  - npm run build:production
+  - yarn run build:production
 
 script:
-  - npm run lint
-  - npm run test
+  - yarn run lint
+  - yarn run test
