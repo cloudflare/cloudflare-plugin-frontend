@@ -11,14 +11,8 @@ $ yarn run format
 $ yarn run test
 ```
 
-# Run
-1. Rename `.env_sample` -> `.env`.
-2. Edit .env to contain your Host Key, API key, and Email.
-3. In command line run `node server.js`.
-4. Load `index.html` in your browser.
-
 # Production
-For production run `npm run build:production` to get a minified version of compiled.js
+For production run `yarn run build:production` to get a minified version of compiled.js
 
 # Building Your Own Backend
 This repository serves as the front end for all of our 3rd party integrations.
