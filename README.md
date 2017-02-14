@@ -18,7 +18,7 @@ $ yarn run test
 4. Load `index.html` in your browser.
 
 # Production
-For production run `npm run build:production` to get a minified version of compiled.js
+For production run `yarn run build:production` to get a minified version of compiled.js
 
 # Building Your Own Backend
 This repository serves as the front end for all of our 3rd party integrations.
