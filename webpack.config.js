@@ -12,7 +12,7 @@ if(!isDev) {
 }
 
 module.exports = {
-  entry: "./src/js/index.js",
+  entry: "./src/index.js",
   devtool: isDev ? 'cheap-module-source-map' : false,
   output: {
     path: __dirname,
