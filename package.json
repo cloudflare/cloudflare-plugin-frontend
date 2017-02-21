@@ -7,7 +7,7 @@
     "build": "NODE_ENV=development node_modules/webpack/bin/webpack.js --progress",
     "build:production": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress",
     "lint": "node_modules/eslint/bin/eslint.js src/ --ext js --ext json",
-    "format": "node_modules/eslint/bin/eslint.js --fix src/ --ext js --ext json",
+    "format": "node_modules/prettier/bin/prettier.js --write src/*.js src/*/*.js src/*/*/*.js",
     "test": "mocha src/test/*/*.js --compilers js:babel-register"
   },
   "repository": {
@@ -55,12 +55,13 @@
     "d3-format": "^1.0.2",
     "eslint": "^3.4.0",
     "eslint-loader": "^1.6.1",
-    "eslint-plugin-react": "^6.2.0",
+    "eslint-plugin-prettier": "^2.0.0",
     "history": "~1.17.0",
     "intl": "^1.1.0",
     "lodash": "^3.10.1",
     "mocha": "^2.4.5",
     "normalizr": "^2.0.0",
+    "prettier": "^0.18.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-gateway": "^2.0.4",
