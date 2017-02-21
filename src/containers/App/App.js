@@ -1,86 +1,92 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { FormattedMessage, injectIntl, IntlProvider } from 'react-intl';
-import { GatewayDest, GatewayProvider } from 'react-gateway';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { FormattedMessage, injectIntl, IntlProvider } from "react-intl";
+import { GatewayDest, GatewayProvider } from "react-gateway";
 
-import { LayoutContainer, LayoutRow, LayoutColumn } from 'cf-component-layout';
+import { LayoutContainer, LayoutRow, LayoutColumn } from "cf-component-layout";
 
-import AppNavigation from '../../containers/AppNavigation/AppNavigation';
-import { isLoggedIn } from '../../utils/Auth/Auth';
-import { asyncConfigFetch } from '../../actions/config';
-import GlobalNotifications from '../../containers/GlobalNotifications/GlobalNotifications';
-import Header from '../../containers/Header/Header';
+import AppNavigation from "../../containers/AppNavigation/AppNavigation";
+import { isLoggedIn } from "../../utils/Auth/Auth";
+import { asyncConfigFetch } from "../../actions/config";
+import GlobalNotifications
+  from "../../containers/GlobalNotifications/GlobalNotifications";
+import Header from "../../containers/Header/Header";
 
 //Safari Intl Polyfill
 if (!global.Intl) {
-    require('intl');
+  require("intl");
 }
 class AppContainer extends Component {
+  render() {
+    return (
+      <div className="site-wrapper" style={{ paddingBottom: "20px" }}>
+        <LayoutContainer>
+          <LayoutRow>
+            <Header />
+          </LayoutRow>
 
+          {isLoggedIn()
+            ? <LayoutRow>
+                <LayoutColumn width={1 / 1}><AppNavigation /></LayoutColumn>
+              </LayoutRow>
+            : null}
 
-    render() {
-        return (
-            <div className="site-wrapper" style={{ paddingBottom: "20px" }}>
-                <LayoutContainer>
-                    <LayoutRow>
-                        <Header/>
-                    </LayoutRow>
-
-                    { isLoggedIn() ?
-                        <LayoutRow>
-                            <LayoutColumn width={1/1}><AppNavigation/></LayoutColumn>
-                        </LayoutRow> : null
-                    }
-
-                    { isLoggedIn() ?
-                        <LayoutRow>
-                            <LayoutColumn width={2/20}>&nbsp;</LayoutColumn>
-                            <LayoutColumn width={16/20}>
-                                {this.props.children}
-                            </LayoutColumn>
-                            <LayoutColumn width={2/20}>&nbsp;</LayoutColumn>
-                        </LayoutRow>
-                        : <LayoutRow>{this.props.children}</LayoutRow>
-                    }
-                    <LayoutRow>
-                        <LayoutColumn width={1/1}>
-                            <p style={{ 'textAlign': 'center' }}><FormattedMessage id="container.App.version" values={{ 'version': this.props.state.config.config.version }}/></p>
-                        </LayoutColumn>
-                    </LayoutRow>
-                </LayoutContainer>
-                <GatewayDest name="modal"/>
-                <GlobalNotifications />
-            </div>
-        );
-    }
+          {isLoggedIn()
+            ? <LayoutRow>
+                <LayoutColumn width={2 / 20}>&nbsp;</LayoutColumn>
+                <LayoutColumn width={16 / 20}>
+                  {this.props.children}
+                </LayoutColumn>
+                <LayoutColumn width={2 / 20}>&nbsp;</LayoutColumn>
+              </LayoutRow>
+            : <LayoutRow>{this.props.children}</LayoutRow>}
+          <LayoutRow>
+            <LayoutColumn width={1 / 1}>
+              <p style={{ textAlign: "center" }}>
+                <FormattedMessage
+                  id="container.App.version"
+                  values={{ version: this.props.state.config.config.version }}
+                />
+              </p>
+            </LayoutColumn>
+          </LayoutRow>
+        </LayoutContainer>
+        <GatewayDest name="modal" />
+        <GlobalNotifications />
+      </div>
+    );
+  }
 }
 
 function mapStateToProps(state) {
-    return { state: state };
+  return { state: state };
 }
 
 // <IntlProvider> must be instantiated before injectIntl() is used so we wrap AppContainer in AppWrapper
 const App = injectIntl(connect(mapStateToProps)(AppContainer));
 
 class AppWrapper extends React.Component {
-    componentWillMount() {
-        let { dispatch } = this.props;
-        dispatch(asyncConfigFetch());
+  componentWillMount() {
+    let { dispatch } = this.props;
+    dispatch(asyncConfigFetch());
+  }
+
+  render() {
+    if (this.props.state.app.isInitialized) {
+      return (
+        <IntlProvider
+          locale={this.props.state.intl.locale}
+          messages={this.props.state.intl.translations}
+        >
+          <GatewayProvider>
+            <App>{this.props.children}</App>
+          </GatewayProvider>
+        </IntlProvider>
+      );
     }
 
-    render() {
-        if (this.props.state.app.isInitialized) {
-            return (
-                <IntlProvider locale={this.props.state.intl.locale} messages={this.props.state.intl.translations}>
-                    <GatewayProvider>
-                        <App>{this.props.children}</App>
-                    </GatewayProvider>
-                </IntlProvider>
-            );
-        } 
-
-        return <noscript/>;
-    }
+    return <noscript />;
+  }
 }
 
 export default connect(mapStateToProps)(AppWrapper);

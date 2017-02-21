@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
-import c3 from 'c3';
+import React, { Component } from "react";
+import c3 from "c3";
 
 export default class C3Wrapper extends Component {
-
   updateC3(props) {
     props.config.bindto = this._container;
     if (this._chart) {
@@ -24,11 +23,10 @@ export default class C3Wrapper extends Component {
   }
 
   render() {
-    return <div ref={chart => this._container = chart}/>;
+    return <div ref={chart => this._container = chart} />;
   }
 }
 
 C3Wrapper.propTypes = {
   config: React.PropTypes.object.isRequired
 };
-

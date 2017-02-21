@@ -1,11 +1,13 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { FormattedMessage, injectIntl } from "react-intl";
 
-import { Heading } from 'cf-component-heading';
+import { Heading } from "cf-component-heading";
 
-import { renderCards } from '../../components/RenderCardsDynamically/RenderCardsDynamically';
-import WaitForSettings from '../../containers/WaitForSettings/WaitForSettings';
+import {
+  renderCards
+} from "../../components/RenderCardsDynamically/RenderCardsDynamically";
+import WaitForSettings from "../../containers/WaitForSettings/WaitForSettings";
 
 class HomePage extends Component {
   render() {
@@ -13,8 +15,10 @@ class HomePage extends Component {
 
     return (
       <WaitForSettings settings pluginSettings>
-        <Heading size={1}><FormattedMessage id="container.appNavigation.home"/></Heading>
-        { renderCards(config.homePageCards) }
+        <Heading size={1}>
+          <FormattedMessage id="container.appNavigation.home" />
+        </Heading>
+        {renderCards(config.homePageCards)}
       </WaitForSettings>
     );
   }

@@ -1,81 +1,81 @@
 import {
-    zoneGetAll,
-    zoneDeleteZone
-} from '../utils/CFClientV4API/CFClientV4API';
-import { notificationAddClientAPIError } from './notifications';
-import * as ActionTypes from '../constants/ActionTypes';
-import { zoneSetActiveZoneIfEmpty } from './activeZone';
-import { dnsRecordClearAll } from './zoneDnsRecords';
+  zoneGetAll,
+  zoneDeleteZone
+} from "../utils/CFClientV4API/CFClientV4API";
+import { notificationAddClientAPIError } from "./notifications";
+import * as ActionTypes from "../constants/ActionTypes";
+import { zoneSetActiveZoneIfEmpty } from "./activeZone";
+import { dnsRecordClearAll } from "./zoneDnsRecords";
 
 export function zoneDelete() {
-    return {
-        type: ActionTypes.ZONES_DELETE_ZONE
-    };
+  return {
+    type: ActionTypes.ZONES_DELETE_ZONE
+  };
 }
 
 export function zoneDeleteSuccess() {
-    return {
-        type: ActionTypes.ZONES_DELETE_ZONE_SUCCESS
-    };
+  return {
+    type: ActionTypes.ZONES_DELETE_ZONE_SUCCESS
+  };
 }
 
 export function zoneDeleteError(error) {
-    return {
-        type: ActionTypes.ZONES_DELETE_ZONE_ERROR,
-        error
-    };
+  return {
+    type: ActionTypes.ZONES_DELETE_ZONE_ERROR,
+    error
+  };
 }
 
 export function asyncZoneDelete(zoneId) {
-    return dispatch => {
-        dispatch(zoneDelete(zoneId));
+  return dispatch => {
+    dispatch(zoneDelete(zoneId));
 
-        zoneDeleteZone(zoneId, function(error, response){
-            if(response) {
-                dispatch(zoneDeleteSuccess());
-                dispatch(dnsRecordClearAll(zoneId));
-                //after we provision a cname refresh the zone list
-                dispatch(asyncFetchZones());
-            } else {
-                dispatch(notificationAddClientAPIError(zoneDeleteError(), error));
-            }
-        });
-    };
+    zoneDeleteZone(zoneId, function(error, response) {
+      if (response) {
+        dispatch(zoneDeleteSuccess());
+        dispatch(dnsRecordClearAll(zoneId));
+        //after we provision a cname refresh the zone list
+        dispatch(asyncFetchZones());
+      } else {
+        dispatch(notificationAddClientAPIError(zoneDeleteError(), error));
+      }
+    });
+  };
 }
 
 export function zoneFetch() {
-    return {
-        type: ActionTypes.ZONES_FETCH
-    };
+  return {
+    type: ActionTypes.ZONES_FETCH
+  };
 }
 
 export function zoneFetchSuccess(zoneList) {
-    return {
-        type: ActionTypes.ZONES_FETCH_SUCCESS,
-        zoneList
-    };
+  return {
+    type: ActionTypes.ZONES_FETCH_SUCCESS,
+    zoneList
+  };
 }
 
 export function zoneFetchError(error) {
-    return {
-        type: ActionTypes.ZONES_FETCH_ERROR,
-        error
-    };
+  return {
+    type: ActionTypes.ZONES_FETCH_ERROR,
+    error
+  };
 }
 
 export function asyncFetchZones() {
-    return dispatch => {
-        dispatch(zoneFetch());
+  return dispatch => {
+    dispatch(zoneFetch());
 
-        zoneGetAll(function (error, response) {
-                if (response) {
-                    dispatch(zoneFetchSuccess(response.body.result));
-                    if(response.body.result[0]) {
-                        dispatch(zoneSetActiveZoneIfEmpty(response.body.result[0]));
-                    }
-                } else {
-                    dispatch(notificationAddClientAPIError(zoneFetchError(), error));
-                }
-            });
-    };
+    zoneGetAll(function(error, response) {
+      if (response) {
+        dispatch(zoneFetchSuccess(response.body.result));
+        if (response.body.result[0]) {
+          dispatch(zoneSetActiveZoneIfEmpty(response.body.result[0]));
+        }
+      } else {
+        dispatch(notificationAddClientAPIError(zoneFetchError(), error));
+      }
+    });
+  };
 }

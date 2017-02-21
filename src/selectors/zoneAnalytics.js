@@ -1,5 +1,5 @@
-import _ from 'lodash';
+import _ from "lodash";
 
 export function getZoneAnalyticsForZoneId(zoneId, state) {
-  return _.get(state, ['entities', zoneId], false);
+  return _.get(state, ["entities", zoneId], false);
 }
