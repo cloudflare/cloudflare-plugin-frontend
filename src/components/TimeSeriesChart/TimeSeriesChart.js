@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import C3Wrapper from '../C3Wrapper/C3Wrapper';
 
 export default class TimeSeriesChart extends Component {
-
   /**
    * let xAxisValues = [{
    *   'label': 'x',
@@ -20,11 +19,11 @@ export default class TimeSeriesChart extends Component {
 
     //First row of columms is the x axis key
     //The first element in the remaining rows column has to be the label
-    for(let i = 0; i < xAxisValues.length; i++) {
+    for (let i = 0; i < xAxisValues.length; i++) {
       let label = xAxisValues[i].label;
       let values = xAxisValues[i].values;
 
-      if(label && values) {
+      if (label && values) {
         columns.push([label].concat(values));
       }
     }
@@ -53,7 +52,7 @@ export default class TimeSeriesChart extends Component {
 
     return (
       <div>
-        <C3Wrapper config={config}/>
+        <C3Wrapper config={config} />
       </div>
     );
   }
@@ -63,4 +62,3 @@ TimeSeriesChart.propTypes = {
   xAxisValues: React.PropTypes.array,
   yAxisLabel: React.PropTypes.string
 };
-

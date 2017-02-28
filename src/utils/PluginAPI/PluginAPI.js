@@ -1,5 +1,8 @@
 import http from 'cf-util-http';
-import { v4ResponseOk, v4Callback } from '../../utils/CFClientV4API/CFClientV4API';
+import {
+  v4ResponseOk,
+  v4Callback
+} from '../../utils/CFClientV4API/CFClientV4API';
 
 /*
  * This endpoint isn't real but we'll use it to identify REST calls for
@@ -16,35 +19,43 @@ const ENDPOINT = 'https://partners.cloudflare/plugins';
  * @returns {Boolean} Successful
  */
 export function pluginResponseOk(response) {
-    return v4ResponseOk(response);
+  return v4ResponseOk(response);
 }
 
 export function pluginCallback(callback) {
-    return v4Callback(callback);
+  return v4Callback(callback);
 }
 
 export function pluginAccountPost(email, apiKey, callback) {
-    let opts = {
-        body: {
-            email: email,
-            apiKey: apiKey
-        }
-    };
-    return http.post(ENDPOINT + '/account/', opts, pluginCallback(callback));
+  let opts = {
+    body: {
+      email: email,
+      apiKey: apiKey
+    }
+  };
+  return http.post(ENDPOINT + '/account/', opts, pluginCallback(callback));
 }
 
 export function pluginSettingListGet(zoneId, callback) {
-    let opts = {};
+  let opts = {};
 
-    return http.get(ENDPOINT + '/plugin/' + zoneId['zoneId'] + '/settings/', opts, pluginCallback(callback));
+  return http.get(
+    ENDPOINT + '/plugin/' + zoneId['zoneId'] + '/settings/',
+    opts,
+    pluginCallback(callback)
+  );
 }
 
 export function pluginSettingPatch(zoneId, settingName, value, callback) {
-    let opts = {
-        body: {
-            value: value
-        }
-    };
+  let opts = {
+    body: {
+      value: value
+    }
+  };
 
-    return http.patch(ENDPOINT + '/plugin/' + zoneId + '/settings/' + settingName, opts, pluginCallback(callback));
+  return http.patch(
+    ENDPOINT + '/plugin/' + zoneId + '/settings/' + settingName,
+    opts,
+    pluginCallback(callback)
+  );
 }

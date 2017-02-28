@@ -1,20 +1,9 @@
 {
   "parser": "babel-eslint",
   "plugins": [
-    "react"
+    "prettier"
   ],
-  "extends": ["eslint:recommended", "plugin:react/recommended"],
   "rules": {
-    "comma-dangle": 0,
-    "no-undef": 0,
-    "no-case-declarations": 0,
-    "react/prop-types": 0,
-    "object-curly-spacing": ["error", "always"]
-  },
-  "settings": {
-    "react": {
-      "pragma": "React",
-      "version": "0.14.8"
-    }
-  },
+    "prettier/prettier": ["error", {"trailingComma": false, "singleQuote": true}]
+  }
 }

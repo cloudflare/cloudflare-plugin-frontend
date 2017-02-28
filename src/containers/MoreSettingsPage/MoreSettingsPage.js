@@ -5,11 +5,12 @@ import _ from 'lodash';
 
 import { Heading } from 'cf-component-heading';
 
-import { renderCards } from '../../components/RenderCardsDynamically/RenderCardsDynamically';
+import {
+  renderCards
+} from '../../components/RenderCardsDynamically/RenderCardsDynamically';
 import WaitForSettings from '../../containers/WaitForSettings/WaitForSettings';
 
 class MoreSettingsPage extends Component {
-
   renderContent() {
     let { config } = this.props;
     var count = 0;
@@ -18,8 +19,8 @@ class MoreSettingsPage extends Component {
       var categoryTitle = key;
       return (
         <div key={count++}>
-          <Heading size={1}><FormattedMessage id={ categoryTitle } /></Heading>
-          { renderCards(value) }
+          <Heading size={1}><FormattedMessage id={categoryTitle} /></Heading>
+          {renderCards(value)}
         </div>
       );
     });
@@ -28,7 +29,7 @@ class MoreSettingsPage extends Component {
   render() {
     return (
       <WaitForSettings settings pluginSettings>
-        { this.renderContent() }
+        {this.renderContent()}
       </WaitForSettings>
     );
   }
@@ -36,7 +37,7 @@ class MoreSettingsPage extends Component {
 
 function mapStateToProps(state) {
   return {
-    config: state.config.config,
+    config: state.config.config
   };
 }
 export default injectIntl(connect(mapStateToProps)(MoreSettingsPage));

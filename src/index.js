@@ -17,15 +17,11 @@ const history = syncHistoryWithStore(createHistory(), store);
  */
 http.beforeSend(RestProxyCallback);
 
-
 ReactDOM.render(
-    <Provider store={store}>
-       <Router history={history}>
-           {routes}
-       </Router>
-    </Provider>,
-    document.getElementById('root')
+  <Provider store={store}>
+    <Router history={history}>
+      {routes}
+    </Router>
+  </Provider>,
+  document.getElementById('root')
 );
-
-
-

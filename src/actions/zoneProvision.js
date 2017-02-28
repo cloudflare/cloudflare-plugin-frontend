@@ -1,9 +1,14 @@
 import {
-    zoneGetAll,
-    zoneActivationCheckPutNew
+  zoneGetAll,
+  zoneActivationCheckPutNew
 } from '../utils/CFClientV4API/CFClientV4API';
 import { partialZoneSet, fullZoneSet } from '../utils/CFHostAPI/CFHostAPI';
-import { notificationAddSuccess, notificationAddError, notificationAddHostAPIError, notificationAddClientAPIError } from './notifications';
+import {
+  notificationAddSuccess,
+  notificationAddError,
+  notificationAddHostAPIError,
+  notificationAddClientAPIError
+} from './notifications';
 import * as ActionTypes from '../constants/ActionTypes';
 import { asyncZoneSetActiveZone } from './activeZone';
 import { normalizeZoneGetAll } from '../constants/Schemas';
@@ -14,100 +19,104 @@ import { zoneFetch, zoneFetchSuccess } from './zones';
  */
 
 export function zoneActivationCheck() {
-    return {
-        type: ActionTypes.ZONE_ACTIVATION_CHECK
-    };
+  return {
+    type: ActionTypes.ZONE_ACTIVATION_CHECK
+  };
 }
 
 export function zoneActivationCheckSuccess() {
-    return {
-        type: ActionTypes.ZONE_ACTIVATION_CHECK_SUCCESS
-    };
+  return {
+    type: ActionTypes.ZONE_ACTIVATION_CHECK_SUCCESS
+  };
 }
 
 export function zoneActivationCheckError() {
-    return {
-        type: ActionTypes.ZONE_ACTIVATION_CHECK_ERROR
-    };
+  return {
+    type: ActionTypes.ZONE_ACTIVATION_CHECK_ERROR
+  };
 }
 
 export function asyncZoneActivationCheck(zoneId) {
-    return dispatch => {
-        dispatch(zoneActivationCheck());
-        zoneActivationCheckPutNew(zoneId, function(error, response) {
-            if(response) {
-                dispatch(zoneActivationCheckSuccess());
-                dispatch(notificationAddSuccess('container.activationCheckCard.success', true));
-            } else {
-                dispatch(notificationAddClientAPIError(zoneActivationCheckError(), error));
-            }
-        });
-    };
+  return dispatch => {
+    dispatch(zoneActivationCheck());
+    zoneActivationCheckPutNew(zoneId, function(error, response) {
+      if (response) {
+        dispatch(zoneActivationCheckSuccess());
+        dispatch(
+          notificationAddSuccess('container.activationCheckCard.success', true)
+        );
+      } else {
+        dispatch(
+          notificationAddClientAPIError(zoneActivationCheckError(), error)
+        );
+      }
+    });
+  };
 }
 
 export function zonesProvisionCname() {
-    return {
-        type: ActionTypes.ZONES_PROVISION_CNAME
-    };
+  return {
+    type: ActionTypes.ZONES_PROVISION_CNAME
+  };
 }
 
 export function zoneProvisionCnameSuccess() {
-    return {
-        type: ActionTypes.ZONES_PROVISION_CNAME_SUCCESS
-    };
+  return {
+    type: ActionTypes.ZONES_PROVISION_CNAME_SUCCESS
+  };
 }
 
 export function zoneProvisionCnameError() {
-    return {
-        type: ActionTypes.ZONES_PROVISION_CNAME_ERROR
-    };
+  return {
+    type: ActionTypes.ZONES_PROVISION_CNAME_ERROR
+  };
 }
 
 export function asyncZoneProvisionCname(domainName) {
-    return dispatch => {
-        dispatch(zonesProvisionCname());
+  return dispatch => {
+    dispatch(zonesProvisionCname());
 
-        partialZoneSet({ zone_name: domainName }, function(error, response) {
-                if(response) {
-                    dispatch(zoneProvisionCnameSuccess());
-                    dispatch(asyncSetHostAPIProvisionedDomainActive(domainName));
-                } else {
-                    dispatch(notificationAddHostAPIError(zoneProvisionCnameError(), error));
-                } // zoneProvision business logic error
-            });
-    };// end thunk dispatch
+    partialZoneSet({ zone_name: domainName }, function(error, response) {
+      if (response) {
+        dispatch(zoneProvisionCnameSuccess());
+        dispatch(asyncSetHostAPIProvisionedDomainActive(domainName));
+      } else {
+        dispatch(notificationAddHostAPIError(zoneProvisionCnameError(), error));
+      } // zoneProvision business logic error
+    });
+  }; // end thunk dispatch
 }
 
 export function zoneProvisionFull() {
-    return {
-        type: ActionTypes.ZONES_PROVISION_FULL
-    };
+  return {
+    type: ActionTypes.ZONES_PROVISION_FULL
+  };
 }
 
 export function zoneProvisionFullSuccess() {
-    return {
-        type: ActionTypes.ZONES_PROVISION_FULL_SUCCESS
-    };
+  return {
+    type: ActionTypes.ZONES_PROVISION_FULL_SUCCESS
+  };
 }
 
 export function zoneProvisionFullError() {
-    return {
-        type: ActionTypes.ZONES_PROVISION_FULL_ERROR
-    };
+  return {
+    type: ActionTypes.ZONES_PROVISION_FULL_ERROR
+  };
 }
 
 export function asyncZoneProvisionFull(domainName) {
-    return dispatch => {
-        dispatch(zoneProvisionFull());
-        fullZoneSet({ zone_name: domainName }, function(error, response) {
-            if(response) {
-               dispatch(zoneProvisionFullSuccess());
-               dispatch(asyncSetHostAPIProvisionedDomainActive(domainName));
-            } else {
-                dispatch(notificationAddHostAPIError(zoneProvisionFullError(), error));
-            }
-        }); //end fullZoneSet
-    };
+  return dispatch => {
+    dispatch(zoneProvisionFull());
+    fullZoneSet({ zone_name: domainName }, function(error, response) {
+      if (response) {
+        dispatch(zoneProvisionFullSuccess());
+        dispatch(asyncSetHostAPIProvisionedDomainActive(domainName));
+      } else {
+        dispatch(notificationAddHostAPIError(zoneProvisionFullError(), error));
+      }
+    }); //end fullZoneSet
+  };
 }
 
 /*
@@ -122,16 +131,18 @@ export function asyncZoneProvisionFull(domainName) {
  * if zone.id is set.
  */
 function asyncSetHostAPIProvisionedDomainActive(domainName) {
-    return dispatch => {
-        dispatch(zoneFetch());
-        zoneGetAll(function (error, response) {
-            if (response) {
-                dispatch(zoneFetchSuccess(response.body.result));
-                let normalizedZoneList = normalizeZoneGetAll(response.body.result);
-                dispatch(asyncZoneSetActiveZone(normalizedZoneList.entities.zones[domainName]));
-            } else {
-                dispatch(notificationAddError(error));
-            }
-        });
-    };
+  return dispatch => {
+    dispatch(zoneFetch());
+    zoneGetAll(function(error, response) {
+      if (response) {
+        dispatch(zoneFetchSuccess(response.body.result));
+        let normalizedZoneList = normalizeZoneGetAll(response.body.result);
+        dispatch(
+          asyncZoneSetActiveZone(normalizedZoneList.entities.zones[domainName])
+        );
+      } else {
+        dispatch(notificationAddError(error));
+      }
+    });
+  };
 }

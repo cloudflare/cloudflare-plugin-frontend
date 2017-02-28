@@ -5,7 +5,7 @@ const ENDPOINT = 'https://api.cloudflare.com/host-gw.html';
 let hostKey = '';
 
 export function setHostKey(hostKey) {
-    this.hostKey = hostKey;
+  this.hostKey = hostKey;
 }
 
 /*
@@ -16,7 +16,7 @@ export function setHostKey(hostKey) {
  * @returns {Boolean} Successful
  */
 export function hostAPIResponseOk(response) {
-    return !(response.body.result === 'error');
+  return !(response.body.result === 'error');
 }
 
 /*
@@ -30,19 +30,19 @@ export function hostAPIResponseOk(response) {
  */
 export function hostCallback(callback) {
   return function(error, response) {
-      if(response && response.text) {
-        response.body = JSON.parse(response.text);
-      }
-      if(error && error.text) {
-        error.body = JSON.parse(error.text);
-      }
-      //return business logic errors as errors
-      if(response && !hostAPIResponseOk(response)) {
-        error = response;
-        response = null;
-      }
-      return callback(error, response);
+    if (response && response.text) {
+      response.body = JSON.parse(response.text);
     }
+    if (error && error.text) {
+      error.body = JSON.parse(error.text);
+    }
+    //return business logic errors as errors
+    if (response && !hostAPIResponseOk(response)) {
+      error = response;
+      response = null;
+    }
+    return callback(error, response);
+  };
 }
 
 /*
@@ -59,20 +59,35 @@ export function hostCallback(callback) {
  *
  * @returns {Object} API Response
  */
-export function userCreate({ cloudflare_email, cloudflare_pass, cloudflare_username, unique_id, clobber_unique_id }, callback) {
-    let opts = {
-        body: {
-            act: 'user_create',
-            cloudflare_email: cloudflare_email,
-            cloudflare_pass: cloudflare_pass
-        }
-    };
+export function userCreate(
+  {
+    cloudflare_email,
+    cloudflare_pass,
+    cloudflare_username,
+    unique_id,
+    clobber_unique_id
+  },
+  callback
+) {
+  let opts = {
+    body: {
+      act: 'user_create',
+      cloudflare_email: cloudflare_email,
+      cloudflare_pass: cloudflare_pass
+    }
+  };
 
-    if (cloudflare_username) { opts.body.cloudflare_username = cloudflare_username; }
-    if (unique_id) { opts.body.unique_id = unique_id; }
-    if (clobber_unique_id) { opts.body.clobber_unique_id = clobber_unique_id; }
+  if (cloudflare_username) {
+    opts.body.cloudflare_username = cloudflare_username;
+  }
+  if (unique_id) {
+    opts.body.unique_id = unique_id;
+  }
+  if (clobber_unique_id) {
+    opts.body.clobber_unique_id = clobber_unique_id;
+  }
 
-    return send('POST', opts, callback);
+  return send('POST', opts, callback);
 }
 
 /*
@@ -88,19 +103,26 @@ export function userCreate({ cloudflare_email, cloudflare_pass, cloudflare_usern
 *
 * @returns {Object} API Response
 */
-export function userAuth({ cloudflare_email, cloudflare_pass, unique_id, clobber_unique_id }, callback) {
-    let opts = {
-        body: {
-            act: 'user_auth',
-            cloudflare_email: cloudflare_email,
-            cloudflare_pass: cloudflare_pass
-        }
-    };
+export function userAuth(
+  { cloudflare_email, cloudflare_pass, unique_id, clobber_unique_id },
+  callback
+) {
+  let opts = {
+    body: {
+      act: 'user_auth',
+      cloudflare_email: cloudflare_email,
+      cloudflare_pass: cloudflare_pass
+    }
+  };
 
-    if (unique_id) { opts.body.unique_id = unique_id; }
-    if (clobber_unique_id) { opts.body.clobber_unique_id = clobber_unique_id; }
+  if (unique_id) {
+    opts.body.unique_id = unique_id;
+  }
+  if (clobber_unique_id) {
+    opts.body.clobber_unique_id = clobber_unique_id;
+  }
 
-    return send('POST', opts, callback);
+  return send('POST', opts, callback);
 }
 
 /*
@@ -116,17 +138,20 @@ export function userAuth({ cloudflare_email, cloudflare_pass, unique_id, clobber
  *
  * @returns {Object} API Response
  */
-export function partialZoneSet({ user_key, zone_name, resolve_to, subdomains }, callback) {
-    let opts = {
-        body: {
-            act: 'zone_set',
-            user_key: user_key,
-            zone_name: zone_name,
-            resolve_to: resolve_to,
-            subdomains: subdomains
-        }
-    };
-    return send('POST', opts, callback);
+export function partialZoneSet(
+  { user_key, zone_name, resolve_to, subdomains },
+  callback
+) {
+  let opts = {
+    body: {
+      act: 'zone_set',
+      user_key: user_key,
+      zone_name: zone_name,
+      resolve_to: resolve_to,
+      subdomains: subdomains
+    }
+  };
+  return send('POST', opts, callback);
 }
 
 /*
@@ -141,22 +166,22 @@ export function partialZoneSet({ user_key, zone_name, resolve_to, subdomains }, 
  * @returns {Object} API Response
  */
 export function fullZoneSet({ user_key, zone_name }, callback) {
-    let opts = {
-        body: {
-            act: 'full_zone_set',
-            user_key: user_key,
-            zone_name: zone_name
-        }
-    };
+  let opts = {
+    body: {
+      act: 'full_zone_set',
+      user_key: user_key,
+      zone_name: zone_name
+    }
+  };
 
-    return send('POST', opts, callback);
+  return send('POST', opts, callback);
 }
 
 function send(method, opts, callback) {
-    if (method.toUpperCase() === 'GET') {
-        opts.parameters.host_key = hostKey;
-    } else {
-        opts.body.host_key = hostKey;
-    }
-    return http.request(method, ENDPOINT, opts, hostCallback(callback));
+  if (method.toUpperCase() === 'GET') {
+    opts.parameters.host_key = hostKey;
+  } else {
+    opts.body.host_key = hostKey;
+  }
+  return http.request(method, ENDPOINT, opts, hostCallback(callback));
 }

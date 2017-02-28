@@ -15,20 +15,20 @@ import { zonesReducer } from './zones';
 import { pluginSettingsReducer } from './pluginSettings';
 
 const rootReducer = combineReducers({
-    activeZone: activeZoneReducer,
-    app: appReducer,
-    config: configReducer,
-    intl: intlReducer,
-    user: userReducer,
-    notifications: notificationsReducer,
-    routing: routerReducer,
-    zones: zonesReducer,
-    zoneAnalytics: zoneAnalyticsReducer,
-    zoneDnsRecords: dnsRecordsReducer,
-    zonePurgeCache: zonePurgeCacheReducer,
-    zoneRailguns: zoneRailgunReducer,
-    zoneSettings: zoneSettingsReducer,
-    pluginSettings: pluginSettingsReducer,
+  activeZone: activeZoneReducer,
+  app: appReducer,
+  config: configReducer,
+  intl: intlReducer,
+  user: userReducer,
+  notifications: notificationsReducer,
+  routing: routerReducer,
+  zones: zonesReducer,
+  zoneAnalytics: zoneAnalyticsReducer,
+  zoneDnsRecords: dnsRecordsReducer,
+  zonePurgeCache: zonePurgeCacheReducer,
+  zoneRailguns: zoneRailgunReducer,
+  zoneSettings: zoneSettingsReducer,
+  pluginSettings: pluginSettingsReducer
 });
 
 export default rootReducer;

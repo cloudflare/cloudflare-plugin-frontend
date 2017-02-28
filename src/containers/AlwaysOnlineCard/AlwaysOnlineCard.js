@@ -6,47 +6,63 @@ import { Card, CardSection, CardContent, CardControl } from 'cf-component-card';
 
 import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
 import { getLastModifiedDate } from '../../utils/utils';
-import { getZoneSettingsValueForZoneId, getZoneSettingsModifiedDateForZoneId } from '../../selectors/zoneSettings';
+import {
+  getZoneSettingsValueForZoneId,
+  getZoneSettingsModifiedDateForZoneId
+} from '../../selectors/zoneSettings';
 
 const SETTING_NAME = 'always_online';
 
 class AlwaysOnlineCard extends Component {
+  handleChange(value) {
+    let { activeZoneId, dispatch } = this.props;
+    value = value === true ? 'on' : 'off';
+    dispatch(asyncZoneUpdateSetting(SETTING_NAME, activeZoneId, value));
+  }
 
-    handleChange(value) {
-        let { activeZoneId, dispatch } = this.props;
-        value = (value === true ? 'on' : 'off');
-        dispatch(asyncZoneUpdateSetting(SETTING_NAME, activeZoneId, value));
-    }
+  render() {
+    const { formatMessage } = this.props.intl;
+    let { modifiedDate } = this.props;
 
-    render() {
-        const { formatMessage } = this.props.intl;
-        let { modifiedDate } = this.props;
-
-        return (
-            <div>
-                <Card>
-                    <CardSection>
-                        <CardContent title={formatMessage({ id: 'container.alwaysOnlineCard.title' })} footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}>
-                            <p><FormattedMessage id="container.alwaysOnlineCard.description" /></p>
-                        </CardContent>
-                        <CardControl>
-                            <Toggle
-                                label=""
-                                value={(this.props.alwaysOnlineValue === 'on')}
-                                onChange={this.handleChange.bind(this)}/>
-                        </CardControl>
-                    </CardSection>
-                </Card>
-            </div>
-        );
-    }
+    return (
+      <div>
+        <Card>
+          <CardSection>
+            <CardContent
+              title={formatMessage({ id: 'container.alwaysOnlineCard.title' })}
+              footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}
+            >
+              <p>
+                <FormattedMessage id="container.alwaysOnlineCard.description" />
+              </p>
+            </CardContent>
+            <CardControl>
+              <Toggle
+                label=""
+                value={this.props.alwaysOnlineValue === 'on'}
+                onChange={this.handleChange.bind(this)}
+              />
+            </CardControl>
+          </CardSection>
+        </Card>
+      </div>
+    );
+  }
 }
 
 function mapStateToProps(state) {
-    return {
-        activeZoneId: state.activeZone.id,
-        alwaysOnlineValue: getZoneSettingsValueForZoneId(state.activeZone.id, SETTING_NAME, state),
-        modifiedDate: getZoneSettingsModifiedDateForZoneId(state.activeZone.id, SETTING_NAME, state),
-    };
+  return {
+    activeZoneId: state.activeZone.id,
+    alwaysOnlineValue: getZoneSettingsValueForZoneId(
+      state.activeZone.id,
+      SETTING_NAME,
+      state
+    ),
+    modifiedDate: getZoneSettingsModifiedDateForZoneId(
+      state.activeZone.id,
+      SETTING_NAME,
+      state
+    )
+  };
 }
 export default injectIntl(connect(mapStateToProps)(AlwaysOnlineCard));
