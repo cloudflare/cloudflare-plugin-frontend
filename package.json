@@ -7,7 +7,7 @@
     "build": "NODE_ENV=development node_modules/webpack/bin/webpack.js --progress",
     "build:production": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress",
     "lint": "node_modules/eslint/bin/eslint.js src/ --ext js --ext json",
-    "format": "node_modules/prettier/bin/prettier.js --write src/*.js src/*/*.js src/*/*/*.js",
+    "format": "node_modules/eslint/bin/eslint.js src/ --fix --ext js --ext json",
     "test": "mocha src/test/*/*.js --compilers js:babel-register"
   },
   "repository": {
