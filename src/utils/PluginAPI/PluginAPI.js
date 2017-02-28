@@ -1,15 +1,15 @@
-import http from "cf-util-http";
+import http from 'cf-util-http';
 import {
   v4ResponseOk,
   v4Callback
-} from "../../utils/CFClientV4API/CFClientV4API";
+} from '../../utils/CFClientV4API/CFClientV4API';
 
 /*
  * This endpoint isn't real but we'll use it to identify REST calls for
  * plugin specific functionality like saving a v4 API key/email or toggling
  * admin settings.  The structure of this API's responses will mimic the client V4 API.
  */
-const ENDPOINT = "https://partners.cloudflare/plugins";
+const ENDPOINT = 'https://partners.cloudflare/plugins';
 
 /*
  * Indicates api call success
@@ -33,14 +33,14 @@ export function pluginAccountPost(email, apiKey, callback) {
       apiKey: apiKey
     }
   };
-  return http.post(ENDPOINT + "/account/", opts, pluginCallback(callback));
+  return http.post(ENDPOINT + '/account/', opts, pluginCallback(callback));
 }
 
 export function pluginSettingListGet(zoneId, callback) {
   let opts = {};
 
   return http.get(
-    ENDPOINT + "/plugin/" + zoneId["zoneId"] + "/settings/",
+    ENDPOINT + '/plugin/' + zoneId['zoneId'] + '/settings/',
     opts,
     pluginCallback(callback)
   );
@@ -54,7 +54,7 @@ export function pluginSettingPatch(zoneId, settingName, value, callback) {
   };
 
   return http.patch(
-    ENDPOINT + "/plugin/" + zoneId + "/settings/" + settingName,
+    ENDPOINT + '/plugin/' + zoneId + '/settings/' + settingName,
     opts,
     pluginCallback(callback)
   );

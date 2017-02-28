@@ -1,12 +1,12 @@
 import {
   pluginSettingListGet,
   pluginSettingPatch
-} from "../utils/PluginAPI/PluginAPI";
+} from '../utils/PluginAPI/PluginAPI';
 import {
   notificationAddSuccess,
   notificationAddClientAPIError
-} from "./notifications";
-import * as ActionTypes from "../constants/ActionTypes";
+} from './notifications';
+import * as ActionTypes from '../constants/ActionTypes';
 
 export function pluginFetchSettings() {
   return {
@@ -76,10 +76,10 @@ export function asyncPluginUpdateSetting(settingName, zoneId, value) {
       if (response) {
         dispatch(pluginUpdateSettingSuccess(zoneId, response.body.result));
 
-        if (settingName == "default_settings") {
+        if (settingName == 'default_settings') {
           dispatch(
             notificationAddSuccess(
-              "container.applydefaultsettingscard.success",
+              'container.applydefaultsettingscard.success',
               true
             )
           );

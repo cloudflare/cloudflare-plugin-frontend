@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { isActiveZoneOnCloudflare } from "../../selectors/activeZone";
-import Loading from "cf-component-loading";
-import Text from "cf-component-text";
-import { getPluginSettingsForZoneId } from "../../selectors/pluginSettings";
-import { FormattedMessage, injectIntl } from "react-intl";
-import { getZoneAnalyticsForZoneId } from "../../selectors/zoneAnalytics";
-import { getAllZoneSettingsForZoneId } from "../../selectors/zoneSettings";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { isActiveZoneOnCloudflare } from '../../selectors/activeZone';
+import Loading from 'cf-component-loading';
+import Text from 'cf-component-text';
+import { getPluginSettingsForZoneId } from '../../selectors/pluginSettings';
+import { FormattedMessage, injectIntl } from 'react-intl';
+import { getZoneAnalyticsForZoneId } from '../../selectors/zoneAnalytics';
+import { getAllZoneSettingsForZoneId } from '../../selectors/zoneSettings';
 
 class WaitForSettings extends Component {
   render() {

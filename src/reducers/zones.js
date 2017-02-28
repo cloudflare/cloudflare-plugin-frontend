@@ -1,6 +1,6 @@
-import _ from "lodash";
-import * as ActionTypes from "../constants/ActionTypes";
-import { normalizeZoneGetAll } from "../constants/Schemas";
+import _ from 'lodash';
+import * as ActionTypes from '../constants/ActionTypes';
+import { normalizeZoneGetAll } from '../constants/Schemas';
 
 const initialState = {
   entities: {},

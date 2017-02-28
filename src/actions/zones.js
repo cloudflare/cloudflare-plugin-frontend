@@ -1,11 +1,11 @@
 import {
   zoneGetAll,
   zoneDeleteZone
-} from "../utils/CFClientV4API/CFClientV4API";
-import { notificationAddClientAPIError } from "./notifications";
-import * as ActionTypes from "../constants/ActionTypes";
-import { zoneSetActiveZoneIfEmpty } from "./activeZone";
-import { dnsRecordClearAll } from "./zoneDnsRecords";
+} from '../utils/CFClientV4API/CFClientV4API';
+import { notificationAddClientAPIError } from './notifications';
+import * as ActionTypes from '../constants/ActionTypes';
+import { zoneSetActiveZoneIfEmpty } from './activeZone';
+import { dnsRecordClearAll } from './zoneDnsRecords';
 
 export function zoneDelete() {
   return {

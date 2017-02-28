@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { FormattedMessage, injectIntl } from "react-intl";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
-import { Button } from "cf-component-button";
+import { Button } from 'cf-component-button';
 import {
   Modal,
   ModalHeader,
@@ -11,15 +11,15 @@ import {
   ModalBody,
   ModalFooter,
   ModalActions
-} from "cf-component-modal";
-import Loading from "cf-component-loading";
+} from 'cf-component-modal';
+import Loading from 'cf-component-loading';
 
-import { asyncZoneDelete } from "../../actions/zones";
+import { asyncZoneDelete } from '../../actions/zones';
 import {
   asyncZoneProvisionCname,
   asyncZoneProvisionFull
-} from "../../actions/zoneProvision";
-import FeatureManager from "../../components/FeatureManager/FeatureManager";
+} from '../../actions/zoneProvision';
+import FeatureManager from '../../components/FeatureManager/FeatureManager';
 
 class ZoneProvisionContainer extends Component {
   constructor(props) {
@@ -66,7 +66,7 @@ class ZoneProvisionContainer extends Component {
 
   render() {
     let { zone } = this.props;
-    let isProvisioned = zone.status === "active" || zone.status === "pending";
+    let isProvisioned = zone.status === 'active' || zone.status === 'pending';
     let isAnyButtonFetching = this.isFetching();
 
     return (

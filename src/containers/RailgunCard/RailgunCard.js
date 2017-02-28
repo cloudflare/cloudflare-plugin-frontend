@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { FormattedMessage, injectIntl } from "react-intl";
-import _ from "lodash";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { FormattedMessage, injectIntl } from 'react-intl';
+import _ from 'lodash';
 
-import { Card, CardSection, CardContent, CardControl } from "cf-component-card";
+import { Card, CardSection, CardContent, CardControl } from 'cf-component-card';
 import {
   Table,
   TableHead,
@@ -11,10 +11,10 @@ import {
   TableRow,
   TableHeadCell,
   TableCell
-} from "cf-component-table";
-import Toggle from "cf-component-toggle";
+} from 'cf-component-table';
+import Toggle from 'cf-component-toggle';
 
-import { asyncZoneRailgunConnectionUpdate } from "../../actions/zoneRailgun";
+import { asyncZoneRailgunConnectionUpdate } from '../../actions/zoneRailgun';
 
 class RailgunCard extends Component {
   handleToggle(e, railgun) {
@@ -31,7 +31,7 @@ class RailgunCard extends Component {
         <Card>
           <CardSection>
             <CardContent
-              title={formatMessage({ id: "container.railgunCard.title" })}
+              title={formatMessage({ id: 'container.railgunCard.title' })}
             >
               <p><FormattedMessage id="container.railgunCard.description" /></p>
             </CardContent>
@@ -80,7 +80,7 @@ class RailgunCard extends Component {
                       <TableCell>
                         <Toggle
                           label=""
-                          name={railgun.name + "_connected"}
+                          name={railgun.name + '_connected'}
                           value={railgun.connected}
                           onChange={e => this.handleToggle(e, railgun)}
                         />

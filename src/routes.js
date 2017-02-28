@@ -1,17 +1,17 @@
-import React from "react";
-import { Route, IndexRoute } from "react-router";
-import * as UrlPaths from "./constants/UrlPaths";
-import { isLoggedIn } from "./utils/Auth/Auth";
+import React from 'react';
+import { Route, IndexRoute } from 'react-router';
+import * as UrlPaths from './constants/UrlPaths';
+import { isLoggedIn } from './utils/Auth/Auth';
 
 /* containers */
-import AnalyticsPage from "./containers/AnalyticsPage/AnaltyicsPage";
-import App from "./containers/App/App";
+import AnalyticsPage from './containers/AnalyticsPage/AnaltyicsPage';
+import App from './containers/App/App';
 import DNSManagementPage
-  from "./containers/DNSManagementPage/DNSManagementPage";
-import Login from "./containers/LoginPage/LoginPage";
-import SignUpPage from "./containers/SignUpPage/SignUpPage";
-import HomePage from "./containers/HomePage/HomePage";
-import MoreSettingsPage from "./containers/MoreSettingsPage/MoreSettingsPage";
+  from './containers/DNSManagementPage/DNSManagementPage';
+import Login from './containers/LoginPage/LoginPage';
+import SignUpPage from './containers/SignUpPage/SignUpPage';
+import HomePage from './containers/HomePage/HomePage';
+import MoreSettingsPage from './containers/MoreSettingsPage/MoreSettingsPage';
 
 function requireAuth(nextState, replaceState) {
   if (!isLoggedIn()) {

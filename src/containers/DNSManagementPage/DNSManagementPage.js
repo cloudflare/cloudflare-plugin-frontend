@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { FormattedMessage, injectIntl } from "react-intl";
-import _ from "lodash";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { FormattedMessage, injectIntl } from 'react-intl';
+import _ from 'lodash';
 
 import {
   Table,
@@ -10,23 +10,23 @@ import {
   TableRow,
   TableHeadCell,
   TableCell
-} from "cf-component-table";
-import { Heading } from "cf-component-heading";
-import { Button } from "cf-component-button";
+} from 'cf-component-table';
+import { Heading } from 'cf-component-heading';
+import { Button } from 'cf-component-button';
 
 import ActivationCheckCard
-  from "../../containers/ActivationCheckCard/ActivationCheckCard";
-import DNSRecordEditor from "../../containers/DNSRecordEditor/DNSRecordEditor";
+  from '../../containers/ActivationCheckCard/ActivationCheckCard';
+import DNSRecordEditor from '../../containers/DNSRecordEditor/DNSRecordEditor';
 import ZoneProvisionContainer
-  from "../../containers/ZoneProvisionContainer/ZoneProvisionContainer";
-import { generateUTMLink } from "../../selectors/generateUTMLink.js";
-import { CLOUDFLARE_UPGRADE_PAGE } from "../../constants/UrlPaths.js";
-import { openWindow720x720 } from "../../utils/utils.js";
+  from '../../containers/ZoneProvisionContainer/ZoneProvisionContainer';
+import { generateUTMLink } from '../../selectors/generateUTMLink.js';
+import { CLOUDFLARE_UPGRADE_PAGE } from '../../constants/UrlPaths.js';
+import { openWindow720x720 } from '../../utils/utils.js';
 
 class DNSManagementPage extends Component {
   constructor(props) {
     super(props);
-    this.className = "DNSManagementPage";
+    this.className = 'DNSManagementPage';
   }
 
   render() {
@@ -35,7 +35,7 @@ class DNSManagementPage extends Component {
     let isDnsRecordsEmpty = _.isEmpty(dnsRecords[activeZone.id]);
     let isPending = false;
     if (zones && activeZone.name) {
-      isPending = zones[activeZone.name].status === "pending";
+      isPending = zones[activeZone.name].status === 'pending';
     }
 
     let zone;
@@ -95,8 +95,8 @@ class DNSManagementPage extends Component {
                   <TableCell>{zone.name}</TableCell>
                   <TableCell>
                     {zone.plan.name}
-                    {" "}&nbsp;&nbsp;&nbsp;{" "}
-                    {zone.plan.name != "" ? changePlanButton : null}
+                    {' '}&nbsp;&nbsp;&nbsp;{' '}
+                    {zone.plan.name != '' ? changePlanButton : null}
                   </TableCell>
                   <TableCell>{zone.type}</TableCell>
                   <TableCell>{zone.status}</TableCell>

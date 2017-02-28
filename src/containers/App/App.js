@@ -1,25 +1,25 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { FormattedMessage, injectIntl, IntlProvider } from "react-intl";
-import { GatewayDest, GatewayProvider } from "react-gateway";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { FormattedMessage, injectIntl, IntlProvider } from 'react-intl';
+import { GatewayDest, GatewayProvider } from 'react-gateway';
 
-import { LayoutContainer, LayoutRow, LayoutColumn } from "cf-component-layout";
+import { LayoutContainer, LayoutRow, LayoutColumn } from 'cf-component-layout';
 
-import AppNavigation from "../../containers/AppNavigation/AppNavigation";
-import { isLoggedIn } from "../../utils/Auth/Auth";
-import { asyncConfigFetch } from "../../actions/config";
+import AppNavigation from '../../containers/AppNavigation/AppNavigation';
+import { isLoggedIn } from '../../utils/Auth/Auth';
+import { asyncConfigFetch } from '../../actions/config';
 import GlobalNotifications
-  from "../../containers/GlobalNotifications/GlobalNotifications";
-import Header from "../../containers/Header/Header";
+  from '../../containers/GlobalNotifications/GlobalNotifications';
+import Header from '../../containers/Header/Header';
 
 //Safari Intl Polyfill
 if (!global.Intl) {
-  require("intl");
+  require('intl');
 }
 class AppContainer extends Component {
   render() {
     return (
-      <div className="site-wrapper" style={{ paddingBottom: "20px" }}>
+      <div className="site-wrapper" style={{ paddingBottom: '20px' }}>
         <LayoutContainer>
           <LayoutRow>
             <Header />
@@ -42,7 +42,7 @@ class AppContainer extends Component {
             : <LayoutRow>{this.props.children}</LayoutRow>}
           <LayoutRow>
             <LayoutColumn width={1 / 1}>
-              <p style={{ textAlign: "center" }}>
+              <p style={{ textAlign: 'center' }}>
                 <FormattedMessage
                   id="container.App.version"
                   values={{ version: this.props.state.config.config.version }}

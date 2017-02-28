@@ -1,22 +1,22 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { FormattedMessage, injectIntl } from "react-intl";
-import { Card, CardSection, CardContent, CardControl } from "cf-component-card";
-import Toggle from "cf-component-toggle";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { FormattedMessage, injectIntl } from 'react-intl';
+import { Card, CardSection, CardContent, CardControl } from 'cf-component-card';
+import Toggle from 'cf-component-toggle';
 
-import { asyncZoneUpdateSetting } from "../../actions/zoneSettings";
-import { getLastModifiedDate } from "../../utils/utils";
+import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
+import { getLastModifiedDate } from '../../utils/utils';
 import {
   getZoneSettingsValueForZoneId,
   getZoneSettingsModifiedDateForZoneId
-} from "../../selectors/zoneSettings";
+} from '../../selectors/zoneSettings';
 
-const SETTING_NAME = "development_mode";
+const SETTING_NAME = 'development_mode';
 
 class DevelopmentModeCard extends Component {
   handleChange(value) {
     let { activeZoneId, dispatch } = this.props;
-    value = value === true ? "on" : "off";
+    value = value === true ? 'on' : 'off';
     dispatch(asyncZoneUpdateSetting(SETTING_NAME, activeZoneId, value));
   }
 
@@ -30,7 +30,7 @@ class DevelopmentModeCard extends Component {
           <CardSection>
             <CardContent
               title={formatMessage({
-                id: "container.developmentModeCard.title"
+                id: 'container.developmentModeCard.title'
               })}
               footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}
             >
@@ -43,7 +43,7 @@ class DevelopmentModeCard extends Component {
             <CardControl>
               <Toggle
                 label=""
-                value={this.props.developmentModeValue === "on"}
+                value={this.props.developmentModeValue === 'on'}
                 onChange={this.handleChange.bind(this)}
               />
             </CardControl>

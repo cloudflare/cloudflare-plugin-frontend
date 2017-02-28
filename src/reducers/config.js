@@ -1,11 +1,11 @@
-import * as ActionTypes from "../constants/ActionTypes";
+import * as ActionTypes from '../constants/ActionTypes';
 
 const initialState = {
   config: {},
   isFetching: false
 };
 
-export const ABSOLUTE_URL_BASE_KEY = "absoluteUrlBase";
+export const ABSOLUTE_URL_BASE_KEY = 'absoluteUrlBase';
 
 export function configReducer(state = initialState, action) {
   switch (action.type) {

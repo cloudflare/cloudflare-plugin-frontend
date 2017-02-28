@@ -1,28 +1,28 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { FormattedMessage, injectIntl } from "react-intl";
-import _ from "lodash";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { FormattedMessage, injectIntl } from 'react-intl';
+import _ from 'lodash';
 
-import * as UserActionCreators from "../../actions/user";
-import { notificationAddError } from "../../actions/notifications";
+import * as UserActionCreators from '../../actions/user';
+import { notificationAddError } from '../../actions/notifications';
 import {
   TERMS_AND_CONDITIONS_PAGE,
   PRIVACY_POLICY_PAGE
-} from "../../constants/UrlPaths";
-import { Form, FormHeader, FormFieldset, FormLabel } from "cf-component-form";
-import { LayoutContainer, LayoutRow, LayoutColumn } from "cf-component-layout";
-import { Button } from "cf-component-button";
-import Input from "cf-component-input";
-import { Checkbox } from "cf-component-checkbox";
+} from '../../constants/UrlPaths';
+import { Form, FormHeader, FormFieldset, FormLabel } from 'cf-component-form';
+import { LayoutContainer, LayoutRow, LayoutColumn } from 'cf-component-layout';
+import { Button } from 'cf-component-button';
+import Input from 'cf-component-input';
+import { Checkbox } from 'cf-component-checkbox';
 
 class SignUpPage extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      email: "",
-      password: "",
-      passwordConfirm: "",
+      email: '',
+      password: '',
+      passwordConfirm: '',
       termsOfService: false
     };
   }
@@ -30,12 +30,12 @@ class SignUpPage extends Component {
   render() {
     let { formatMessage } = this.props.intl;
 
-    let overflowStyle = { overflow: "hidden" };
+    let overflowStyle = { overflow: 'hidden' };
 
     return (
       <div
         id="cf-login-page"
-        style={{ margin: "2rem auto", maxWidth: "400px" }}
+        style={{ margin: '2rem auto', maxWidth: '400px' }}
       >
         <Form layout="vertical" onSubmit={e => this.handleSignUpSubmit(e)}>
           <LayoutContainer>
@@ -43,7 +43,7 @@ class SignUpPage extends Component {
               <LayoutRow>
                 <LayoutColumn width={1 / 1}>
                   <FormHeader
-                    title={formatMessage({ id: "container.signup.form.title" })}
+                    title={formatMessage({ id: 'container.signup.form.title' })}
                   />
                 </LayoutColumn>
               </LayoutRow>
@@ -61,7 +61,7 @@ class SignUpPage extends Component {
                       value={this.state.email}
                       onChange={email => this.setState({ email: email })}
                       placeholder={formatMessage({
-                        id: "container.signup.form.email"
+                        id: 'container.signup.form.email'
                       })}
                     />
                   </LayoutColumn>
@@ -81,7 +81,7 @@ class SignUpPage extends Component {
                       onChange={password =>
                         this.setState({ password: password })}
                       placeholder={formatMessage({
-                        id: "container.signup.form.password"
+                        id: 'container.signup.form.password'
                       })}
                     />
                   </LayoutColumn>
@@ -103,7 +103,7 @@ class SignUpPage extends Component {
                       onChange={passwordConfirm =>
                         this.setState({ passwordConfirm: passwordConfirm })}
                       placeholder={formatMessage({
-                        id: "container.signup.form.passwordAgain"
+                        id: 'container.signup.form.passwordAgain'
                       })}
                     />
                   </LayoutColumn>
@@ -130,11 +130,11 @@ class SignUpPage extends Component {
                           id="container.signup.form.termsAndConditions.cloudFlaresTermsAndConditions"
                         />
                       </a>
-                      {" "}
+                      {' '}
                       <FormattedMessage
                         id="container.signup.form.termsAndConditions.and"
                       />
-                      {" "}
+                      {' '}
                       <a href={PRIVACY_POLICY_PAGE} target="_blank">
                         <FormattedMessage
                           id="container.signup.form.termsAndConditions.privacyPolicy"
@@ -181,7 +181,7 @@ class SignUpPage extends Component {
     if (!isTermsOfServiceChecked) {
       dispatch(
         notificationAddError(
-          formatMessage({ id: "container.signup.error.termsOfService" })
+          formatMessage({ id: 'container.signup.error.termsOfService' })
         )
       );
       return;
@@ -190,7 +190,7 @@ class SignUpPage extends Component {
     if (_.isEmpty(email)) {
       dispatch(
         notificationAddError(
-          formatMessage({ id: "container.signup.error.emailBlank" })
+          formatMessage({ id: 'container.signup.error.emailBlank' })
         )
       );
       return;
@@ -199,7 +199,7 @@ class SignUpPage extends Component {
     if (_.isEmpty(password) || _.isEmpty(password2)) {
       dispatch(
         notificationAddError(
-          formatMessage({ id: "container.signup.error.passwordBlank" })
+          formatMessage({ id: 'container.signup.error.passwordBlank' })
         )
       );
       return;
@@ -208,7 +208,7 @@ class SignUpPage extends Component {
     if (password !== password2) {
       dispatch(
         notificationAddError(
-          formatMessage({ id: "container.signup.error.passwordsDontMatch" })
+          formatMessage({ id: 'container.signup.error.passwordsDontMatch' })
         )
       );
       return;

@@ -1,18 +1,18 @@
 import {
   zoneGetAll,
   zoneActivationCheckPutNew
-} from "../utils/CFClientV4API/CFClientV4API";
-import { partialZoneSet, fullZoneSet } from "../utils/CFHostAPI/CFHostAPI";
+} from '../utils/CFClientV4API/CFClientV4API';
+import { partialZoneSet, fullZoneSet } from '../utils/CFHostAPI/CFHostAPI';
 import {
   notificationAddSuccess,
   notificationAddError,
   notificationAddHostAPIError,
   notificationAddClientAPIError
-} from "./notifications";
-import * as ActionTypes from "../constants/ActionTypes";
-import { asyncZoneSetActiveZone } from "./activeZone";
-import { normalizeZoneGetAll } from "../constants/Schemas";
-import { zoneFetch, zoneFetchSuccess } from "./zones";
+} from './notifications';
+import * as ActionTypes from '../constants/ActionTypes';
+import { asyncZoneSetActiveZone } from './activeZone';
+import { normalizeZoneGetAll } from '../constants/Schemas';
+import { zoneFetch, zoneFetchSuccess } from './zones';
 
 /*
  * Zone Provision actions still use reducers/zones.js as the reducer
@@ -43,7 +43,7 @@ export function asyncZoneActivationCheck(zoneId) {
       if (response) {
         dispatch(zoneActivationCheckSuccess());
         dispatch(
-          notificationAddSuccess("container.activationCheckCard.success", true)
+          notificationAddSuccess('container.activationCheckCard.success', true)
         );
       } else {
         dispatch(

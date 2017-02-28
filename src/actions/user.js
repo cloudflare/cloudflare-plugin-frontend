@@ -1,15 +1,15 @@
-import { push } from "react-router-redux";
-import { userAuth, userCreate } from "../utils/CFHostAPI/CFHostAPI";
-import { pluginAccountPost } from "../utils/PluginAPI/PluginAPI";
+import { push } from 'react-router-redux';
+import { userAuth, userCreate } from '../utils/CFHostAPI/CFHostAPI';
+import { pluginAccountPost } from '../utils/PluginAPI/PluginAPI';
 import {
   notificationAddHostAPIError,
   notificationAddClientAPIError
-} from "./notifications";
-import * as ActionTypes from "../constants/ActionTypes";
-import * as UrlPaths from "../constants/UrlPaths";
-import { getConfigValue } from "../selectors/config";
+} from './notifications';
+import * as ActionTypes from '../constants/ActionTypes';
+import * as UrlPaths from '../constants/UrlPaths';
+import { getConfigValue } from '../selectors/config';
 
-import { asyncFetchZones } from "./zones";
+import { asyncFetchZones } from './zones';
 
 export function userLogin() {
   return {
@@ -35,7 +35,7 @@ export function asyncUserLoginSuccess(email) {
     dispatch(userLoginSuccess(email));
     dispatch(asyncFetchZones());
     let route = UrlPaths.HOME_PAGE;
-    if (getConfigValue(getState().config, "integrationName") === "cpanel") {
+    if (getConfigValue(getState().config, 'integrationName') === 'cpanel') {
       route = UrlPaths.DOMAINS_OVERVIEW_PAGE;
     }
     dispatch(push(route));

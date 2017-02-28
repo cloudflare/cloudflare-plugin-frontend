@@ -1,19 +1,19 @@
-import { expect } from "chai";
-import { pluginSettingsReducer } from "../../reducers/pluginSettings";
-import * as ActionTypes from "../../constants/ActionTypes";
+import { expect } from 'chai';
+import { pluginSettingsReducer } from '../../reducers/pluginSettings';
+import * as ActionTypes from '../../constants/ActionTypes';
 
 let initialState = {
   result: [],
   entities: {},
-  isFetching: ""
+  isFetching: ''
 };
 
-describe("Plugin Settings Reducer", () => {
-  it("should return the initial state", () => {
+describe('Plugin Settings Reducer', () => {
+  it('should return the initial state', () => {
     expect(pluginSettingsReducer(initialState, {})).to.eql(initialState);
   });
 
-  it("should handle PLUGIN_SETTINGS_FETCH", () => {
+  it('should handle PLUGIN_SETTINGS_FETCH', () => {
     expect(
       pluginSettingsReducer(initialState, {
         type: ActionTypes.PLUGIN_SETTINGS_FETCH
@@ -21,21 +21,21 @@ describe("Plugin Settings Reducer", () => {
     ).to.eql({
       result: [],
       entities: {},
-      isFetching: "FETCH ALL PLUGIN SETTINGS"
+      isFetching: 'FETCH ALL PLUGIN SETTINGS'
     });
   });
 
-  it("should handle PLUGIN_SETTINGS_FETCH_SUCCESS ", () => {
+  it('should handle PLUGIN_SETTINGS_FETCH_SUCCESS ', () => {
     expect(
       pluginSettingsReducer(initialState, {
         type: ActionTypes.PLUGIN_SETTINGS_FETCH_SUCCESS,
-        zoneId: "zoneId",
+        zoneId: 'zoneId',
         setting: [
           {
-            id: "zoneSettingId",
+            id: 'zoneSettingId',
             value: true,
             editable: true,
-            modified_on: ""
+            modified_on: ''
           }
         ]
       })
@@ -43,19 +43,19 @@ describe("Plugin Settings Reducer", () => {
       entities: {
         zoneId: {
           zoneSettingId: {
-            id: "zoneSettingId",
+            id: 'zoneSettingId',
             value: true,
             editable: true,
-            modified_on: ""
+            modified_on: ''
           }
         }
       },
-      isFetching: "",
-      result: ["zoneSettingId"]
+      isFetching: '',
+      result: ['zoneSettingId']
     });
   });
 
-  it("should handle PLUGIN_SETTINGS_FETCH_ERROR ", () => {
+  it('should handle PLUGIN_SETTINGS_FETCH_ERROR ', () => {
     expect(
       pluginSettingsReducer(initialState, {
         type: ActionTypes.PLUGIN_SETTINGS_FETCH_ERROR
@@ -63,84 +63,84 @@ describe("Plugin Settings Reducer", () => {
     ).to.eql(initialState);
   });
 
-  it("should handle PLUGIN_SETTING_UPDATE ", () => {
+  it('should handle PLUGIN_SETTING_UPDATE ', () => {
     expect(
       pluginSettingsReducer({ entities: { zoneId: {} } }, {
         type: ActionTypes.PLUGIN_SETTING_UPDATE,
-        zoneId: "zoneId",
+        zoneId: 'zoneId',
         setting: {
-          id: "settingName",
+          id: 'settingName',
           value: true,
           editable: true,
-          modified_on: ""
+          modified_on: ''
         }
       })
     ).to.eql({
       entities: {
         zoneId: {
           settingName: {
-            id: "settingName",
+            id: 'settingName',
             value: true,
             editable: true,
-            modified_on: ""
+            modified_on: ''
           }
         }
       },
-      isFetching: "settingName"
+      isFetching: 'settingName'
     });
   });
 
-  it("should handle pluginUpdateSettingSuccess ", () => {
+  it('should handle pluginUpdateSettingSuccess ', () => {
     expect(
       pluginSettingsReducer({ entities: { zoneId: {} } }, {
         type: ActionTypes.PLUGIN_SETTING_UPDATE_SUCCESS,
-        zoneId: "zoneId",
+        zoneId: 'zoneId',
         setting: {
-          id: "settingName",
+          id: 'settingName',
           value: true,
           editable: true,
-          modified_on: ""
+          modified_on: ''
         }
       })
     ).to.eql({
       entities: {
         zoneId: {
           settingName: {
-            id: "settingName",
+            id: 'settingName',
             value: true,
             editable: true,
-            modified_on: ""
+            modified_on: ''
           }
         }
       },
-      isFetching: ""
+      isFetching: ''
     });
   });
 
-  it("should handle PLUGIN_SETTING_UPDATE_ERROR ", () => {
+  it('should handle PLUGIN_SETTING_UPDATE_ERROR ', () => {
     expect(
       pluginSettingsReducer({ entities: { zoneId: {} } }, {
         type: ActionTypes.PLUGIN_SETTING_UPDATE_ERROR,
-        zoneId: "zoneId",
+        zoneId: 'zoneId',
         setting: {
-          id: "settingName",
+          id: 'settingName',
           value: true,
           editable: true,
-          modified_on: ""
+          modified_on: ''
         }
       })
     ).to.eql({
       entities: {
         zoneId: {
           settingName: {
-            id: "settingName",
+            id: 'settingName',
             value: true,
             editable: true,
-            modified_on: ""
+            modified_on: ''
           }
         }
       },
-      isFetching: ""
+      isFetching: ''
     });
   });
 });

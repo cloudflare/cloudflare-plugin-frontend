@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { FormattedMessage, injectIntl } from "react-intl";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
-import { Button, ButtonGroup } from "cf-component-button";
-import { Dropdown, DropdownLink } from "cf-component-dropdown";
+import { Button, ButtonGroup } from 'cf-component-button';
+import { Dropdown, DropdownLink } from 'cf-component-dropdown';
 
-import { Card, CardSection, CardContent, CardControl } from "cf-component-card";
+import { Card, CardSection, CardContent, CardControl } from 'cf-component-card';
 import {
   Modal,
   ModalHeader,
@@ -14,13 +14,13 @@ import {
   ModalBody,
   ModalFooter,
   ModalActions
-} from "cf-component-modal";
-import Textarea from "cf-component-textarea";
+} from 'cf-component-modal';
+import Textarea from 'cf-component-textarea';
 
 import {
   asyncZonePurgeCacheEverything,
   asyncZonePurgeCacheIndividualFiles
-} from "../../actions/zonePurgeCache";
+} from '../../actions/zonePurgeCache';
 
 class PurgeCacheCard extends Component {
   constructor(props) {
@@ -29,7 +29,7 @@ class PurgeCacheCard extends Component {
       isModalOpen: false,
       isIndividual: false,
       dropdownOpen: false,
-      textareaValue: ""
+      textareaValue: ''
     };
   }
 
@@ -81,7 +81,7 @@ class PurgeCacheCard extends Component {
         <Card>
           <CardSection>
             <CardContent
-              title={formatMessage({ id: "container.purgeCacheCard.title" })}
+              title={formatMessage({ id: 'container.purgeCacheCard.title' })}
             >
               <p>
                 <FormattedMessage id="container.purgeCacheCard.description" />
@@ -124,11 +124,11 @@ class PurgeCacheCard extends Component {
                   <ModalTitle>
                     <FormattedMessage
                       id={
-                        "container." +
+                        'container.' +
                           (this.state.isIndividual
-                            ? "purgeCacheByURLCard"
-                            : "purgeCacheCard") +
-                          ".modal.title"
+                            ? 'purgeCacheByURLCard'
+                            : 'purgeCacheCard') +
+                          '.modal.title'
                       }
                     />
                   </ModalTitle>
@@ -138,11 +138,11 @@ class PurgeCacheCard extends Component {
                   <p>
                     <FormattedMessage
                       id={
-                        "container." +
+                        'container.' +
                           (this.state.isIndividual
-                            ? "purgeCacheByURLCard"
-                            : "purgeCacheCard") +
-                          ".modal.description"
+                            ? 'purgeCacheByURLCard'
+                            : 'purgeCacheCard') +
+                          '.modal.description'
                       }
                     />
                   </p>
@@ -156,22 +156,22 @@ class PurgeCacheCard extends Component {
                     >
                       <FormattedMessage
                         id={
-                          "container." +
+                          'container.' +
                             (this.state.isIndividual
-                              ? "purgeCacheByURLCard"
-                              : "purgeCacheCard") +
-                            ".button"
+                              ? 'purgeCacheByURLCard'
+                              : 'purgeCacheCard') +
+                            '.button'
                         }
                       />
                     </Button>
                     <Button onClick={this.handleModalClose.bind(this)}>
                       <FormattedMessage
                         id={
-                          "container." +
+                          'container.' +
                             (this.state.isIndividual
-                              ? "purgeCacheByURLCard"
-                              : "purgeCacheCard") +
-                            ".modal.buttonCancel"
+                              ? 'purgeCacheByURLCard'
+                              : 'purgeCacheCard') +
+                            '.modal.buttonCancel'
                         }
                       />
                     </Button>

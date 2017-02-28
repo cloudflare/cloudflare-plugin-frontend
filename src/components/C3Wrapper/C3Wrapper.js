@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import c3 from "c3";
+import React, { Component } from 'react';
+import c3 from 'c3';
 
 export default class C3Wrapper extends Component {
   updateC3(props) {

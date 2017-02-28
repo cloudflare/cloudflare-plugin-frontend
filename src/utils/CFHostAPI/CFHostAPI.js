@@ -1,8 +1,8 @@
-import http from "cf-util-http";
+import http from 'cf-util-http';
 
-const ENDPOINT = "https://api.cloudflare.com/host-gw.html";
+const ENDPOINT = 'https://api.cloudflare.com/host-gw.html';
 
-let hostKey = "";
+let hostKey = '';
 
 export function setHostKey(hostKey) {
   this.hostKey = hostKey;
@@ -16,7 +16,7 @@ export function setHostKey(hostKey) {
  * @returns {Boolean} Successful
  */
 export function hostAPIResponseOk(response) {
-  return !(response.body.result === "error");
+  return !(response.body.result === 'error');
 }
 
 /*
@@ -71,7 +71,7 @@ export function userCreate(
 ) {
   let opts = {
     body: {
-      act: "user_create",
+      act: 'user_create',
       cloudflare_email: cloudflare_email,
       cloudflare_pass: cloudflare_pass
     }
@@ -87,7 +87,7 @@ export function userCreate(
     opts.body.clobber_unique_id = clobber_unique_id;
   }
 
-  return send("POST", opts, callback);
+  return send('POST', opts, callback);
 }
 
 /*
@@ -109,7 +109,7 @@ export function userAuth(
 ) {
   let opts = {
     body: {
-      act: "user_auth",
+      act: 'user_auth',
       cloudflare_email: cloudflare_email,
       cloudflare_pass: cloudflare_pass
     }
@@ -122,7 +122,7 @@ export function userAuth(
     opts.body.clobber_unique_id = clobber_unique_id;
   }
 
-  return send("POST", opts, callback);
+  return send('POST', opts, callback);
 }
 
 /*
@@ -144,14 +144,14 @@ export function partialZoneSet(
 ) {
   let opts = {
     body: {
-      act: "zone_set",
+      act: 'zone_set',
       user_key: user_key,
       zone_name: zone_name,
       resolve_to: resolve_to,
       subdomains: subdomains
     }
   };
-  return send("POST", opts, callback);
+  return send('POST', opts, callback);
 }
 
 /*
@@ -168,17 +168,17 @@ export function partialZoneSet(
 export function fullZoneSet({ user_key, zone_name }, callback) {
   let opts = {
     body: {
-      act: "full_zone_set",
+      act: 'full_zone_set',
       user_key: user_key,
       zone_name: zone_name
     }
   };
 
-  return send("POST", opts, callback);
+  return send('POST', opts, callback);
 }
 
 function send(method, opts, callback) {
-  if (method.toUpperCase() === "GET") {
+  if (method.toUpperCase() === 'GET') {
     opts.parameters.host_key = hostKey;
   } else {
     opts.body.host_key = hostKey;

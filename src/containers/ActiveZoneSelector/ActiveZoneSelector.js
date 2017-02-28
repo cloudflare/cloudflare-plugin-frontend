@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { injectIntl } from "react-intl";
-import _ from "lodash";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { injectIntl } from 'react-intl';
+import _ from 'lodash';
 
-import Select from "cf-component-select";
-import { notificationAddWarning } from "../../actions/notifications";
-import { getConfigValue } from "../../selectors/config";
-import { asyncZoneSetActiveZone } from "../../actions/activeZone";
-import { isSubdomain } from "../../utils/utils";
+import Select from 'cf-component-select';
+import { notificationAddWarning } from '../../actions/notifications';
+import { getConfigValue } from '../../selectors/config';
+import { asyncZoneSetActiveZone } from '../../actions/activeZone';
+import { isSubdomain } from '../../utils/utils';
 
 class ActiveZoneSelector extends Component {
   constructor(props) {
@@ -32,14 +32,14 @@ class ActiveZoneSelector extends Component {
 
     // If the current active zone is a subdomain show a notification
     // regarding that the changes are made to the original zone.
-    var shouldUseSubdomain = getConfigValue(config, "isSubdomainCheckEnabled");
+    var shouldUseSubdomain = getConfigValue(config, 'isSubdomainCheckEnabled');
     if (
       shouldUseSubdomain &&
       !this.state.subdomainChecked &&
       isSubdomain(activeZoneName)
     ) {
       this.setState({ subdomainChecked: true });
-      dispatch(notificationAddWarning("warning.usingSubdomain", true, true));
+      dispatch(notificationAddWarning('warning.usingSubdomain', true, true));
     }
   }
 
@@ -53,17 +53,17 @@ class ActiveZoneSelector extends Component {
 
     //vertically center the active zone selector
     let activeZoneSelectorStyles = {
-      position: "absolute",
-      top: "50%",
-      transform: "translateY(-50%)",
-      width: "200px"
+      position: 'absolute',
+      top: '50%',
+      transform: 'translateY(-50%)',
+      width: '200px'
     };
 
     return (
       <div
         className={
-          "active-zone-selector__" +
-            (isSingleZone ? "singlezone" : "multiplezone")
+          'active-zone-selector__' +
+            (isSingleZone ? 'singlezone' : 'multiplezone')
         }
         style={activeZoneSelectorStyles}
       >

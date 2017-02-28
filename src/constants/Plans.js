@@ -1,11 +1,11 @@
-const LOCALIZED_PRO_PLAN_ID = "constants.plans.pro";
-const LOCALIZED_BIZ_PLAN_ID = "constants.plans.biz";
-const LOCALIZED_ENT_PLAN_ID = "constants.plans.ent";
+const LOCALIZED_PRO_PLAN_ID = 'constants.plans.pro';
+const LOCALIZED_BIZ_PLAN_ID = 'constants.plans.biz';
+const LOCALIZED_ENT_PLAN_ID = 'constants.plans.ent';
 
-export const FREE_PLAN = "free";
-export const PRO_PLAN = "pro";
-export const BIZ_PLAN = "business";
-export const ENT_PLAN = "enterprise";
+export const FREE_PLAN = 'free';
+export const PRO_PLAN = 'pro';
+export const BIZ_PLAN = 'business';
+export const ENT_PLAN = 'enterprise';
 
 export function planNeedsUpgrade(currentPlan, minimumPlan) {
   var planList = {};

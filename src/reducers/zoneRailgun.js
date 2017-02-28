@@ -1,5 +1,5 @@
-import * as ActionTypes from "../constants/ActionTypes";
-import { normalizeZoneRailgunGetAll } from "../constants/Schemas";
+import * as ActionTypes from '../constants/ActionTypes';
+import { normalizeZoneRailgunGetAll } from '../constants/Schemas';
 
 const initialState = {
   entities: {},

@@ -1,17 +1,17 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { FormattedMessage, injectIntl } from "react-intl";
-import { Card, CardSection, CardContent, CardControl } from "cf-component-card";
-import Select from "cf-component-select";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { FormattedMessage, injectIntl } from 'react-intl';
+import { Card, CardSection, CardContent, CardControl } from 'cf-component-card';
+import Select from 'cf-component-select';
 
-import { asyncZoneUpdateSetting } from "../../actions/zoneSettings";
-import { getLastModifiedDate } from "../../utils/utils";
+import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
+import { getLastModifiedDate } from '../../utils/utils';
 import {
   getZoneSettingsValueForZoneId,
   getZoneSettingsModifiedDateForZoneId
-} from "../../selectors/zoneSettings";
+} from '../../selectors/zoneSettings';
 
-const SETTING_NAME = "browser_cache_ttl";
+const SETTING_NAME = 'browser_cache_ttl';
 
 class BrowserCacheTTLCard extends Component {
   handleChange(option) {
@@ -32,7 +32,7 @@ class BrowserCacheTTLCard extends Component {
           <CardSection>
             <CardContent
               title={formatMessage({
-                id: "container.browserCacheTTLCard.title"
+                id: 'container.browserCacheTTLCard.title'
               })}
               footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}
             >
@@ -50,121 +50,121 @@ class BrowserCacheTTLCard extends Component {
                   {
                     value: 7200,
                     label: formatMessage({
-                      id: "container.browserIntegrityCheckCard.twoHours"
+                      id: 'container.browserIntegrityCheckCard.twoHours'
                     })
                   },
                   {
                     value: 10800,
                     label: formatMessage({
-                      id: "container.browserIntegrityCheckCard.threeHours"
+                      id: 'container.browserIntegrityCheckCard.threeHours'
                     })
                   },
                   {
                     value: 14400,
                     label: formatMessage({
-                      id: "container.browserIntegrityCheckCard.fourHours"
+                      id: 'container.browserIntegrityCheckCard.fourHours'
                     })
                   },
                   {
                     value: 18000,
                     label: formatMessage({
-                      id: "container.browserIntegrityCheckCard.fiveHours"
+                      id: 'container.browserIntegrityCheckCard.fiveHours'
                     })
                   },
                   {
                     value: 28800,
                     label: formatMessage({
-                      id: "container.browserIntegrityCheckCard.eightHours"
+                      id: 'container.browserIntegrityCheckCard.eightHours'
                     })
                   },
                   {
                     value: 43200,
                     label: formatMessage({
-                      id: "container.browserIntegrityCheckCard.twelveHours"
+                      id: 'container.browserIntegrityCheckCard.twelveHours'
                     })
                   },
                   {
                     value: 57600,
                     label: formatMessage({
-                      id: "container.browserIntegrityCheckCard.sixteenHours"
+                      id: 'container.browserIntegrityCheckCard.sixteenHours'
                     })
                   },
                   {
                     value: 72000,
                     label: formatMessage({
-                      id: "container.browserIntegrityCheckCard.twentyHours"
+                      id: 'container.browserIntegrityCheckCard.twentyHours'
                     })
                   },
                   {
                     value: 86400,
                     label: formatMessage({
-                      id: "container.browserIntegrityCheckCard.oneDay"
+                      id: 'container.browserIntegrityCheckCard.oneDay'
                     })
                   },
                   {
                     value: 172800,
                     label: formatMessage({
-                      id: "container.browserIntegrityCheckCard.twoDays"
+                      id: 'container.browserIntegrityCheckCard.twoDays'
                     })
                   },
                   {
                     value: 259200,
                     label: formatMessage({
-                      id: "container.browserIntegrityCheckCard.threeDays"
+                      id: 'container.browserIntegrityCheckCard.threeDays'
                     })
                   },
                   {
                     value: 345600,
                     label: formatMessage({
-                      id: "container.browserIntegrityCheckCard.fourDays"
+                      id: 'container.browserIntegrityCheckCard.fourDays'
                     })
                   },
                   {
                     value: 432000,
                     label: formatMessage({
-                      id: "container.browserIntegrityCheckCard.fiveDays"
+                      id: 'container.browserIntegrityCheckCard.fiveDays'
                     })
                   },
                   {
                     value: 691200,
                     label: formatMessage({
-                      id: "container.browserIntegrityCheckCard.eightDays"
+                      id: 'container.browserIntegrityCheckCard.eightDays'
                     })
                   },
                   {
                     value: 1382400,
                     label: formatMessage({
-                      id: "container.browserIntegrityCheckCard.sixteenDays"
+                      id: 'container.browserIntegrityCheckCard.sixteenDays'
                     })
                   },
                   {
                     value: 2073600,
                     label: formatMessage({
-                      id: "container.browserIntegrityCheckCard.twentyFourDays"
+                      id: 'container.browserIntegrityCheckCard.twentyFourDays'
                     })
                   },
                   {
                     value: 2592000,
                     label: formatMessage({
-                      id: "container.browserIntegrityCheckCard.oneMonth"
+                      id: 'container.browserIntegrityCheckCard.oneMonth'
                     })
                   },
                   {
                     value: 5184000,
                     label: formatMessage({
-                      id: "container.browserIntegrityCheckCard.twoMonths"
+                      id: 'container.browserIntegrityCheckCard.twoMonths'
                     })
                   },
                   {
                     value: 15552000,
                     label: formatMessage({
-                      id: "container.browserIntegrityCheckCard.sixMonths"
+                      id: 'container.browserIntegrityCheckCard.sixMonths'
                     })
                   },
                   {
                     value: 31536000,
                     label: formatMessage({
-                      id: "container.browserIntegrityCheckCard.oneYear"
+                      id: 'container.browserIntegrityCheckCard.oneYear'
                     })
                   }
                 ]}

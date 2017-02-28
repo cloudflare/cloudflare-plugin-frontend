@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { FormattedMessage, injectIntl } from "react-intl";
-import _ from "lodash";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { FormattedMessage, injectIntl } from 'react-intl';
+import _ from 'lodash';
 
-import { Heading } from "cf-component-heading";
+import { Heading } from 'cf-component-heading';
 
 import {
   renderCards
-} from "../../components/RenderCardsDynamically/RenderCardsDynamically";
-import WaitForSettings from "../../containers/WaitForSettings/WaitForSettings";
+} from '../../components/RenderCardsDynamically/RenderCardsDynamically';
+import WaitForSettings from '../../containers/WaitForSettings/WaitForSettings';
 
 class MoreSettingsPage extends Component {
   renderContent() {

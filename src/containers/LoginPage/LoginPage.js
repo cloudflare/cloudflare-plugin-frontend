@@ -1,39 +1,39 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { FormattedMessage, injectIntl } from "react-intl";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
-import { Button } from "cf-component-button";
-import { Form, FormHeader, FormFieldset, FormLabel } from "cf-component-form";
-import Input from "cf-component-input";
-import { LayoutContainer, LayoutRow, LayoutColumn } from "cf-component-layout";
+import { Button } from 'cf-component-button';
+import { Form, FormHeader, FormFieldset, FormLabel } from 'cf-component-form';
+import Input from 'cf-component-input';
+import { LayoutContainer, LayoutRow, LayoutColumn } from 'cf-component-layout';
 
 import MarketingFeatureCollection
-  from "../../containers/MarketingFeatureCollection/MarketingFeatureCollection";
-import { asyncAPILogin, asyncLogin } from "../../actions/user";
+  from '../../containers/MarketingFeatureCollection/MarketingFeatureCollection';
+import { asyncAPILogin, asyncLogin } from '../../actions/user';
 import {
   CLOUDFLARE_SIGNUP_PAGE,
   CLOUDFLARE_ACCOUNT_PAGE,
   SIGN_UP_PAGE,
   CLOUDFLARE_FORGOT_PASSWORD_PAGE,
   HOME_PAGE
-} from "../../constants/UrlPaths.js";
-import { generateUTMLink } from "../../selectors/generateUTMLink.js";
-import { getConfigValue } from "../../selectors/config";
-import { isLoggedIn } from "../../utils/Auth/Auth";
-import { Link } from "react-router";
-import { push } from "react-router-redux";
-import { openWindow720x720 } from "../../utils/utils.js";
+} from '../../constants/UrlPaths.js';
+import { generateUTMLink } from '../../selectors/generateUTMLink.js';
+import { getConfigValue } from '../../selectors/config';
+import { isLoggedIn } from '../../utils/Auth/Auth';
+import { Link } from 'react-router';
+import { push } from 'react-router-redux';
+import { openWindow720x720 } from '../../utils/utils.js';
 
-const SIGNUP_UTM_CONTENT_IDENTIFIER = "signup_now";
-const COPY_API_KEY_UTM_CONTENT_IDENTIFIER = "copy_api_key";
+const SIGNUP_UTM_CONTENT_IDENTIFIER = 'signup_now';
+const COPY_API_KEY_UTM_CONTENT_IDENTIFIER = 'copy_api_key';
 
 class LoginPage extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      email: "",
-      secret: ""
+      email: '',
+      secret: ''
     };
   }
 
@@ -56,7 +56,7 @@ class LoginPage extends Component {
     e.preventDefault();
     const { dispatch, config } = this.props;
 
-    let isHostAPILogin = getConfigValue(config, "useHostAPILogin");
+    let isHostAPILogin = getConfigValue(config, 'useHostAPILogin');
     if (isHostAPILogin) {
       //secret is the password here
       dispatch(asyncLogin(this.state.email, this.state.secret));
@@ -71,18 +71,18 @@ class LoginPage extends Component {
     const { config } = this.props;
 
     //client login defaults
-    let title = "component.clientLogin.form.title";
-    let inputType = "text";
-    let inputLabel = "component.clientLogin.form.apiKey";
-    let loginButtonText = "component.clientLogin.form.button";
+    let title = 'component.clientLogin.form.title';
+    let inputType = 'text';
+    let inputLabel = 'component.clientLogin.form.apiKey';
+    let loginButtonText = 'component.clientLogin.form.button';
 
-    const isHostAPILogin = getConfigValue(config, "useHostAPILogin");
+    const isHostAPILogin = getConfigValue(config, 'useHostAPILogin');
 
     if (isHostAPILogin) {
-      title = "component.login.form.title";
-      inputType = "password";
-      inputLabel = "component.login.form.password";
-      loginButtonText = "component.login.form.button";
+      title = 'component.login.form.title';
+      inputType = 'password';
+      inputLabel = 'component.login.form.password';
+      loginButtonText = 'component.login.form.button';
     }
 
     let signupLinkWithUTM = generateUTMLink(
@@ -98,13 +98,13 @@ class LoginPage extends Component {
       COPY_API_KEY_UTM_CONTENT_IDENTIFIER
     );
 
-    var overflowStyle = { overflow: "hidden" };
+    var overflowStyle = { overflow: 'hidden' };
 
     return (
       <div>
         <div
           id="cf-login-page"
-          style={{ margin: "2rem auto", maxWidth: "400px" }}
+          style={{ margin: '2rem auto', maxWidth: '400px' }}
         >
           <Form layout="vertical" onSubmit={e => this.handleLoginSubmit(e)}>
             <LayoutContainer>
@@ -113,7 +113,7 @@ class LoginPage extends Component {
                   <LayoutColumn width={1 / 1}>
                     <FormHeader
                       title={formatMessage({ id: title })}
-                      style={{ textAlign: "center" }}
+                      style={{ textAlign: 'center' }}
                     />
                   </LayoutColumn>
                 </LayoutRow>
@@ -136,7 +136,7 @@ class LoginPage extends Component {
                     </LayoutColumn>
                   </LayoutRow>
                 </div>
-                <div style={{ overflow: "hidden", paddingBottom: "1px" }}>
+                <div style={{ overflow: 'hidden', paddingBottom: '1px' }}>
                   <LayoutRow>
                     <LayoutColumn width={1 / 1}>
                       <FormLabel>
@@ -186,11 +186,11 @@ class LoginPage extends Component {
                           </a>
                         </div>
                       : <div>
-                          <p style={{ textAlign: "center" }}>
+                          <p style={{ textAlign: 'center' }}>
                             <FormattedMessage
                               id="component.clientLogin.cloudflare.description"
                             />
-                            {" "}
+                            {' '}
                             <a
                               onClick={openWindow720x720.bind(
                                 this,
@@ -201,11 +201,11 @@ class LoginPage extends Component {
                             </a>
                             .
                           </p>
-                          <p style={{ textAlign: "center" }}>
+                          <p style={{ textAlign: 'center' }}>
                             <FormattedMessage
                               id="component.clientLogin.form.apiKeyHelp"
                             />
-                            {" "}
+                            {' '}
                             <a
                               onClick={openWindow720x720.bind(
                                 this,

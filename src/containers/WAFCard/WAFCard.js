@@ -1,26 +1,26 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { FormattedMessage, injectIntl } from "react-intl";
-import { Card, CardSection, CardContent } from "cf-component-card";
-import Toggle from "cf-component-toggle";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { FormattedMessage, injectIntl } from 'react-intl';
+import { Card, CardSection, CardContent } from 'cf-component-card';
+import Toggle from 'cf-component-toggle';
 
-import { getLastModifiedDate } from "../../utils/utils";
+import { getLastModifiedDate } from '../../utils/utils';
 import {
   getZoneSettingsValueForZoneId,
   getZoneSettingsModifiedDateForZoneId
-} from "../../selectors/zoneSettings";
+} from '../../selectors/zoneSettings';
 import CustomCardControl
-  from "../../components/CustomCardControl/CustomCardControl";
-import { asyncZoneUpdateSetting } from "../../actions/zoneSettings";
-import { PRO_PLAN } from "../../constants/Plans.js";
+  from '../../components/CustomCardControl/CustomCardControl';
+import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
+import { PRO_PLAN } from '../../constants/Plans.js';
 
-const SETTING_NAME = "waf";
+const SETTING_NAME = 'waf';
 const MINIMUM_PLAN = PRO_PLAN;
 
 class WAFCard extends Component {
   handleChange(value) {
     let { activeZoneId, dispatch } = this.props;
-    value = value === true ? "on" : "off";
+    value = value === true ? 'on' : 'off';
     dispatch(asyncZoneUpdateSetting(SETTING_NAME, activeZoneId, value));
   }
 
@@ -34,7 +34,7 @@ class WAFCard extends Component {
         <Card>
           <CardSection>
             <CardContent
-              title={formatMessage({ id: "container.waf.title" })}
+              title={formatMessage({ id: 'container.waf.title' })}
               footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}
             >
               <FormattedMessage id="container.waf.description" />
@@ -46,7 +46,7 @@ class WAFCard extends Component {
             >
               <Toggle
                 label=""
-                value={this.props.WAFValue == "on"}
+                value={this.props.WAFValue == 'on'}
                 onChange={this.handleChange.bind(this)}
               />
             </CustomCardControl>

@@ -1,8 +1,8 @@
-import http from "cf-util-http";
+import http from 'cf-util-http';
 
-import * as ActionTypes from "../constants/ActionTypes";
-import { applicationInit } from "./app";
-import { notificationAddError } from "./notifications";
+import * as ActionTypes from '../constants/ActionTypes';
+import { applicationInit } from './app';
+import { notificationAddError } from './notifications';
 
 export function intlFetchTranslations() {
   return {
@@ -30,8 +30,8 @@ export function asyncIntlFetchTranslations(locale) {
     dispatch(intlFetchTranslations());
 
     let opts = {};
-    opts.headers = { Accept: "application/javascript" };
-    http.get("./lang/" + locale + ".js", opts, function(error, response) {
+    opts.headers = { Accept: 'application/javascript' };
+    http.get('./lang/' + locale + '.js', opts, function(error, response) {
       if (response) {
         let translations = JSON.parse(response.text);
         dispatch(intlFetchTranslationsSuccess(locale, translations));

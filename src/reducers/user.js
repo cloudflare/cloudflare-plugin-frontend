@@ -1,5 +1,5 @@
-import * as ActionTypes from "../constants/ActionTypes";
-import { setEmail } from "../utils/Auth/Auth";
+import * as ActionTypes from '../constants/ActionTypes';
+import { setEmail } from '../utils/Auth/Auth';
 
 const initialState = {
   isLoggedIn: false,
@@ -36,7 +36,7 @@ export function userReducer(state = initialState, action) {
         isFetching: false
       });
     case ActionTypes.USER_LOGOUT:
-      setEmail("");
+      setEmail('');
       return Object.assign({}, state, {
         isLoggedIn: false
       });

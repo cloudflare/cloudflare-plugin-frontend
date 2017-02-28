@@ -1,12 +1,12 @@
 import {
   zoneGetSettings,
   zonePatchSetting
-} from "../utils/CFClientV4API/CFClientV4API";
+} from '../utils/CFClientV4API/CFClientV4API';
 import {
   notificationAddClientAPIError,
   notificationHandleDevelopmentMode
-} from "./notifications";
-import * as ActionTypes from "../constants/ActionTypes";
+} from './notifications';
+import * as ActionTypes from '../constants/ActionTypes';
 
 export function zoneFetchSettings() {
   return {

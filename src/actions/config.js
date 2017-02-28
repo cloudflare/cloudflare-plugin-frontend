@@ -1,11 +1,11 @@
-import http from "cf-util-http";
+import http from 'cf-util-http';
 
-import * as ActionTypes from "../constants/ActionTypes";
-import { asyncIntlFetchTranslations } from "./intl";
-import { notificationAddError } from "./notifications";
-import { isLoggedIn, getEmail } from "../utils/Auth/Auth";
-import { asyncUserLoginSuccess } from "../actions/user";
-import { ABSOLUTE_URL_BASE_KEY } from "../reducers/config";
+import * as ActionTypes from '../constants/ActionTypes';
+import { asyncIntlFetchTranslations } from './intl';
+import { notificationAddError } from './notifications';
+import { isLoggedIn, getEmail } from '../utils/Auth/Auth';
+import { asyncUserLoginSuccess } from '../actions/user';
+import { ABSOLUTE_URL_BASE_KEY } from '../reducers/config';
 
 export function configFetch() {
   return {
@@ -31,12 +31,12 @@ export function asyncConfigFetch() {
     dispatch(configFetch());
 
     let opts = {};
-    opts.headers = { Accept: "application/javascript" };
-    http.get("./config.js", opts, function(error, response) {
+    opts.headers = { Accept: 'application/javascript' };
+    http.get('./config.js', opts, function(error, response) {
       if (response) {
         let config = JSON.parse(response.text);
         dispatch(configFetchSuccess(config));
-        if (typeof absoluteUrlBase !== "undefined") {
+        if (typeof absoluteUrlBase !== 'undefined') {
           /*
                      * Some integrations don't work with relative paths because the URL doesn't match
                      * the actual file path, this function allows integrations to configure a base absolute

@@ -1,8 +1,8 @@
-import * as ActionTypes from "../constants/ActionTypes";
+import * as ActionTypes from '../constants/ActionTypes';
 
 const initialState = {
-  id: "",
-  name: ""
+  id: '',
+  name: ''
 };
 
 export function activeZoneReducer(state = initialState, action) {

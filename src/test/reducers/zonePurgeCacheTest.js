@@ -1,17 +1,17 @@
-import { expect } from "chai";
-import { zonePurgeCacheReducer } from "../../reducers/zonePurgeCache";
-import * as ActionTypes from "../../constants/ActionTypes";
+import { expect } from 'chai';
+import { zonePurgeCacheReducer } from '../../reducers/zonePurgeCache';
+import * as ActionTypes from '../../constants/ActionTypes';
 
 let initialState = {
   isFetching: false
 };
 
-describe("Plugin Settings Reducer", () => {
-  it("should return the initial state", () => {
+describe('Plugin Settings Reducer', () => {
+  it('should return the initial state', () => {
     expect(zonePurgeCacheReducer(initialState, {})).to.eql(initialState);
   });
 
-  it("should handle ZONE_PURGE_CACHE", () => {
+  it('should handle ZONE_PURGE_CACHE', () => {
     expect(
       zonePurgeCacheReducer(initialState, {
         type: ActionTypes.ZONE_PURGE_CACHE
@@ -21,7 +21,7 @@ describe("Plugin Settings Reducer", () => {
     });
   });
 
-  it("should handle ZONE_PURGE_CACHE_SUCCESS", () => {
+  it('should handle ZONE_PURGE_CACHE_SUCCESS', () => {
     expect(
       zonePurgeCacheReducer(initialState, {
         type: ActionTypes.ZONE_PURGE_CACHE_SUCCESS
@@ -31,7 +31,7 @@ describe("Plugin Settings Reducer", () => {
     });
   });
 
-  it("should handle ZONE_PURGE_CACHE_ERROR", () => {
+  it('should handle ZONE_PURGE_CACHE_ERROR', () => {
     expect(
       zonePurgeCacheReducer(initialState, {
         type: ActionTypes.ZONE_PURGE_CACHE_ERROR

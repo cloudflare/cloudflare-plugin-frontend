@@ -1,6 +1,6 @@
-import http from "cf-util-http";
+import http from 'cf-util-http';
 
-const ENDPOINT = "https://api.cloudflare.com/client/v4";
+const ENDPOINT = 'https://api.cloudflare.com/client/v4';
 
 /*
  * Indicates api call success
@@ -49,7 +49,7 @@ export function v4Callback(callback) {
  */
 export function zoneActivationCheckPutNew(zoneId, callback) {
   return http.put(
-    ENDPOINT + "/zones/" + zoneId + "/activation_check",
+    ENDPOINT + '/zones/' + zoneId + '/activation_check',
     {},
     v4Callback(callback)
   );
@@ -80,12 +80,12 @@ export function zoneAnalyticsDashboardGet(
   if (until) {
     opts.parameters.until = until;
   }
-  if (typeof continuous !== "undefined") {
+  if (typeof continuous !== 'undefined') {
     opts.parameters.continuous = continuous;
   }
 
   return http.get(
-    ENDPOINT + "/zones/" + zoneId + "/analytics/dashboard",
+    ENDPOINT + '/zones/' + zoneId + '/analytics/dashboard',
     opts,
     v4Callback(callback)
   );
@@ -101,7 +101,7 @@ export function zoneAnalyticsDashboardGet(
  */
 export function zoneDNSRecordGetAll(zoneId, callback) {
   return http.get(
-    ENDPOINT + "/zones/" + zoneId + "/dns_records",
+    ENDPOINT + '/zones/' + zoneId + '/dns_records',
     {},
     v4Callback(callback)
   );
@@ -135,7 +135,7 @@ export function zoneDNSRecordPostNew(
   }
 
   return http.post(
-    ENDPOINT + "/zones/" + zoneId + "/dns_records",
+    ENDPOINT + '/zones/' + zoneId + '/dns_records',
     opts,
     v4Callback(callback)
   );
@@ -172,7 +172,7 @@ export function zoneDNSRecordPatch(
   if (content) {
     opts.body.content = content;
   }
-  if (typeof proxied !== "undefined") {
+  if (typeof proxied !== 'undefined') {
     opts.body.proxied = proxied;
   }
   if (ttl) {
@@ -180,7 +180,7 @@ export function zoneDNSRecordPatch(
   }
 
   return http.patch(
-    ENDPOINT + "/zones/" + zoneId + "/dns_records/" + dnsRecordId,
+    ENDPOINT + '/zones/' + zoneId + '/dns_records/' + dnsRecordId,
     opts,
     v4Callback(callback)
   );
@@ -205,7 +205,7 @@ export function zonePurgeCache(
     body: {}
   };
 
-  if (typeof purge_everything !== "undefined") {
+  if (typeof purge_everything !== 'undefined') {
     opts.body.purge_everything = purge_everything;
   } else {
     if (files) {
@@ -217,7 +217,7 @@ export function zonePurgeCache(
   }
 
   return http.del(
-    ENDPOINT + "/zones/" + zoneId + "/purge_cache",
+    ENDPOINT + '/zones/' + zoneId + '/purge_cache',
     opts,
     v4Callback(callback)
   );
@@ -231,7 +231,7 @@ export function zonePurgeCache(
  * @returns {Object} API Response
  */
 export function zoneGetAll(callback) {
-  return http.get(ENDPOINT + "/zones", {}, v4Callback(callback));
+  return http.get(ENDPOINT + '/zones', {}, v4Callback(callback));
 }
 
 /*
@@ -244,7 +244,7 @@ export function zoneGetAll(callback) {
  */
 export function zoneGetSettings(zoneId, callback) {
   return http.get(
-    ENDPOINT + "/zones/" + zoneId + "/settings",
+    ENDPOINT + '/zones/' + zoneId + '/settings',
     {},
     v4Callback(callback)
   );
@@ -267,7 +267,7 @@ export function zonePatchSetting(settingName, zoneId, value, callback) {
     }
   };
   return http.patch(
-    ENDPOINT + "/zones/" + zoneId + "/settings/" + settingName,
+    ENDPOINT + '/zones/' + zoneId + '/settings/' + settingName,
     opts,
     v4Callback(callback)
   );
@@ -282,7 +282,7 @@ export function zonePatchSetting(settingName, zoneId, value, callback) {
  * @returns {Object} API Response
  */
 export function zoneDeleteZone(zoneId, callback) {
-  return http.del(ENDPOINT + "/zones/" + zoneId, {}, v4Callback(callback));
+  return http.del(ENDPOINT + '/zones/' + zoneId, {}, v4Callback(callback));
 }
 
 /*
@@ -295,7 +295,7 @@ export function zoneDeleteZone(zoneId, callback) {
  */
 export function zoneRailgunGetAll(zoneId, callback) {
   return http.get(
-    ENDPOINT + "/zones/" + zoneId + "/railguns",
+    ENDPOINT + '/zones/' + zoneId + '/railguns',
     {},
     v4Callback(callback)
   );
@@ -317,7 +317,7 @@ export function zoneRailgunPatch(zoneId, railgunId, connected, callback) {
   };
 
   return http.patch(
-    ENDPOINT + "/zones/" + zoneId + "/railguns/" + railgunId,
+    ENDPOINT + '/zones/' + zoneId + '/railguns/' + railgunId,
     opts,
     v4Callback(callback)
   );

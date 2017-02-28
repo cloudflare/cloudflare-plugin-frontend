@@ -1,17 +1,17 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { FormattedMessage, injectIntl } from "react-intl";
-import { Card, CardSection, CardContent, CardControl } from "cf-component-card";
-import { RadioGroup } from "cf-component-radio";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { FormattedMessage, injectIntl } from 'react-intl';
+import { Card, CardSection, CardContent, CardControl } from 'cf-component-card';
+import { RadioGroup } from 'cf-component-radio';
 
-import { asyncZoneUpdateSetting } from "../../actions/zoneSettings";
-import { getLastModifiedDate } from "../../utils/utils";
+import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
+import { getLastModifiedDate } from '../../utils/utils';
 import {
   getZoneSettingsValueForZoneId,
   getZoneSettingsModifiedDateForZoneId
-} from "../../selectors/zoneSettings";
+} from '../../selectors/zoneSettings';
 
-const SETTING_NAME = "cache_level";
+const SETTING_NAME = 'cache_level';
 
 class CacheLevelCard extends Component {
   handleRadioChange(value) {
@@ -28,7 +28,7 @@ class CacheLevelCard extends Component {
         <Card>
           <CardSection>
             <CardContent
-              title={formatMessage({ id: "container.cacheLevelCard.title" })}
+              title={formatMessage({ id: 'container.cacheLevelCard.title' })}
               footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}
             >
               <p>
@@ -42,24 +42,24 @@ class CacheLevelCard extends Component {
                 options={[
                   {
                     label: formatMessage({
-                      id: "container.cacheLevelCard.simplified"
+                      id: 'container.cacheLevelCard.simplified'
                     }),
-                    name: "cache_level_simplified",
-                    value: "simplified"
+                    name: 'cache_level_simplified',
+                    value: 'simplified'
                   },
                   {
                     label: formatMessage({
-                      id: "container.cacheLevelCard.basic"
+                      id: 'container.cacheLevelCard.basic'
                     }),
-                    name: "cache_level_basic",
-                    value: "basic"
+                    name: 'cache_level_basic',
+                    value: 'basic'
                   },
                   {
                     label: formatMessage({
-                      id: "container.cacheLevelCard.aggressive"
+                      id: 'container.cacheLevelCard.aggressive'
                     }),
-                    name: "cache_level_aggressive",
-                    value: "aggressive"
+                    name: 'cache_level_aggressive',
+                    value: 'aggressive'
                   }
                 ]}
               />

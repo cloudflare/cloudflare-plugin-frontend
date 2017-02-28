@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { FormattedMessage, injectIntl } from "react-intl";
-import { Card, CardSection, CardContent } from "cf-component-card";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { FormattedMessage, injectIntl } from 'react-intl';
+import { Card, CardSection, CardContent } from 'cf-component-card';
 import CustomCardControl
-  from "../../components/CustomCardControl/CustomCardControl";
-import { BIZ_PLAN, planNeedsUpgrade } from "../../constants/Plans.js";
+  from '../../components/CustomCardControl/CustomCardControl';
+import { BIZ_PLAN, planNeedsUpgrade } from '../../constants/Plans.js';
 
-const SETTING_NAME = "advanceddos";
+const SETTING_NAME = 'advanceddos';
 const MINIMUM_PLAN = BIZ_PLAN;
 
 class AdvanceDDoSCard extends Component {
@@ -23,7 +23,7 @@ class AdvanceDDoSCard extends Component {
       <Card>
         <CardSection>
           <CardContent
-            title={formatMessage({ id: "container.advanceddos.title" })}
+            title={formatMessage({ id: 'container.advanceddos.title' })}
           >
             <FormattedMessage id="container.advanceddos.description" />
           </CardContent>

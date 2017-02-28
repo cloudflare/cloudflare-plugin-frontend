@@ -1,5 +1,5 @@
-import * as ActionTypes from "../constants/ActionTypes";
-import _ from "lodash";
+import * as ActionTypes from '../constants/ActionTypes';
+import _ from 'lodash';
 
 const initialState = {
   entities: {},
@@ -44,18 +44,18 @@ function buildZoneAnalyticsData(zoneAnalyticsResponse) {
   data.totals = _.clone(zoneAnalyticsResponse.totals);
   zoneAnalyticsResponse.timeseries.forEach(function(analyticsInterval) {
     data.timeSeries.push(new Date(analyticsInterval.since));
-    if (typeof analyticsInterval.requests !== "undefined") {
+    if (typeof analyticsInterval.requests !== 'undefined') {
       data.requests[0].push(analyticsInterval.requests.cached);
       data.requests[1].push(analyticsInterval.requests.uncached);
     }
-    if (typeof analyticsInterval.bandwidth !== "undefined") {
+    if (typeof analyticsInterval.bandwidth !== 'undefined') {
       data.bandwidth[0].push(analyticsInterval.bandwidth.cached);
       data.bandwidth[1].push(analyticsInterval.bandwidth.uncached);
     }
-    if (typeof analyticsInterval.threats !== "undefined") {
+    if (typeof analyticsInterval.threats !== 'undefined') {
       data.threats[0].push(analyticsInterval.threats.all);
     }
-    if (typeof analyticsInterval.uniques !== "undefined") {
+    if (typeof analyticsInterval.uniques !== 'undefined') {
       data.uniques[0].push(analyticsInterval.uniques.all);
     }
   });

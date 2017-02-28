@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import C3Wrapper from "../C3Wrapper/C3Wrapper";
+import React, { Component } from 'react';
+import C3Wrapper from '../C3Wrapper/C3Wrapper';
 
 export default class TimeSeriesChart extends Component {
   /**
@@ -29,17 +29,17 @@ export default class TimeSeriesChart extends Component {
     }
 
     //for some reason this only renders correctly if we put the xformat in data AND axis
-    let xformat = "%m/%d";
+    let xformat = '%m/%d';
 
     let config = {
       data: {
-        x: "x",
+        x: 'x',
         xFormat: xformat,
         columns: columns
       },
       axis: {
         x: {
-          type: "timeseries",
+          type: 'timeseries',
           tick: {
             format: xformat
           }

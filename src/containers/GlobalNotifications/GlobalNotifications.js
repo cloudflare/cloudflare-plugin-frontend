@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { injectIntl } from "react-intl";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { injectIntl } from 'react-intl';
 import {
   NotificationGlobalContainer,
   NotificationList,
   Notification
-} from "cf-component-notifications";
-import * as NotificationActionCreators from "../../actions/notifications";
+} from 'cf-component-notifications';
+import * as NotificationActionCreators from '../../actions/notifications';
 
 class GlobalNotifications extends Component {
   handleClose(id) {

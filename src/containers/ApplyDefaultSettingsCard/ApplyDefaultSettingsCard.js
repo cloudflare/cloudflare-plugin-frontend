@@ -1,18 +1,18 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { FormattedMessage, injectIntl } from "react-intl";
-import { Card, CardSection, CardContent, CardControl } from "cf-component-card";
-import { Button } from "cf-component-button";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { FormattedMessage, injectIntl } from 'react-intl';
+import { Card, CardSection, CardContent, CardControl } from 'cf-component-card';
+import { Button } from 'cf-component-button';
 
 import {
   getPluginSettingsIsFetching,
   getPluginSettingsModifiedDateForZoneId
-} from "../../selectors/pluginSettings";
-import { asyncPluginUpdateSetting } from "../../actions/pluginSettings";
-import Loading from "cf-component-loading";
-import { getLastModifiedDate } from "../../utils/utils";
+} from '../../selectors/pluginSettings';
+import { asyncPluginUpdateSetting } from '../../actions/pluginSettings';
+import Loading from 'cf-component-loading';
+import { getLastModifiedDate } from '../../utils/utils';
 
-const SETTING_NAME = "default_settings";
+const SETTING_NAME = 'default_settings';
 const VALUE = true;
 
 class ApplyDefaultSettingsCard extends Component {
@@ -31,7 +31,7 @@ class ApplyDefaultSettingsCard extends Component {
           <CardSection>
             <CardContent
               title={formatMessage({
-                id: "container.applydefaultsettingscard.title"
+                id: 'container.applydefaultsettingscard.title'
               })}
               footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}
             >

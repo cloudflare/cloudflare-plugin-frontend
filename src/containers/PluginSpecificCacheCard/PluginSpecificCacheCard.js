@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { FormattedMessage, injectIntl } from "react-intl";
-import { Card, CardSection, CardContent, CardControl } from "cf-component-card";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { FormattedMessage, injectIntl } from 'react-intl';
+import { Card, CardSection, CardContent, CardControl } from 'cf-component-card';
 import {
   Modal,
   ModalHeader,
@@ -10,18 +10,18 @@ import {
   ModalBody,
   ModalFooter,
   ModalActions
-} from "cf-component-modal";
-import Toggle from "cf-component-toggle";
-import { Button } from "cf-component-button";
+} from 'cf-component-modal';
+import Toggle from 'cf-component-toggle';
+import { Button } from 'cf-component-button';
 
-import { asyncPluginUpdateSetting } from "../../actions/pluginSettings";
+import { asyncPluginUpdateSetting } from '../../actions/pluginSettings';
 import {
   getPluginSettingsValueForZoneId,
   getPluginSettingsModifiedDateForZoneId
-} from "../../selectors/pluginSettings";
-import { getLastModifiedDate } from "../../utils/utils";
+} from '../../selectors/pluginSettings';
+import { getLastModifiedDate } from '../../utils/utils';
 
-const SETTING_NAME = "plugin_specific_cache";
+const SETTING_NAME = 'plugin_specific_cache';
 
 class PluginSpecificCacheCard extends Component {
   constructor(props) {
@@ -46,7 +46,7 @@ class PluginSpecificCacheCard extends Component {
       this.handleModalClose();
 
       let { activeZoneId, dispatch } = this.props;
-      value = value === true ? "on" : "off";
+      value = value === true ? 'on' : 'off';
       dispatch(asyncPluginUpdateSetting(SETTING_NAME, activeZoneId, value));
     }
   }
@@ -61,7 +61,7 @@ class PluginSpecificCacheCard extends Component {
           <CardSection>
             <CardContent
               title={formatMessage({
-                id: "container.pluginSpecificCacheCard.title"
+                id: 'container.pluginSpecificCacheCard.title'
               })}
               footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}
             >
@@ -74,7 +74,7 @@ class PluginSpecificCacheCard extends Component {
             <CardControl>
               <Toggle
                 label=""
-                value={this.props.cacheCardValue === "on"}
+                value={this.props.cacheCardValue === 'on'}
                 onChange={this.handleChange.bind(this)}
               />
               <Modal

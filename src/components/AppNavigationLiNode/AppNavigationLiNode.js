@@ -1,12 +1,12 @@
-import React, { Component, PropTypes } from "react";
-import { FormattedMessage } from "react-intl";
+import React, { Component, PropTypes } from 'react';
+import { FormattedMessage } from 'react-intl';
 
-import Link from "cf-component-link";
+import Link from 'cf-component-link';
 
 export default class AppNavigationLiNode extends Component {
   render() {
     return (
-      <li className="icon-item" style={{ backgroundColor: "white" }}>
+      <li className="icon-item" style={{ backgroundColor: 'white' }}>
         <Link onClick={this.props.onClick}>
           <span className="icon">
             <svg

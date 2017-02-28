@@ -1,13 +1,13 @@
-import React, { Component, PropTypes } from "react";
-import { connect } from "react-redux";
-import { injectIntl } from "react-intl";
-import { push } from "react-router-redux";
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { injectIntl } from 'react-intl';
+import { push } from 'react-router-redux';
 
 import AppNavigationLiNode
-  from "../../components/AppNavigationLiNode/AppNavigationLiNode";
-import * as UrlPaths from "../../constants/UrlPaths";
-import { isLoggedIn } from "../../utils/Auth/Auth";
-import { isDNSPageEnabled } from "../../selectors/config";
+  from '../../components/AppNavigationLiNode/AppNavigationLiNode';
+import * as UrlPaths from '../../constants/UrlPaths';
+import { isLoggedIn } from '../../utils/Auth/Auth';
+import { isDNSPageEnabled } from '../../selectors/config';
 
 class AppNavigation extends Component {
   handleClick(path) {
@@ -22,7 +22,7 @@ class AppNavigation extends Component {
       <div className="apps-nav secondary-nav">
         <div
           className="wrapper"
-          style={{ backgroundColor: "white", paddingTop: "5px" }}
+          style={{ backgroundColor: 'white', paddingTop: '5px' }}
         >
           <ul className="slider-nav-container apps-nav-container no-arrows">
             <li className="slider-nav-prev">

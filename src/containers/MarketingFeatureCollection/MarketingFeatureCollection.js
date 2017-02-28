@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-import { LayoutRow, LayoutColumn } from "cf-component-layout";
-import { Flex } from "cf-component-flex";
+import { LayoutRow, LayoutColumn } from 'cf-component-layout';
+import { Flex } from 'cf-component-flex';
 
 import MarketingFeature
-  from "../../components/MarketingFeature/MarketingFeature";
-import { getAbsoluteUrl } from "../../selectors/config";
+  from '../../components/MarketingFeature/MarketingFeature';
+import { getAbsoluteUrl } from '../../selectors/config';
 
 class MarketingFeatureCollection extends Component {
   render() {
@@ -14,33 +14,33 @@ class MarketingFeatureCollection extends Component {
 
     return (
       <LayoutRow>
-        <div style={{ backgroundColor: "white" }}>
+        <div style={{ backgroundColor: 'white' }}>
           <Flex spacing={false}>
             <LayoutColumn width={1 / 18}>&nbsp;</LayoutColumn>
             <LayoutColumn width={4 / 18}>
               <MarketingFeature
-                imgSrc={getAbsoluteUrl(config, "assets/icon-pin.svg")}
+                imgSrc={getAbsoluteUrl(config, 'assets/icon-pin.svg')}
                 titleKey="component.marketingFeature.cdn.title"
                 descriptionKey="component.marketingFeature.cdn.description"
               />
             </LayoutColumn>
             <LayoutColumn width={4 / 18}>
               <MarketingFeature
-                imgSrc={getAbsoluteUrl(config, "assets/icon-bolt.svg")}
+                imgSrc={getAbsoluteUrl(config, 'assets/icon-bolt.svg')}
                 titleKey="component.marketingFeature.optimization.title"
                 descriptionKey="component.marketingFeature.optimization.description"
               />
             </LayoutColumn>
             <LayoutColumn width={4 / 18}>
               <MarketingFeature
-                imgSrc={getAbsoluteUrl(config, "assets/icon-shield.svg")}
+                imgSrc={getAbsoluteUrl(config, 'assets/icon-shield.svg')}
                 titleKey="component.marketingFeature.security.title"
                 descriptionKey="component.marketingFeature.security.description"
               />
             </LayoutColumn>
             <LayoutColumn width={4 / 18}>
               <MarketingFeature
-                imgSrc={getAbsoluteUrl(config, "assets/icon-lock.svg")}
+                imgSrc={getAbsoluteUrl(config, 'assets/icon-lock.svg')}
                 titleKey="component.marketingFeature.ddos.title"
                 descriptionKey="component.marketingFeature.ddos.description"
               />

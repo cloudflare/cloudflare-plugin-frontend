@@ -1,16 +1,16 @@
-import { expect } from "chai";
-import { configReducer } from "../../reducers/config";
-import * as ActionTypes from "../../constants/ActionTypes";
+import { expect } from 'chai';
+import { configReducer } from '../../reducers/config';
+import * as ActionTypes from '../../constants/ActionTypes';
 
-describe("Config Reducer", () => {
-  it("should return the initial state", () => {
+describe('Config Reducer', () => {
+  it('should return the initial state', () => {
     expect(configReducer(undefined, {})).to.eql({
       config: {},
       isFetching: false
     });
   });
 
-  it("should handle CONFIG_FETCH", () => {
+  it('should handle CONFIG_FETCH', () => {
     expect(
       configReducer(undefined, {
         type: ActionTypes.CONFIG_FETCH
@@ -21,19 +21,19 @@ describe("Config Reducer", () => {
     });
   });
 
-  it("should handle CONFIG_FETCH_SUCCESS", () => {
+  it('should handle CONFIG_FETCH_SUCCESS', () => {
     expect(
       configReducer(undefined, {
         type: ActionTypes.CONFIG_FETCH_SUCCESS,
-        config: { key: "value" }
+        config: { key: 'value' }
       })
     ).to.eql({
-      config: { key: "value" },
+      config: { key: 'value' },
       isFetching: false
     });
   });
 
-  it("should handle CONFIG_FETCH_ERROR", () => {
+  it('should handle CONFIG_FETCH_ERROR', () => {
     expect(
       configReducer(undefined, {
         type: ActionTypes.CONFIG_FETCH_ERROR
@@ -44,15 +44,15 @@ describe("Config Reducer", () => {
     });
   });
 
-  it("should handle CONFIG_UPDATE_BY_KEY", () => {
+  it('should handle CONFIG_UPDATE_BY_KEY', () => {
     expect(
       configReducer(undefined, {
         type: ActionTypes.CONFIG_UPDATE_BY_KEY,
-        key: "key",
-        value: "value"
+        key: 'key',
+        value: 'value'
       })
     ).to.eql({
-      config: { key: "value" },
+      config: { key: 'value' },
       isFetching: false
     });
   });

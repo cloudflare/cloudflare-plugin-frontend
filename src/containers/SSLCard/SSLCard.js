@@ -1,24 +1,24 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { FormattedMessage, injectIntl } from "react-intl";
-import { Card, CardSection, CardContent, CardControl } from "cf-component-card";
-import Select from "cf-component-select";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { FormattedMessage, injectIntl } from 'react-intl';
+import { Card, CardSection, CardContent, CardControl } from 'cf-component-card';
+import Select from 'cf-component-select';
 
-import { asyncZoneUpdateSetting } from "../../actions/zoneSettings";
-import { getLastModifiedDate } from "../../utils/utils";
+import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
+import { getLastModifiedDate } from '../../utils/utils';
 import {
   getZoneSettingsValueForZoneId,
   getZoneSettingsModifiedDateForZoneId
-} from "../../selectors/zoneSettings";
+} from '../../selectors/zoneSettings';
 
-const SETTING_NAME = "ssl";
+const SETTING_NAME = 'ssl';
 
 class SSLCard extends Component {
   handleChange(option) {
     let { dispatch } = this.props;
     let { value } = option;
 
-    dispatch(asyncZoneUpdateSetting("ssl", this.props.activeZoneId, value));
+    dispatch(asyncZoneUpdateSetting('ssl', this.props.activeZoneId, value));
   }
 
   render() {
@@ -30,7 +30,7 @@ class SSLCard extends Component {
         <Card>
           <CardSection>
             <CardContent
-              title={formatMessage({ id: "container.sslCard.title" })}
+              title={formatMessage({ id: 'container.sslCard.title' })}
               footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}
             >
               <p><FormattedMessage id="container.sslCard.description" /></p>
@@ -41,25 +41,25 @@ class SSLCard extends Component {
                 value={this.props.sslValue}
                 options={[
                   {
-                    value: "off",
-                    label: formatMessage({ id: "container.sslCard.select.off" })
+                    value: 'off',
+                    label: formatMessage({ id: 'container.sslCard.select.off' })
                   },
                   {
-                    value: "flexible",
+                    value: 'flexible',
                     label: formatMessage({
-                      id: "container.sslCard.select.flexible"
+                      id: 'container.sslCard.select.flexible'
                     })
                   },
                   {
-                    value: "full",
+                    value: 'full',
                     label: formatMessage({
-                      id: "container.sslCard.select.full"
+                      id: 'container.sslCard.select.full'
                     })
                   },
                   {
-                    value: "full_strict",
+                    value: 'full_strict',
                     label: formatMessage({
-                      id: "container.sslCard.select.full_strict"
+                      id: 'container.sslCard.select.full_strict'
                     })
                   }
                 ]}

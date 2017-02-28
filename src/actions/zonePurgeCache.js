@@ -1,11 +1,11 @@
 import {
   zonePurgeCache as v4ZonePurgeCache
-} from "../utils/CFClientV4API/CFClientV4API";
+} from '../utils/CFClientV4API/CFClientV4API';
 import {
   notificationAddClientAPIError,
   notificationAddSuccess
-} from "./notifications";
-import * as ActionTypes from "../constants/ActionTypes";
+} from './notifications';
+import * as ActionTypes from '../constants/ActionTypes';
 
 export function zonePurgeCache() {
   return {
@@ -31,7 +31,7 @@ export function asyncZonePurgeCacheIndividualFiles(zoneId, files) {
 
     // Get an unstructured string like "     \nhttp://example.com\n\n  \n  http://example.com/hey \n "
     // Return ["http://example.com", "http://example.com/hey"]
-    var formatedFiles = files.replace(/^\s+|\s+$/g, "").split(/\s+/);
+    var formatedFiles = files.replace(/^\s+|\s+$/g, '').split(/\s+/);
 
     v4ZonePurgeCache({ zoneId: zoneId, files: formatedFiles }, function(
       error,
@@ -40,7 +40,7 @@ export function asyncZonePurgeCacheIndividualFiles(zoneId, files) {
       if (response) {
         dispatch(zonePurgeCacheSuccess());
         dispatch(
-          notificationAddSuccess("container.purgeCacheCard.success", true)
+          notificationAddSuccess('container.purgeCacheCard.success', true)
         );
       } else {
         dispatch(notificationAddClientAPIError(zonePurgeCacheError(), error));
@@ -59,7 +59,7 @@ export function asyncZonePurgeCacheEverything(zoneId) {
       if (response) {
         dispatch(zonePurgeCacheSuccess());
         dispatch(
-          notificationAddSuccess("container.purgeCacheByURLCard.success", true)
+          notificationAddSuccess('container.purgeCacheByURLCard.success', true)
         );
       } else {
         dispatch(notificationAddClientAPIError(zonePurgeCacheError(), error));

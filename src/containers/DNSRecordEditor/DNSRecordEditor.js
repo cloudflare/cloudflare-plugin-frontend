@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { FormattedMessage, injectIntl } from "react-intl";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import {
   Table,
   TableHead,
@@ -8,15 +8,15 @@ import {
   TableRow,
   TableHeadCell,
   TableCell
-} from "cf-component-table";
-import Toggle from "cf-component-toggle";
-import _ from "lodash";
+} from 'cf-component-table';
+import Toggle from 'cf-component-toggle';
+import _ from 'lodash';
 
-import Loading from "cf-component-loading";
+import Loading from 'cf-component-loading';
 import {
   asyncDNSRecordCreate,
   asyncDNSRecordUpdate
-} from "../../actions/zoneDnsRecords";
+} from '../../actions/zoneDnsRecords';
 
 class DNSRecordEditor extends Component {
   handleToggle(value, dnsRecord) {
@@ -74,7 +74,7 @@ class DNSRecordEditor extends Component {
                       ? <Loading />
                       : <Toggle
                           label="Cloudflare Provisioned"
-                          name={dnsRecord.name + "_provisioned"}
+                          name={dnsRecord.name + '_provisioned'}
                           value={dnsRecord.proxied}
                           onChange={e => this.handleToggle(e, dnsRecord)}
                         />}

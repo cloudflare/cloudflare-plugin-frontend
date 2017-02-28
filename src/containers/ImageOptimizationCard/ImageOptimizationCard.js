@@ -1,23 +1,23 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { FormattedMessage, injectIntl } from "react-intl";
-import { Card, CardSection, CardContent } from "cf-component-card";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { FormattedMessage, injectIntl } from 'react-intl';
+import { Card, CardSection, CardContent } from 'cf-component-card';
 
 import CustomCardControl
-  from "../../components/CustomCardControl/CustomCardControl";
-import { asyncZoneUpdateSetting } from "../../actions/zoneSettings";
-import { PRO_PLAN } from "../../constants/Plans.js";
-import { getLastModifiedDate } from "../../utils/utils";
+  from '../../components/CustomCardControl/CustomCardControl';
+import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
+import { PRO_PLAN } from '../../constants/Plans.js';
+import { getLastModifiedDate } from '../../utils/utils';
 import {
   getZoneSettingsValueForZoneId,
   getZoneSettingsModifiedDateForZoneId
-} from "../../selectors/zoneSettings";
+} from '../../selectors/zoneSettings';
 
-import Toggle from "cf-component-toggle";
+import Toggle from 'cf-component-toggle';
 
-const SETTING_NAME_MIRAGE = "mirage";
-const SETTING_NAME_POLISH = "polish";
-const SETTING_NAME = "image_optimization";
+const SETTING_NAME_MIRAGE = 'mirage';
+const SETTING_NAME_POLISH = 'polish';
+const SETTING_NAME = 'image_optimization';
 const MINIMUM_PLAN = PRO_PLAN;
 
 class ImageOptimizationCard extends Component {
@@ -25,16 +25,16 @@ class ImageOptimizationCard extends Component {
     let { activeZoneId, dispatch } = this.props;
 
     if (value === true) {
-      dispatch(asyncZoneUpdateSetting(SETTING_NAME_MIRAGE, activeZoneId, "on"));
+      dispatch(asyncZoneUpdateSetting(SETTING_NAME_MIRAGE, activeZoneId, 'on'));
       dispatch(
-        asyncZoneUpdateSetting(SETTING_NAME_POLISH, activeZoneId, "lossless")
+        asyncZoneUpdateSetting(SETTING_NAME_POLISH, activeZoneId, 'lossless')
       );
     } else {
       dispatch(
-        asyncZoneUpdateSetting(SETTING_NAME_MIRAGE, activeZoneId, "off")
+        asyncZoneUpdateSetting(SETTING_NAME_MIRAGE, activeZoneId, 'off')
       );
       dispatch(
-        asyncZoneUpdateSetting(SETTING_NAME_POLISH, activeZoneId, "off")
+        asyncZoneUpdateSetting(SETTING_NAME_POLISH, activeZoneId, 'off')
       );
     }
   }
@@ -43,9 +43,9 @@ class ImageOptimizationCard extends Component {
     let { activeZone, zones, modifiedDate } = this.props;
     let zone = zones[activeZone.name];
 
-    let imageOptimizationValue = this.props.mirageValue === "on" &&
-      (this.props.polishValue === "lossless" ||
-        this.props.polishValue === "lossy");
+    let imageOptimizationValue = this.props.mirageValue === 'on' &&
+      (this.props.polishValue === 'lossless' ||
+        this.props.polishValue === 'lossy');
 
     const { formatMessage } = this.props.intl;
 
@@ -54,7 +54,7 @@ class ImageOptimizationCard extends Component {
         <Card>
           <CardSection>
             <CardContent
-              title={formatMessage({ id: "container.imageOptimization.title" })}
+              title={formatMessage({ id: 'container.imageOptimization.title' })}
               footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}
             >
               <FormattedMessage id="container.imageOptimization.description" />

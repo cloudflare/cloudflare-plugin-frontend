@@ -1,26 +1,26 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { FormattedMessage, injectIntl } from "react-intl";
-import { Card, CardSection, CardContent } from "cf-component-card";
-import Toggle from "cf-component-toggle";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { FormattedMessage, injectIntl } from 'react-intl';
+import { Card, CardSection, CardContent } from 'cf-component-card';
+import Toggle from 'cf-component-toggle';
 
-import { asyncPluginUpdateSetting } from "../../actions/pluginSettings";
+import { asyncPluginUpdateSetting } from '../../actions/pluginSettings';
 import CustomCardControl
-  from "../../components/CustomCardControl/CustomCardControl";
-import { ENT_PLAN } from "../../constants/Plans.js";
-import { getZonePlanLegacyId } from "../../selectors/zones";
+  from '../../components/CustomCardControl/CustomCardControl';
+import { ENT_PLAN } from '../../constants/Plans.js';
+import { getZonePlanLegacyId } from '../../selectors/zones';
 import {
   getPluginSettingsValueForZoneId,
   getPluginSettingsModifiedDateForZoneId
-} from "../../selectors/pluginSettings";
-import { getLastModifiedDate } from "../../utils/utils";
+} from '../../selectors/pluginSettings';
+import { getLastModifiedDate } from '../../utils/utils';
 
-const SETTING_NAME = "plugin_specific_cache_tag";
+const SETTING_NAME = 'plugin_specific_cache_tag';
 
 class PluginSpecificCacheTagCard extends Component {
   handleChange(value) {
     let { activeZoneId, dispatch } = this.props;
-    value = value === true ? "on" : "off";
+    value = value === true ? 'on' : 'off';
     dispatch(asyncPluginUpdateSetting(SETTING_NAME, activeZoneId, value));
   }
 
@@ -34,7 +34,7 @@ class PluginSpecificCacheTagCard extends Component {
           <CardSection>
             <CardContent
               title={formatMessage({
-                id: "container.pluginSpecificCacheTagCard.title"
+                id: 'container.pluginSpecificCacheTagCard.title'
               })}
               footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}
             >
@@ -52,7 +52,7 @@ class PluginSpecificCacheTagCard extends Component {
             >
               <Toggle
                 label=""
-                value={this.props.cacheTagCardValue === "on"}
+                value={this.props.cacheTagCardValue === 'on'}
                 onChange={this.handleChange.bind(this)}
               />
             </CustomCardControl>

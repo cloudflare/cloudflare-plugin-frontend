@@ -1,18 +1,18 @@
-import { expect } from "chai";
-import { zoneRailgunReducer } from "../../reducers/zoneRailgun";
-import * as ActionTypes from "../../constants/ActionTypes";
+import { expect } from 'chai';
+import { zoneRailgunReducer } from '../../reducers/zoneRailgun';
+import * as ActionTypes from '../../constants/ActionTypes';
 
 const initialState = {
   entities: {},
   isFetching: false
 };
 
-describe("Zone Railgun Reducer", () => {
-  it("should return the initial state", () => {
+describe('Zone Railgun Reducer', () => {
+  it('should return the initial state', () => {
     expect(zoneRailgunReducer(undefined, {})).to.eql(initialState);
   });
 
-  it("should handle ZONE_RAILGUNS_FETCH_ALL", () => {
+  it('should handle ZONE_RAILGUNS_FETCH_ALL', () => {
     expect(
       zoneRailgunReducer(undefined, {
         type: ActionTypes.ZONE_RAILGUNS_FETCH_ALL
@@ -23,15 +23,15 @@ describe("Zone Railgun Reducer", () => {
     });
   });
 
-  it("should handle ZONE_RAILGUNS_FETCH_ALL_SUCCESS", () => {
+  it('should handle ZONE_RAILGUNS_FETCH_ALL_SUCCESS', () => {
     expect(
       zoneRailgunReducer(undefined, {
         type: ActionTypes.ZONE_RAILGUNS_FETCH_ALL_SUCCESS,
-        zoneId: "zoneId",
+        zoneId: 'zoneId',
         zoneRailguns: [
           {
-            id: "railgunId",
-            name: "railgun name",
+            id: 'railgunId',
+            name: 'railgun name',
             enabled: true,
             connected: true
           }
@@ -41,8 +41,8 @@ describe("Zone Railgun Reducer", () => {
       entities: {
         zoneId: {
           railgunId: {
-            id: "railgunId",
-            name: "railgun name",
+            id: 'railgunId',
+            name: 'railgun name',
             enabled: true,
             connected: true
           }
@@ -52,7 +52,7 @@ describe("Zone Railgun Reducer", () => {
     });
   });
 
-  it("should handle ZONE_RAILGUNS_FETCH_ALL_ERROR", () => {
+  it('should handle ZONE_RAILGUNS_FETCH_ALL_ERROR', () => {
     expect(
       zoneRailgunReducer(undefined, {
         type: ActionTypes.ZONE_RAILGUNS_FETCH_ALL_ERROR
@@ -60,14 +60,14 @@ describe("Zone Railgun Reducer", () => {
     ).to.eql(initialState);
   });
 
-  it("should handle ZONE_RAILGUNS_CONNECTION_UPDATE", () => {
+  it('should handle ZONE_RAILGUNS_CONNECTION_UPDATE', () => {
     expect(
       zoneRailgunReducer({ entities: { zoneId: {} } }, {
         type: ActionTypes.ZONE_RAILGUNS_CONNECTION_UPDATE,
-        zoneId: "zoneId",
+        zoneId: 'zoneId',
         zoneRailgun: {
-          id: "railgunId",
-          name: "railgun name",
+          id: 'railgunId',
+          name: 'railgun name',
           enabled: true,
           connected: true
         }
@@ -76,8 +76,8 @@ describe("Zone Railgun Reducer", () => {
       entities: {
         zoneId: {
           railgunId: {
-            id: "railgunId",
-            name: "railgun name",
+            id: 'railgunId',
+            name: 'railgun name',
             enabled: true,
             connected: true
           }
@@ -87,14 +87,14 @@ describe("Zone Railgun Reducer", () => {
     });
   });
 
-  it("should handle ZONE_RAILGUNS_CONNECTION_UPDATE_SUCCESSS", () => {
+  it('should handle ZONE_RAILGUNS_CONNECTION_UPDATE_SUCCESSS', () => {
     expect(
       zoneRailgunReducer({ entities: { zoneId: {} } }, {
         type: ActionTypes.ZONE_RAILGUNS_CONNECTION_UPDATE_SUCCESSS,
-        zoneId: "zoneId",
+        zoneId: 'zoneId',
         zoneRailgun: {
-          id: "railgunId",
-          name: "railgun name",
+          id: 'railgunId',
+          name: 'railgun name',
           enabled: true,
           connected: true
         }
@@ -103,8 +103,8 @@ describe("Zone Railgun Reducer", () => {
       entities: {
         zoneId: {
           railgunId: {
-            id: "railgunId",
-            name: "railgun name",
+            id: 'railgunId',
+            name: 'railgun name',
             enabled: true,
             connected: true
           }
@@ -114,14 +114,14 @@ describe("Zone Railgun Reducer", () => {
     });
   });
 
-  it("should handle ZONE_RAILGUNS_CONNECTION_UPDATE_ERROR", () => {
+  it('should handle ZONE_RAILGUNS_CONNECTION_UPDATE_ERROR', () => {
     expect(
       zoneRailgunReducer({ entities: { zoneId: {} } }, {
         type: ActionTypes.ZONE_RAILGUNS_CONNECTION_UPDATE_ERROR,
-        zoneId: "zoneId",
+        zoneId: 'zoneId',
         zoneRailgun: {
-          id: "railgunId",
-          name: "railgun name",
+          id: 'railgunId',
+          name: 'railgun name',
           enabled: true,
           connected: true
         }
@@ -130,8 +130,8 @@ describe("Zone Railgun Reducer", () => {
       entities: {
         zoneId: {
           railgunId: {
-            id: "railgunId",
-            name: "railgun name",
+            id: 'railgunId',
+            name: 'railgun name',
             enabled: true,
             connected: true
           }

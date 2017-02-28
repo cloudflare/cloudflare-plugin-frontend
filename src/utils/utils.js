@@ -2,14 +2,14 @@
 function extractDomain(url) {
   var domain;
   // find & remove protocol (http, ftp, etc.) and get domain
-  if (url.indexOf("://") > -1) {
-    domain = url.split("/")[2];
+  if (url.indexOf('://') > -1) {
+    domain = url.split('/')[2];
   } else {
-    domain = url.split("/")[0];
+    domain = url.split('/')[0];
   }
 
   // find & remove port number
-  domain = domain.split(":")[0];
+  domain = domain.split(':')[0];
 
   return domain;
 }
@@ -27,7 +27,7 @@ export function isSubdomain(selectedZoneName) {
 
   if (
     endsWith(currentDomainName, selectedZoneName) &&
-    !beginsWith("www.", currentDomainName) &&
+    !beginsWith('www.', currentDomainName) &&
     selectedZoneName !== currentDomainName &&
     currentDomainName &&
     selectedZoneName
@@ -51,23 +51,23 @@ export function getLastModifiedDate(intl, modfiedDate) {
   });
 
   var value = { date: formattedModefiedDate };
-  return formatMessage({ id: "utils.utils.lastmodifieddate" }, value);
+  return formatMessage({ id: 'utils.utils.lastmodifieddate' }, value);
 }
 
 export function humanFileSize(bytes) {
   var thresh = 1000;
   if (Math.abs(bytes) < thresh) {
-    return bytes + " B";
+    return bytes + ' B';
   }
-  var units = ["kB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
+  var units = ['kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
   var u = -1;
   do {
     bytes /= thresh;
     ++u;
   } while (Math.abs(bytes) >= thresh && u < units.length - 1);
-  return bytes.toFixed(1) + " " + units[u];
+  return bytes.toFixed(1) + ' ' + units[u];
 }
 
 export function openWindow720x720(link) {
-  window.open(link, "_blank", "toolbar=0,status=0,width=720,height=700");
+  window.open(link, '_blank', 'toolbar=0,status=0,width=720,height=700');
 }

@@ -1,10 +1,10 @@
-import * as ActionTypes from "../constants/ActionTypes";
+import * as ActionTypes from '../constants/ActionTypes';
 import {
   zoneDNSRecordGetAll,
   zoneDNSRecordPostNew,
   zoneDNSRecordPatch
-} from "../utils/CFClientV4API/CFClientV4API";
-import { notificationAddClientAPIError } from "./notifications";
+} from '../utils/CFClientV4API/CFClientV4API';
+import { notificationAddClientAPIError } from './notifications';
 
 export function dnsRecordClearAll(zoneId) {
   return {

@@ -1,18 +1,18 @@
-import _ from "lodash";
-import * as ActionTypes from "../constants/ActionTypes";
-import { normalizeZoneByIdGetAll } from "../constants/Schemas";
+import _ from 'lodash';
+import * as ActionTypes from '../constants/ActionTypes';
+import { normalizeZoneByIdGetAll } from '../constants/Schemas';
 
 const initialState = {
   entities: {},
   result: [],
-  isFetching: ""
+  isFetching: ''
 };
 
 export function zoneSettingsReducer(state = initialState, action) {
   switch (action.type) {
     case ActionTypes.ZONE_FETCH_SETTINGS:
       return Object.assign({}, state, {
-        isFetching: "fetchAllSettings"
+        isFetching: 'fetchAllSettings'
       });
     case ActionTypes.ZONE_FETCH_SETTINGS_SUCCESS:
       let normalizedZoneSettings = normalizeZoneByIdGetAll(
@@ -23,11 +23,11 @@ export function zoneSettingsReducer(state = initialState, action) {
       return Object.assign({}, state, {
         entities: _.merge(state.entities, normalizedZoneSettings.entities),
         result: _.merge(state.result, normalizedZoneSettings.result),
-        isFetching: ""
+        isFetching: ''
       });
     case ActionTypes.ZONE_FETCH_SETTINGS_ERROR:
       return Object.assign({}, state, {
-        isFetching: ""
+        isFetching: ''
       });
     case ActionTypes.ZONE_UPDATE_SETTING:
       return Object.assign({}, state, {
@@ -37,12 +37,12 @@ export function zoneSettingsReducer(state = initialState, action) {
     case ActionTypes.ZONE_UPDATE_SETTING_SUCCESS:
       return Object.assign({}, state, {
         entities: zonePatchSetting(action.zoneId, action.setting, state),
-        isFetching: ""
+        isFetching: ''
       });
     case ActionTypes.ZONE_UPDATE_SETTING_ERROR:
       return Object.assign({}, state, {
         entities: zonePatchSetting(action.zoneId, action.setting, state),
-        isFetching: ""
+        isFetching: ''
       });
     default:
       return state;

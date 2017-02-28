@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { FormattedMessage, injectIntl } from "react-intl";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
-import { asyncZoneActivationCheck } from "../../actions/zoneProvision";
-import { Card, CardSection, CardContent, CardControl } from "cf-component-card";
-import { Button } from "cf-component-button";
-import { List, ListItem } from "cf-component-list";
+import { asyncZoneActivationCheck } from '../../actions/zoneProvision';
+import { Card, CardSection, CardContent, CardControl } from 'cf-component-card';
+import { Button } from 'cf-component-button';
+import { List, ListItem } from 'cf-component-list';
 
 class ActivationCheckCard extends Component {
   handleButtonClick() {
@@ -23,7 +23,7 @@ class ActivationCheckCard extends Component {
           <CardSection>
             <CardContent
               title={formatMessage({
-                id: "container.activationCheckCard.title"
+                id: 'container.activationCheckCard.title'
               })}
             >
               <p>

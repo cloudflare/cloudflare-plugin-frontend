@@ -1,17 +1,17 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { FormattedMessage, injectIntl } from "react-intl";
-import { Card, CardSection, CardContent, CardControl } from "cf-component-card";
-import Select from "cf-component-select";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { FormattedMessage, injectIntl } from 'react-intl';
+import { Card, CardSection, CardContent, CardControl } from 'cf-component-card';
+import Select from 'cf-component-select';
 
-import { asyncZoneUpdateSetting } from "../../actions/zoneSettings";
-import { getLastModifiedDate } from "../../utils/utils";
+import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
+import { getLastModifiedDate } from '../../utils/utils';
 import {
   getZoneSettingsValueForZoneId,
   getZoneSettingsModifiedDateForZoneId
-} from "../../selectors/zoneSettings";
+} from '../../selectors/zoneSettings';
 
-const SETTING_NAME = "security_level";
+const SETTING_NAME = 'security_level';
 
 class SecurityLevelCard extends Component {
   handleChange(option) {
@@ -31,7 +31,7 @@ class SecurityLevelCard extends Component {
         <Card>
           <CardSection>
             <CardContent
-              title={formatMessage({ id: "container.securityLevelCard.title" })}
+              title={formatMessage({ id: 'container.securityLevelCard.title' })}
               footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}
             >
               <p>
@@ -46,33 +46,33 @@ class SecurityLevelCard extends Component {
                 value={this.props.securityLevelValue}
                 options={[
                   {
-                    value: "essentially_off",
+                    value: 'essentially_off',
                     label: formatMessage({
-                      id: "container.securityLevelCard.select.essentiallyOff"
+                      id: 'container.securityLevelCard.select.essentiallyOff'
                     })
                   },
                   {
-                    value: "low",
+                    value: 'low',
                     label: formatMessage({
-                      id: "container.securityLevelCard.select.low"
+                      id: 'container.securityLevelCard.select.low'
                     })
                   },
                   {
-                    value: "medium",
+                    value: 'medium',
                     label: formatMessage({
-                      id: "container.securityLevelCard.select.medium"
+                      id: 'container.securityLevelCard.select.medium'
                     })
                   },
                   {
-                    value: "high",
+                    value: 'high',
                     label: formatMessage({
-                      id: "container.securityLevelCard.select.high"
+                      id: 'container.securityLevelCard.select.high'
                     })
                   },
                   {
-                    value: "under_attack",
+                    value: 'under_attack',
                     label: formatMessage({
-                      id: "container.securityLevelCard.select.underAttack"
+                      id: 'container.securityLevelCard.select.underAttack'
                     })
                   }
                 ]}

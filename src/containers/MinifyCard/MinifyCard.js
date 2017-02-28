@@ -1,17 +1,17 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { FormattedMessage, injectIntl } from "react-intl";
-import { Card, CardSection, CardContent, CardControl } from "cf-component-card";
-import { CheckboxGroup } from "cf-component-checkbox";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { FormattedMessage, injectIntl } from 'react-intl';
+import { Card, CardSection, CardContent, CardControl } from 'cf-component-card';
+import { CheckboxGroup } from 'cf-component-checkbox';
 
-import { asyncZoneUpdateSetting } from "../../actions/zoneSettings";
-import { getLastModifiedDate } from "../../utils/utils";
+import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
+import { getLastModifiedDate } from '../../utils/utils';
 import {
   getZoneSettingsValueForZoneId,
   getZoneSettingsModifiedDateForZoneId
-} from "../../selectors/zoneSettings";
+} from '../../selectors/zoneSettings';
 
-const SETTING_NAME = "minify";
+const SETTING_NAME = 'minify';
 
 class MinifyCard extends Component {
   constructor(props) {
@@ -25,7 +25,7 @@ class MinifyCard extends Component {
     let checkboxValues = [];
     //convert on/off to true/false
     for (var key in this.props.minifyValues) {
-      if (this.props.minifyValues[key] === "on") {
+      if (this.props.minifyValues[key] === 'on') {
         checkboxValues.push(key);
       }
     }
@@ -34,13 +34,13 @@ class MinifyCard extends Component {
 
   handleCheckboxChange(checkboxValueList) {
     let apiValueList = {
-      js: "off",
-      css: "off",
-      html: "off"
+      js: 'off',
+      css: 'off',
+      html: 'off'
     };
 
     checkboxValueList.forEach(function(item) {
-      apiValueList[item.value] = "on";
+      apiValueList[item.value] = 'on';
     });
 
     let { activeZoneId, dispatch } = this.props;
@@ -58,7 +58,7 @@ class MinifyCard extends Component {
         <Card>
           <CardSection>
             <CardContent
-              title={formatMessage({ id: "container.minifyCard.title" })}
+              title={formatMessage({ id: 'container.minifyCard.title' })}
               footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}
             >
               <p><FormattedMessage id="container.minifyCard.description" /></p>
@@ -70,20 +70,20 @@ class MinifyCard extends Component {
                 options={[
                   {
                     label: formatMessage({
-                      id: "container.minifyCard.javascript"
+                      id: 'container.minifyCard.javascript'
                     }),
-                    name: "minify_js",
-                    value: "js"
+                    name: 'minify_js',
+                    value: 'js'
                   },
                   {
-                    label: formatMessage({ id: "container.minifyCard.css" }),
-                    name: "minify_css",
-                    value: "css"
+                    label: formatMessage({ id: 'container.minifyCard.css' }),
+                    name: 'minify_css',
+                    value: 'css'
                   },
                   {
-                    label: formatMessage({ id: "container.minifyCard.html" }),
-                    name: "minify_html",
-                    value: "html"
+                    label: formatMessage({ id: 'container.minifyCard.html' }),
+                    name: 'minify_html',
+                    value: 'html'
                   }
                 ]}
               />
