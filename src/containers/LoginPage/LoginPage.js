@@ -166,24 +166,32 @@ class LoginPage extends Component {
                 </div>
               </FormFieldset>
               <div style={overflowStyle}>
-                <LayoutRow>
+                <div>
                   <LayoutColumn width={1 / 1}>
                     {isHostAPILogin
                       ? <div>
-                          <Link className="pull-left" to={SIGN_UP_PAGE}>
-                            <FormattedMessage
-                              id="component.login.form.signUp"
-                            />
-                          </Link>
-                          <a
-                            className="pull-right"
-                            href={CLOUDFLARE_FORGOT_PASSWORD_PAGE}
-                            target="_blank"
-                          >
-                            <FormattedMessage
-                              id="component.login.form.forgotPassword"
-                            />
-                          </a>
+                          <LayoutColumn width={1 / 2}>
+                            <p>
+                              <Link className="pull-left" to={SIGN_UP_PAGE}>
+                                <FormattedMessage
+                                  id="component.login.form.signUp"
+                                />
+                              </Link>
+                            </p>
+                          </LayoutColumn>
+                          <LayoutColumn width={1 / 2}>
+                            <p>
+                              <Link
+                                className="pull-right"
+                                href={CLOUDFLARE_FORGOT_PASSWORD_PAGE}
+                                target="_blank"
+                              >
+                                <FormattedMessage
+                                  id="component.login.form.forgotPassword"
+                                />
+                              </Link>
+                            </p>
+                          </LayoutColumn>
                         </div>
                       : <div>
                           <p style={{ textAlign: 'center' }}>
@@ -218,7 +226,7 @@ class LoginPage extends Component {
                           </p>
                         </div>}
                   </LayoutColumn>
-                </LayoutRow>
+                </div>
               </div>
             </LayoutContainer>
           </Form>
