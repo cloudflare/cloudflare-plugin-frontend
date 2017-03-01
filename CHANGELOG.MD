@@ -2,7 +2,6 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-Releasing v2.6.3
 ## [2.6.4](#2.6.4) - 2017-3-1
 ### Fixed
 - Fixed a bug where loading spinner wasn't stopping [#93](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/93)
