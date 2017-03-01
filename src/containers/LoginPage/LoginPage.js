@@ -44,12 +44,12 @@ class LoginPage extends Component {
     }
   }
 
-  handleEmailChange(email) {
-    this.setState({ email });
+  handleEmailChange(event) {
+    this.setState({ email: event.target.value });
   }
 
-  handleSecretChange(secret) {
-    this.setState({ secret });
+  handleSecretChange(event) {
+    this.setState({ secret: event.target.value });
   }
 
   handleLoginSubmit(e) {

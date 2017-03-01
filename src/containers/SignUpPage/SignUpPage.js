@@ -27,145 +27,20 @@ class SignUpPage extends Component {
     };
   }
 
-  render() {
-    let { formatMessage } = this.props.intl;
+  handleEmailChange(event) {
+    this.setState({ email: event.target.value });
+  }
 
-    let overflowStyle = { overflow: 'hidden' };
+  handlePasswordChange(event) {
+    this.setState({ password: event.target.value });
+  }
 
-    return (
-      <div
-        id="cf-login-page"
-        style={{ margin: '2rem auto', maxWidth: '400px' }}
-      >
-        <Form layout="vertical" onSubmit={e => this.handleSignUpSubmit(e)}>
-          <LayoutContainer>
-            <div style={overflowStyle}>
-              <LayoutRow>
-                <LayoutColumn width={1 / 1}>
-                  <FormHeader
-                    title={formatMessage({ id: 'container.signup.form.title' })}
-                  />
-                </LayoutColumn>
-              </LayoutRow>
-            </div>
-            <FormFieldset legend="">
-              <div style={overflowStyle}>
-                <LayoutRow>
-                  <LayoutColumn width={1 / 1}>
-                    <FormLabel hidden>
-                      <FormattedMessage id="container.signup.form.email" />
-                    </FormLabel>
-                    <Input
-                      name="email"
-                      type="text"
-                      value={this.state.email}
-                      onChange={email => this.setState({ email: email })}
-                      placeholder={formatMessage({
-                        id: 'container.signup.form.email'
-                      })}
-                    />
-                  </LayoutColumn>
-                </LayoutRow>
-              </div>
+  handlePasswordConfirmChange(event) {
+    this.setState({ passwordConfirm: event.target.value });
+  }
 
-              <div style={overflowStyle}>
-                <LayoutRow>
-                  <LayoutColumn width={1 / 1}>
-                    <FormLabel hidden>
-                      <FormattedMessage id="component.login.form.password" />
-                    </FormLabel>
-                    <Input
-                      name="password"
-                      type="password"
-                      value={this.state.password}
-                      onChange={password =>
-                        this.setState({ password: password })}
-                      placeholder={formatMessage({
-                        id: 'container.signup.form.password'
-                      })}
-                    />
-                  </LayoutColumn>
-                </LayoutRow>
-              </div>
-
-              <div style={overflowStyle}>
-                <LayoutRow>
-                  <LayoutColumn width={1 / 1}>
-                    <FormLabel hidden>
-                      <FormattedMessage
-                        id="container.signup.form.passwordAgain"
-                      />
-                    </FormLabel>
-                    <Input
-                      name="passwordConfirm"
-                      type="password"
-                      value={this.state.passwordConfirm}
-                      onChange={passwordConfirm =>
-                        this.setState({ passwordConfirm: passwordConfirm })}
-                      placeholder={formatMessage({
-                        id: 'container.signup.form.passwordAgain'
-                      })}
-                    />
-                  </LayoutColumn>
-                </LayoutRow>
-              </div>
-
-              <div style={overflowStyle}>
-                <LayoutRow>
-                  <LayoutColumn width={1 / 1}>
-                    <Checkbox
-                      label={false}
-                      name="termsOfService"
-                      value="termsOfService"
-                      checked={this.state.termsOfService}
-                      onChange={termsOfService =>
-                        this.setState({ termsOfService: termsOfService })}
-                    />
-                    <FormLabel>
-                      <FormattedMessage
-                        id="container.signup.form.termsAndConditions.iAgreeTo"
-                      />
-                      <a href={TERMS_AND_CONDITIONS_PAGE} target="_blank">
-                        <FormattedMessage
-                          id="container.signup.form.termsAndConditions.cloudFlaresTermsAndConditions"
-                        />
-                      </a>
-                      {' '}
-                      <FormattedMessage
-                        id="container.signup.form.termsAndConditions.and"
-                      />
-                      {' '}
-                      <a href={PRIVACY_POLICY_PAGE} target="_blank">
-                        <FormattedMessage
-                          id="container.signup.form.termsAndConditions.privacyPolicy"
-                        />
-                      </a>
-                      <FormattedMessage
-                        id="container.signup.form.termsAndConditions.period"
-                      />
-                    </FormLabel>
-                  </LayoutColumn>
-                </LayoutRow>
-              </div>
-
-              <div style={overflowStyle}>
-                <LayoutRow>
-                  <LayoutColumn width={1 / 1}>
-                    <Button
-                      submit
-                      type="success"
-                      onClick={e => this.handleSignUpSubmit(e)}
-                    >
-                      <FormattedMessage id="container.signup.form.button" />
-                    </Button>
-                  </LayoutColumn>
-                </LayoutRow>
-              </div>
-            </FormFieldset>
-          </LayoutContainer>
-        </Form>
-      </div>
-    );
+  handleTermsOfServiceChange(event) {
+    this.setState({ termsOfService: event.target.value });
   }
 
   handleSignUpSubmit(e) {
@@ -215,6 +90,144 @@ class SignUpPage extends Component {
     }
 
     dispatch(UserActionCreators.asyncUserSignup(email, password));
+  }
+
+  render() {
+    let { formatMessage } = this.props.intl;
+
+    let overflowStyle = { overflow: 'hidden' };
+
+    return (
+      <div
+        id="cf-login-page"
+        style={{ margin: '2rem auto', maxWidth: '400px' }}
+      >
+        <Form layout="vertical" onSubmit={e => this.handleSignUpSubmit(e)}>
+          <LayoutContainer>
+            <div style={overflowStyle}>
+              <LayoutRow>
+                <LayoutColumn width={1 / 1}>
+                  <FormHeader
+                    title={formatMessage({ id: 'container.signup.form.title' })}
+                  />
+                </LayoutColumn>
+              </LayoutRow>
+            </div>
+            <FormFieldset legend="">
+              <div style={overflowStyle}>
+                <LayoutRow>
+                  <LayoutColumn width={1 / 1}>
+                    <FormLabel hidden>
+                      <FormattedMessage id="container.signup.form.email" />
+                    </FormLabel>
+                    <Input
+                      name="email"
+                      type="text"
+                      value={this.state.email}
+                      onChange={this.handleEmailChange.bind(this)}
+                      placeholder={formatMessage({
+                        id: 'container.signup.form.email'
+                      })}
+                    />
+                  </LayoutColumn>
+                </LayoutRow>
+              </div>
+
+              <div style={overflowStyle}>
+                <LayoutRow>
+                  <LayoutColumn width={1 / 1}>
+                    <FormLabel hidden>
+                      <FormattedMessage id="component.login.form.password" />
+                    </FormLabel>
+                    <Input
+                      name="password"
+                      type="password"
+                      value={this.state.password}
+                      onChange={this.handlePasswordChange.bind(this)}
+                      placeholder={formatMessage({
+                        id: 'container.signup.form.password'
+                      })}
+                    />
+                  </LayoutColumn>
+                </LayoutRow>
+              </div>
+
+              <div style={overflowStyle}>
+                <LayoutRow>
+                  <LayoutColumn width={1 / 1}>
+                    <FormLabel hidden>
+                      <FormattedMessage
+                        id="container.signup.form.passwordAgain"
+                      />
+                    </FormLabel>
+                    <Input
+                      name="passwordConfirm"
+                      type="password"
+                      value={this.state.passwordConfirm}
+                      onChange={this.handlePasswordConfirmChange.bind(this)}
+                      placeholder={formatMessage({
+                        id: 'container.signup.form.passwordAgain'
+                      })}
+                    />
+                  </LayoutColumn>
+                </LayoutRow>
+              </div>
+
+              <div style={overflowStyle}>
+                <LayoutRow>
+                  <LayoutColumn width={1 / 1}>
+                    <Checkbox
+                      label={false}
+                      name="termsOfService"
+                      value="termsOfService"
+                      checked={this.state.termsOfService}
+                      onChange={this.handleTermsOfServiceChange.bind(this)}
+                    />
+                    <FormLabel>
+                      <FormattedMessage
+                        id="container.signup.form.termsAndConditions.iAgreeTo"
+                      />
+                      <a href={TERMS_AND_CONDITIONS_PAGE} target="_blank">
+                        <FormattedMessage
+                          id="container.signup.form.termsAndConditions.cloudFlaresTermsAndConditions"
+                        />
+                      </a>
+                      {' '}
+                      <FormattedMessage
+                        id="container.signup.form.termsAndConditions.and"
+                      />
+                      {' '}
+                      <a href={PRIVACY_POLICY_PAGE} target="_blank">
+                        <FormattedMessage
+                          id="container.signup.form.termsAndConditions.privacyPolicy"
+                        />
+                      </a>
+                      <FormattedMessage
+                        id="container.signup.form.termsAndConditions.period"
+                      />
+                    </FormLabel>
+                  </LayoutColumn>
+                </LayoutRow>
+              </div>
+
+              <div style={overflowStyle}>
+                <LayoutRow>
+                  <LayoutColumn width={1 / 1}>
+                    <Button
+                      submit
+                      type="success"
+                      onClick={e => this.handleSignUpSubmit(e)}
+                    >
+                      <FormattedMessage id="container.signup.form.button" />
+                    </Button>
+                  </LayoutColumn>
+                </LayoutRow>
+              </div>
+            </FormFieldset>
+          </LayoutContainer>
+        </Form>
+      </div>
+    );
   }
 }
 
