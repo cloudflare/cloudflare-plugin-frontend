@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.6.5](#2.6.5) - 2017-3-1
+### Fixed 
+- Fixed bugs related with signup form and cleared warnings printed to console [#102 ](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/102 )
+
 ## [2.6.4](#2.6.4) - 2017-3-1
 ### Fixed
 - Fixed a bug where loading spinner wasn't stopping [#93](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/93)
