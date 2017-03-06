@@ -17,11 +17,11 @@ class ActiveZoneSelector extends Component {
     };
   }
 
-  handleChange(zoneName) {
+  handleChange(event) {
     let { dispatch, zoneList } = this.props;
 
     _.values(zoneList).forEach(zone => {
-      if (zone.name === zoneName) {
+      if (zone.name === event.value) {
         dispatch(asyncZoneSetActiveZone(zone));
       }
     });
