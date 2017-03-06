@@ -33,8 +33,8 @@ class PurgeCacheCard extends Component {
     };
   }
 
-  handleTextareaChange(value) {
-    this.setState({ textareaValue: value });
+  handleTextareaChange(event) {
+    this.setState({ textareaValue: event.target.value });
   }
 
   handlePurgeCache() {
