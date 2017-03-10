@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.6.6](#2.6.6) - 2017-3-10
+### Fixed 
+- Fix styles for Active Zone selector [#104 ](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/104)
+- Fix some text fields not responding correctly [#105](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/105)
+
 ## [2.6.5](#2.6.5) - 2017-3-1
 ### Fixed 
 - Fixed bugs related with signup form and cleared warnings printed to console [#102 ](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/102 )
