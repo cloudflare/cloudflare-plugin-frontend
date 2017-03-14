@@ -57,7 +57,7 @@ class SSLCard extends Component {
                     })
                   },
                   {
-                    value: 'full_strict',
+                    value: 'strict',
                     label: formatMessage({
                       id: 'container.sslCard.select.full_strict'
                     })

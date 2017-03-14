@@ -144,19 +144,19 @@ class BrowserCacheTTLCard extends Component {
                     })
                   },
                   {
-                    value: 2592000,
+                    value: 2678400,
                     label: formatMessage({
                       id: 'container.browserIntegrityCheckCard.oneMonth'
                     })
                   },
                   {
-                    value: 5184000,
+                    value: 5356800,
                     label: formatMessage({
                       id: 'container.browserIntegrityCheckCard.twoMonths'
                     })
                   },
                   {
-                    value: 15552000,
+                    value: 16070400,
                     label: formatMessage({
                       id: 'container.browserIntegrityCheckCard.sixMonths'
                     })

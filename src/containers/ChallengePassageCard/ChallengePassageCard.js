@@ -88,7 +88,7 @@ class ChallengePassageCard extends Component {
                     })
                   },
                   {
-                    value: 14440,
+                    value: 14400,
                     label: formatMessage({
                       id: 'container.challengePassageCard.select.fourHours'
                     })
