@@ -118,13 +118,13 @@ class ChallengePassageCard extends Component {
                     })
                   },
                   {
-                    value: 2592000,
+                    value: parseInt('2592000'), // This is a hack to avoid webpack converting to scientific notation
                     label: formatMessage({
                       id: 'container.challengePassageCard.select.oneMonth'
                     })
                   },
                   {
-                    value: 31536000,
+                    value: parseInt('31536000'), // This is a hack to avoid webpack converting to scientific notation
                     label: formatMessage({
                       id: 'container.challengePassageCard.select.oneYear'
                     })
