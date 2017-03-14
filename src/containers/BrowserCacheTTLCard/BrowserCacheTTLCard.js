@@ -50,121 +50,121 @@ class BrowserCacheTTLCard extends Component {
                   {
                     value: 7200,
                     label: formatMessage({
-                      id: 'container.browserIntegrityCheckCard.twoHours'
+                      id: 'container.browserCacheTTLCard.twoHours'
                     })
                   },
                   {
                     value: 10800,
                     label: formatMessage({
-                      id: 'container.browserIntegrityCheckCard.threeHours'
+                      id: 'container.browserCacheTTLCard.threeHours'
                     })
                   },
                   {
                     value: 14400,
                     label: formatMessage({
-                      id: 'container.browserIntegrityCheckCard.fourHours'
+                      id: 'container.browserCacheTTLCard.fourHours'
                     })
                   },
                   {
-                    value: 18000,
+                    value: parseInt('18000'), // This is a hack to avoid webpack converting to scientific notation
                     label: formatMessage({
-                      id: 'container.browserIntegrityCheckCard.fiveHours'
+                      id: 'container.browserCacheTTLCard.fiveHours'
                     })
                   },
                   {
                     value: 28800,
                     label: formatMessage({
-                      id: 'container.browserIntegrityCheckCard.eightHours'
+                      id: 'container.browserCacheTTLCard.eightHours'
                     })
                   },
                   {
                     value: 43200,
                     label: formatMessage({
-                      id: 'container.browserIntegrityCheckCard.twelveHours'
+                      id: 'container.browserCacheTTLCard.twelveHours'
                     })
                   },
                   {
                     value: 57600,
                     label: formatMessage({
-                      id: 'container.browserIntegrityCheckCard.sixteenHours'
+                      id: 'container.browserCacheTTLCard.sixteenHours'
                     })
                   },
                   {
-                    value: 72000,
+                    value: parseInt('72000'), // This is a hack to avoid webpack converting to scientific notation
                     label: formatMessage({
-                      id: 'container.browserIntegrityCheckCard.twentyHours'
+                      id: 'container.browserCacheTTLCard.twentyHours'
                     })
                   },
                   {
                     value: 86400,
                     label: formatMessage({
-                      id: 'container.browserIntegrityCheckCard.oneDay'
+                      id: 'container.browserCacheTTLCard.oneDay'
                     })
                   },
                   {
                     value: 172800,
                     label: formatMessage({
-                      id: 'container.browserIntegrityCheckCard.twoDays'
+                      id: 'container.browserCacheTTLCard.twoDays'
                     })
                   },
                   {
                     value: 259200,
                     label: formatMessage({
-                      id: 'container.browserIntegrityCheckCard.threeDays'
+                      id: 'container.browserCacheTTLCard.threeDays'
                     })
                   },
                   {
                     value: 345600,
                     label: formatMessage({
-                      id: 'container.browserIntegrityCheckCard.fourDays'
+                      id: 'container.browserCacheTTLCard.fourDays'
                     })
                   },
                   {
-                    value: 432000,
+                    value: parseInt('432000'), // This is a hack to avoid webpack converting to scientific notation
                     label: formatMessage({
-                      id: 'container.browserIntegrityCheckCard.fiveDays'
+                      id: 'container.browserCacheTTLCard.fiveDays'
                     })
                   },
                   {
                     value: 691200,
                     label: formatMessage({
-                      id: 'container.browserIntegrityCheckCard.eightDays'
+                      id: 'container.browserCacheTTLCard.eightDays'
                     })
                   },
                   {
                     value: 1382400,
                     label: formatMessage({
-                      id: 'container.browserIntegrityCheckCard.sixteenDays'
+                      id: 'container.browserCacheTTLCard.sixteenDays'
                     })
                   },
                   {
                     value: 2073600,
                     label: formatMessage({
-                      id: 'container.browserIntegrityCheckCard.twentyFourDays'
+                      id: 'container.browserCacheTTLCard.twentyFourDays'
                     })
                   },
                   {
-                    value: 2592000,
+                    value: 2678400,
                     label: formatMessage({
-                      id: 'container.browserIntegrityCheckCard.oneMonth'
+                      id: 'container.browserCacheTTLCard.oneMonth'
                     })
                   },
                   {
-                    value: 5184000,
+                    value: 5356800,
                     label: formatMessage({
-                      id: 'container.browserIntegrityCheckCard.twoMonths'
+                      id: 'container.browserCacheTTLCard.twoMonths'
                     })
                   },
                   {
-                    value: 15552000,
+                    value: 16070400,
                     label: formatMessage({
-                      id: 'container.browserIntegrityCheckCard.sixMonths'
+                      id: 'container.browserCacheTTLCard.sixMonths'
                     })
                   },
                   {
-                    value: 31536000,
+                    value: parseInt('31536000'), // This is a hack to avoid webpack converting to scientific notation
                     label: formatMessage({
-                      id: 'container.browserIntegrityCheckCard.oneYear'
+                      id: 'container.browserCacheTTLCard.oneYear'
                     })
                   }
                 ]}
