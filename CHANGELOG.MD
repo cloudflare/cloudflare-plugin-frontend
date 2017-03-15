@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.6.7](#2.6.7) - 2017-3-15
+### Fixed 
+- Fix wrong values which are sent to the API [#107 ](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/107)
+
 ## [2.6.6](#2.6.6) - 2017-3-10
 ### Fixed 
 - Fix styles for Active Zone selector [#104 ](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/104)
