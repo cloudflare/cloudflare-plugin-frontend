@@ -6,9 +6,15 @@
   "scripts": {
     "build": "NODE_ENV=development node_modules/webpack/bin/webpack.js --progress",
     "build:production": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress",
-    "lint": "node_modules/eslint/bin/eslint.js src/ --ext js --ext json",
+    "clean": "rm -rf .jest && rm -rf node_modules",
+    "cover": "node_modules/jest/bin/jest.js --coverage",
     "format": "node_modules/eslint/bin/eslint.js src/ --fix --ext js --ext json",
-    "test": "mocha src/test/*/*.js --compilers js:babel-register"
+    "lint": "node_modules/eslint/bin/eslint.js src/ --ext js --ext json",
+    "test": "node_modules/jest/bin/jest.js"
+  },
+  "jest": {
+    "cacheDirectory": ".jest",
+    "collectCoverageFrom": ["src/**/*.{js,jsx}"]
   },
   "repository": {
     "type": "git",
@@ -27,7 +33,6 @@
     "babel-plugin-transform-object-rest-spread": "^6.22.0",
     "babel-preset-es2015": "^6.1.18",
     "babel-preset-react": "^6.1.18",
-    "babel-register": "^6.5.2",
     "c3": "^0.4.10",
     "cf-component-button": "^3.0.0",
     "cf-component-card": "^1.1.0",
@@ -51,15 +56,14 @@
     "cf-component-textarea": "^3.0.1",
     "cf-component-toggle": "^2.0.1",
     "cf-util-http": "^2.0.1",
-    "chai": "^3.5.0",
     "d3-format": "^1.0.2",
     "eslint": "^3.4.0",
     "eslint-loader": "^1.6.1",
     "eslint-plugin-prettier": "^2.0.0",
     "history": "^3.2.1",
     "intl": "^1.1.0",
+    "jest": "^19.0.2",
     "lodash": "^3.10.1",
-    "mocha": "^2.4.5",
     "normalizr": "^2.0.0",
     "prettier": "^0.18.0",
     "react": "^15.4.2",

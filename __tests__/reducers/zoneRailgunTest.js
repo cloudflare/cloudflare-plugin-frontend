@@ -1,6 +1,5 @@
-import { expect } from 'chai';
-import { zoneRailgunReducer } from '../../reducers/zoneRailgun';
-import * as ActionTypes from '../../constants/ActionTypes';
+import { zoneRailgunReducer } from '../../src/reducers/zoneRailgun';
+import * as ActionTypes from '../../src/constants/ActionTypes';
 
 const initialState = {
   entities: {},
@@ -9,7 +8,7 @@ const initialState = {
 
 describe('Zone Railgun Reducer', () => {
   it('should return the initial state', () => {
-    expect(zoneRailgunReducer(undefined, {})).to.eql(initialState);
+    expect(zoneRailgunReducer(undefined, {})).toEqual(initialState);
   });
 
   it('should handle ZONE_RAILGUNS_FETCH_ALL', () => {
@@ -17,7 +16,7 @@ describe('Zone Railgun Reducer', () => {
       zoneRailgunReducer(undefined, {
         type: ActionTypes.ZONE_RAILGUNS_FETCH_ALL
       })
-    ).to.eql({
+    ).toEqual({
       entities: {},
       isFetching: true
     });
@@ -37,7 +36,7 @@ describe('Zone Railgun Reducer', () => {
           }
         ]
       })
-    ).to.eql({
+    ).toEqual({
       entities: {
         zoneId: {
           railgunId: {
@@ -57,7 +56,7 @@ describe('Zone Railgun Reducer', () => {
       zoneRailgunReducer(undefined, {
         type: ActionTypes.ZONE_RAILGUNS_FETCH_ALL_ERROR
       })
-    ).to.eql(initialState);
+    ).toEqual(initialState);
   });
 
   it('should handle ZONE_RAILGUNS_CONNECTION_UPDATE', () => {
@@ -72,7 +71,7 @@ describe('Zone Railgun Reducer', () => {
           connected: true
         }
       })
-    ).to.eql({
+    ).toEqual({
       entities: {
         zoneId: {
           railgunId: {
@@ -99,7 +98,7 @@ describe('Zone Railgun Reducer', () => {
           connected: true
         }
       })
-    ).to.eql({
+    ).toEqual({
       entities: {
         zoneId: {
           railgunId: {
@@ -126,7 +125,7 @@ describe('Zone Railgun Reducer', () => {
           connected: true
         }
       })
-    ).to.eql({
+    ).toEqual({
       entities: {
         zoneId: {
           railgunId: {

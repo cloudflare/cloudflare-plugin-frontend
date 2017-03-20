@@ -3,3 +3,4 @@ node_modules/
 compiled.js
 compiled.js.map
 *.DS_Store
+coverage/

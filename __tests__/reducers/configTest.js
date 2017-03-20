@@ -1,10 +1,10 @@
-import { expect } from 'chai';
-import { configReducer } from '../../reducers/config';
-import * as ActionTypes from '../../constants/ActionTypes';
+
+import { configReducer } from '../../src/reducers/config';
+import * as ActionTypes from '../../src/constants/ActionTypes';
 
 describe('Config Reducer', () => {
   it('should return the initial state', () => {
-    expect(configReducer(undefined, {})).to.eql({
+    expect(configReducer(undefined, {})).toEqual({
       config: {},
       isFetching: false
     });
@@ -15,7 +15,7 @@ describe('Config Reducer', () => {
       configReducer(undefined, {
         type: ActionTypes.CONFIG_FETCH
       })
-    ).to.eql({
+    ).toEqual({
       config: {},
       isFetching: true
     });
@@ -27,7 +27,7 @@ describe('Config Reducer', () => {
         type: ActionTypes.CONFIG_FETCH_SUCCESS,
         config: { key: 'value' }
       })
-    ).to.eql({
+    ).toEqual({
       config: { key: 'value' },
       isFetching: false
     });
@@ -38,7 +38,7 @@ describe('Config Reducer', () => {
       configReducer(undefined, {
         type: ActionTypes.CONFIG_FETCH_ERROR
       })
-    ).to.eql({
+    ).toEqual({
       config: {},
       isFetching: false
     });
@@ -51,7 +51,7 @@ describe('Config Reducer', () => {
         key: 'key',
         value: 'value'
       })
-    ).to.eql({
+    ).toEqual({
       config: { key: 'value' },
       isFetching: false
     });

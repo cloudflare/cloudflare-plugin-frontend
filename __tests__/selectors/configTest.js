@@ -1,6 +1,5 @@
-import { expect } from 'chai';
-import { getAbsoluteUrl, getConfigValue } from '../../selectors/config';
-import { ABSOLUTE_URL_BASE_KEY } from '../../reducers/config.js';
+import { getAbsoluteUrl, getConfigValue } from '../../src/selectors/config';
+import { ABSOLUTE_URL_BASE_KEY } from '../../src/reducers/config.js';
 
 describe('Config Selector', () => {
   it('getAbsoluteUrl should concatenate the absolute URL', () => {
@@ -13,7 +12,7 @@ describe('Config Selector', () => {
         },
         'test.html'
       )
-    ).to.eql('http://site.com/test.html');
+    ).toEqual('http://site.com/test.html');
   });
 
   it(
@@ -26,7 +25,7 @@ describe('Config Selector', () => {
           },
           'test.html'
         )
-      ).to.eql('test.html');
+      ).toEqual('test.html');
     }
   );
 
@@ -40,7 +39,7 @@ describe('Config Selector', () => {
         },
         'key'
       )
-    ).to.eql('value');
+    ).toEqual('value');
   });
 
   it('isDNSPageEnabled should return true if key is true', () => {
@@ -53,6 +52,6 @@ describe('Config Selector', () => {
         },
         'isDNSPageEnabled'
       )
-    ).to.eql(true);
+    ).toEqual(true);
   });
 });

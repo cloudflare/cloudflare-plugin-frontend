@@ -1,5 +1,4 @@
-import { expect } from 'chai';
-import { pluginResponseOk } from '../../utils/PluginAPI/PluginAPI';
+import { pluginResponseOk } from '../../src/utils/PluginAPI/PluginAPI';
 
 describe('PluginAPI', () => {
   it('pluginResponseOk should return true for valid response', () => {
@@ -9,6 +8,6 @@ describe('PluginAPI', () => {
           success: true
         }
       })
-    ).to.eql(true);
+    ).toEqual(true);
   });
 });
