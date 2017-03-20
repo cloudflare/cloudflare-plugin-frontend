@@ -4,17 +4,20 @@
   "description": "A React/Redux frontend for Cloudflare plugins",
   "main": "src/index.js",
   "scripts": {
-    "build": "NODE_ENV=development node_modules/webpack/bin/webpack.js --progress",
-    "build:production": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress",
+    "build": "NODE_ENV=development webpack --progress",
+    "build:production": "NODE_ENV=production webpack -p --progress",
     "clean": "rm -rf .jest && rm -rf node_modules",
-    "cover": "node_modules/jest/bin/jest.js --coverage",
-    "format": "node_modules/eslint/bin/eslint.js src/ --fix --ext js --ext json",
-    "lint": "node_modules/eslint/bin/eslint.js src/ --ext js --ext json",
-    "test": "node_modules/jest/bin/jest.js"
+    "cover": "jest --coverage",
+    "format": "eslint src/ --fix --ext js --ext json",
+    "lint": "eslint src/ --ext js --ext json",
+    "test": "jest",
+    "update-snapshot": "jest --updateSnapshot"
   },
   "jest": {
     "cacheDirectory": ".jest",
-    "collectCoverageFrom": ["src/**/*.{js,jsx}"],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}"
+    ],
     "testMatch": [
       "**/test/**/*.js"
     ]
@@ -76,6 +79,7 @@
     "react-redux": "^4.0.0",
     "react-router": "^3.0.2",
     "react-router-redux": "^4.0.7",
+    "react-test-renderer": "^15.4.2",
     "redux": "^3.0.4",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^1.0.0",
