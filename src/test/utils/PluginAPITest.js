@@ -8,6 +8,6 @@ describe('PluginAPI', () => {
           success: true
         }
       })
-    ).toEqual(true);
+    ).toBeTruthy();
   });
 });

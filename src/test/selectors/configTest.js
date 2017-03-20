@@ -12,7 +12,7 @@ describe('Config Selector', () => {
         },
         'test.html'
       )
-    ).toEqual('http://site.com/test.html');
+    ).toBe('http://site.com/test.html');
   });
 
   it(
@@ -25,7 +25,7 @@ describe('Config Selector', () => {
           },
           'test.html'
         )
-      ).toEqual('test.html');
+      ).toBe('test.html');
     }
   );
 
@@ -39,7 +39,7 @@ describe('Config Selector', () => {
         },
         'key'
       )
-    ).toEqual('value');
+    ).toBe('value');
   });
 
   it('isDNSPageEnabled should return true if key is true', () => {
@@ -52,6 +52,6 @@ describe('Config Selector', () => {
         },
         'isDNSPageEnabled'
       )
-    ).toEqual(true);
+    ).toBeTruthy();
   });
 });

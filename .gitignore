@@ -4,3 +4,4 @@ compiled.js
 compiled.js.map
 *.DS_Store
 coverage/
+.jest/
