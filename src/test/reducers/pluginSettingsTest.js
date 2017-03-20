@@ -1,6 +1,5 @@
-import { expect } from 'chai';
-import { pluginSettingsReducer } from '../../reducers/pluginSettings';
-import * as ActionTypes from '../../constants/ActionTypes';
+import { pluginSettingsReducer } from '../..//reducers/pluginSettings';
+import * as ActionTypes from '../..//constants/ActionTypes';
 
 let initialState = {
   result: [],
@@ -10,7 +9,7 @@ let initialState = {
 
 describe('Plugin Settings Reducer', () => {
   it('should return the initial state', () => {
-    expect(pluginSettingsReducer(initialState, {})).to.eql(initialState);
+    expect(pluginSettingsReducer(initialState, {})).toEqual(initialState);
   });
 
   it('should handle PLUGIN_SETTINGS_FETCH', () => {
@@ -18,7 +17,7 @@ describe('Plugin Settings Reducer', () => {
       pluginSettingsReducer(initialState, {
         type: ActionTypes.PLUGIN_SETTINGS_FETCH
       })
-    ).to.eql({
+    ).toEqual({
       result: [],
       entities: {},
       isFetching: 'FETCH ALL PLUGIN SETTINGS'
@@ -39,7 +38,7 @@ describe('Plugin Settings Reducer', () => {
           }
         ]
       })
-    ).to.eql({
+    ).toEqual({
       entities: {
         zoneId: {
           zoneSettingId: {
@@ -60,7 +59,7 @@ describe('Plugin Settings Reducer', () => {
       pluginSettingsReducer(initialState, {
         type: ActionTypes.PLUGIN_SETTINGS_FETCH_ERROR
       })
-    ).to.eql(initialState);
+    ).toEqual(initialState);
   });
 
   it('should handle PLUGIN_SETTING_UPDATE ', () => {
@@ -75,7 +74,7 @@ describe('Plugin Settings Reducer', () => {
           modified_on: ''
         }
       })
-    ).to.eql({
+    ).toEqual({
       entities: {
         zoneId: {
           settingName: {
@@ -102,7 +101,7 @@ describe('Plugin Settings Reducer', () => {
           modified_on: ''
         }
       })
-    ).to.eql({
+    ).toEqual({
       entities: {
         zoneId: {
           settingName: {
@@ -129,7 +128,7 @@ describe('Plugin Settings Reducer', () => {
           modified_on: ''
         }
       })
-    ).to.eql({
+    ).toEqual({
       entities: {
         zoneId: {
           settingName: {

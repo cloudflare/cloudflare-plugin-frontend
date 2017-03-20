@@ -1,6 +1,5 @@
-import { expect } from 'chai';
-import { zonePurgeCacheReducer } from '../../reducers/zonePurgeCache';
-import * as ActionTypes from '../../constants/ActionTypes';
+import { zonePurgeCacheReducer } from '../..//reducers/zonePurgeCache';
+import * as ActionTypes from '../..//constants/ActionTypes';
 
 let initialState = {
   isFetching: false
@@ -8,7 +7,7 @@ let initialState = {
 
 describe('Plugin Settings Reducer', () => {
   it('should return the initial state', () => {
-    expect(zonePurgeCacheReducer(initialState, {})).to.eql(initialState);
+    expect(zonePurgeCacheReducer(initialState, {})).toEqual(initialState);
   });
 
   it('should handle ZONE_PURGE_CACHE', () => {
@@ -16,7 +15,7 @@ describe('Plugin Settings Reducer', () => {
       zonePurgeCacheReducer(initialState, {
         type: ActionTypes.ZONE_PURGE_CACHE
       })
-    ).to.eql({
+    ).toEqual({
       isFetching: true
     });
   });
@@ -26,7 +25,7 @@ describe('Plugin Settings Reducer', () => {
       zonePurgeCacheReducer(initialState, {
         type: ActionTypes.ZONE_PURGE_CACHE_SUCCESS
       })
-    ).to.eql({
+    ).toEqual({
       isFetching: false
     });
   });
@@ -36,7 +35,7 @@ describe('Plugin Settings Reducer', () => {
       zonePurgeCacheReducer(initialState, {
         type: ActionTypes.ZONE_PURGE_CACHE_ERROR
       })
-    ).to.eql({
+    ).toEqual({
       isFetching: false
     });
   });

@@ -1,10 +1,9 @@
-import { expect } from 'chai';
-import { activeZoneReducer } from '../../reducers/activeZone';
-import * as ActionTypes from '../../constants/ActionTypes';
+import { activeZoneReducer } from '../..//reducers/activeZone';
+import * as ActionTypes from '../..//constants/ActionTypes';
 
 describe('Active Zone Reducer', () => {
   it('should return the initial state', () => {
-    expect(activeZoneReducer(undefined, {})).to.eql({
+    expect(activeZoneReducer(undefined, {})).toEqual({
       id: '',
       name: ''
     });
@@ -16,7 +15,7 @@ describe('Active Zone Reducer', () => {
         type: ActionTypes.ZONES_SET_ACTIVE_ZONE,
         zone: { id: 1, name: 'name' }
       })
-    ).to.eql({
+    ).toEqual({
       id: 1,
       name: 'name'
     });
