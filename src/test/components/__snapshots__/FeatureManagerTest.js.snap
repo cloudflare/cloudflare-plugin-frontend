@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders disabled correctly 1`] = `
+<div>
+  error
+</div>
+`;
+
+exports[`renders enabled correctly 1`] = `
+<div>
+  children
+</div>
+`;
