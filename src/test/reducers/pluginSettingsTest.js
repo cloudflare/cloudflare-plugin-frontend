@@ -1,6 +1,6 @@
 
-import { pluginSettingsReducer } from '../../src/reducers/pluginSettings';
-import * as ActionTypes from '../../src/constants/ActionTypes';
+import { pluginSettingsReducer } from '../..//reducers/pluginSettings';
+import * as ActionTypes from '../..//constants/ActionTypes';
 
 let initialState = {
   result: [],

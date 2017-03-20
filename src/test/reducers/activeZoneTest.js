@@ -1,6 +1,6 @@
 
-import { activeZoneReducer } from '../../src/reducers/activeZone';
-import * as ActionTypes from '../../src/constants/ActionTypes';
+import { activeZoneReducer } from '../..//reducers/activeZone';
+import * as ActionTypes from '../..//constants/ActionTypes';
 
 describe('Active Zone Reducer', () => {
   it('should return the initial state', () => {

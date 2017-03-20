@@ -1,4 +1,4 @@
-import { pluginResponseOk } from '../../src/utils/PluginAPI/PluginAPI';
+import { pluginResponseOk } from '../..//utils/PluginAPI/PluginAPI';
 
 describe('PluginAPI', () => {
   it('pluginResponseOk should return true for valid response', () => {

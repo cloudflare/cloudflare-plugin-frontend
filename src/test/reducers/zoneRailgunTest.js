@@ -1,5 +1,5 @@
-import { zoneRailgunReducer } from '../../src/reducers/zoneRailgun';
-import * as ActionTypes from '../../src/constants/ActionTypes';
+import { zoneRailgunReducer } from '../..//reducers/zoneRailgun';
+import * as ActionTypes from '../..//constants/ActionTypes';
 
 const initialState = {
   entities: {},

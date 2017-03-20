@@ -14,7 +14,10 @@
   },
   "jest": {
     "cacheDirectory": ".jest",
-    "collectCoverageFrom": ["src/**/*.{js,jsx}"]
+    "collectCoverageFrom": ["src/**/*.{js,jsx}"],
+    "testMatch": [
+      "**/test/**/*.js"
+    ]
   },
   "repository": {
     "type": "git",

@@ -1,6 +1,6 @@
 
-import { zonePurgeCacheReducer } from '../../src/reducers/zonePurgeCache';
-import * as ActionTypes from '../../src/constants/ActionTypes';
+import { zonePurgeCacheReducer } from '../..//reducers/zonePurgeCache';
+import * as ActionTypes from '../..//constants/ActionTypes';
 
 let initialState = {
   isFetching: false

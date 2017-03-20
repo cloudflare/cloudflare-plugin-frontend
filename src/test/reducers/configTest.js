@@ -1,6 +1,6 @@
 
-import { configReducer } from '../../src/reducers/config';
-import * as ActionTypes from '../../src/constants/ActionTypes';
+import { configReducer } from '../..//reducers/config';
+import * as ActionTypes from '../..//constants/ActionTypes';
 
 describe('Config Reducer', () => {
   it('should return the initial state', () => {

@@ -1,5 +1,5 @@
-import { getAbsoluteUrl, getConfigValue } from '../../src/selectors/config';
-import { ABSOLUTE_URL_BASE_KEY } from '../../src/reducers/config.js';
+import { getAbsoluteUrl, getConfigValue } from '../..//selectors/config';
+import { ABSOLUTE_URL_BASE_KEY } from '../..//reducers/config.js';
 
 describe('Config Selector', () => {
   it('getAbsoluteUrl should concatenate the absolute URL', () => {
