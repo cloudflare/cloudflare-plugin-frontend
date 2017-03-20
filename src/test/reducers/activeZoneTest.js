@@ -1,4 +1,3 @@
-
 import { activeZoneReducer } from '../..//reducers/activeZone';
 import * as ActionTypes from '../..//constants/ActionTypes';
 

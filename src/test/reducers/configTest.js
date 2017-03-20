@@ -1,4 +1,3 @@
-
 import { configReducer } from '../..//reducers/config';
 import * as ActionTypes from '../..//constants/ActionTypes';
 
