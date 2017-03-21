@@ -1,7 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 
-import { FormattedMessage } from 'react-intl';
-
 export default class MarketingFeature extends Component {
   render() {
     /*
@@ -35,10 +33,10 @@ export default class MarketingFeature extends Component {
       <div style={divStyles}>
         <img src={this.props.imgSrc} style={iconStyles} />
         <span style={largeLinkStyles} href="#">
-          <FormattedMessage id={this.props.titleKey} />
+          {this.props.title}
         </span>
         <p style={columnPStyles}>
-          <FormattedMessage id={this.props.descriptionKey} />
+          {this.props.description}
         </p>
       </div>
     );
@@ -47,6 +45,6 @@ export default class MarketingFeature extends Component {
 
 MarketingFeature.propTypes = {
   imgSrc: PropTypes.string.isRequired,
-  titleKey: PropTypes.string.isRequired,
-  descriptionKey: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired
 };
