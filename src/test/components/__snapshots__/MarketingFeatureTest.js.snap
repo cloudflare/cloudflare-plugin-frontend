@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders enabled correctly 1`] = `
+<div
+  style={
+    Object {
+      "padding": "30px 15px 30px 15px",
+    }
+  }
+>
+  <img
+    src="imgSrc"
+    style={
+      Object {
+        "display": "block",
+        "height": "auto",
+        "margin": "0 auto",
+        "maxWidth": "100px",
+        "width": "40px",
+      }
+    }
+  />
+  <span
+    href="#"
+    style={
+      Object {
+        "color": "#2f7bbf",
+        "display": "block",
+        "fontSize": "16px",
+        "padding": "20px 0 0 0",
+        "textAlign": "center",
+        "width": "100%",
+      }
+    }
+  >
+    title
+  </span>
+  <p
+    style={
+      Object {
+        "fontSize": "12px",
+        "padding": "10px 0 0 0",
+        "textAlign": "center",
+      }
+    }
+  >
+    description
+  </p>
+</div>
+`;

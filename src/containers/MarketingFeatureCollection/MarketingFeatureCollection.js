@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { LayoutRow, LayoutColumn } from 'cf-component-layout';
 import { Flex } from 'cf-component-flex';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 import MarketingFeature
   from '../../components/MarketingFeature/MarketingFeature';
@@ -11,6 +12,7 @@ import { getAbsoluteUrl } from '../../selectors/config';
 class MarketingFeatureCollection extends Component {
   render() {
     const { config } = this.props;
+    let { formatMessage } = this.props.intl;
 
     return (
       <LayoutRow>
@@ -20,29 +22,45 @@ class MarketingFeatureCollection extends Component {
             <LayoutColumn width={4 / 18}>
               <MarketingFeature
                 imgSrc={getAbsoluteUrl(config, 'assets/icon-pin.svg')}
-                titleKey="component.marketingFeature.cdn.title"
-                descriptionKey="component.marketingFeature.cdn.description"
+                title={formatMessage({
+                  id: 'component.marketingFeature.cdn.title'
+                })}
+                description={formatMessage({
+                  id: 'component.marketingFeature.cdn.description'
+                })}
               />
             </LayoutColumn>
             <LayoutColumn width={4 / 18}>
               <MarketingFeature
                 imgSrc={getAbsoluteUrl(config, 'assets/icon-bolt.svg')}
-                titleKey="component.marketingFeature.optimization.title"
-                descriptionKey="component.marketingFeature.optimization.description"
+                title={formatMessage({
+                  id: 'component.marketingFeature.optimization.title'
+                })}
+                description={formatMessage({
+                  id: 'component.marketingFeature.optimization.description'
+                })}
               />
             </LayoutColumn>
             <LayoutColumn width={4 / 18}>
               <MarketingFeature
                 imgSrc={getAbsoluteUrl(config, 'assets/icon-shield.svg')}
-                titleKey="component.marketingFeature.security.title"
-                descriptionKey="component.marketingFeature.security.description"
+                title={formatMessage({
+                  id: 'component.marketingFeature.security.title'
+                })}
+                description={formatMessage({
+                  id: 'component.marketingFeature.security.description'
+                })}
               />
             </LayoutColumn>
             <LayoutColumn width={4 / 18}>
               <MarketingFeature
                 imgSrc={getAbsoluteUrl(config, 'assets/icon-lock.svg')}
-                titleKey="component.marketingFeature.ddos.title"
-                descriptionKey="component.marketingFeature.ddos.description"
+                title={formatMessage({
+                  id: 'component.marketingFeature.ddos.title'
+                })}
+                description={formatMessage({
+                  id: 'component.marketingFeature.ddos.description'
+                })}
               />
             </LayoutColumn>
             <LayoutColumn width={1 / 18}>&nbsp;</LayoutColumn>
@@ -57,4 +75,4 @@ function mapStateToProps(state) {
   return { config: state.config };
 }
 
-export default connect(mapStateToProps)(MarketingFeatureCollection);
+export default injectIntl(connect(mapStateToProps)(MarketingFeatureCollection));
