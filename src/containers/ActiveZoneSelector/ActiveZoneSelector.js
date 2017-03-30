@@ -57,7 +57,8 @@ class ActiveZoneSelector extends Component {
       top: '50%',
       transform: 'translateY(-50%)',
       width: '200px',
-      marginLeft: '170px'
+      marginLeft: '170px',
+      zIndex: '1'
     };
 
     return (
