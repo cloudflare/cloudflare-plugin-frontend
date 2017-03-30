@@ -178,8 +178,7 @@ class AnaltyicsPage extends Component {
             <FormattedMessage id="container.analyticsPage.title" />
           </Heading>
           <Tabs
-            active={REQUESTS_TAB}
-            activeTab={this.state.activeTab}
+            active={this.state.activeTab}
             tabs={[
               {
                 id: REQUESTS_TAB,
