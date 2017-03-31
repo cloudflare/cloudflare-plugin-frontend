@@ -51,8 +51,9 @@ class WaitForSettings extends Component {
       isPluginSettingsLoaded &&
       isAnalyticsLoaded;
 
-    // prettier-ignore
-    let link = (<a href={CLOUDFLARE_ADD_SITE_PAGE} target="_blank">Cloudflare</a>) ;
+    let link = (
+      <a href={CLOUDFLARE_ADD_SITE_PAGE} target="_blank">Cloudflare</a>
+    );
 
     return (
       <div>
