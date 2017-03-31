@@ -65,7 +65,7 @@ class WaitForSettings extends Component {
           <Text align="center">
             <FormattedMessage
               id="errors.noActiveZoneSelected"
-              values={{ link: link }}
+              values={{ link: link, domain: activeZone.name }}
             />
           </Text>}
         {isEverythingLoaded && isZoneOnCloudflare && this.props.children}
