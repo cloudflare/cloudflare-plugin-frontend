@@ -7,6 +7,7 @@ import { getPluginSettingsForZoneId } from '../../selectors/pluginSettings';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { getZoneAnalyticsForZoneId } from '../../selectors/zoneAnalytics';
 import { getAllZoneSettingsForZoneId } from '../../selectors/zoneSettings';
+import { CLOUDFLARE_ADD_SITE_PAGE } from '../../constants/UrlPaths.js';
 
 class WaitForSettings extends Component {
   render() {
@@ -17,6 +18,7 @@ class WaitForSettings extends Component {
       zoneAnalytics
     } = this.props;
     let { settings, pluginSettings, analytics } = this.props;
+    const { formatMessage } = this.props.intl;
 
     let isSettingsLoaded = true;
     let isPluginSettingsLoaded = true;
@@ -49,6 +51,9 @@ class WaitForSettings extends Component {
       isPluginSettingsLoaded &&
       isAnalyticsLoaded;
 
+    // prettier-ignore
+    let link = (<a href={CLOUDFLARE_ADD_SITE_PAGE} target="_blank">Cloudflare</a>) ;
+
     return (
       <div>
         {!isEverythingLoaded &&
@@ -57,7 +62,10 @@ class WaitForSettings extends Component {
         {!isEverythingLoaded &&
           !isZoneOnCloudflare &&
           <Text align="center">
-            <FormattedMessage id="errors.noActiveZoneSelected" />
+            <FormattedMessage
+              id="errors.noActiveZoneSelected"
+              values={{ link: link }}
+            />
           </Text>}
         {isEverythingLoaded && isZoneOnCloudflare && this.props.children}
       </div>
