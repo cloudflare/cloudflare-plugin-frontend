@@ -53,12 +53,9 @@ class ActiveZoneSelector extends Component {
 
     //vertically center the active zone selector
     let activeZoneSelectorStyles = {
-      position: 'absolute',
-      top: '50%',
-      transform: 'translateY(-50%)',
-      width: '200px',
-      marginLeft: '170px',
-      zIndex: '1'
+      position: 'relative',
+      top: '30px', // Hard code .header-main height/2
+      transform: 'translateY(-50%)'
     };
 
     return (

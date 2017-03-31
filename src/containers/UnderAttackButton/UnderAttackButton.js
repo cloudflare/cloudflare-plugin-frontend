@@ -37,8 +37,9 @@ class UnderAttackButton extends Component {
     let underAttackStyles = {
       fontSize: '75%',
       textAlign: 'right',
-      position: 'absolute',
-      top: '50%',
+      position: 'relative',
+      top: '30px', // Hard code .header-main height/2
+      left: '25%',
       width: '73%',
       transform: 'translateY(-50%)'
     };
