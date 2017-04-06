@@ -39,8 +39,9 @@ class MinifyCard extends Component {
       html: 'off'
     };
 
+    // Convert items selected to 'on'
     checkboxValueList.forEach(function(item) {
-      apiValueList[item.value] = 'on';
+      apiValueList[item] = 'on';
     });
 
     let { activeZoneId, dispatch } = this.props;
