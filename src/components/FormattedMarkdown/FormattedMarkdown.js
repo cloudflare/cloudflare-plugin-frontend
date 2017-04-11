@@ -23,7 +23,7 @@ class FormattedMarkdown extends Component {
     // 1) formatMessage({ id: mycomponent.myfeature.integrationName })
     // 2) formatMessage({ id: mycomponent.myfeature })
     // 3) "mycomponent.myfeature"
-    // 
+    //
     // NOTE: This will log errors in dev but not in production
     var formattedMessage = formatMessage({
       id: this.props.text + '.' + integrationName,
