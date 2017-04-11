@@ -2897,6 +2897,10 @@ makeerror@1.0.x:
   dependencies:
     tmpl "1.0.x"
 
+marked@^0.3.6:
+  version "0.3.6"
+  resolved "https://registry.yarnpkg.com/marked/-/marked-0.3.6.tgz#b2c6c618fccece4ef86c4fc6cb8a7cbf5aeda8d7"
+
 matchmedia@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/matchmedia/-/matchmedia-0.1.2.tgz#cfd47f2bf68fbc7f5ea1bd3a3cf1715ecba3c1bd"
