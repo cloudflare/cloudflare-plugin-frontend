@@ -1,13 +1,29 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
-import { Card, CardSection, CardContent } from 'cf-component-card';
+import { Card, CardSection, CardContent, CardDrawers } from 'cf-component-card';
 import Text from 'cf-component-text';
 import C3Wrapper from '../C3Wrapper/C3Wrapper';
 
+import FormattedMarkdown
+  from '../../components/FormattedMarkdown/FormattedMarkdown';
 import { humanFileSize } from '../../utils/utils';
 
 class AnalyticCard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeDrawer: null
+    };
+    this.handleDrawerClick = this.handleDrawerClick.bind(this);
+  }
+
+  handleDrawerClick(id) {
+    this.setState({
+      activeDrawer: id === this.state.activeDrawer ? null : id
+    });
+  }
+
   render() {
     let { title, description, data, dataType } = this.props;
     const { formatMessage } = this.props.intl;
@@ -86,6 +102,19 @@ class AnalyticCard extends Component {
               </div>
             </CardContent>
           </CardSection>
+          {this.props.helpTextId
+            ? <CardDrawers
+                onClick={this.handleDrawerClick}
+                active={this.state.activeDrawer}
+                drawers={[
+                  {
+                    id: 'help',
+                    name: formatMessage({ id: 'container.drawer.help' }),
+                    content: <FormattedMarkdown text={this.props.helpTextId} />
+                  }
+                ]}
+              />
+            : null}
         </Card>
       </div>
     );
@@ -96,7 +125,8 @@ AnalyticCard.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   data: React.PropTypes.object.isRequired,
-  dataType: React.PropTypes.string.isRequired
+  dataType: React.PropTypes.string.isRequired,
+  helpTextId: React.PropTypes.string.isRequired
 };
 
 function mapStateToProps() {

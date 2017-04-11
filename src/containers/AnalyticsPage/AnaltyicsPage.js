@@ -420,6 +420,7 @@ class AnaltyicsPage extends Component {
                 dataType={formatMessage({
                   id: 'container.analyticCard.ssl.datatype'
                 })}
+                helpTextId="container.analyticCard.ssl.drawer.help"
               />
             </LayoutColumn>
             <LayoutColumn width={2 / 150}>&nbsp;</LayoutColumn>
@@ -435,6 +436,7 @@ class AnaltyicsPage extends Component {
                 dataType={formatMessage({
                   id: 'container.analyticCard.bandwidth.datatype'
                 })}
+                helpTextId="container.analyticCard.bandwidth.drawer.help"
               />
             </LayoutColumn>
           </LayoutRow>

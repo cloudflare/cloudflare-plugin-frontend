@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { Card, CardSection, CardContent } from 'cf-component-card';
+import { Card, CardSection, CardContent, CardDrawers } from 'cf-component-card';
 import { Button } from 'cf-component-button';
 
+import FormattedMarkdown
+  from '../../components/FormattedMarkdown/FormattedMarkdown';
 import CustomCardControl
   from '../../components/CustomCardControl/CustomCardControl';
 import { BIZ_PLAN } from '../../constants/Plans.js';
@@ -15,6 +17,16 @@ class BypassCacheByCookieCard extends Component {
   constructor(props) {
     super(props);
     this.className = 'BypassCacheByCookieCard';
+    this.state = {
+      activeDrawer: null
+    };
+    this.handleDrawerClick = this.handleDrawerClick.bind(this);
+  }
+
+  handleDrawerClick(id) {
+    this.setState({
+      activeDrawer: id === this.state.activeDrawer ? null : id
+    });
   }
 
   onButtonClick(link) {
@@ -66,6 +78,21 @@ class BypassCacheByCookieCard extends Component {
               </Button>
             </CustomCardControl>
           </CardSection>
+          <CardDrawers
+            onClick={this.handleDrawerClick}
+            active={this.state.activeDrawer}
+            drawers={[
+              {
+                id: 'help',
+                name: formatMessage({ id: 'container.drawer.help' }),
+                content: (
+                  <FormattedMarkdown
+                    text="container.bypassCacheByCookieCard.drawer.help"
+                  />
+                )
+              }
+            ]}
+          />
         </Card>
       </div>
     );
