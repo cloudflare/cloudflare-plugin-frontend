@@ -3,7 +3,13 @@ import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import _ from 'lodash';
 
-import { Card, CardSection, CardContent, CardControl } from 'cf-component-card';
+import {
+  Card,
+  CardSection,
+  CardContent,
+  CardControl,
+  CardDrawers
+} from 'cf-component-card';
 import {
   Table,
   TableHead,
@@ -14,9 +20,25 @@ import {
 } from 'cf-component-table';
 import Toggle from 'cf-component-toggle';
 
+import FormattedMarkdown
+  from '../../components/FormattedMarkdown/FormattedMarkdown';
 import { asyncZoneRailgunConnectionUpdate } from '../../actions/zoneRailgun';
 
 class RailgunCard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeDrawer: null
+    };
+    this.handleDrawerClick = this.handleDrawerClick.bind(this);
+  }
+
+  handleDrawerClick(id) {
+    this.setState({
+      activeDrawer: id === this.state.activeDrawer ? null : id
+    });
+  }
+
   handleToggle(e, railgun) {
     let { activeZone, dispatch } = this.props;
     dispatch(asyncZoneRailgunConnectionUpdate(activeZone.id, railgun, e));
@@ -90,6 +112,19 @@ class RailgunCard extends Component {
                 </TableBody>
               </Table>}
           </CardSection>
+          <CardDrawers
+            onClick={this.handleDrawerClick}
+            active={this.state.activeDrawer}
+            drawers={[
+              {
+                id: 'help',
+                name: formatMessage({ id: 'container.drawer.help' }),
+                content: (
+                  <FormattedMarkdown text="container.railgunCard.drawer.help" />
+                )
+              }
+            ]}
+          />
         </Card>
       </div>
     );

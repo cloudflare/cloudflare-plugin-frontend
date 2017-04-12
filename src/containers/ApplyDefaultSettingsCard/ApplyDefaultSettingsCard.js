@@ -1,21 +1,47 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { Card, CardSection, CardContent, CardControl } from 'cf-component-card';
+import {
+  Card,
+  CardSection,
+  CardContent,
+  CardControl,
+  CardDrawers
+} from 'cf-component-card';
 import { Button } from 'cf-component-button';
+import Loading from 'cf-component-loading';
 
 import {
   getPluginSettingsIsFetching,
   getPluginSettingsModifiedDateForZoneId
 } from '../../selectors/pluginSettings';
 import { asyncPluginUpdateSetting } from '../../actions/pluginSettings';
-import Loading from 'cf-component-loading';
-import { getLastModifiedDate } from '../../utils/utils';
+import { getConfigValue } from '../../selectors/config.js';
+import FormattedMarkdown
+  from '../../components/FormattedMarkdown/FormattedMarkdown';
+import {
+  getLastModifiedDate,
+  formatMessageForIntegration
+} from '../../utils/utils';
 
 const SETTING_NAME = 'default_settings';
 const VALUE = true;
 
 class ApplyDefaultSettingsCard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeDrawer: null
+    };
+    this.handleDrawerClick = this.handleDrawerClick.bind(this);
+  }
+
+  handleDrawerClick(id) {
+    this.setState({
+      activeDrawer: id === this.state.activeDrawer ? null : id
+    });
+  }
+
   onButtonClick() {
     let { activeZoneId, dispatch } = this.props;
     dispatch(asyncPluginUpdateSetting(SETTING_NAME, activeZoneId, VALUE));
@@ -23,16 +49,18 @@ class ApplyDefaultSettingsCard extends Component {
 
   render() {
     const { formatMessage } = this.props.intl;
-    let { modifiedDate } = this.props;
+    let { modifiedDate, integrationName } = this.props;
 
     return (
       <div>
         <Card>
           <CardSection>
             <CardContent
-              title={formatMessage({
-                id: 'container.applydefaultsettingscard.title'
-              })}
+              title={formatMessageForIntegration(
+                this.props.intl,
+                'container.applydefaultsettingscard.title',
+                integrationName
+              )}
               footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}
             >
               <p>
@@ -54,6 +82,21 @@ class ApplyDefaultSettingsCard extends Component {
                   </Button>}
             </CardControl>
           </CardSection>
+          <CardDrawers
+            onClick={this.handleDrawerClick}
+            active={this.state.activeDrawer}
+            drawers={[
+              {
+                id: 'help',
+                name: formatMessage({ id: 'container.drawer.help' }),
+                content: (
+                  <FormattedMarkdown
+                    text="container.applydefaultsettingscard.drawer.help"
+                  />
+                )
+              }
+            ]}
+          />
         </Card>
       </div>
     );
@@ -68,7 +111,8 @@ function mapStateToProps(state) {
       SETTING_NAME,
       state
     ),
-    isFetching: getPluginSettingsIsFetching(state)
+    isFetching: getPluginSettingsIsFetching(state),
+    integrationName: getConfigValue(state.config, 'integrationName')
   };
 }
 export default injectIntl(connect(mapStateToProps)(ApplyDefaultSettingsCard));

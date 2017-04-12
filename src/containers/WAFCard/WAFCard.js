@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { Card, CardSection, CardContent } from 'cf-component-card';
+import { Card, CardSection, CardContent, CardDrawers } from 'cf-component-card';
 import Toggle from 'cf-component-toggle';
 
+import FormattedMarkdown
+  from '../../components/FormattedMarkdown/FormattedMarkdown';
 import { getLastModifiedDate } from '../../utils/utils';
 import {
   getZoneSettingsValueForZoneId,
@@ -18,6 +20,20 @@ const SETTING_NAME = 'waf';
 const MINIMUM_PLAN = PRO_PLAN;
 
 class WAFCard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeDrawer: null
+    };
+    this.handleDrawerClick = this.handleDrawerClick.bind(this);
+  }
+
+  handleDrawerClick(id) {
+    this.setState({
+      activeDrawer: id === this.state.activeDrawer ? null : id
+    });
+  }
+
   handleChange(value) {
     let { activeZoneId, dispatch } = this.props;
     value = value === true ? 'on' : 'off';
@@ -51,6 +67,17 @@ class WAFCard extends Component {
               />
             </CustomCardControl>
           </CardSection>
+          <CardDrawers
+            onClick={this.handleDrawerClick}
+            active={this.state.activeDrawer}
+            drawers={[
+              {
+                id: 'help',
+                name: formatMessage({ id: 'container.drawer.help' }),
+                content: <FormattedMarkdown text="container.waf.drawer.help" />
+              }
+            ]}
+          />
         </Card>
       </div>
     );

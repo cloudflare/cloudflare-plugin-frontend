@@ -3,8 +3,8 @@ import React, { Component, PropTypes } from 'react';
 export default class MarketingFeature extends Component {
   render() {
     /*
-         * These styles are stolen from the marketing site and aren't in our CSS
-         */
+     * These styles are stolen from the marketing site and aren't in our CSS
+     */
     let divStyles = {
       padding: '30px 15px 30px 15px'
     };

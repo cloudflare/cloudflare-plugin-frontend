@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { Card, CardSection, CardContent, CardControl } from 'cf-component-card';
+import {
+  Card,
+  CardSection,
+  CardContent,
+  CardControl,
+  CardDrawers
+} from 'cf-component-card';
 import Select from 'cf-component-select';
 
+import FormattedMarkdown
+  from '../../components/FormattedMarkdown/FormattedMarkdown';
 import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
 import { getLastModifiedDate } from '../../utils/utils';
 import {
@@ -14,6 +22,20 @@ import {
 const SETTING_NAME = 'ssl';
 
 class SSLCard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeDrawer: null
+    };
+    this.handleDrawerClick = this.handleDrawerClick.bind(this);
+  }
+
+  handleDrawerClick(id) {
+    this.setState({
+      activeDrawer: id === this.state.activeDrawer ? null : id
+    });
+  }
+
   handleChange(option) {
     let { dispatch } = this.props;
     let { value } = option;
@@ -67,6 +89,19 @@ class SSLCard extends Component {
               />
             </CardControl>
           </CardSection>
+          <CardDrawers
+            onClick={this.handleDrawerClick}
+            active={this.state.activeDrawer}
+            drawers={[
+              {
+                id: 'help',
+                name: formatMessage({ id: 'container.drawer.help' }),
+                content: (
+                  <FormattedMarkdown text="container.sslCard.drawer.help" />
+                )
+              }
+            ]}
+          />
         </Card>
       </div>
     );
