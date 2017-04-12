@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
 import marked from 'marked';
 
+import { formatMessageForIntegration } from '../../utils/utils';
 import { getConfigValue } from '../../selectors/config.js';
 
 // To support different translations for differents integrations add
@@ -18,12 +19,11 @@ class FormattedMarkdown extends Component {
     const { formatMessage } = this.props.intl;
     let { integrationName } = this.props;
 
-    let integrationKey = this.props.text + '.' + integrationName;
-    const messageId = !!this.props.intl.messages[integrationKey]
-      ? integrationKey
-      : this.props.text;
-
-    var formattedMessage = formatMessage({ id: messageId });
+    var formattedMessage = formatMessageForIntegration(
+      this.props.intl,
+      this.props.text,
+      integrationName
+    );
 
     return (
       <div
