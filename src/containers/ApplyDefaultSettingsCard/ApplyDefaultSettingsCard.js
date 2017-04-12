@@ -9,16 +9,20 @@ import {
   CardDrawers
 } from 'cf-component-card';
 import { Button } from 'cf-component-button';
+import Loading from 'cf-component-loading';
 
 import {
   getPluginSettingsIsFetching,
   getPluginSettingsModifiedDateForZoneId
 } from '../../selectors/pluginSettings';
 import { asyncPluginUpdateSetting } from '../../actions/pluginSettings';
-import Loading from 'cf-component-loading';
+import { getConfigValue } from '../../selectors/config.js';
 import FormattedMarkdown
   from '../../components/FormattedMarkdown/FormattedMarkdown';
-import { getLastModifiedDate } from '../../utils/utils';
+import {
+  getLastModifiedDate,
+  formatMessageForIntegration
+} from '../../utils/utils';
 
 const SETTING_NAME = 'default_settings';
 const VALUE = true;
@@ -45,16 +49,18 @@ class ApplyDefaultSettingsCard extends Component {
 
   render() {
     const { formatMessage } = this.props.intl;
-    let { modifiedDate } = this.props;
+    let { modifiedDate, integrationName } = this.props;
 
     return (
       <div>
         <Card>
           <CardSection>
             <CardContent
-              title={formatMessage({
-                id: 'container.applydefaultsettingscard.title'
-              })}
+              title={formatMessageForIntegration(
+                this.props.intl,
+                'container.applydefaultsettingscard.title',
+                integrationName
+              )}
               footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}
             >
               <p>
@@ -105,7 +111,8 @@ function mapStateToProps(state) {
       SETTING_NAME,
       state
     ),
-    isFetching: getPluginSettingsIsFetching(state)
+    isFetching: getPluginSettingsIsFetching(state),
+    integrationName: getConfigValue(state.config, 'integrationName')
   };
 }
 export default injectIntl(connect(mapStateToProps)(ApplyDefaultSettingsCard));
