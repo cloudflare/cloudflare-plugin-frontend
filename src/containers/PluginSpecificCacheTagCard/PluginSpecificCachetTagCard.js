@@ -82,7 +82,7 @@ class PluginSpecificCacheTagCard extends Component {
                 name: formatMessage({ id: 'container.drawer.help' }),
                 content: (
                   <FormattedMarkdown
-                    text="container.pluginSpecificCacheTagCard.drawer.help.magento"
+                    text="container.pluginSpecificCacheTagCard.drawer.help"
                   />
                 )
               }
