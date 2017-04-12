@@ -18,17 +18,12 @@ class FormattedMarkdown extends Component {
     const { formatMessage } = this.props.intl;
     let { integrationName } = this.props;
 
-    // This will try to do the following in order:
-    //
-    // 1) formatMessage({ id: mycomponent.myfeature.integrationName })
-    // 2) formatMessage({ id: mycomponent.myfeature })
-    // 3) "mycomponent.myfeature"
-    //
-    // NOTE: This will log errors in dev but not in production
-    var formattedMessage = formatMessage({
-      id: this.props.text + '.' + integrationName,
-      defaultMessage: formatMessage({ id: this.props.text })
-    });
+    let integrationKey = this.props.text + '.' + integrationName;
+    const messageId = !!this.props.intl.messages[integrationKey]
+      ? integrationKey
+      : this.props.text;
+
+    var formattedMessage = formatMessage({ id: messageId });
 
     return (
       <div
