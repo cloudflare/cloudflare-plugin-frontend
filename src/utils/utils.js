@@ -71,3 +71,18 @@ export function humanFileSize(bytes) {
 export function openWindow720x720(link) {
   window.open(link, '_blank', 'toolbar=0,status=0,width=720,height=700');
 }
+
+export function formatMessageForIntegration(
+  intl,
+  translationId,
+  integrationName
+) {
+  const { formatMessage } = intl;
+
+  let integrationKey = translationId + '.' + integrationName;
+  const messageId = !!intl.messages[integrationKey]
+    ? integrationKey
+    : translationId;
+
+  return formatMessage({ id: messageId });
+}

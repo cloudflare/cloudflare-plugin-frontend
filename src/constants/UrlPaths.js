@@ -16,3 +16,4 @@ export const TERMS_AND_CONDITIONS_PAGE = 'https://www.cloudflare.com/terms';
 export const PRIVACY_POLICY_PAGE = 'https://www.cloudflare.com/security-policy';
 export const CLOUDFLARE_ACCOUNT_PAGE =
   'https://www.cloudflare.com/a/account/my-account';
+export const CLOUDFLARE_ADD_SITE_PAGE = 'https://www.cloudflare.com/a/add-site';

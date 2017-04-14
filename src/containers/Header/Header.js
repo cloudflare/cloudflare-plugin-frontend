@@ -17,25 +17,29 @@ class Header extends Component {
     var logoStyle = {
       width: '170px',
       height: '30px',
-      position: 'absolute',
-      top: '50%',
+      position: 'relative',
+      top: '30px', // Hard code .header-main height/2
       transform: 'translateY(-50%)'
+    };
+
+    var columnStyle = {
+      position: 'relative'
     };
 
     return (
       <header id="header" className="header app-header">
         <div className="gradient-bar-header" />
         <div id="header-global" className="header-main">
-          <LayoutColumn width={1 / 8}>
+          <LayoutColumn width={1 / 8} style={columnStyle}>
             <img
               style={logoStyle}
               src={getAbsoluteUrl(config, 'assets/logo.svg')}
             />
           </LayoutColumn>
-          <LayoutColumn width={1 / 8}>
+          <LayoutColumn width={1 / 8} style={columnStyle}>
             <ActiveZoneSelector />
           </LayoutColumn>
-          <LayoutColumn width={6 / 8}>
+          <LayoutColumn width={6 / 8} style={columnStyle}>
             {isLoggedIn() && zoneSettings.entities[activeZone.id]
               ? <UnderAttackButton />
               : null}

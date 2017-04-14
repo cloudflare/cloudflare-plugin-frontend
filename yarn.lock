@@ -1056,12 +1056,18 @@ cf-component-radio@^2.0.0:
   dependencies:
     react "^0.14.2 || ^15.0.0-0"
 
-cf-component-select@^2.0.0, cf-component-select@^2.1.1:
+cf-component-select@^2.1.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/cf-component-select/-/cf-component-select-2.2.1.tgz#b967faa63b742ebbe3e2f0ef187977fbda780cf9"
   dependencies:
     react "^0.14.2 || ^15.0.0-0"
     react-select "1.0.0-rc.2 || 1.x"
+
+cf-component-select@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/cf-component-select/-/cf-component-select-2.4.0.tgz#38eb01ab51d306a1b7fbfe3e06ef924d642e4ffa"
+  dependencies:
+    react-select "1.0.0-rc.3 || 1.x"
 
 cf-component-table@^2.1.0:
   version "2.2.0"
@@ -1069,13 +1075,12 @@ cf-component-table@^2.1.0:
   dependencies:
     react "^0.14.2 || ^15.0.0-0"
 
-cf-component-tabs@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/cf-component-tabs/-/cf-component-tabs-2.0.0.tgz#6d381f2198e65ec919551763c391cfaae11aa9a9"
+cf-component-tabs@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/cf-component-tabs/-/cf-component-tabs-5.2.0.tgz#907619097a9670b47c4a546b6703875d355963e7"
   dependencies:
-    cf-component-select "^2.0.0"
-    cf-component-viewport "^2.0.0"
-    react "^0.14.2 || ^15.0.0-0"
+    cf-component-select "^2.4.0"
+    cf-component-viewport "^2.2.0"
 
 cf-component-text@^2.0.0:
   version "2.0.1"
@@ -1096,11 +1101,10 @@ cf-component-toggle@^2.0.1:
   dependencies:
     react "^0.14.2 || ^15.0.0-0"
 
-cf-component-viewport@^2.0.0:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/cf-component-viewport/-/cf-component-viewport-2.0.1.tgz#b4586925764537781c1aa6e3f5eaae8b46550b92"
+cf-component-viewport@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/cf-component-viewport/-/cf-component-viewport-2.2.0.tgz#074ab35301b504af933218d1d8adb862b01d7e94"
   dependencies:
-    react "^0.14.2 || ^15.0.0-0"
     react-responsive "^1.1.3"
 
 cf-util-http@^2.0.1:
@@ -2896,6 +2900,10 @@ makeerror@1.0.x:
   dependencies:
     tmpl "1.0.x"
 
+marked@^0.3.6:
+  version "0.3.6"
+  resolved "https://registry.yarnpkg.com/marked/-/marked-0.3.6.tgz#b2c6c618fccece4ef86c4fc6cb8a7cbf5aeda8d7"
+
 matchmedia@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/matchmedia/-/matchmedia-0.1.2.tgz#cfd47f2bf68fbc7f5ea1bd3a3cf1715ecba3c1bd"
@@ -3524,6 +3532,13 @@ react-router@^3.0.2:
 "react-select@1.0.0-rc.2 || 1.x":
   version "1.0.0-rc.2"
   resolved "https://registry.yarnpkg.com/react-select/-/react-select-1.0.0-rc.2.tgz#9fc11b149a3dc1ac831289d21b40a59742f82f8d"
+  dependencies:
+    classnames "^2.2.4"
+    react-input-autosize "^1.1.0"
+
+"react-select@1.0.0-rc.3 || 1.x":
+  version "1.0.0-rc.3"
+  resolved "https://registry.yarnpkg.com/react-select/-/react-select-1.0.0-rc.3.tgz#94ade090522153067eff09282d0525249ea1d9e3"
   dependencies:
     classnames "^2.2.4"
     react-input-autosize "^1.1.0"

@@ -87,14 +87,14 @@ class LoginPage extends Component {
 
     let signupLinkWithUTM = generateUTMLink(
       CLOUDFLARE_SIGNUP_PAGE,
-      config.integrationName,
-      config.integrationName,
+      getConfigValue(config, 'integrationName'),
+      getConfigValue(config, 'integrationName'),
       SIGNUP_UTM_CONTENT_IDENTIFIER
     );
     let accountLinkWithUTM = generateUTMLink(
       CLOUDFLARE_ACCOUNT_PAGE,
-      config.integrationName,
-      config.integrationName,
+      getConfigValue(config, 'integrationName'),
+      getConfigValue(config, 'integrationName'),
       COPY_API_KEY_UTM_CONTENT_IDENTIFIER
     );
 

@@ -178,8 +178,7 @@ class AnaltyicsPage extends Component {
             <FormattedMessage id="container.analyticsPage.title" />
           </Heading>
           <Tabs
-            active={REQUESTS_TAB}
-            activeTab={this.state.activeTab}
+            active={this.state.activeTab}
             tabs={[
               {
                 id: REQUESTS_TAB,
@@ -421,6 +420,7 @@ class AnaltyicsPage extends Component {
                 dataType={formatMessage({
                   id: 'container.analyticCard.ssl.datatype'
                 })}
+                helpTextId="container.analyticCard.ssl.drawer.help"
               />
             </LayoutColumn>
             <LayoutColumn width={2 / 150}>&nbsp;</LayoutColumn>
@@ -436,6 +436,7 @@ class AnaltyicsPage extends Component {
                 dataType={formatMessage({
                   id: 'container.analyticCard.bandwidth.datatype'
                 })}
+                helpTextId="container.analyticCard.bandwidth.drawer.help"
               />
             </LayoutColumn>
           </LayoutRow>

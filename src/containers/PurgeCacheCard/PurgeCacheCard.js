@@ -5,7 +5,13 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { Button, ButtonGroup } from 'cf-component-button';
 import { Dropdown, DropdownLink } from 'cf-component-dropdown';
 
-import { Card, CardSection, CardContent, CardControl } from 'cf-component-card';
+import {
+  Card,
+  CardSection,
+  CardContent,
+  CardControl,
+  CardDrawers
+} from 'cf-component-card';
 import {
   Modal,
   ModalHeader,
@@ -17,6 +23,8 @@ import {
 } from 'cf-component-modal';
 import Textarea from 'cf-component-textarea';
 
+import FormattedMarkdown
+  from '../../components/FormattedMarkdown/FormattedMarkdown';
 import {
   asyncZonePurgeCacheEverything,
   asyncZonePurgeCacheIndividualFiles
@@ -29,8 +37,16 @@ class PurgeCacheCard extends Component {
       isModalOpen: false,
       isIndividual: false,
       dropdownOpen: false,
-      textareaValue: ''
+      textareaValue: '',
+      activeDrawer: null
     };
+    this.handleDrawerClick = this.handleDrawerClick.bind(this);
+  }
+
+  handleDrawerClick(id) {
+    this.setState({
+      activeDrawer: id === this.state.activeDrawer ? null : id
+    });
   }
 
   handleTextareaChange(event) {
@@ -179,6 +195,21 @@ class PurgeCacheCard extends Component {
 
             </CardControl>
           </CardSection>
+          <CardDrawers
+            onClick={this.handleDrawerClick}
+            active={this.state.activeDrawer}
+            drawers={[
+              {
+                id: 'help',
+                name: formatMessage({ id: 'container.drawer.help' }),
+                content: (
+                  <FormattedMarkdown
+                    text="container.purgeCacheCard.drawer.help"
+                  />
+                )
+              }
+            ]}
+          />
         </Card>
       </div>
     );

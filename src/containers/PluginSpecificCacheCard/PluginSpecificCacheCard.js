@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { Card, CardSection, CardContent, CardControl } from 'cf-component-card';
+import {
+  Card,
+  CardSection,
+  CardContent,
+  CardControl,
+  CardDrawers
+} from 'cf-component-card';
 import {
   Modal,
   ModalHeader,
@@ -15,6 +21,8 @@ import Toggle from 'cf-component-toggle';
 import { Button } from 'cf-component-button';
 
 import { asyncPluginUpdateSetting } from '../../actions/pluginSettings';
+import FormattedMarkdown
+  from '../../components/FormattedMarkdown/FormattedMarkdown';
 import {
   getPluginSettingsValueForZoneId,
   getPluginSettingsModifiedDateForZoneId
@@ -27,8 +35,16 @@ class PluginSpecificCacheCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isModalOpen: false
+      isModalOpen: false,
+      activeDrawer: null
     };
+    this.handleDrawerClick = this.handleDrawerClick.bind(this);
+  }
+
+  handleDrawerClick(id) {
+    this.setState({
+      activeDrawer: id === this.state.activeDrawer ? null : id
+    });
   }
 
   handleModalOpen() {
@@ -106,6 +122,21 @@ class PluginSpecificCacheCard extends Component {
               </Modal>
             </CardControl>
           </CardSection>
+          <CardDrawers
+            onClick={this.handleDrawerClick}
+            active={this.state.activeDrawer}
+            drawers={[
+              {
+                id: 'help',
+                name: formatMessage({ id: 'container.drawer.help' }),
+                content: (
+                  <FormattedMarkdown
+                    text="container.pluginSpecificCacheCard.drawer.help"
+                  />
+                )
+              }
+            ]}
+          />
         </Card>
       </div>
     );
@@ -124,8 +155,7 @@ function mapStateToProps(state) {
       state.activeZone.id,
       SETTING_NAME,
       state
-    ),
-    integrationName: state.config.config.integrationName
+    )
   };
 }
 export default injectIntl(connect(mapStateToProps)(PluginSpecificCacheCard));
