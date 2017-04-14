@@ -35,9 +35,7 @@ class SecurityLevelCard extends Component {
               footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}
             >
               <p>
-                <FormattedMessage
-                  id="container.securityLevelCard.description"
-                />
+                <FormattedMessage id="container.securityLevelCard.description" />
               </p>
             </CardContent>
             <CardControl>

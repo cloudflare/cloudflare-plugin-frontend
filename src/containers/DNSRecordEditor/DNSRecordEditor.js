@@ -59,28 +59,26 @@ class DNSRecordEditor extends Component {
             </TableRow>
           </TableHead>
           <TableBody>
-            {_
-              .sortBy(_.values(this.props.dnsRecords), function(dnsRecord) {
-                return dnsRecord.name;
-              })
-              .map(dnsRecord => (
-                <TableRow key={dnsRecord.name}>
-                  <TableCell>{dnsRecord.type}</TableCell>
-                  <TableCell>{dnsRecord.name}</TableCell>
-                  <TableCell>{dnsRecord.content}</TableCell>
-                  <TableCell>{dnsRecord.ttl}</TableCell>
-                  <TableCell>
-                    {this.props.updateIsFetching === dnsRecord.name
-                      ? <Loading />
-                      : <Toggle
-                          label="Cloudflare Provisioned"
-                          name={dnsRecord.name + '_provisioned'}
-                          value={dnsRecord.proxied}
-                          onChange={e => this.handleToggle(e, dnsRecord)}
-                        />}
-                  </TableCell>
-                </TableRow>
-              ))}
+            {_.sortBy(_.values(this.props.dnsRecords), function(dnsRecord) {
+              return dnsRecord.name;
+            }).map(dnsRecord => (
+              <TableRow key={dnsRecord.name}>
+                <TableCell>{dnsRecord.type}</TableCell>
+                <TableCell>{dnsRecord.name}</TableCell>
+                <TableCell>{dnsRecord.content}</TableCell>
+                <TableCell>{dnsRecord.ttl}</TableCell>
+                <TableCell>
+                  {this.props.updateIsFetching === dnsRecord.name
+                    ? <Loading />
+                    : <Toggle
+                        label="Cloudflare Provisioned"
+                        name={dnsRecord.name + '_provisioned'}
+                        value={dnsRecord.proxied}
+                        onChange={e => this.handleToggle(e, dnsRecord)}
+                      />}
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </div>

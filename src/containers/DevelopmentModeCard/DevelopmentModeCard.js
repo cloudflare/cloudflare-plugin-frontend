@@ -35,9 +35,7 @@ class DevelopmentModeCard extends Component {
               footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}
             >
               <p>
-                <FormattedMessage
-                  id="container.developmentModeCard.description"
-                />
+                <FormattedMessage id="container.developmentModeCard.description" />
               </p>
             </CardContent>
             <CardControl>

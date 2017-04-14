@@ -53,14 +53,10 @@ class RailgunCard extends Component {
                       <FormattedMessage id="container.railgunCard.table.name" />
                     </TableHeadCell>
                     <TableHeadCell>
-                      <FormattedMessage
-                        id="container.railgunCard.table.railgunState"
-                      />
+                      <FormattedMessage id="container.railgunCard.table.railgunState" />
                     </TableHeadCell>
                     <TableHeadCell>
-                      <FormattedMessage
-                        id="container.railgunCard.table.connectedToWebsite"
-                      />
+                      <FormattedMessage id="container.railgunCard.table.connectedToWebsite" />
                     </TableHeadCell>
                   </TableRow>
                 </TableHead>
@@ -70,12 +66,8 @@ class RailgunCard extends Component {
                       <TableCell>{railgun.name}</TableCell>
                       <TableCell>
                         {railgun.enabled
-                          ? <FormattedMessage
-                              id="container.railgunCard.table.active"
-                            />
-                          : <FormattedMessage
-                              id="container.railgunCard.table.inactive"
-                            />}
+                          ? <FormattedMessage id="container.railgunCard.table.active" />
+                          : <FormattedMessage id="container.railgunCard.table.inactive" />}
                       </TableCell>
                       <TableCell>
                         <Toggle

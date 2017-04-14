@@ -37,9 +37,7 @@ class BrowserCacheTTLCard extends Component {
               footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}
             >
               <p>
-                <FormattedMessage
-                  id="container.browserCacheTTLCard.description"
-                />
+                <FormattedMessage id="container.browserCacheTTLCard.description" />
               </p>
             </CardContent>
             <CardControl>

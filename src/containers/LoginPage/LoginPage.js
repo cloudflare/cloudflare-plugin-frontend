@@ -123,9 +123,7 @@ class LoginPage extends Component {
                   <LayoutRow style={overflowStyle}>
                     <LayoutColumn width={1 / 1}>
                       <FormLabel>
-                        <FormattedMessage
-                          id="component.clientLogin.form.email"
-                        />
+                        <FormattedMessage id="component.clientLogin.form.email" />
                       </FormLabel>
                       <Input
                         name="email"
@@ -173,9 +171,7 @@ class LoginPage extends Component {
                           <LayoutColumn width={1 / 2}>
                             <p>
                               <Link className="pull-left" to={SIGN_UP_PAGE}>
-                                <FormattedMessage
-                                  id="component.login.form.signUp"
-                                />
+                                <FormattedMessage id="component.login.form.signUp" />
                               </Link>
                             </p>
                           </LayoutColumn>
@@ -186,18 +182,14 @@ class LoginPage extends Component {
                                 href={CLOUDFLARE_FORGOT_PASSWORD_PAGE}
                                 target="_blank"
                               >
-                                <FormattedMessage
-                                  id="component.login.form.forgotPassword"
-                                />
+                                <FormattedMessage id="component.login.form.forgotPassword" />
                               </Link>
                             </p>
                           </LayoutColumn>
                         </div>
                       : <div>
                           <p style={{ textAlign: 'center' }}>
-                            <FormattedMessage
-                              id="component.clientLogin.cloudflare.description"
-                            />
+                            <FormattedMessage id="component.clientLogin.cloudflare.description" />
                             {' '}
                             <a
                               onClick={openWindow720x720.bind(
@@ -210,9 +202,7 @@ class LoginPage extends Component {
                             .
                           </p>
                           <p style={{ textAlign: 'center' }}>
-                            <FormattedMessage
-                              id="component.clientLogin.form.apiKeyHelp"
-                            />
+                            <FormattedMessage id="component.clientLogin.form.apiKeyHelp" />
                             {' '}
                             <a
                               onClick={openWindow720x720.bind(

@@ -69,24 +69,16 @@ class DNSManagementPage extends Component {
               <TableHead>
                 <TableRow>
                   <TableHeadCell>
-                    <FormattedMessage
-                      id="container.dnsManagementPage.thead.domain"
-                    />
+                    <FormattedMessage id="container.dnsManagementPage.thead.domain" />
                   </TableHeadCell>
                   <TableHeadCell>
-                    <FormattedMessage
-                      id="container.dnsManagementPage.thead.cloudflarePlan"
-                    />
+                    <FormattedMessage id="container.dnsManagementPage.thead.cloudflarePlan" />
                   </TableHeadCell>
                   <TableHeadCell>
-                    <FormattedMessage
-                      id="container.dnsManagementPage.thead.zoneType"
-                    />
+                    <FormattedMessage id="container.dnsManagementPage.thead.zoneType" />
                   </TableHeadCell>
                   <TableHeadCell>
-                    <FormattedMessage
-                      id="container.dnsManagementPage.thead.status"
-                    />
+                    <FormattedMessage id="container.dnsManagementPage.thead.status" />
                   </TableHeadCell>
                 </TableRow>
               </TableHead>

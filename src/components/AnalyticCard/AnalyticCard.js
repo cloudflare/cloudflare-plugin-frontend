@@ -20,10 +20,12 @@ class AnalyticCard extends Component {
       }
       firstData = data.cached;
       secondData = data.all - data.cached;
-      firstText = humanFileSize(data.cached) +
+      firstText =
+        humanFileSize(data.cached) +
         ' ' +
         formatMessage({ id: 'container.analyticCard.bandwidth.firstText' });
-      secondText = humanFileSize(data.all) +
+      secondText =
+        humanFileSize(data.all) +
         ' ' +
         formatMessage({ id: 'container.analyticCard.bandwidth.secondText' });
     } else if (dataType === 'SSL') {
@@ -32,10 +34,12 @@ class AnalyticCard extends Component {
       }
       firstData = data.encrypted;
       secondData = data.unencrypted;
-      firstText = data.encrypted +
+      firstText =
+        data.encrypted +
         ' ' +
         formatMessage({ id: 'container.analyticCard.ssl.firstText' });
-      secondText = data.unencrypted +
+      secondText =
+        data.unencrypted +
         ' ' +
         formatMessage({ id: 'container.analyticCard.ssl.secondText' });
     }

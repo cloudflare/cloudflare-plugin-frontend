@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Active Zone Actions asyncZoneSetActiveZone should match snapshot for undefined zone.id 1`] = `
+Array [
+  Object {
+    "type": "ZONE_SET_ACTIVE_ZONE",
+    "zone": Object {},
+  },
+]
+`;
+
+exports[`Active Zone Actions asyncZoneSetActiveZone should match snapshot for valid zone.id 1`] = `
+Array [
+  Object {
+    "type": "ZONE_SET_ACTIVE_ZONE",
+    "zone": Object {
+      "id": "id",
+    },
+  },
+  Object {
+    "type": "DNS_RECORD_FETCH_LIST",
+  },
+  Object {
+    "type": "ZONES_RAILGUNS_FETCH_ALL",
+  },
+  Object {
+    "type": "PLUGIN_SETTINGS_FETCH",
+  },
+  Object {
+    "type": "ZONE_FETCH_SETTINGS",
+  },
+  Object {
+    "type": "ZONE_FETCH_ANALYTICS",
+  },
+]
+`;
+
+exports[`Active Zone Actions zoneSetActiveZone should match snapshot 1`] = `
+Object {
+  "type": "ZONE_SET_ACTIVE_ZONE",
+  "zone": Object {
+    "id": "id",
+  },
+}
+`;

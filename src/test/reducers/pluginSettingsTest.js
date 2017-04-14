@@ -64,16 +64,19 @@ describe('Plugin Settings Reducer', () => {
 
   it('should handle PLUGIN_SETTING_UPDATE ', () => {
     expect(
-      pluginSettingsReducer({ entities: { zoneId: {} } }, {
-        type: ActionTypes.PLUGIN_SETTING_UPDATE,
-        zoneId: 'zoneId',
-        setting: {
-          id: 'settingName',
-          value: true,
-          editable: true,
-          modified_on: ''
+      pluginSettingsReducer(
+        { entities: { zoneId: {} } },
+        {
+          type: ActionTypes.PLUGIN_SETTING_UPDATE,
+          zoneId: 'zoneId',
+          setting: {
+            id: 'settingName',
+            value: true,
+            editable: true,
+            modified_on: ''
+          }
         }
-      })
+      )
     ).toEqual({
       entities: {
         zoneId: {
@@ -91,16 +94,19 @@ describe('Plugin Settings Reducer', () => {
 
   it('should handle pluginUpdateSettingSuccess ', () => {
     expect(
-      pluginSettingsReducer({ entities: { zoneId: {} } }, {
-        type: ActionTypes.PLUGIN_SETTING_UPDATE_SUCCESS,
-        zoneId: 'zoneId',
-        setting: {
-          id: 'settingName',
-          value: true,
-          editable: true,
-          modified_on: ''
+      pluginSettingsReducer(
+        { entities: { zoneId: {} } },
+        {
+          type: ActionTypes.PLUGIN_SETTING_UPDATE_SUCCESS,
+          zoneId: 'zoneId',
+          setting: {
+            id: 'settingName',
+            value: true,
+            editable: true,
+            modified_on: ''
+          }
         }
-      })
+      )
     ).toEqual({
       entities: {
         zoneId: {
@@ -118,16 +124,19 @@ describe('Plugin Settings Reducer', () => {
 
   it('should handle PLUGIN_SETTING_UPDATE_ERROR ', () => {
     expect(
-      pluginSettingsReducer({ entities: { zoneId: {} } }, {
-        type: ActionTypes.PLUGIN_SETTING_UPDATE_ERROR,
-        zoneId: 'zoneId',
-        setting: {
-          id: 'settingName',
-          value: true,
-          editable: true,
-          modified_on: ''
+      pluginSettingsReducer(
+        { entities: { zoneId: {} } },
+        {
+          type: ActionTypes.PLUGIN_SETTING_UPDATE_ERROR,
+          zoneId: 'zoneId',
+          setting: {
+            id: 'settingName',
+            value: true,
+            editable: true,
+            modified_on: ''
+          }
         }
-      })
+      )
     ).toEqual({
       entities: {
         zoneId: {

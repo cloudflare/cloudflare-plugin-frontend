@@ -66,9 +66,7 @@ class PluginSpecificCacheCard extends Component {
               footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}
             >
               <p>
-                <FormattedMessage
-                  id="container.pluginSpecificCacheCard.description"
-                />
+                <FormattedMessage id="container.pluginSpecificCacheCard.description" />
               </p>
             </CardContent>
             <CardControl>
@@ -83,17 +81,13 @@ class PluginSpecificCacheCard extends Component {
               >
                 <ModalHeader>
                   <ModalTitle>
-                    <FormattedMessage
-                      id="container.pluginSpecificCacheCard.modal.title"
-                    />
+                    <FormattedMessage id="container.pluginSpecificCacheCard.modal.title" />
                   </ModalTitle>
                   <ModalClose onClick={this.handleModalClose.bind(this)} />
                 </ModalHeader>
                 <ModalBody>
                   <p>
-                    <FormattedMessage
-                      id="container.pluginSpecificCacheCard.modal.description"
-                    />
+                    <FormattedMessage id="container.pluginSpecificCacheCard.modal.description" />
                   </p>
                 </ModalBody>
                 <ModalFooter>
@@ -102,14 +96,10 @@ class PluginSpecificCacheCard extends Component {
                       type="primary"
                       onClick={this.handleChange.bind(this, true)}
                     >
-                      <FormattedMessage
-                        id="container.pluginSpecificCacheCard.modal.button"
-                      />
+                      <FormattedMessage id="container.pluginSpecificCacheCard.modal.button" />
                     </Button>
                     <Button onClick={this.handleModalClose.bind(this)}>
-                      <FormattedMessage
-                        id="container.pluginSpecificCacheCard.modal.buttonCancel"
-                      />
+                      <FormattedMessage id="container.pluginSpecificCacheCard.modal.buttonCancel" />
                     </Button>
                   </ModalActions>
                 </ModalFooter>

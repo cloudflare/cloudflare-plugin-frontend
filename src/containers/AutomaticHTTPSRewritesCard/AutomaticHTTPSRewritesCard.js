@@ -35,9 +35,7 @@ class AutomaticHTTPSRewritesCard extends Component {
               footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}
             >
               <p>
-                <FormattedMessage
-                  id="container.automatichttprewrites.description"
-                />
+                <FormattedMessage id="container.automatichttprewrites.description" />
               </p>
             </CardContent>
             <CardControl>

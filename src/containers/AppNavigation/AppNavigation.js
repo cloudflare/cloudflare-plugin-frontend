@@ -18,7 +18,8 @@ class AppNavigation extends Component {
   render() {
     let { config } = this.props;
 
-    return isLoggedIn() &&
+    return (
+      isLoggedIn() &&
       <div className="apps-nav secondary-nav">
         <div
           className="wrapper"
@@ -89,7 +90,8 @@ class AppNavigation extends Component {
             </li>
           </ul>
         </div>
-      </div>;
+      </div>
+    );
   }
 }
 

@@ -156,9 +156,7 @@ class SignUpPage extends Component {
                 <LayoutRow>
                   <LayoutColumn width={1 / 1}>
                     <FormLabel hidden>
-                      <FormattedMessage
-                        id="container.signup.form.passwordAgain"
-                      />
+                      <FormattedMessage id="container.signup.form.passwordAgain" />
                     </FormLabel>
                     <Input
                       name="passwordConfirm"
@@ -184,27 +182,17 @@ class SignUpPage extends Component {
                       onChange={this.handleTermsOfServiceChange.bind(this)}
                     />
                     <FormLabel>
-                      <FormattedMessage
-                        id="container.signup.form.termsAndConditions.iAgreeTo"
-                      />
+                      <FormattedMessage id="container.signup.form.termsAndConditions.iAgreeTo" />
                       <a href={TERMS_AND_CONDITIONS_PAGE} target="_blank">
-                        <FormattedMessage
-                          id="container.signup.form.termsAndConditions.cloudFlaresTermsAndConditions"
-                        />
+                        <FormattedMessage id="container.signup.form.termsAndConditions.cloudFlaresTermsAndConditions" />
                       </a>
                       {' '}
-                      <FormattedMessage
-                        id="container.signup.form.termsAndConditions.and"
-                      />
+                      <FormattedMessage id="container.signup.form.termsAndConditions.and" />
                       {' '}
                       <a href={PRIVACY_POLICY_PAGE} target="_blank">
-                        <FormattedMessage
-                          id="container.signup.form.termsAndConditions.privacyPolicy"
-                        />
+                        <FormattedMessage id="container.signup.form.termsAndConditions.privacyPolicy" />
                       </a>
-                      <FormattedMessage
-                        id="container.signup.form.termsAndConditions.period"
-                      />
+                      <FormattedMessage id="container.signup.form.termsAndConditions.period" />
                     </FormLabel>
                   </LayoutColumn>
                 </LayoutRow>

@@ -36,9 +36,7 @@ class ApplyDefaultSettingsCard extends Component {
               footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}
             >
               <p>
-                <FormattedMessage
-                  id="container.applydefaultsettingscard.description"
-                />
+                <FormattedMessage id="container.applydefaultsettingscard.description" />
               </p>
             </CardContent>
             <CardControl>
@@ -48,9 +46,7 @@ class ApplyDefaultSettingsCard extends Component {
                     type="primary"
                     onClick={this.onButtonClick.bind(this)}
                   >
-                    <FormattedMessage
-                      id="container.applydefaultsettingscard.button"
-                    />
+                    <FormattedMessage id="container.applydefaultsettingscard.button" />
                   </Button>}
             </CardControl>
           </CardSection>

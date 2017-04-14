@@ -45,9 +45,8 @@ class WaitForSettings extends Component {
 
     let isZoneOnCloudflare = isActiveZoneOnCloudflare(activeZone);
 
-    let isEverythingLoaded = isSettingsLoaded &&
-      isPluginSettingsLoaded &&
-      isAnalyticsLoaded;
+    let isEverythingLoaded =
+      isSettingsLoaded && isPluginSettingsLoaded && isAnalyticsLoaded;
 
     return (
       <div>
