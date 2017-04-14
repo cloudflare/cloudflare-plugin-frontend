@@ -64,7 +64,9 @@ class SSLCard extends Component {
                 options={[
                   {
                     value: 'off',
-                    label: formatMessage({ id: 'container.sslCard.select.off' })
+                    label: formatMessage({
+                      id: 'container.sslCard.select.off'
+                    })
                   },
                   {
                     value: 'flexible',

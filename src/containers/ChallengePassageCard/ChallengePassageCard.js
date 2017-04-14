@@ -57,9 +57,7 @@ class ChallengePassageCard extends Component {
               footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}
             >
               <p>
-                <FormattedMessage
-                  id="container.challengePassageCard.description"
-                />
+                <FormattedMessage id="container.challengePassageCard.description" />
               </p>
             </CardContent>
             <CardControl>

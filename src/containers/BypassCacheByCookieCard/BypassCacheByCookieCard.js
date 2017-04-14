@@ -40,7 +40,8 @@ class BypassCacheByCookieCard extends Component {
     let zone = zones[activeZone.name];
 
     // Currently this is hardcoded for WordPress only
-    let contentLink = 'https://support.cloudflare.com/hc/en-us/articles/236166048-Caching-Static-HTML-with-WordPress-WooCommerce';
+    let contentLink =
+      'https://support.cloudflare.com/hc/en-us/articles/236166048-Caching-Static-HTML-with-WordPress-WooCommerce';
     let upgradeLinkWithUTM = generateUTMLink(
       contentLink,
       config.integrationName,
@@ -58,9 +59,7 @@ class BypassCacheByCookieCard extends Component {
               })}
             >
               <p>
-                <FormattedMessage
-                  id="container.bypassCacheByCookieCard.description"
-                />
+                <FormattedMessage id="container.bypassCacheByCookieCard.description" />
               </p>
             </CardContent>
             <CustomCardControl
@@ -72,9 +71,7 @@ class BypassCacheByCookieCard extends Component {
                 type="primary"
                 onClick={this.onButtonClick.bind(this, upgradeLinkWithUTM)}
               >
-                <FormattedMessage
-                  id="container.bypassCacheByCookieCard.button"
-                />
+                <FormattedMessage id="container.bypassCacheByCookieCard.button" />
               </Button>
             </CustomCardControl>
           </CardSection>

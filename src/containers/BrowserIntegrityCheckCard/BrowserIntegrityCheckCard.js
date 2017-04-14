@@ -57,9 +57,7 @@ class BrowserIntegrityCheckCard extends Component {
               footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}
             >
               <p>
-                <FormattedMessage
-                  id="container.browserIntegrityCheckCard.description"
-                />
+                <FormattedMessage id="container.browserIntegrityCheckCard.description" />
               </p>
             </CardContent>
             <CardControl>

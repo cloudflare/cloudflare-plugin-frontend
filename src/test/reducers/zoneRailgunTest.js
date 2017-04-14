@@ -61,16 +61,19 @@ describe('Zone Railgun Reducer', () => {
 
   it('should handle ZONE_RAILGUNS_CONNECTION_UPDATE', () => {
     expect(
-      zoneRailgunReducer({ entities: { zoneId: {} } }, {
-        type: ActionTypes.ZONE_RAILGUNS_CONNECTION_UPDATE,
-        zoneId: 'zoneId',
-        zoneRailgun: {
-          id: 'railgunId',
-          name: 'railgun name',
-          enabled: true,
-          connected: true
+      zoneRailgunReducer(
+        { entities: { zoneId: {} } },
+        {
+          type: ActionTypes.ZONE_RAILGUNS_CONNECTION_UPDATE,
+          zoneId: 'zoneId',
+          zoneRailgun: {
+            id: 'railgunId',
+            name: 'railgun name',
+            enabled: true,
+            connected: true
+          }
         }
-      })
+      )
     ).toEqual({
       entities: {
         zoneId: {
@@ -88,16 +91,19 @@ describe('Zone Railgun Reducer', () => {
 
   it('should handle ZONE_RAILGUNS_CONNECTION_UPDATE_SUCCESSS', () => {
     expect(
-      zoneRailgunReducer({ entities: { zoneId: {} } }, {
-        type: ActionTypes.ZONE_RAILGUNS_CONNECTION_UPDATE_SUCCESSS,
-        zoneId: 'zoneId',
-        zoneRailgun: {
-          id: 'railgunId',
-          name: 'railgun name',
-          enabled: true,
-          connected: true
+      zoneRailgunReducer(
+        { entities: { zoneId: {} } },
+        {
+          type: ActionTypes.ZONE_RAILGUNS_CONNECTION_UPDATE_SUCCESSS,
+          zoneId: 'zoneId',
+          zoneRailgun: {
+            id: 'railgunId',
+            name: 'railgun name',
+            enabled: true,
+            connected: true
+          }
         }
-      })
+      )
     ).toEqual({
       entities: {
         zoneId: {
@@ -115,16 +121,19 @@ describe('Zone Railgun Reducer', () => {
 
   it('should handle ZONE_RAILGUNS_CONNECTION_UPDATE_ERROR', () => {
     expect(
-      zoneRailgunReducer({ entities: { zoneId: {} } }, {
-        type: ActionTypes.ZONE_RAILGUNS_CONNECTION_UPDATE_ERROR,
-        zoneId: 'zoneId',
-        zoneRailgun: {
-          id: 'railgunId',
-          name: 'railgun name',
-          enabled: true,
-          connected: true
+      zoneRailgunReducer(
+        { entities: { zoneId: {} } },
+        {
+          type: ActionTypes.ZONE_RAILGUNS_CONNECTION_UPDATE_ERROR,
+          zoneId: 'zoneId',
+          zoneRailgun: {
+            id: 'railgunId',
+            name: 'railgun name',
+            enabled: true,
+            connected: true
+          }
         }
-      })
+      )
     ).toEqual({
       entities: {
         zoneId: {

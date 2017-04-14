@@ -125,9 +125,7 @@ class PurgeCacheCard extends Component {
                     <DropdownLink
                       onClick={this.handleModalOpen.bind(this, true)}
                     >
-                      <FormattedMessage
-                        id="container.purgeCacheByURLCard.button"
-                      />
+                      <FormattedMessage id="container.purgeCacheByURLCard.button" />
                     </DropdownLink>
                   </Dropdown>}
               </ButtonGroup>

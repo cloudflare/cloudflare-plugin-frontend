@@ -4,6 +4,6 @@
     "prettier"
   ],
   "rules": {
-    "prettier/prettier": ["error", {"trailingComma": false, "singleQuote": true}]
+    "prettier/prettier": ["error", {"trailingComma": "none", "singleQuote": true}]
   }
 }
