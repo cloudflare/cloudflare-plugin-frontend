@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
-import marked from 'marked';
+import MarkdownIt from 'markdown-it';
 
 import { formatMessageForIntegration } from '../../utils/utils';
 import { getConfigValue } from '../../selectors/config.js';
@@ -25,10 +25,12 @@ class FormattedMarkdown extends Component {
       integrationName
     );
 
+    var md = new MarkdownIt();
+
     return (
       <div
         dangerouslySetInnerHTML={{
-          __html: marked(formattedMessage)
+          __html: md.render(formattedMessage)
         }}
       />
     );
