@@ -2,13 +2,26 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.7.0](#2.7.0) - 2017-4-25
+### Fixed 
+- Fix UTM codes for signup and account links [#112](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/112)
+- Fix a bug where analytic tab selection not working properly [#113](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/113)
+- Fix a bug where active zone selector was not clickable [#114](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/114)
+- Fixed bug where Minify was not updating [#116](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/116)
+
+### Changed
+- Clarified the text when domain is not on Cloudflare  [#115](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/115)
+
+### Added
+- Added help text for all cards [#118](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/118)
+
 ## [2.6.7](#2.6.7) - 2017-3-15
 ### Fixed 
-- Fix wrong values which are sent to the API [#107 ](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/107)
+- Fix wrong values which are sent to the API [#107](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/107)
 
 ## [2.6.6](#2.6.6) - 2017-3-10
 ### Fixed 
-- Fix styles for Active Zone selector [#104 ](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/104)
+- Fix styles for Active Zone selector [#104](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/104)
 - Fix some text fields not responding correctly [#105](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/105)
 
 ## [2.6.5](#2.6.5) - 2017-3-1
