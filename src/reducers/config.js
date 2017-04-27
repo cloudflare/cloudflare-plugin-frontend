@@ -15,7 +15,6 @@ export function configReducer(state = initialState, action) {
       });
     case ActionTypes.CONFIG_FETCH_SUCCESS:
       return Object.assign({}, state, {
-        config: action.config,
         isFetching: false
       });
     case ActionTypes.CONFIG_FETCH_ERROR:

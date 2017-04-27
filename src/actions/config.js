@@ -13,10 +13,9 @@ export function configFetch() {
   };
 }
 
-export function configFetchSuccess(config) {
+export function configFetchSuccess() {
   return {
-    type: ActionTypes.CONFIG_FETCH_SUCCESS,
-    config
+    type: ActionTypes.CONFIG_FETCH_SUCCESS
   };
 }
 
@@ -26,33 +25,45 @@ export function configFetchError() {
   };
 }
 
-export function asyncConfigFetch() {
+export function asyncConfigInit() {
+  return dispatch => {
+    dispatch(asyncConfigFetch('./config.js'));
+    dispatch(asyncConfigFetch('./userConfig.js'));
+    if (typeof absoluteUrlBase !== 'undefined') {
+      /*
+       * Some integrations don't work with relative paths because the URL doesn't match
+       * the actual file path, this function allows integrations to configure a base absolute
+       * url path to be used in components/Image. absoluteBaseUrl should be defined globally
+       * on the page where the SPA is loaded.
+       */
+      dispatch(configUpdateByKey(ABSOLUTE_URL_BASE_KEY, absoluteUrlBase));
+    }
+    //log user in if their email is in local storage
+    if (isLoggedIn()) {
+      dispatch(asyncUserLoginSuccess(getEmail()));
+    }
+  };
+}
+
+export function asyncConfigFetch(configUrl) {
   return dispatch => {
     dispatch(configFetch());
-
     let opts = {};
     opts.headers = { Accept: 'application/javascript' };
-    http.get('./config.js', opts, function(error, response) {
+    http.get(configUrl, opts, function(error, response) {
       if (response) {
-        let config = JSON.parse(response.text);
-        dispatch(configFetchSuccess(config));
-        if (typeof absoluteUrlBase !== 'undefined') {
-          /*
-                     * Some integrations don't work with relative paths because the URL doesn't match
-                     * the actual file path, this function allows integrations to configure a base absolute
-                     * url path to be used in components/Image. absoluteBaseUrl should be defined globally
-                     * on the page where the SPA is loaded.
-                     */
-          dispatch(configUpdateByKey(ABSOLUTE_URL_BASE_KEY, absoluteUrlBase));
-        }
-        dispatch(asyncIntlFetchTranslations(config.locale));
-        //log user in if their email is in local storage
-        if (isLoggedIn()) {
-          dispatch(asyncUserLoginSuccess(getEmail()));
+        dispatch(configFetchSuccess());
+        try {
+          let userConfig = JSON.parse(response.text);
+          Object.keys(userConfig).map(function(key) {
+            dispatch(configUpdateByKey(key, userConfig[key]));
+          });
+          dispatch(asyncIntlFetchTranslations());
+        } catch (e) {
+          dispatch(notificationAddError(e.message + ' ' + configUrl));
         }
       } else {
         dispatch(configFetchError());
-        dispatch(notificationAddError(error));
       }
     });
   };

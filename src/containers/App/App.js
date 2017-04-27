@@ -7,7 +7,7 @@ import { LayoutContainer, LayoutRow, LayoutColumn } from 'cf-component-layout';
 
 import AppNavigation from '../../containers/AppNavigation/AppNavigation';
 import { isLoggedIn } from '../../utils/Auth/Auth';
-import { asyncConfigFetch } from '../../actions/config';
+import { asyncConfigInit } from '../../actions/config';
 import GlobalNotifications
   from '../../containers/GlobalNotifications/GlobalNotifications';
 import Header from '../../containers/Header/Header';
@@ -68,7 +68,7 @@ const App = injectIntl(connect(mapStateToProps)(AppContainer));
 class AppWrapper extends React.Component {
   componentWillMount() {
     let { dispatch } = this.props;
-    dispatch(asyncConfigFetch());
+    dispatch(asyncConfigInit());
   }
 
   render() {
