@@ -59,7 +59,8 @@ class ImageOptimizationCard extends Component {
     let { activeZone, zones, modifiedDate } = this.props;
     let zone = zones[activeZone.name];
 
-    let imageOptimizationValue = this.props.mirageValue === 'on' &&
+    let imageOptimizationValue =
+      this.props.mirageValue === 'on' &&
       (this.props.polishValue === 'lossless' ||
         this.props.polishValue === 'lossy');
 
@@ -95,9 +96,7 @@ class ImageOptimizationCard extends Component {
                 id: 'help',
                 name: formatMessage({ id: 'container.drawer.help' }),
                 content: (
-                  <FormattedMarkdown
-                    text="container.imageOptimization.drawer.help"
-                  />
+                  <FormattedMarkdown text="container.imageOptimization.drawer.help" />
                 )
               }
             ]}

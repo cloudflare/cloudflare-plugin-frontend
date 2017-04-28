@@ -35,9 +35,11 @@ class ZoneProvisionContainer extends Component {
       zoneProvisionCnameIsFetching,
       zoneProvisionFullIsFetching
     } = this.props;
-    return zoneDeleteIsFetching ||
+    return (
+      zoneDeleteIsFetching ||
       zoneProvisionCnameIsFetching ||
-      zoneProvisionFullIsFetching;
+      zoneProvisionFullIsFetching
+    );
   }
 
   handleFullZoneProvisioningButtonClick() {
@@ -79,9 +81,7 @@ class ZoneProvisionContainer extends Component {
                       type="warning"
                       onClick={this.handleRequestOpen.bind(this)}
                     >
-                      <FormattedMessage
-                        id="container.zoneProvision.button.deprovision"
-                      />
+                      <FormattedMessage id="container.zoneProvision.button.deprovision" />
                     </Button>
                   </div>
                 </div>
@@ -92,9 +92,7 @@ class ZoneProvisionContainer extends Component {
                         href="https://support.cloudflare.com/hc/en-us/articles/203685674-Full-setup-versus-Partial-CNAME-setup"
                         target="_blank"
                       >
-                        <FormattedMessage
-                          id="container.zoneProvision.provisionDifference"
-                        />
+                        <FormattedMessage id="container.zoneProvision.provisionDifference" />
                       </a>
                     </div>
                   </div>
@@ -104,15 +102,14 @@ class ZoneProvisionContainer extends Component {
                         type="success"
                         onClick={this.handleProvisionCNAMEZone.bind(this)}
                       >
-                        <FormattedMessage
-                          id="container.zoneProvision.button.cname"
-                        />
+                        <FormattedMessage id="container.zoneProvision.button.cname" />
                       </Button>
                     </div>
                     <div className="col-8">
                       <FeatureManager
                         isEnabled={
-                          this.props.config.featureManagerIsFullZoneProvisioningEnabled
+                          this.props.config
+                            .featureManagerIsFullZoneProvisioningEnabled
                         }
                       >
                         <Button
@@ -121,9 +118,7 @@ class ZoneProvisionContainer extends Component {
                             this
                           )}
                         >
-                          <FormattedMessage
-                            id="container.zoneProvision.button.full"
-                          />
+                          <FormattedMessage id="container.zoneProvision.button.full" />
                         </Button>
                       </FeatureManager>
                     </div>
@@ -154,14 +149,10 @@ class ZoneProvisionContainer extends Component {
                 type="warning"
                 onClick={this.handleDeprovisionZone.bind(this)}
               >
-                <FormattedMessage
-                  id="container.zoneProvision.button.deprovision"
-                />
+                <FormattedMessage id="container.zoneProvision.button.deprovision" />
               </Button>
               <Button onClick={this.handleRequestClose.bind(this)}>
-                <FormattedMessage
-                  id="container.zoneProvision.modal.buttonCancel"
-                />
+                <FormattedMessage id="container.zoneProvision.modal.buttonCancel" />
               </Button>
             </ModalActions>
           </ModalFooter>
