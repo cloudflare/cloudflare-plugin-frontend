@@ -27,8 +27,7 @@ export function configFetchError() {
 
 export function asyncConfigInit() {
   return dispatch => {
-    dispatch(asyncConfigFetch('./config.js'));
-    dispatch(asyncConfigFetch('./userConfig.js'));
+    dispatch(asyncConfigFetch(['./config.js', './userConfig.js']));
     if (typeof absoluteUrlBase !== 'undefined') {
       /*
        * Some integrations don't work with relative paths because the URL doesn't match
@@ -45,11 +44,12 @@ export function asyncConfigInit() {
   };
 }
 
-export function asyncConfigFetch(configUrl) {
+export function asyncConfigFetch(configUrlList) {
   return dispatch => {
     dispatch(configFetch());
     let opts = {};
     opts.headers = { Accept: 'application/javascript' };
+    let configUrl = configUrlList.shift();
     http.get(configUrl, opts, function(error, response) {
       if (response) {
         dispatch(configFetchSuccess());
@@ -58,7 +58,11 @@ export function asyncConfigFetch(configUrl) {
           Object.keys(userConfig).map(function(key) {
             dispatch(configUpdateByKey(key, userConfig[key]));
           });
-          dispatch(asyncIntlFetchTranslations());
+          if (configUrlList.length > 0) {
+            dispatch(asyncConfigFetch(configUrlList));
+          } else {
+            dispatch(asyncIntlFetchTranslations());
+          }
         } catch (e) {
           dispatch(notificationAddError(e.message + ' ' + configUrl));
         }
