@@ -3,10 +3,7 @@ import * as ActionTypes from '../..//constants/ActionTypes';
 
 describe('Config Reducer', () => {
   it('should return the initial state', () => {
-    expect(configReducer(undefined, {})).toEqual({
-      config: {},
-      isFetching: false
-    });
+    expect(configReducer(undefined, {})).toMatchSnapshot();
   });
 
   it('should handle CONFIG_FETCH', () => {
@@ -14,22 +11,15 @@ describe('Config Reducer', () => {
       configReducer(undefined, {
         type: ActionTypes.CONFIG_FETCH
       })
-    ).toEqual({
-      config: {},
-      isFetching: true
-    });
+    ).toMatchSnapshot();
   });
 
   it('should handle CONFIG_FETCH_SUCCESS', () => {
     expect(
       configReducer(undefined, {
-        type: ActionTypes.CONFIG_FETCH_SUCCESS,
-        config: { key: 'value' }
+        type: ActionTypes.CONFIG_FETCH_SUCCESS
       })
-    ).toEqual({
-      config: { key: 'value' },
-      isFetching: false
-    });
+    ).toMatchSnapshot();
   });
 
   it('should handle CONFIG_FETCH_ERROR', () => {
@@ -37,10 +27,7 @@ describe('Config Reducer', () => {
       configReducer(undefined, {
         type: ActionTypes.CONFIG_FETCH_ERROR
       })
-    ).toEqual({
-      config: {},
-      isFetching: false
-    });
+    ).toMatchSnapshot();
   });
 
   it('should handle CONFIG_UPDATE_BY_KEY', () => {
@@ -50,9 +37,6 @@ describe('Config Reducer', () => {
         key: 'key',
         value: 'value'
       })
-    ).toEqual({
-      config: { key: 'value' },
-      isFetching: false
-    });
+    ).toMatchSnapshot();
   });
 });

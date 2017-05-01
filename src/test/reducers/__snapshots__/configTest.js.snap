@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Config Reducer should handle CONFIG_FETCH 1`] = `
+Object {
+  "config": Object {},
+  "isFetching": true,
+}
+`;
+
+exports[`Config Reducer should handle CONFIG_FETCH_ERROR 1`] = `
+Object {
+  "config": Object {},
+  "isFetching": false,
+}
+`;
+
+exports[`Config Reducer should handle CONFIG_FETCH_SUCCESS 1`] = `
+Object {
+  "config": Object {},
+  "isFetching": false,
+}
+`;
+
+exports[`Config Reducer should handle CONFIG_UPDATE_BY_KEY 1`] = `
+Object {
+  "config": Object {
+    "key": "value",
+  },
+  "isFetching": false,
+}
+`;
+
+exports[`Config Reducer should return the initial state 1`] = `
+Object {
+  "config": Object {},
+  "isFetching": false,
+}
+`;
