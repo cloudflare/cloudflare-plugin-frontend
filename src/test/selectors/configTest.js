@@ -15,19 +15,16 @@ describe('Config Selector', () => {
     ).toBe('http://site.com/test.html');
   });
 
-  it(
-    'getAbsoluteUrl should return url if no absolute url base is present',
-    () => {
-      expect(
-        getAbsoluteUrl(
-          {
-            config: {}
-          },
-          'test.html'
-        )
-      ).toBe('test.html');
-    }
-  );
+  it('getAbsoluteUrl should return url if no absolute url base is present', () => {
+    expect(
+      getAbsoluteUrl(
+        {
+          config: {}
+        },
+        'test.html'
+      )
+    ).toBe('test.html');
+  });
 
   it('getConfigValue should return value if key exists', () => {
     expect(

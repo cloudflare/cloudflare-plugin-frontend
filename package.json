@@ -72,7 +72,7 @@
     "lodash": "^3.10.1",
     "markdown-it": "^8.3.1",
     "normalizr": "^2.0.0",
-    "prettier": "^0.18.0",
+    "prettier": "^1.2.2",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-gateway": "^2.0.4",

@@ -125,9 +125,7 @@ class PurgeCacheCard extends Component {
                     <DropdownLink
                       onClick={this.handleModalOpen.bind(this, true)}
                     >
-                      <FormattedMessage
-                        id="container.purgeCacheByURLCard.button"
-                      />
+                      <FormattedMessage id="container.purgeCacheByURLCard.button" />
                     </DropdownLink>
                   </Dropdown>}
               </ButtonGroup>
@@ -205,9 +203,7 @@ class PurgeCacheCard extends Component {
                 id: 'help',
                 name: formatMessage({ id: 'container.drawer.help' }),
                 content: (
-                  <FormattedMarkdown
-                    text="container.purgeCacheCard.drawer.help"
-                  />
+                  <FormattedMarkdown text="container.purgeCacheCard.drawer.help" />
                 )
               }
             ]}

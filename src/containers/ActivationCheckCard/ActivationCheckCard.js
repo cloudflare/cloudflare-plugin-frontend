@@ -33,9 +33,7 @@ class ActivationCheckCard extends Component {
                 />
               </p>
               <p>
-                <FormattedMessage
-                  id="container.activationCheckCard.nameServers"
-                />
+                <FormattedMessage id="container.activationCheckCard.nameServers" />
               </p>
               <List>
                 {zone.name_servers.map(nameserver => (
@@ -43,9 +41,7 @@ class ActivationCheckCard extends Component {
                 ))}
               </List>
               <p>
-                <FormattedMessage
-                  id="container.activationCheckCard.description"
-                />
+                <FormattedMessage id="container.activationCheckCard.description" />
               </p>
             </CardContent>
             <CardControl>

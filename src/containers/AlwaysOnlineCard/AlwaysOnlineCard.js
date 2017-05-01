@@ -74,9 +74,7 @@ class AlwaysOnlineCard extends Component {
                 id: 'help',
                 name: formatMessage({ id: 'container.drawer.help' }),
                 content: (
-                  <FormattedMarkdown
-                    text="container.alwaysOnlineCard.drawer.help"
-                  />
+                  <FormattedMarkdown text="container.alwaysOnlineCard.drawer.help" />
                 )
               }
             ]}

@@ -95,9 +95,7 @@ class CacheLevelCard extends Component {
                 id: 'help',
                 name: formatMessage({ id: 'container.drawer.help' }),
                 content: (
-                  <FormattedMarkdown
-                    text="container.cacheLevelCard.drawer.help"
-                  />
+                  <FormattedMarkdown text="container.cacheLevelCard.drawer.help" />
                 )
               }
             ]}

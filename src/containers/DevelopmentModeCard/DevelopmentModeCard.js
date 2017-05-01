@@ -57,9 +57,7 @@ class DevelopmentModeCard extends Component {
               footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}
             >
               <p>
-                <FormattedMessage
-                  id="container.developmentModeCard.description"
-                />
+                <FormattedMessage id="container.developmentModeCard.description" />
               </p>
             </CardContent>
             <CardControl>
@@ -78,9 +76,7 @@ class DevelopmentModeCard extends Component {
                 id: 'help',
                 name: formatMessage({ id: 'container.drawer.help' }),
                 content: (
-                  <FormattedMarkdown
-                    text="container.developmentModeCard.drawer.help"
-                  />
+                  <FormattedMarkdown text="container.developmentModeCard.drawer.help" />
                 )
               }
             ]}
