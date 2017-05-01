@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import C3Wrapper from '../C3Wrapper/C3Wrapper';
 
 export default class TimeSeriesChart extends Component {
@@ -59,6 +60,6 @@ export default class TimeSeriesChart extends Component {
 }
 
 TimeSeriesChart.propTypes = {
-  xAxisValues: React.PropTypes.array,
-  yAxisLabel: React.PropTypes.string
+  xAxisValues: PropTypes.array,
+  yAxisLabel: PropTypes.string
 };

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { isActiveZoneOnCloudflare } from '../../selectors/activeZone';
 import Loading from 'cf-component-loading';
@@ -95,9 +96,9 @@ class WaitForSettings extends Component {
 }
 
 WaitForSettings.propTypes = {
-  settings: React.PropTypes.bool,
-  pluginSettings: React.PropTypes.bool,
-  analytics: React.PropTypes.bool
+  settings: PropTypes.bool,
+  pluginSettings: PropTypes.bool,
+  analytics: PropTypes.bool
 };
 
 function mapStateToProps(state) {
