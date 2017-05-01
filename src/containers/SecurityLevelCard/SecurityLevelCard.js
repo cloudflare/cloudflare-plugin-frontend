@@ -57,9 +57,7 @@ class SecurityLevelCard extends Component {
               footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}
             >
               <p>
-                <FormattedMessage
-                  id="container.securityLevelCard.description"
-                />
+                <FormattedMessage id="container.securityLevelCard.description" />
               </p>
             </CardContent>
             <CardControl>
@@ -110,9 +108,7 @@ class SecurityLevelCard extends Component {
                 id: 'help',
                 name: formatMessage({ id: 'container.drawer.help' }),
                 content: (
-                  <FormattedMarkdown
-                    text="container.securityLevelCard.drawer.help"
-                  />
+                  <FormattedMarkdown text="container.securityLevelCard.drawer.help" />
                 )
               }
             ]}

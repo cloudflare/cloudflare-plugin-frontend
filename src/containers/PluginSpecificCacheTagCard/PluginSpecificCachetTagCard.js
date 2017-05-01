@@ -81,9 +81,7 @@ class PluginSpecificCacheTagCard extends Component {
                 id: 'help',
                 name: formatMessage({ id: 'container.drawer.help' }),
                 content: (
-                  <FormattedMarkdown
-                    text="container.pluginSpecificCacheTagCard.drawer.help"
-                  />
+                  <FormattedMarkdown text="container.pluginSpecificCacheTagCard.drawer.help" />
                 )
               }
             ]}

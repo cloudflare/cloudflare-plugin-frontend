@@ -61,9 +61,8 @@ class WaitForSettings extends Component {
 
     let isZoneOnCloudflare = isActiveZoneOnCloudflare(activeZone);
 
-    let isEverythingLoaded = isSettingsLoaded &&
-      isPluginSettingsLoaded &&
-      isAnalyticsLoaded;
+    let isEverythingLoaded =
+      isSettingsLoaded && isPluginSettingsLoaded && isAnalyticsLoaded;
 
     var link = (
       <Link href={CLOUDFLARE_ADD_SITE_PAGE} target="_blank">Cloudflare</Link>
