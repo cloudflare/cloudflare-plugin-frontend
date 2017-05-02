@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
 import { Card, CardSection, CardContent, CardDrawers } from 'cf-component-card';
@@ -128,9 +129,9 @@ class AnalyticCard extends Component {
 AnalyticCard.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  data: React.PropTypes.object.isRequired,
-  dataType: React.PropTypes.string.isRequired,
-  helpTextId: React.PropTypes.string.isRequired
+  data: PropTypes.object.isRequired,
+  dataType: PropTypes.string.isRequired,
+  helpTextId: PropTypes.string.isRequired
 };
 
 function mapStateToProps() {

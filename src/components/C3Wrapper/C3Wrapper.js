@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import c3 from 'c3';
 
 export default class C3Wrapper extends Component {
@@ -28,5 +29,5 @@ export default class C3Wrapper extends Component {
 }
 
 C3Wrapper.propTypes = {
-  config: React.PropTypes.object.isRequired
+  config: PropTypes.object.isRequired
 };

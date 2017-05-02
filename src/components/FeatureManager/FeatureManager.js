@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class FeatureManager extends Component {
   render() {
@@ -12,6 +13,6 @@ export default class FeatureManager extends Component {
 }
 
 FeatureManager.propTypes = {
-  isEnabled: React.PropTypes.bool.isRequired,
-  error: React.PropTypes.string
+  isEnabled: PropTypes.bool.isRequired,
+  error: PropTypes.string
 };
