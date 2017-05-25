@@ -29,8 +29,8 @@ export function pluginCallback(callback) {
 export function pluginAccountPost(email, apiKey, callback) {
   let opts = {
     body: {
-      email: email,
-      apiKey: apiKey
+      email: email.trim(),
+      apiKey: apiKey.trim()
     }
   };
   return http.post(ENDPOINT + '/account/', opts, pluginCallback(callback));
