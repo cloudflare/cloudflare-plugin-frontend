@@ -72,8 +72,8 @@ export function userCreate(
   let opts = {
     body: {
       act: 'user_create',
-      cloudflare_email: cloudflare_email,
-      cloudflare_pass: cloudflare_pass
+      cloudflare_email: cloudflare_email.toString().trim(),
+      cloudflare_pass: cloudflare_pass.toString().trim()
     }
   };
 
