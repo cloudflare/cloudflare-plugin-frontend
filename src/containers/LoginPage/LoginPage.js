@@ -3,12 +3,11 @@ import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import { Button } from 'cf-component-button';
+import { Box } from 'cf-component-box';
 import { Form, FormHeader, FormFieldset, FormLabel } from 'cf-component-form';
 import Input from 'cf-component-input';
 import { LayoutContainer, LayoutRow, LayoutColumn } from 'cf-component-layout';
 
-import MarketingFeatureCollection
-  from '../../containers/MarketingFeatureCollection/MarketingFeatureCollection';
 import { asyncAPILogin, asyncLogin } from '../../actions/user';
 import {
   CLOUDFLARE_SIGNUP_PAGE,
@@ -152,13 +151,15 @@ class LoginPage extends Component {
                 <div style={overflowStyle}>
                   <LayoutRow>
                     <LayoutColumn width={1 / 1}>
-                      <Button
-                        submit
-                        type="success"
-                        onClick={e => this.handleLoginSubmit(e)}
-                      >
-                        <FormattedMessage id={loginButtonText} />
-                      </Button>
+                      <Box paddingTop="20px">
+                        <Button
+                          submit
+                          type="success"
+                          onClick={e => this.handleLoginSubmit(e)}
+                        >
+                          <FormattedMessage id={loginButtonText} />
+                        </Button>
+                      </Box>
                     </LayoutColumn>
                   </LayoutRow>
                 </div>
@@ -199,20 +200,21 @@ class LoginPage extends Component {
                             >
                               cloudflare.com
                             </a>
-                            .
-                          </p>
-                          <p style={{ textAlign: 'center' }}>
-                            <FormattedMessage id="component.clientLogin.form.apiKeyHelp" />
-                            {' '}
-                            <a
-                              onClick={openWindow720x720.bind(
-                                this,
-                                accountLinkWithUTM
-                              )}
-                            >
-                              here
-                            </a>
-                            .
+                            .{' '}
+                            <FormattedMessage id="component.clientLogin.form.alreadyHaveAccount" />
+                            <Box display="block">
+                              <FormattedMessage id="component.clientLogin.form.getApiKey" />
+                              {' '}
+                              <a
+                                onClick={openWindow720x720.bind(
+                                  this,
+                                  accountLinkWithUTM
+                                )}
+                              >
+                                here
+                              </a>
+                              .
+                            </Box>
                           </p>
                         </div>}
                   </LayoutColumn>
@@ -221,7 +223,6 @@ class LoginPage extends Component {
             </LayoutContainer>
           </Form>
         </div>
-        <MarketingFeatureCollection />
       </div>
     );
   }

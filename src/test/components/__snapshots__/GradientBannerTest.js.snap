@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders enabled correctly 1`] = `
+<div
+  className="cf-a cf-b cf-c cf-d cf-e cf-f cf-g cf-h"
+/>
+`;
