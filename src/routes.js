@@ -8,8 +8,8 @@ import AnalyticsPage from './containers/AnalyticsPage/AnaltyicsPage';
 import App from './containers/App/App';
 import DNSManagementPage
   from './containers/DNSManagementPage/DNSManagementPage';
-import Login from './containers/LoginPage/LoginPage';
-import Splash from './containers/SplashPage/SplashPage';
+import LoginPage from './containers/LoginPage/LoginPage';
+import SplashPage from './containers/SplashPage/SplashPage';
 import SignUpPage from './containers/SignUpPage/SignUpPage';
 import HomePage from './containers/HomePage/HomePage';
 import MoreSettingsPage from './containers/MoreSettingsPage/MoreSettingsPage';
@@ -25,8 +25,8 @@ function requireAuth(nextState, replaceState) {
 
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={Splash} />
-    <Route path={UrlPaths.LOGIN_PAGE} component={Login} />
+    <IndexRoute component={SplashPage} />
+    <Route path={UrlPaths.LOGIN_PAGE} component={LoginPage} />
     <Route path={UrlPaths.SIGN_UP_PAGE} component={SignUpPage} />
     <Route
       path={UrlPaths.HOME_PAGE}
