@@ -27,20 +27,23 @@ export function configFetchError() {
 
 export function asyncConfigInit() {
   return dispatch => {
+<<<<<<< HEAD
     /*
      * 1. Fetch config.js
      * 2. Fetch userConfig.js (which may not exist)
      * 3. Fetch translations with the language from the config. 
      */
     dispatch(asyncConfigFetch());
-    if (typeof absoluteUrlBase !== 'undefined') {
+    if (typeof window.absoluteUrlBase !== 'undefined') {
       /*
        * Some integrations don't work with relative paths because the URL doesn't match
        * the actual file path, this function allows integrations to configure a base absolute
        * url path to be used in components/Image. absoluteBaseUrl should be defined globally
        * on the page where the SPA is loaded.
        */
-      dispatch(configUpdateByKey(ABSOLUTE_URL_BASE_KEY, absoluteUrlBase));
+      dispatch(
+        configUpdateByKey(ABSOLUTE_URL_BASE_KEY, window.absoluteUrlBase)
+      );
     }
     //log user in if their email is in local storage
     if (isLoggedIn()) {

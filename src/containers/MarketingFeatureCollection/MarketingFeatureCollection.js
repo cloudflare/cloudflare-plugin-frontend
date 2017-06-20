@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { LayoutRow, LayoutColumn } from 'cf-component-layout';
 import { Flex } from 'cf-component-flex';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 
 import MarketingFeature
   from '../../components/MarketingFeature/MarketingFeature';

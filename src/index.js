@@ -15,7 +15,7 @@ const history = syncHistoryWithStore(createHistory(), store);
  * Register our RestProxyCallback to send all cf-util-http calls to
  * our backend instead of their actual endpoint.
  */
-http.beforeSend(RestProxyCallback);
+http.beforeSend(window.RestProxyCallback);
 
 ReactDOM.render(
   <Provider store={store}>

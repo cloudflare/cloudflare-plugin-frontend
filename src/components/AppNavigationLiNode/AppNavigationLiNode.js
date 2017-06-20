@@ -31,5 +31,6 @@ export default class AppNavigationLiNode extends Component {
 
 AppNavigationLiNode.propTypes = {
   onClick: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  children: PropTypes.node
 };

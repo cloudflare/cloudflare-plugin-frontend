@@ -91,6 +91,7 @@ class ZoneProvisionContainer extends Component {
                       <a
                         href="https://support.cloudflare.com/hc/en-us/articles/203685674-Full-setup-versus-Partial-CNAME-setup"
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
                         <FormattedMessage id="container.zoneProvision.provisionDifference" />
                       </a>

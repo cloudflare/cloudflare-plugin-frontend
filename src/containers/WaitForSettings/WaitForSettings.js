@@ -33,7 +33,6 @@ class WaitForSettings extends Component {
       analytics,
       config
     } = this.props;
-    const { formatMessage } = this.props.intl;
 
     let isSettingsLoaded = true;
     let isPluginSettingsLoaded = true;
@@ -98,7 +97,15 @@ class WaitForSettings extends Component {
 WaitForSettings.propTypes = {
   settings: PropTypes.bool,
   pluginSettings: PropTypes.bool,
-  analytics: PropTypes.bool
+  analytics: PropTypes.bool,
+  dispatch: PropTypes.func,
+  activeZone: PropTypes.object,
+  zoneSettings: PropTypes.object,
+  zonePluginSettings: PropTypes.object,
+  zoneAnalytics: PropTypes.object,
+  config: PropTypes.object,
+  intl: PropTypes.object,
+  children: PropTypes.node
 };
 
 function mapStateToProps(state) {

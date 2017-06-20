@@ -14,5 +14,6 @@ export default class FeatureManager extends Component {
 
 FeatureManager.propTypes = {
   isEnabled: PropTypes.bool.isRequired,
-  error: PropTypes.string
+  error: PropTypes.string,
+  children: PropTypes.node
 };

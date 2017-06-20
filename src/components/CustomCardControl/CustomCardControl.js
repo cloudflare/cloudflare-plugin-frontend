@@ -58,7 +58,12 @@ class CustomCardControl extends Component {
 
 CustomCardControl.propTypes = {
   name: PropTypes.string,
-  indentifier: PropTypes.string.isRequired
+  indentifier: PropTypes.string.isRequired,
+  integrationName: PropTypes.string,
+  activeZone: PropTypes.string,
+  currentPlan: PropTypes.string,
+  minimumPlan: PropTypes.string,
+  children: PropTypes.node
 };
 
 function mapStateToProps(state) {
