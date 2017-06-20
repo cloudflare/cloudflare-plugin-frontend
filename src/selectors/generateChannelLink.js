@@ -6,20 +6,10 @@
  */
 
 export function generateChannelLink(pageURL, integrationName) {
-  let channelName;
-  switch (integrationName) {
-    case 'Magento':
-      channelName = 'Integration: Magento 2';
-      break;
-    case 'cpanel':
-      channelName = 'Integration: CPanel';
-      break;
-    case 'wordpress':
-      channelName = 'Integration: WordPress';
-      break;
-    default:
-      channelName = '';
+  if (!integrationName) {
+    return encodeURI(`${pageURL}`);
   }
+  let channelName = `Integration:${integrationName}`;
   if (pageURL.indexOf('?') > -1) {
     return encodeURI(`${pageURL}&channel=${channelName}`);
   }
