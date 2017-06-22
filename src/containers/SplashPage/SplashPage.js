@@ -59,16 +59,20 @@ class SplashPage extends Component {
   render() {
     const { config } = this.props;
 
+    const integrationName = getConfigValue(config, 'integrationName');
+    const integrationNameCapital =
+      integrationName.charAt(0).toUpperCase() + integrationName.slice(1);
+
     let signupLinkWithUTM = generateUTMLink(
       CLOUDFLARE_SIGNUP_PAGE,
-      getConfigValue(config, 'integrationName'),
-      getConfigValue(config, 'integrationName'),
+      integrationName,
+      integrationName,
       SIGNUP_SPLASH_UTM_CONTENT_IDENTIFIER
     );
 
     let signupLinkWithUTMAndChannel = generateChannelLink(
       signupLinkWithUTM,
-      getConfigValue(config, 'integrationName')
+      integrationName
     );
 
     return (
@@ -80,7 +84,12 @@ class SplashPage extends Component {
                 <LayoutRow>
                   <LayoutColumn width={1 / 1}>
                     <Heading size={1}>
-                      <FormattedMessage id="container.splashPage.heading.speedUp" />
+                      <FormattedMessage
+                        id="container.splashPage.heading.speedUp"
+                        values={{
+                          integrationName: integrationNameCapital
+                        }}
+                      />
                     </Heading>
                   </LayoutColumn>
                 </LayoutRow>
