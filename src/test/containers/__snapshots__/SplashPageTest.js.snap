@@ -141,7 +141,7 @@ exports[`renders enabled correctly 1`] = `
                       }
                     >
                       <img
-                        src="assets/global-caching.png"
+                        src="assets/global-caching.svg"
                         style={
                           Object {
                             "display": "block",
@@ -197,7 +197,7 @@ exports[`renders enabled correctly 1`] = `
                       }
                     >
                       <img
-                        src="assets/web-optimization.png"
+                        src="assets/web-optimization.svg"
                         style={
                           Object {
                             "display": "block",
@@ -253,7 +253,7 @@ exports[`renders enabled correctly 1`] = `
                       }
                     >
                       <img
-                        src="assets/security.png"
+                        src="assets/security.svg"
                         style={
                           Object {
                             "display": "block",
@@ -309,7 +309,7 @@ exports[`renders enabled correctly 1`] = `
                       }
                     >
                       <img
-                        src="assets/insight.png"
+                        src="assets/insight.svg"
                         style={
                           Object {
                             "display": "block",
