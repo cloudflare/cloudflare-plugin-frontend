@@ -27,7 +27,6 @@ export function configFetchError() {
 
 export function asyncConfigInit() {
   return dispatch => {
-<<<<<<< HEAD
     /*
      * 1. Fetch config.js
      * 2. Fetch userConfig.js (which may not exist)
