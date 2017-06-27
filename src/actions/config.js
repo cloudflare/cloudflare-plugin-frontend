@@ -30,7 +30,7 @@ export function asyncConfigInit() {
     /*
      * 1. Fetch config.js
      * 2. Fetch userConfig.js (which may not exist)
-     * 3. Fetch translations witht he language from the config. 
+     * 3. Fetch translations with the language from the config. 
      */
     dispatch(asyncConfigFetch());
     if (typeof absoluteUrlBase !== 'undefined') {
