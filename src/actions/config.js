@@ -27,7 +27,12 @@ export function configFetchError() {
 
 export function asyncConfigInit() {
   return dispatch => {
-    dispatch(asyncConfigFetch(['./config.js', './userConfig.js']));
+    /*
+     * 1. Fetch config.js
+     * 2. Fetch userConfig.js (which may not exist)
+     * 3. Fetch translations witht he language from the config. 
+     */
+    dispatch(asyncConfigFetch());
     if (typeof absoluteUrlBase !== 'undefined') {
       /*
        * Some integrations don't work with relative paths because the URL doesn't match
@@ -44,12 +49,37 @@ export function asyncConfigInit() {
   };
 }
 
-export function asyncConfigFetch(configUrlList) {
+export function asyncConfigFetch() {
   return dispatch => {
     dispatch(configFetch());
     let opts = {};
     opts.headers = { Accept: 'application/javascript' };
-    let configUrl = configUrlList.shift();
+    let configUrl = './config.js';
+    http.get(configUrl, opts, function(error, response) {
+      if (response) {
+        dispatch(configFetchSuccess());
+        try {
+          let config = JSON.parse(response.text);
+          Object.keys(config).map(function(key) {
+            dispatch(configUpdateByKey(key, config[key]));
+          });
+        } catch (e) {
+          dispatch(notificationAddError(e.message + ' ' + configUrl));
+        }
+        dispatch(asyncUserConfigFetch());
+      } else {
+        dispatch(configFetchError());
+      }
+    });
+  };
+}
+
+export function asyncUserConfigFetch() {
+  return dispatch => {
+    dispatch(configFetch());
+    let opts = {};
+    opts.headers = { Accept: 'application/javascript' };
+    let configUrl = './userConfig.js';
     http.get(configUrl, opts, function(error, response) {
       if (response) {
         dispatch(configFetchSuccess());
@@ -58,17 +88,11 @@ export function asyncConfigFetch(configUrlList) {
           Object.keys(userConfig).map(function(key) {
             dispatch(configUpdateByKey(key, userConfig[key]));
           });
-          if (configUrlList.length > 0) {
-            dispatch(asyncConfigFetch(configUrlList));
-          } else {
-            dispatch(asyncIntlFetchTranslations());
-          }
         } catch (e) {
-          dispatch(notificationAddError(e.message + ' ' + configUrl));
+          //do nothing, userConfig.js doesn't exist and thats okay.
         }
-      } else {
-        dispatch(configFetchError());
       }
+      dispatch(asyncIntlFetchTranslations());
     });
   };
 }
