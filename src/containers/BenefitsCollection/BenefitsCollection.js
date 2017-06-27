@@ -19,7 +19,7 @@ class BenefitsCollection extends Component {
           <LayoutColumn width={1 / 18}>&nbsp;</LayoutColumn>
           <LayoutColumn width={4 / 18}>
             <BenefitsFeature
-              imgSrc={getAbsoluteUrl(config, 'assets/global-caching.png')}
+              imgSrc={getAbsoluteUrl(config, 'assets/global-caching.svg')}
               title={formatMessage({
                 id: 'component.benefitsFeature.globalCaching.title'
               })}
@@ -30,7 +30,7 @@ class BenefitsCollection extends Component {
           </LayoutColumn>
           <LayoutColumn width={4 / 18}>
             <BenefitsFeature
-              imgSrc={getAbsoluteUrl(config, 'assets/web-optimization.png')}
+              imgSrc={getAbsoluteUrl(config, 'assets/web-optimization.svg')}
               title={formatMessage({
                 id: 'component.benefitsFeature.optimization.title'
               })}
@@ -41,7 +41,7 @@ class BenefitsCollection extends Component {
           </LayoutColumn>
           <LayoutColumn width={4 / 18}>
             <BenefitsFeature
-              imgSrc={getAbsoluteUrl(config, 'assets/security.png')}
+              imgSrc={getAbsoluteUrl(config, 'assets/security.svg')}
               title={formatMessage({
                 id: 'component.benefitsFeature.security.title'
               })}
@@ -52,7 +52,7 @@ class BenefitsCollection extends Component {
           </LayoutColumn>
           <LayoutColumn width={4 / 18}>
             <BenefitsFeature
-              imgSrc={getAbsoluteUrl(config, 'assets/insight.png')}
+              imgSrc={getAbsoluteUrl(config, 'assets/insight.svg')}
               title={formatMessage({
                 id: 'component.benefitsFeature.insights.title'
               })}
