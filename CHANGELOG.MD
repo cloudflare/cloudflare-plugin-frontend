@@ -2,8 +2,19 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.8.0](#2.8.0) - 2017-6-28
+### Added
+- New splash page added before login [#131](https://github.com/cloudflare/cloudflare-plugin-frontend/pull/131)
+
+### Changed
+- Upgraded to React 15.5 [#125](https://github.com/cloudflare/cloudflare-plugin-frontend/pull/125)
+
+### Fixed
+- Fixed bug where userConfig.js fetch would error if it didn't exist [#133](https://github.com/cloudflare/cloudflare-plugin-frontend/pull/133)
+- Fixed bug in analytics graph [#134](https://github.com/cloudflare/cloudflare-plugin-frontend/pull/134)
+
 ## [2.7.0](#2.7.0) - 2017-4-25
-### Fixed 
+### Fixed
 - Fix UTM codes for signup and account links [#112](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/112)
 - Fix a bug where analytic tab selection not working properly [#113](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/113)
 - Fix a bug where active zone selector was not clickable [#114](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/114)
@@ -16,16 +27,16 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Added help text for all cards [#118](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/118)
 
 ## [2.6.7](#2.6.7) - 2017-3-15
-### Fixed 
+### Fixed
 - Fix wrong values which are sent to the API [#107](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/107)
 
 ## [2.6.6](#2.6.6) - 2017-3-10
-### Fixed 
+### Fixed
 - Fix styles for Active Zone selector [#104](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/104)
 - Fix some text fields not responding correctly [#105](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/105)
 
 ## [2.6.5](#2.6.5) - 2017-3-1
-### Fixed 
+### Fixed
 - Fixed bugs related with signup form and cleared warnings printed to console [#102 ](https://github.com/cloudflare/CloudFlare-FrontEnd/pull/102 )
 
 ## [2.6.4](#2.6.4) - 2017-3-1
