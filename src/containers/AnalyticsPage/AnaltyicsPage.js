@@ -53,15 +53,15 @@ class AnaltyicsPage extends Component {
         },
         {
           label: this.props.intl.formatMessage({
-            id: 'containers.analyticsPage.cached'
-          }),
-          values: analytics.requests[0]
-        },
-        {
-          label: this.props.intl.formatMessage({
             id: 'containers.analyticsPage.uncached'
           }),
           values: analytics.requests[1]
+        },
+        {
+          label: this.props.intl.formatMessage({
+            id: 'containers.analyticsPage.cached'
+          }),
+          values: analytics.requests[0]
         }
       ];
     }
@@ -78,15 +78,15 @@ class AnaltyicsPage extends Component {
         },
         {
           label: this.props.intl.formatMessage({
-            id: 'containers.analyticsPage.cached'
-          }),
-          values: analytics.bandwidth[0]
-        },
-        {
-          label: this.props.intl.formatMessage({
             id: 'containers.analyticsPage.uncached'
           }),
           values: analytics.bandwidth[1]
+        },
+        {
+          label: this.props.intl.formatMessage({
+            id: 'containers.analyticsPage.cached'
+          }),
+          values: analytics.bandwidth[0]
         }
       ];
     }
