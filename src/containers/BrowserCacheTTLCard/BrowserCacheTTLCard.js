@@ -86,7 +86,7 @@ class BrowserCacheTTLCard extends Component {
                     })
                   },
                   {
-                    value: parseInt('18000'), // This is a hack to avoid webpack converting to scientific notation
+                    value: parseInt('18000', 10), // This is a hack to avoid webpack converting to scientific notation
                     label: formatMessage({
                       id: 'container.browserCacheTTLCard.fiveHours'
                     })
@@ -110,7 +110,7 @@ class BrowserCacheTTLCard extends Component {
                     })
                   },
                   {
-                    value: parseInt('72000'), // This is a hack to avoid webpack converting to scientific notation
+                    value: parseInt('72000', 10), // This is a hack to avoid webpack converting to scientific notation
                     label: formatMessage({
                       id: 'container.browserCacheTTLCard.twentyHours'
                     })
@@ -140,7 +140,7 @@ class BrowserCacheTTLCard extends Component {
                     })
                   },
                   {
-                    value: parseInt('432000'), // This is a hack to avoid webpack converting to scientific notation
+                    value: parseInt('432000', 10), // This is a hack to avoid webpack converting to scientific notation
                     label: formatMessage({
                       id: 'container.browserCacheTTLCard.fiveDays'
                     })
@@ -182,7 +182,7 @@ class BrowserCacheTTLCard extends Component {
                     })
                   },
                   {
-                    value: parseInt('31536000'), // This is a hack to avoid webpack converting to scientific notation
+                    value: parseInt('31536000', 10), // This is a hack to avoid webpack converting to scientific notation
                     label: formatMessage({
                       id: 'container.browserCacheTTLCard.oneYear'
                     })

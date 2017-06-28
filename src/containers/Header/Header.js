@@ -15,8 +15,8 @@ class Header extends Component {
     let { config, activeZone, zoneSettings } = this.props;
 
     var logoStyle = {
-      width: '170px',
-      height: '30px',
+      width: '140px',
+      height: '40px',
       position: 'relative',
       top: '30px', // Hard code .header-main height/2
       transform: 'translateY(-50%)'

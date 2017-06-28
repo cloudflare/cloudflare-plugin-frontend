@@ -11,6 +11,9 @@ import { asyncConfigInit } from '../../actions/config';
 import GlobalNotifications
   from '../../containers/GlobalNotifications/GlobalNotifications';
 import Header from '../../containers/Header/Header';
+import GradientBanner from '../../components/GradientBanner/GradientBanner';
+
+import { StyleProvider } from 'cf-style-provider';
 
 //Safari Intl Polyfill
 if (!global.Intl) {
@@ -19,41 +22,55 @@ if (!global.Intl) {
 class AppContainer extends Component {
   render() {
     return (
-      <div className="site-wrapper" style={{ paddingBottom: '20px' }}>
-        <LayoutContainer>
-          <LayoutRow>
-            <Header />
-          </LayoutRow>
+      <StyleProvider
+        cssNode={null}
+        fontNode={null}
+        dev={false}
+        selectorPrefix="cf-"
+      >
+        <div className="site-wrapper" style={{ paddingBottom: '20px' }}>
+          <LayoutContainer>
+            <LayoutRow>
+              <Header />
+              {isLoggedIn() ? null : <GradientBanner />}
+            </LayoutRow>
+            <div
+              className="content-wrapper"
+              style={isLoggedIn() ? null : { marginTop: '-105px' }}
+            >
+              {isLoggedIn()
+                ? <LayoutRow>
+                    <LayoutColumn width={1 / 1}><AppNavigation /></LayoutColumn>
+                  </LayoutRow>
+                : null}
 
-          {isLoggedIn()
-            ? <LayoutRow>
-                <LayoutColumn width={1 / 1}><AppNavigation /></LayoutColumn>
-              </LayoutRow>
-            : null}
-
-          {isLoggedIn()
-            ? <LayoutRow>
-                <LayoutColumn width={2 / 20}>&nbsp;</LayoutColumn>
-                <LayoutColumn width={16 / 20}>
-                  {this.props.children}
+              {isLoggedIn()
+                ? <LayoutRow>
+                    <LayoutColumn width={2 / 20}>&nbsp;</LayoutColumn>
+                    <LayoutColumn width={16 / 20}>
+                      {this.props.children}
+                    </LayoutColumn>
+                    <LayoutColumn width={2 / 20}>&nbsp;</LayoutColumn>
+                  </LayoutRow>
+                : <LayoutRow>{this.props.children}</LayoutRow>}
+              <LayoutRow>
+                <LayoutColumn width={1 / 1}>
+                  <p style={{ textAlign: 'center' }}>
+                    <FormattedMessage
+                      id="container.App.version"
+                      values={{
+                        version: this.props.state.config.config.version
+                      }}
+                    />
+                  </p>
                 </LayoutColumn>
-                <LayoutColumn width={2 / 20}>&nbsp;</LayoutColumn>
               </LayoutRow>
-            : <LayoutRow>{this.props.children}</LayoutRow>}
-          <LayoutRow>
-            <LayoutColumn width={1 / 1}>
-              <p style={{ textAlign: 'center' }}>
-                <FormattedMessage
-                  id="container.App.version"
-                  values={{ version: this.props.state.config.config.version }}
-                />
-              </p>
-            </LayoutColumn>
-          </LayoutRow>
-        </LayoutContainer>
-        <GatewayDest name="modal" />
-        <GlobalNotifications />
-      </div>
+            </div>
+          </LayoutContainer>
+          <GatewayDest name="modal" />
+          <GlobalNotifications />
+        </div>
+      </StyleProvider>
     );
   }
 }

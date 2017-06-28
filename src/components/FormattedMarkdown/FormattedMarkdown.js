@@ -17,7 +17,6 @@ import { getConfigValue } from '../../selectors/config.js';
 // <FormattedMarkdown text="mycomponent.myfeature" />
 class FormattedMarkdown extends Component {
   render() {
-    const { formatMessage } = this.props.intl;
     let { integrationName } = this.props;
 
     var formattedMessage = formatMessageForIntegration(
@@ -39,7 +38,10 @@ class FormattedMarkdown extends Component {
 }
 
 FormattedMarkdown.propTypes = {
-  text: PropTypes.string.isRequired
+  text: PropTypes.string.isRequired,
+  formattedMessage: PropTypes.func,
+  intl: PropTypes.object,
+  integrationName: PropTypes.string
 };
 
 function mapStateToProps(state) {

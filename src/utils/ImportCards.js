@@ -36,7 +36,7 @@ import BypassCacheByCookieCard
 import DNSManagementPage
   from '../containers/DNSManagementPage/DNSManagementPage';
 
-let cardMapper = {
+const cardMapper = {
   AdvanceDDoSCard: AdvanceDDoSCard,
   AlwaysOnlineCard: AlwaysOnlineCard,
   ApplyDefaultSettingsCard: ApplyDefaultSettingsCard,

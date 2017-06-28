@@ -131,7 +131,9 @@ AnalyticCard.propTypes = {
   description: PropTypes.string.isRequired,
   data: PropTypes.object.isRequired,
   dataType: PropTypes.string.isRequired,
-  helpTextId: PropTypes.string.isRequired
+  helpTextId: PropTypes.string.isRequired,
+  intl: PropTypes.object.isRequired,
+  formatMessage: PropTypes.func.isRequired
 };
 
 function mapStateToProps() {

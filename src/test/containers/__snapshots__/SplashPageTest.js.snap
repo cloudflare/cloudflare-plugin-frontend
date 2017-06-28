@@ -1,0 +1,371 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders enabled correctly 1`] = `
+<div
+  className="cf-a cf-b cf-c"
+>
+  <section
+    className="cf-card"
+  >
+    <div
+      className="cf-d"
+    >
+      <div
+        className="cf-card__section cf-card__section--default"
+      >
+        <div
+          className="cf-layout__container"
+        >
+          <div
+            className="cf-layout__row"
+          >
+            <div
+              className="cf-layout__column"
+              style={
+                Object {
+                  "width": "100.00%",
+                }
+              }
+            >
+              <h1
+                className="cf-heading cf-heading--1"
+              >
+                <span>
+                  Speed up and Optimize your WordPress Site with Cloudflare
+                </span>
+              </h1>
+            </div>
+          </div>
+          <div
+            className="cf-layout__row"
+          >
+            <div
+              className="cf-layout__column"
+              style={
+                Object {
+                  "width": "100.00%",
+                }
+              }
+            >
+              <button
+                className="cf-btn cf-btn--success"
+                disabled={false}
+                onClick={[Function]}
+                type="button"
+              >
+                <span>
+                  Create Your Free Account
+                </span>
+              </button>
+            </div>
+          </div>
+          <div
+            className="cf-layout__row"
+          >
+            <div
+              className="cf-layout__column"
+              style={
+                Object {
+                  "width": "100.00%",
+                }
+              }
+            >
+              <p
+                style={
+                  Object {
+                    "color": "#9A9D9E",
+                  }
+                }
+              >
+                <span>
+                  Have an account already? Sign in
+                </span>
+                 
+                <a
+                  onClick={[Function]}
+                  style={
+                    Object {
+                      "color": "#1592E6",
+                      "textDecoration": "none",
+                    }
+                  }
+                >
+                  <span>
+                    here
+                  </span>
+                </a>
+                .
+              </p>
+            </div>
+          </div>
+          <div
+            className="cf-layout__row"
+          >
+            <div
+              className="cf-layout__column"
+              style={
+                Object {
+                  "width": "100.00%",
+                }
+              }
+            >
+              <div
+                className="cf-layout__row"
+              >
+                <div
+                  className="cf-flex"
+                >
+                  <div
+                    className="cf-layout__column"
+                    style={
+                      Object {
+                        "width": "5.5556%",
+                      }
+                    }
+                  >
+                     
+                  </div>
+                  <div
+                    className="cf-layout__column"
+                    style={
+                      Object {
+                        "width": "22.222%",
+                      }
+                    }
+                  >
+                    <div
+                      style={
+                        Object {
+                          "padding": "30px 15px 30px 15px",
+                        }
+                      }
+                    >
+                      <img
+                        src="assets/global-caching.svg"
+                        style={
+                          Object {
+                            "display": "block",
+                            "height": "auto",
+                            "margin": "0 auto",
+                            "maxWidth": "100px",
+                            "width": "75px",
+                          }
+                        }
+                      />
+                      <span
+                        href="#"
+                        style={
+                          Object {
+                            "color": "#333333",
+                            "display": "block",
+                            "fontSize": "16px",
+                            "padding": "20px 0 0 0",
+                            "textAlign": "center",
+                            "width": "100%",
+                          }
+                        }
+                      >
+                        Global Caching
+                      </span>
+                      <p
+                        style={
+                          Object {
+                            "color": "#9A9D9E",
+                            "fontSize": "12px",
+                            "padding": "10px 0 0 0",
+                            "textAlign": "center",
+                          }
+                        }
+                      >
+                        Shorten your visitor's load times with content caching in our 110+ global locations.
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    className="cf-layout__column"
+                    style={
+                      Object {
+                        "width": "22.222%",
+                      }
+                    }
+                  >
+                    <div
+                      style={
+                        Object {
+                          "padding": "30px 15px 30px 15px",
+                        }
+                      }
+                    >
+                      <img
+                        src="assets/web-optimization.svg"
+                        style={
+                          Object {
+                            "display": "block",
+                            "height": "auto",
+                            "margin": "0 auto",
+                            "maxWidth": "100px",
+                            "width": "75px",
+                          }
+                        }
+                      />
+                      <span
+                        href="#"
+                        style={
+                          Object {
+                            "color": "#333333",
+                            "display": "block",
+                            "fontSize": "16px",
+                            "padding": "20px 0 0 0",
+                            "textAlign": "center",
+                            "width": "100%",
+                          }
+                        }
+                      >
+                        Website Optimization
+                      </span>
+                      <p
+                        style={
+                          Object {
+                            "color": "#9A9D9E",
+                            "fontSize": "12px",
+                            "padding": "10px 0 0 0",
+                            "textAlign": "center",
+                          }
+                        }
+                      >
+                        Deliver content to users faster by enabling Cloudflare's content optimizations.
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    className="cf-layout__column"
+                    style={
+                      Object {
+                        "width": "22.222%",
+                      }
+                    }
+                  >
+                    <div
+                      style={
+                        Object {
+                          "padding": "30px 15px 30px 15px",
+                        }
+                      }
+                    >
+                      <img
+                        src="assets/security.svg"
+                        style={
+                          Object {
+                            "display": "block",
+                            "height": "auto",
+                            "margin": "0 auto",
+                            "maxWidth": "100px",
+                            "width": "75px",
+                          }
+                        }
+                      />
+                      <span
+                        href="#"
+                        style={
+                          Object {
+                            "color": "#333333",
+                            "display": "block",
+                            "fontSize": "16px",
+                            "padding": "20px 0 0 0",
+                            "textAlign": "center",
+                            "width": "100%",
+                          }
+                        }
+                      >
+                        Security
+                      </span>
+                      <p
+                        style={
+                          Object {
+                            "color": "#9A9D9E",
+                            "fontSize": "12px",
+                            "padding": "10px 0 0 0",
+                            "textAlign": "center",
+                          }
+                        }
+                      >
+                        Cloudflare offers protections against vulnerabilities including DDoS protection.
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    className="cf-layout__column"
+                    style={
+                      Object {
+                        "width": "22.222%",
+                      }
+                    }
+                  >
+                    <div
+                      style={
+                        Object {
+                          "padding": "30px 15px 30px 15px",
+                        }
+                      }
+                    >
+                      <img
+                        src="assets/insight.svg"
+                        style={
+                          Object {
+                            "display": "block",
+                            "height": "auto",
+                            "margin": "0 auto",
+                            "maxWidth": "100px",
+                            "width": "75px",
+                          }
+                        }
+                      />
+                      <span
+                        href="#"
+                        style={
+                          Object {
+                            "color": "#333333",
+                            "display": "block",
+                            "fontSize": "16px",
+                            "padding": "20px 0 0 0",
+                            "textAlign": "center",
+                            "width": "100%",
+                          }
+                        }
+                      >
+                        Insights
+                      </span>
+                      <p
+                        style={
+                          Object {
+                            "color": "#9A9D9E",
+                            "fontSize": "12px",
+                            "padding": "10px 0 0 0",
+                            "textAlign": "center",
+                          }
+                        }
+                      >
+                        Monitor bandwidth saved, threats blocked, and more with built-in analytics.
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    className="cf-layout__column"
+                    style={
+                      Object {
+                        "width": "5.5556%",
+                      }
+                    }
+                  >
+                     
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+`;
