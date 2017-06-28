@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.9.0](#2.9.0) - 2017-6-28
+### Added
+- Channel parameters to sign up link on login page [#135](https://github.com/cloudflare/cloudflare-plugin-frontend/pull/135)
+
 ## [2.8.0](#2.8.0) - 2017-6-28
 ### Added
 - New splash page added before login [#131](https://github.com/cloudflare/cloudflare-plugin-frontend/pull/131)

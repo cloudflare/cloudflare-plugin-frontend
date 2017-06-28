@@ -1,6 +1,6 @@
 {
   "name": "cloudflare-plugin-frontend",
-  "version": "2.8.0",
+  "version": "2.9.0",
   "description": "A React/Redux frontend for Cloudflare plugins",
   "main": "src/index.js",
   "scripts": {
