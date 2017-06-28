@@ -22,6 +22,7 @@ import { isLoggedIn } from '../../utils/Auth/Auth';
 import { Link } from 'react-router';
 import { push } from 'react-router-redux';
 import { openWindow720x720 } from '../../utils/utils.js';
+import { generateChannelLink } from '../../selectors/generateChannelLink.js';
 
 const SIGNUP_UTM_CONTENT_IDENTIFIER = 'signup_now';
 const COPY_API_KEY_UTM_CONTENT_IDENTIFIER = 'copy_api_key';
@@ -90,6 +91,12 @@ class LoginPage extends Component {
       getConfigValue(config, 'integrationName'),
       SIGNUP_UTM_CONTENT_IDENTIFIER
     );
+
+    let signupLinkWithUTMAndChannel = generateChannelLink(
+      signupLinkWithUTM,
+      getConfigValue(config, 'integrationName')
+    );
+
     let accountLinkWithUTM = generateUTMLink(
       CLOUDFLARE_ACCOUNT_PAGE,
       getConfigValue(config, 'integrationName'),
@@ -195,7 +202,7 @@ class LoginPage extends Component {
                             <a
                               onClick={openWindow720x720.bind(
                                 this,
-                                signupLinkWithUTM
+                                signupLinkWithUTMAndChannel
                               )}
                             >
                               cloudflare.com
