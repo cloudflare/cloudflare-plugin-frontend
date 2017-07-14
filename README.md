@@ -55,9 +55,7 @@ to each request.
 
 5. Build an API Client for the Cloudflare Host API which adds the Host Key to all requests.
 
-## config.json 
-
-config.json has the following structure:
+## JSON response for endpoint /config 
 
 ```
 {
@@ -98,15 +96,5 @@ config.json has the following structure:
     "integrationName": "frontend",
     "useHostAPILogin": true,
     "version": "2.8.1"
-}
-```
-
-The following properties are configurable:
-
-```
-{
-    "debug": false,
-    "featureManagerIsFullZoneProvisioningEnabled": true,
-    "locale": "en"
 }
 ```
