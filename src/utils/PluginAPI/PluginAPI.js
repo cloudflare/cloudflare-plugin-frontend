@@ -59,3 +59,8 @@ export function pluginSettingPatch(zoneId, settingName, value, callback) {
     pluginCallback(callback)
   );
 }
+
+export function configGet(callback) {
+  let opts = {};
+  return http.get(ENDPOINT + '/config/', opts, pluginCallback(callback));
+}
