@@ -52,8 +52,6 @@ export function asyncConfigInit() {
 
 export function asyncConfigFetch() {
   return dispatch => {
-    let configUrl = './config.js';
-
     dispatch(configFetch());
     configGet(function(error, response) {
       if (response) {
@@ -64,7 +62,7 @@ export function asyncConfigFetch() {
             dispatch(configUpdateByKey(key, userConfig[key]));
           });
         } catch (e) {
-          dispatch(notificationAddError(e.message + ' ' + configUrl));
+          dispatch(notificationAddError(`/config - ${e.message}`));
         }
         dispatch(asyncIntlFetchTranslations());
       } else {
