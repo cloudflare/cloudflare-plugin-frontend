@@ -39,7 +39,7 @@ just follow these steps:
 This method is called on every request before it is sent. It should route all
 absolute URLs to the endpoint for your backend. Requests with
 relative URLs for things like localization (./lang/*.js) and
-config (./config.js) should remain unchanged.
+config (./config.json) should remain unchanged.
 
 2. Build your backend data store
 Your backend needs to store the following information about each user:
