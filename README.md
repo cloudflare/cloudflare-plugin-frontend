@@ -54,3 +54,59 @@ Cloudflare Client V4 API Email of the current user.
 to each request.
 
 5. Build an API Client for the Cloudflare Host API which adds the Host Key to all requests.
+
+## config.json 
+
+config.json has the following structure:
+
+```
+{
+    "debug": false,
+    "featureManagerIsFullZoneProvisioningEnabled": false,
+    "isDNSPageEnabled": true,
+    "isSubdomainCheckEnabled": true,
+    "homePageCards": [
+        "ApplyDefaultSettingsCard",
+        "AutomaticHTTPSRewritesCard",
+        "IpRewriteCard",
+        "PluginSpecificCacheCard",
+        "PluginSpecificCacheTagCard"
+    ],
+    "moreSettingsCards": {
+        "container.moresettings.speed": [
+            "AlwaysOnlineCard",
+            "BrowserCacheTTLCard",
+            "BypassCacheByCookieCard",
+            "CacheLevelCard",
+            "DevelopmentModeCard",
+            "IPV6Card",
+            "ImageOptimizationCard",
+            "MinifyCard",
+            "PurgeCacheCard",
+            "RailgunCard"
+        ],
+        "container.moresettings.security": [
+            "AdvanceDDoSCard",
+            "BrowserIntegrityCheckCard",
+            "ChallengePassageCard",
+            "SecurityLevelCard",
+            "SSLCard",
+            "WAFCard"
+        ]
+    },
+    "locale": "en",
+    "integrationName": "frontend",
+    "useHostAPILogin": true,
+    "version": "2.8.1"
+}
+```
+
+The following properties are configurable:
+
+```
+{
+    "debug": false,
+    "featureManagerIsFullZoneProvisioningEnabled": true,
+    "locale": "en"
+}
+```
