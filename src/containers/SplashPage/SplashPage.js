@@ -5,6 +5,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { Box } from 'cf-component-box';
 import { Button } from 'cf-component-button';
 import { Heading } from 'cf-component-heading';
+import { getConfigValue } from '../../selectors/config';
 
 import { Card, CardSection } from 'cf-component-card';
 
@@ -16,14 +17,14 @@ import BenefitsCollection
 import {
   CLOUDFLARE_SIGNUP_PAGE,
   LOGIN_PAGE,
-  HOME_PAGE
+  HOME_PAGE,
+  SIGN_UP_PAGE
 } from '../../constants/UrlPaths.js';
 import { isLoggedIn } from '../../utils/Auth/Auth';
 import { Link } from 'react-router';
 import { push } from 'react-router-redux';
 
 import { openWindow720x720 } from '../../utils/utils.js';
-import { getConfigValue } from '../../selectors/config';
 import { generateUTMLink } from '../../selectors/generateUTMLink.js';
 import { generateChannelLink } from '../../selectors/generateChannelLink.js';
 
@@ -49,10 +50,40 @@ const cardPaddingStyles = {
 };
 
 class SplashPage extends Component {
+  constructor(props) {
+    super(props);
+    this.navigateToSignUpPage = this.navigateToSignUpPage.bind(this);
+    this.openWindow720x720 = openWindow720x720.bind(this);
+  }
+
   componentWillMount() {
     let { dispatch } = this.props;
     if (isLoggedIn()) {
       dispatch(push(HOME_PAGE));
+    }
+  }
+
+  navigateToSignUpPage() {
+    const { config } = this.props;
+    let { dispatch } = this.props;
+    const useHostAPILogin = getConfigValue(config, 'useHostAPILogin');
+
+    if (useHostAPILogin) {
+      dispatch(push(SIGN_UP_PAGE));
+    } else {
+      const integrationName = getConfigValue(config, 'integrationName');
+      let signupLinkWithUTM = generateUTMLink(
+        CLOUDFLARE_SIGNUP_PAGE,
+        integrationName,
+        integrationName,
+        SIGNUP_SPLASH_UTM_CONTENT_IDENTIFIER
+      );
+
+      let signupLinkWithUTMAndChannel = generateChannelLink(
+        signupLinkWithUTM,
+        integrationName
+      );
+      this.openWindow720x720(signupLinkWithUTMAndChannel);
     }
   }
 
@@ -62,18 +93,6 @@ class SplashPage extends Component {
     const integrationName = getConfigValue(config, 'integrationName');
     const integrationNameCapital =
       integrationName.charAt(0).toUpperCase() + integrationName.slice(1);
-
-    let signupLinkWithUTM = generateUTMLink(
-      CLOUDFLARE_SIGNUP_PAGE,
-      integrationName,
-      integrationName,
-      SIGNUP_SPLASH_UTM_CONTENT_IDENTIFIER
-    );
-
-    let signupLinkWithUTMAndChannel = generateChannelLink(
-      signupLinkWithUTM,
-      integrationName
-    );
 
     return (
       <Box {...cardBoxStyles}>
@@ -98,10 +117,7 @@ class SplashPage extends Component {
                   <LayoutColumn width={1 / 1}>
                     <Button
                       type="success"
-                      onClick={openWindow720x720.bind(
-                        this,
-                        signupLinkWithUTMAndChannel
-                      )}
+                      onClick={() => this.navigateToSignUpPage()}
                     >
                       <FormattedMessage id="container.splashPage.button.createFreeAccount" />
                     </Button>

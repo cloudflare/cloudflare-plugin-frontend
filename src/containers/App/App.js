@@ -23,9 +23,7 @@ class AppContainer extends Component {
   render() {
     return (
       <StyleProvider
-        cssNode={null}
-        fontNode={null}
-        dev={false}
+        dev={process.env.NODE_ENV === 'development'}
         selectorPrefix="cf-"
       >
         <div className="site-wrapper" style={{ paddingBottom: '20px' }}>
