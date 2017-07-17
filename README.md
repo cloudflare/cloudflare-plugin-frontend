@@ -39,7 +39,7 @@ just follow these steps:
 This method is called on every request before it is sent. It should route all
 absolute URLs to the endpoint for your backend. Requests with
 relative URLs for things like localization (./lang/*.js) and
-config (./config.js) should remain unchanged.
+config (./config.json) should remain unchanged.
 
 2. Build your backend data store
 Your backend needs to store the following information about each user:
@@ -54,3 +54,47 @@ Cloudflare Client V4 API Email of the current user.
 to each request.
 
 5. Build an API Client for the Cloudflare Host API which adds the Host Key to all requests.
+
+## JSON response for endpoint /config 
+
+```
+{
+    "debug": false,
+    "featureManagerIsFullZoneProvisioningEnabled": false,
+    "isDNSPageEnabled": true,
+    "isSubdomainCheckEnabled": true,
+    "homePageCards": [
+        "ApplyDefaultSettingsCard",
+        "AutomaticHTTPSRewritesCard",
+        "IpRewriteCard",
+        "PluginSpecificCacheCard",
+        "PluginSpecificCacheTagCard"
+    ],
+    "moreSettingsCards": {
+        "container.moresettings.speed": [
+            "AlwaysOnlineCard",
+            "BrowserCacheTTLCard",
+            "BypassCacheByCookieCard",
+            "CacheLevelCard",
+            "DevelopmentModeCard",
+            "IPV6Card",
+            "ImageOptimizationCard",
+            "MinifyCard",
+            "PurgeCacheCard",
+            "RailgunCard"
+        ],
+        "container.moresettings.security": [
+            "AdvanceDDoSCard",
+            "BrowserIntegrityCheckCard",
+            "ChallengePassageCard",
+            "SecurityLevelCard",
+            "SSLCard",
+            "WAFCard"
+        ]
+    },
+    "locale": "en",
+    "integrationName": "frontend",
+    "useHostAPILogin": true,
+    "version": "2.8.1"
+}
+```

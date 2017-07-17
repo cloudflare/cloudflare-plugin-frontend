@@ -1,9 +1,8 @@
-import http from 'cf-util-http';
-
 import * as ActionTypes from '../constants/ActionTypes';
 import { asyncIntlFetchTranslations } from './intl';
 import { notificationAddError } from './notifications';
 import { isLoggedIn, getEmail } from '../utils/Auth/Auth';
+import { configGet } from '../utils/PluginAPI/PluginAPI';
 import { asyncUserLoginSuccess } from '../actions/user';
 import { ABSOLUTE_URL_BASE_KEY } from '../reducers/config';
 
@@ -54,47 +53,21 @@ export function asyncConfigInit() {
 export function asyncConfigFetch() {
   return dispatch => {
     dispatch(configFetch());
-    let opts = {};
-    opts.headers = { Accept: 'application/javascript' };
-    let configUrl = './config.js';
-    http.get(configUrl, opts, function(error, response) {
+    configGet(function(error, response) {
       if (response) {
         dispatch(configFetchSuccess());
         try {
-          let config = JSON.parse(response.text);
-          Object.keys(config).map(function(key) {
-            dispatch(configUpdateByKey(key, config[key]));
-          });
-        } catch (e) {
-          dispatch(notificationAddError(e.message + ' ' + configUrl));
-        }
-        dispatch(asyncUserConfigFetch());
-      } else {
-        dispatch(configFetchError());
-      }
-    });
-  };
-}
-
-export function asyncUserConfigFetch() {
-  return dispatch => {
-    dispatch(configFetch());
-    let opts = {};
-    opts.headers = { Accept: 'application/javascript' };
-    let configUrl = './userConfig.js';
-    http.get(configUrl, opts, function(error, response) {
-      if (response) {
-        dispatch(configFetchSuccess());
-        try {
-          let userConfig = JSON.parse(response.text);
+          let userConfig = JSON.parse(response.text).result;
           Object.keys(userConfig).map(function(key) {
             dispatch(configUpdateByKey(key, userConfig[key]));
           });
         } catch (e) {
-          //do nothing, userConfig.js doesn't exist and thats okay.
+          dispatch(notificationAddError(`/config - ${e.message}`));
         }
+        dispatch(asyncIntlFetchTranslations());
+      } else {
+        dispatch(configFetchError());
       }
-      dispatch(asyncIntlFetchTranslations());
     });
   };
 }
