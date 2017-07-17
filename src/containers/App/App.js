@@ -21,13 +21,9 @@ if (!global.Intl) {
 }
 class AppContainer extends Component {
   render() {
+    let isDev = process.env.NODE_ENV !== 'production';
     return (
-      <StyleProvider
-        cssNode={null}
-        fontNode={null}
-        dev={false}
-        selectorPrefix="cf-"
-      >
+      <StyleProvider dev={isDev} selectorPrefix="cf-">
         <div className="site-wrapper" style={{ paddingBottom: '20px' }}>
           <LayoutContainer>
             <LayoutRow>
