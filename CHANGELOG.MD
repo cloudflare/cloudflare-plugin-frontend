@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.0.0](#3.0.0) - 2017-7-17
+### Changed
+- Updated config fetch to use new /config endpoint [#138](https://github.com/cloudflare/cloudflare-plugin-frontend/pull/138)
+
 ## [2.8.1](#2.8.1) - 2017-6-28
 ### Added
 - Channel parameters to sign up link on login page [#135](https://github.com/cloudflare/cloudflare-plugin-frontend/pull/135)
