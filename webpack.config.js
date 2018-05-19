@@ -17,7 +17,7 @@ module.exports = {
   devtool: isDev ? 'cheap-module-source-map' : false,
   output: {
     path: __dirname,
-    filename: 'compiled.js'
+    filename: 'compiled.min.js'
   },
   watch: isDev,
   module: {
