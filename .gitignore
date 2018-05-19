@@ -1,6 +1,6 @@
 node_modules/
 .env
-compiled.js
+compiled.min.js
 compiled.js.map
 *.DS_Store
 coverage/
