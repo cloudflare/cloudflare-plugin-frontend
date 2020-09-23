@@ -10,8 +10,7 @@ import {
 } from 'cf-component-card';
 import Select from 'cf-component-select';
 
-import FormattedMarkdown
-  from '../../components/FormattedMarkdown/FormattedMarkdown';
+import FormattedMarkdown from '../../components/FormattedMarkdown/FormattedMarkdown';
 import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
 import { getLastModifiedDate } from '../../utils/utils';
 import {

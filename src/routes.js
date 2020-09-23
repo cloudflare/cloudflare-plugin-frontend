@@ -6,8 +6,7 @@ import { isLoggedIn } from './utils/Auth/Auth';
 /* containers */
 import AnalyticsPage from './containers/AnalyticsPage/AnaltyicsPage';
 import App from './containers/App/App';
-import DNSManagementPage
-  from './containers/DNSManagementPage/DNSManagementPage';
+import DNSManagementPage from './containers/DNSManagementPage/DNSManagementPage';
 import LoginPage from './containers/LoginPage/LoginPage';
 import SplashPage from './containers/SplashPage/SplashPage';
 import SignUpPage from './containers/SignUpPage/SignUpPage';

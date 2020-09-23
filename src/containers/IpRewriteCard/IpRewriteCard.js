@@ -32,7 +32,9 @@ class IpRewriteCard extends Component {
               title={formatMessage({ id: 'container.ipRewrite.title' })}
               footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}
             >
-              <p><FormattedMessage id="container.ipRewrite.description" /></p>
+              <p>
+                <FormattedMessage id="container.ipRewrite.description" />
+              </p>
             </CardContent>
             <CardControl>
               <Toggle

@@ -8,8 +8,7 @@ import { LayoutContainer, LayoutRow, LayoutColumn } from 'cf-component-layout';
 import AppNavigation from '../../containers/AppNavigation/AppNavigation';
 import { isLoggedIn } from '../../utils/Auth/Auth';
 import { asyncConfigInit } from '../../actions/config';
-import GlobalNotifications
-  from '../../containers/GlobalNotifications/GlobalNotifications';
+import GlobalNotifications from '../../containers/GlobalNotifications/GlobalNotifications';
 import Header from '../../containers/Header/Header';
 import GradientBanner from '../../components/GradientBanner/GradientBanner';
 
@@ -36,21 +35,25 @@ class AppContainer extends Component {
               className="content-wrapper"
               style={isLoggedIn() ? null : { marginTop: '-105px' }}
             >
-              {isLoggedIn()
-                ? <LayoutRow>
-                    <LayoutColumn width={1 / 1}><AppNavigation /></LayoutColumn>
-                  </LayoutRow>
-                : null}
+              {isLoggedIn() ? (
+                <LayoutRow>
+                  <LayoutColumn width={1 / 1}>
+                    <AppNavigation />
+                  </LayoutColumn>
+                </LayoutRow>
+              ) : null}
 
-              {isLoggedIn()
-                ? <LayoutRow>
-                    <LayoutColumn width={2 / 20}>&nbsp;</LayoutColumn>
-                    <LayoutColumn width={16 / 20}>
-                      {this.props.children}
-                    </LayoutColumn>
-                    <LayoutColumn width={2 / 20}>&nbsp;</LayoutColumn>
-                  </LayoutRow>
-                : <LayoutRow>{this.props.children}</LayoutRow>}
+              {isLoggedIn() ? (
+                <LayoutRow>
+                  <LayoutColumn width={2 / 20}>&nbsp;</LayoutColumn>
+                  <LayoutColumn width={16 / 20}>
+                    {this.props.children}
+                  </LayoutColumn>
+                  <LayoutColumn width={2 / 20}>&nbsp;</LayoutColumn>
+                </LayoutRow>
+              ) : (
+                <LayoutRow>{this.props.children}</LayoutRow>
+              )}
               <LayoutRow>
                 <LayoutColumn width={1 / 1}>
                   <p style={{ textAlign: 'center' }}>

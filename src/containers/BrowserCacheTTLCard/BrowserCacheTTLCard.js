@@ -12,8 +12,7 @@ import Select from 'cf-component-select';
 
 import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
 import { getLastModifiedDate } from '../../utils/utils';
-import FormattedMarkdown
-  from '../../components/FormattedMarkdown/FormattedMarkdown';
+import FormattedMarkdown from '../../components/FormattedMarkdown/FormattedMarkdown';
 import {
   getZoneSettingsValueForZoneId,
   getZoneSettingsModifiedDateForZoneId

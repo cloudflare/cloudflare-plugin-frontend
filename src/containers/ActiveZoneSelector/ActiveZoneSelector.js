@@ -62,17 +62,19 @@ class ActiveZoneSelector extends Component {
       <div
         className={
           'active-zone-selector__' +
-            (isSingleZone ? 'singlezone' : 'multiplezone')
+          (isSingleZone ? 'singlezone' : 'multiplezone')
         }
         style={activeZoneSelectorStyles}
       >
-        {isSingleZone
-          ? activeZoneName
-          : <Select
-              value={activeZoneName}
-              options={zones}
-              onChange={this.handleChange.bind(this)}
-            />}
+        {isSingleZone ? (
+          activeZoneName
+        ) : (
+          <Select
+            value={activeZoneName}
+            options={zones}
+            onChange={this.handleChange.bind(this)}
+          />
+        )}
       </div>
     );
   }

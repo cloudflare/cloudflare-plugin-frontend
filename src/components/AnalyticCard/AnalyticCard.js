@@ -6,8 +6,7 @@ import { Card, CardSection, CardContent, CardDrawers } from 'cf-component-card';
 import Text from 'cf-component-text';
 import C3Wrapper from '../C3Wrapper/C3Wrapper';
 
-import FormattedMarkdown
-  from '../../components/FormattedMarkdown/FormattedMarkdown';
+import FormattedMarkdown from '../../components/FormattedMarkdown/FormattedMarkdown';
 import { humanFileSize } from '../../utils/utils';
 
 class AnalyticCard extends Component {
@@ -33,7 +32,7 @@ class AnalyticCard extends Component {
     var percentage = 100;
     if (dataType === 'Bandwidth') {
       if (data.all !== 0) {
-        percentage = data.cached / data.all * 100;
+        percentage = (data.cached / data.all) * 100;
       }
       firstData = data.cached;
       secondData = data.all - data.cached;
@@ -47,7 +46,8 @@ class AnalyticCard extends Component {
         formatMessage({ id: 'container.analyticCard.bandwidth.secondText' });
     } else if (dataType === 'SSL') {
       if (data.unencrypted !== 0) {
-        percentage = data.encrypted / (data.encrypted + data.unencrypted) * 100;
+        percentage =
+          (data.encrypted / (data.encrypted + data.unencrypted)) * 100;
       }
       firstData = data.encrypted;
       secondData = data.unencrypted;
@@ -68,7 +68,9 @@ class AnalyticCard extends Component {
         <Card>
           <CardSection>
             <CardContent title={title}>
-              <Text size="small" type="muted">{description}</Text>
+              <Text size="small" type="muted">
+                {description}
+              </Text>
               <hr style={{ margin: '1rem 0' }} width="100%" />
               <div style={{ textAlign: 'center' }}>
                 <C3Wrapper
@@ -102,24 +104,26 @@ class AnalyticCard extends Component {
                   }}
                 />
 
-                <Text><b>{firstText}</b></Text>
+                <Text>
+                  <b>{firstText}</b>
+                </Text>
                 <Text>{secondText}</Text>
               </div>
             </CardContent>
           </CardSection>
-          {this.props.helpTextId
-            ? <CardDrawers
-                onClick={this.handleDrawerClick}
-                active={this.state.activeDrawer}
-                drawers={[
-                  {
-                    id: 'help',
-                    name: formatMessage({ id: 'container.drawer.help' }),
-                    content: <FormattedMarkdown text={this.props.helpTextId} />
-                  }
-                ]}
-              />
-            : null}
+          {this.props.helpTextId ? (
+            <CardDrawers
+              onClick={this.handleDrawerClick}
+              active={this.state.activeDrawer}
+              drawers={[
+                {
+                  id: 'help',
+                  name: formatMessage({ id: 'container.drawer.help' }),
+                  content: <FormattedMarkdown text={this.props.helpTextId} />
+                }
+              ]}
+            />
+          ) : null}
         </Card>
       </div>
     );

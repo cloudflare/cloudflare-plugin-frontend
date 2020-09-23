@@ -12,8 +12,7 @@ import { CheckboxGroup } from 'cf-component-checkbox';
 
 import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
 import { getLastModifiedDate } from '../../utils/utils';
-import FormattedMarkdown
-  from '../../components/FormattedMarkdown/FormattedMarkdown';
+import FormattedMarkdown from '../../components/FormattedMarkdown/FormattedMarkdown';
 import {
   getZoneSettingsValueForZoneId,
   getZoneSettingsModifiedDateForZoneId
@@ -78,7 +77,9 @@ class MinifyCard extends Component {
               title={formatMessage({ id: 'container.minifyCard.title' })}
               footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}
             >
-              <p><FormattedMessage id="container.minifyCard.description" /></p>
+              <p>
+                <FormattedMessage id="container.minifyCard.description" />
+              </p>
             </CardContent>
             <CardControl>
               <CheckboxGroup

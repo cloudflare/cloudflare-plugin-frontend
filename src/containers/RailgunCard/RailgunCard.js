@@ -20,8 +20,7 @@ import {
 } from 'cf-component-table';
 import Toggle from 'cf-component-toggle';
 
-import FormattedMarkdown
-  from '../../components/FormattedMarkdown/FormattedMarkdown';
+import FormattedMarkdown from '../../components/FormattedMarkdown/FormattedMarkdown';
 import { asyncZoneRailgunConnectionUpdate } from '../../actions/zoneRailgun';
 
 class RailgunCard extends Component {
@@ -55,19 +54,22 @@ class RailgunCard extends Component {
             <CardContent
               title={formatMessage({ id: 'container.railgunCard.title' })}
             >
-              <p><FormattedMessage id="container.railgunCard.description" /></p>
+              <p>
+                <FormattedMessage id="container.railgunCard.description" />
+              </p>
             </CardContent>
             <CardControl />
           </CardSection>
           <CardSection>
-            {isRailgunListEmpty &&
+            {isRailgunListEmpty && (
               <p>
                 <FormattedMessage
                   id="container.railgunCard.noRailgunsAvailable"
                   values={{ zoneName: activeZone.name }}
                 />
-              </p>}
-            {!isRailgunListEmpty &&
+              </p>
+            )}
+            {!isRailgunListEmpty && (
               <Table>
                 <TableHead>
                   <TableRow>
@@ -87,9 +89,11 @@ class RailgunCard extends Component {
                     <TableRow key={railgun.id}>
                       <TableCell>{railgun.name}</TableCell>
                       <TableCell>
-                        {railgun.enabled
-                          ? <FormattedMessage id="container.railgunCard.table.active" />
-                          : <FormattedMessage id="container.railgunCard.table.inactive" />}
+                        {railgun.enabled ? (
+                          <FormattedMessage id="container.railgunCard.table.active" />
+                        ) : (
+                          <FormattedMessage id="container.railgunCard.table.inactive" />
+                        )}
                       </TableCell>
                       <TableCell>
                         <Toggle
@@ -102,7 +106,8 @@ class RailgunCard extends Component {
                     </TableRow>
                   ))}
                 </TableBody>
-              </Table>}
+              </Table>
+            )}
           </CardSection>
           <CardDrawers
             onClick={this.handleDrawerClick}

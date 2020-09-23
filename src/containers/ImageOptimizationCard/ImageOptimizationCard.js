@@ -3,13 +3,11 @@ import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { Card, CardSection, CardContent, CardDrawers } from 'cf-component-card';
 
-import CustomCardControl
-  from '../../components/CustomCardControl/CustomCardControl';
+import CustomCardControl from '../../components/CustomCardControl/CustomCardControl';
 import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
 import { PRO_PLAN } from '../../constants/Plans.js';
 import { getLastModifiedDate } from '../../utils/utils';
-import FormattedMarkdown
-  from '../../components/FormattedMarkdown/FormattedMarkdown';
+import FormattedMarkdown from '../../components/FormattedMarkdown/FormattedMarkdown';
 import {
   getZoneSettingsValueForZoneId,
   getZoneSettingsModifiedDateForZoneId

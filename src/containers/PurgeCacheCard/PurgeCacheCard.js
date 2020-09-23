@@ -23,8 +23,7 @@ import {
 } from 'cf-component-modal';
 import Textarea from 'cf-component-textarea';
 
-import FormattedMarkdown
-  from '../../components/FormattedMarkdown/FormattedMarkdown';
+import FormattedMarkdown from '../../components/FormattedMarkdown/FormattedMarkdown';
 import {
   asyncZonePurgeCacheEverything,
   asyncZonePurgeCacheIndividualFiles
@@ -104,7 +103,6 @@ class PurgeCacheCard extends Component {
               </p>
             </CardContent>
             <CardControl>
-
               <ButtonGroup>
                 <Button
                   type="primary"
@@ -113,7 +111,7 @@ class PurgeCacheCard extends Component {
                   <FormattedMessage id="container.purgeCacheCard.dropdown" />
                 </Button>
 
-                {this.state.dropdownOpen &&
+                {this.state.dropdownOpen && (
                   <Dropdown
                     onClose={() => this.setState({ dropdownOpen: false })}
                   >
@@ -127,7 +125,8 @@ class PurgeCacheCard extends Component {
                     >
                       <FormattedMessage id="container.purgeCacheByURLCard.button" />
                     </DropdownLink>
-                  </Dropdown>}
+                  </Dropdown>
+                )}
               </ButtonGroup>
 
               <Modal
@@ -139,10 +138,10 @@ class PurgeCacheCard extends Component {
                     <FormattedMessage
                       id={
                         'container.' +
-                          (this.state.isIndividual
-                            ? 'purgeCacheByURLCard'
-                            : 'purgeCacheCard') +
-                          '.modal.title'
+                        (this.state.isIndividual
+                          ? 'purgeCacheByURLCard'
+                          : 'purgeCacheCard') +
+                        '.modal.title'
                       }
                     />
                   </ModalTitle>
@@ -153,10 +152,10 @@ class PurgeCacheCard extends Component {
                     <FormattedMessage
                       id={
                         'container.' +
-                          (this.state.isIndividual
-                            ? 'purgeCacheByURLCard'
-                            : 'purgeCacheCard') +
-                          '.modal.description'
+                        (this.state.isIndividual
+                          ? 'purgeCacheByURLCard'
+                          : 'purgeCacheCard') +
+                        '.modal.description'
                       }
                     />
                   </p>
@@ -171,10 +170,10 @@ class PurgeCacheCard extends Component {
                       <FormattedMessage
                         id={
                           'container.' +
-                            (this.state.isIndividual
-                              ? 'purgeCacheByURLCard'
-                              : 'purgeCacheCard') +
-                            '.button'
+                          (this.state.isIndividual
+                            ? 'purgeCacheByURLCard'
+                            : 'purgeCacheCard') +
+                          '.button'
                         }
                       />
                     </Button>
@@ -182,17 +181,16 @@ class PurgeCacheCard extends Component {
                       <FormattedMessage
                         id={
                           'container.' +
-                            (this.state.isIndividual
-                              ? 'purgeCacheByURLCard'
-                              : 'purgeCacheCard') +
-                            '.modal.buttonCancel'
+                          (this.state.isIndividual
+                            ? 'purgeCacheByURLCard'
+                            : 'purgeCacheCard') +
+                          '.modal.buttonCancel'
                         }
                       />
                     </Button>
                   </ModalActions>
                 </ModalFooter>
               </Modal>
-
             </CardControl>
           </CardSection>
           <CardDrawers

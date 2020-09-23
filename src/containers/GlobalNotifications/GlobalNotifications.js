@@ -33,9 +33,7 @@ class GlobalNotifications extends Component {
 
     return (
       <NotificationGlobalContainer>
-        <NotificationList>
-          {newNotifications}
-        </NotificationList>
+        <NotificationList>{newNotifications}</NotificationList>
       </NotificationGlobalContainer>
     );
   }

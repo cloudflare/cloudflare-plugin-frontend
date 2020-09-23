@@ -10,8 +10,7 @@ import {
 } from 'cf-component-card';
 import Select from 'cf-component-select';
 
-import FormattedMarkdown
-  from '../../components/FormattedMarkdown/FormattedMarkdown';
+import FormattedMarkdown from '../../components/FormattedMarkdown/FormattedMarkdown';
 import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
 import { getLastModifiedDate } from '../../utils/utils';
 import {
@@ -55,7 +54,9 @@ class SSLCard extends Component {
               title={formatMessage({ id: 'container.sslCard.title' })}
               footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}
             >
-              <p><FormattedMessage id="container.sslCard.description" /></p>
+              <p>
+                <FormattedMessage id="container.sslCard.description" />
+              </p>
             </CardContent>
             <CardControl>
               <Select

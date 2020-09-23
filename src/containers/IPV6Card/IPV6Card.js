@@ -12,8 +12,7 @@ import {
 
 import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
 import { getLastModifiedDate } from '../../utils/utils';
-import FormattedMarkdown
-  from '../../components/FormattedMarkdown/FormattedMarkdown';
+import FormattedMarkdown from '../../components/FormattedMarkdown/FormattedMarkdown';
 import {
   getZoneSettingsValueForZoneId,
   getZoneSettingsModifiedDateForZoneId
@@ -54,7 +53,9 @@ class IPV6Card extends Component {
               title={formatMessage({ id: 'container.ipv6Card.title' })}
               footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}
             >
-              <p><FormattedMessage id="container.ipv6Card.description" /></p>
+              <p>
+                <FormattedMessage id="container.ipv6Card.description" />
+              </p>
             </CardContent>
             <CardControl>
               <Toggle

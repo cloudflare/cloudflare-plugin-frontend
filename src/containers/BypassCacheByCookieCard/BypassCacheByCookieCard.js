@@ -4,10 +4,8 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { Card, CardSection, CardContent, CardDrawers } from 'cf-component-card';
 import { Button } from 'cf-component-button';
 
-import FormattedMarkdown
-  from '../../components/FormattedMarkdown/FormattedMarkdown';
-import CustomCardControl
-  from '../../components/CustomCardControl/CustomCardControl';
+import FormattedMarkdown from '../../components/FormattedMarkdown/FormattedMarkdown';
+import CustomCardControl from '../../components/CustomCardControl/CustomCardControl';
 import { BIZ_PLAN } from '../../constants/Plans.js';
 
 const MINIMUM_PLAN = BIZ_PLAN;

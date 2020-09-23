@@ -10,8 +10,7 @@ import {
   CardDrawers
 } from 'cf-component-card';
 
-import FormattedMarkdown
-  from '../../components/FormattedMarkdown/FormattedMarkdown';
+import FormattedMarkdown from '../../components/FormattedMarkdown/FormattedMarkdown';
 import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
 import { getLastModifiedDate } from '../../utils/utils';
 import {
@@ -86,7 +85,8 @@ class ChallengePassageCard extends Component {
                   {
                     value: 2700,
                     label: formatMessage({
-                      id: 'container.challengePassageCard.select.fortyFiveMinutes'
+                      id:
+                        'container.challengePassageCard.select.fortyFiveMinutes'
                     })
                   },
                   {

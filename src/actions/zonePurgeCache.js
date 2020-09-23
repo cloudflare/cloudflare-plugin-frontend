@@ -1,6 +1,4 @@
-import {
-  zonePurgeCache as v4ZonePurgeCache
-} from '../utils/CFClientV4API/CFClientV4API';
+import { zonePurgeCache as v4ZonePurgeCache } from '../utils/CFClientV4API/CFClientV4API';
 import {
   notificationAddClientAPIError,
   notificationAddSuccess

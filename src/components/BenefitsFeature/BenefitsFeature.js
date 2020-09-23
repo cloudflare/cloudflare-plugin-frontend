@@ -37,9 +37,7 @@ export default class BenefitsFeature extends Component {
         <span style={largeLinkStyles} href="#">
           {this.props.title}
         </span>
-        <p style={columnPStyles}>
-          {this.props.description}
-        </p>
+        <p style={columnPStyles}>{this.props.description}</p>
       </div>
     );
   }

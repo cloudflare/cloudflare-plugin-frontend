@@ -207,7 +207,6 @@ class AnaltyicsPage extends Component {
             ]}
             onChange={this.handleTabChange.bind(this)}
           >
-
             <TabsPanel id={REQUESTS_TAB}>
               <LayoutContainer>
                 <LayoutRow>
@@ -440,7 +439,6 @@ class AnaltyicsPage extends Component {
               />
             </LayoutColumn>
           </LayoutRow>
-
         </div>
       </WaitForSettings>
     );

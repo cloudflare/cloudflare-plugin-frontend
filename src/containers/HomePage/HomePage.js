@@ -4,9 +4,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 
 import { Heading } from 'cf-component-heading';
 
-import {
-  renderCards
-} from '../../components/RenderCardsDynamically/RenderCardsDynamically';
+import { renderCards } from '../../components/RenderCardsDynamically/RenderCardsDynamically';
 import WaitForSettings from '../../containers/WaitForSettings/WaitForSettings';
 
 class HomePage extends Component {

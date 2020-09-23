@@ -80,7 +80,6 @@ class LoginPage extends Component {
       loginButtonText = 'component.login.form.button';
     }
 
-
     var overflowStyle = { overflow: 'hidden' };
 
     return (
@@ -151,56 +150,56 @@ class LoginPage extends Component {
               <div style={overflowStyle}>
                 <div>
                   <LayoutColumn width={1 / 1}>
-                    {isHostAPILogin
-                      ? <div>
-                          <LayoutColumn width={1 / 2}>
-                            <p>
-                              <Link className="pull-left" to={SIGN_UP_PAGE}>
-                                <FormattedMessage id="component.login.form.signUp" />
-                              </Link>
-                            </p>
-                          </LayoutColumn>
-                          <LayoutColumn width={1 / 2}>
-                            <p>
-                              <Link
-                                className="pull-right"
-                                href={CLOUDFLARE_FORGOT_PASSWORD_PAGE}
-                                target="_blank"
-                              >
-                                <FormattedMessage id="component.login.form.forgotPassword" />
-                              </Link>
-                            </p>
-                          </LayoutColumn>
-                        </div>
-                      : <div>
-                          <p style={{ textAlign: 'center' }}>
-                            <FormattedMessage id="component.clientLogin.cloudflare.description" />
-                            {' '}
+                    {isHostAPILogin ? (
+                      <div>
+                        <LayoutColumn width={1 / 2}>
+                          <p>
+                            <Link className="pull-left" to={SIGN_UP_PAGE}>
+                              <FormattedMessage id="component.login.form.signUp" />
+                            </Link>
+                          </p>
+                        </LayoutColumn>
+                        <LayoutColumn width={1 / 2}>
+                          <p>
+                            <Link
+                              className="pull-right"
+                              href={CLOUDFLARE_FORGOT_PASSWORD_PAGE}
+                              target="_blank"
+                            >
+                              <FormattedMessage id="component.login.form.forgotPassword" />
+                            </Link>
+                          </p>
+                        </LayoutColumn>
+                      </div>
+                    ) : (
+                      <div>
+                        <p style={{ textAlign: 'center' }}>
+                          <FormattedMessage id="component.clientLogin.cloudflare.description" />{' '}
+                          <a
+                            onClick={openWindow720x720.bind(
+                              this,
+                              CLOUDFLARE_SIGNUP_PAGE
+                            )}
+                          >
+                            cloudflare.com
+                          </a>
+                          .{' '}
+                          <FormattedMessage id="component.clientLogin.form.alreadyHaveAccount" />
+                          <Box display="block">
+                            <FormattedMessage id="component.clientLogin.form.getApiKey" />{' '}
                             <a
                               onClick={openWindow720x720.bind(
                                 this,
-                                CLOUDFLARE_SIGNUP_PAGE
+                                CLOUDFLARE_ACCOUNT_PAGE
                               )}
                             >
-                              cloudflare.com
+                              here
                             </a>
-                            .{' '}
-                            <FormattedMessage id="component.clientLogin.form.alreadyHaveAccount" />
-                            <Box display="block">
-                              <FormattedMessage id="component.clientLogin.form.getApiKey" />
-                              {' '}
-                              <a
-                                onClick={openWindow720x720.bind(
-                                  this,
-                                  CLOUDFLARE_ACCOUNT_PAGE
-                                )}
-                              >
-                                here
-                              </a>
-                              .
-                            </Box>
-                          </p>
-                        </div>}
+                            .
+                          </Box>
+                        </p>
+                      </div>
+                    )}
                   </LayoutColumn>
                 </div>
               </div>

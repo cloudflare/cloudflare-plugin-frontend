@@ -5,12 +5,10 @@ import { Card, CardSection, CardContent, CardDrawers } from 'cf-component-card';
 import Toggle from 'cf-component-toggle';
 
 import { asyncPluginUpdateSetting } from '../../actions/pluginSettings';
-import CustomCardControl
-  from '../../components/CustomCardControl/CustomCardControl';
+import CustomCardControl from '../../components/CustomCardControl/CustomCardControl';
 import { ENT_PLAN } from '../../constants/Plans.js';
 import { getZonePlanLegacyId } from '../../selectors/zones';
-import FormattedMarkdown
-  from '../../components/FormattedMarkdown/FormattedMarkdown';
+import FormattedMarkdown from '../../components/FormattedMarkdown/FormattedMarkdown';
 import {
   getPluginSettingsValueForZoneId,
   getPluginSettingsModifiedDateForZoneId

@@ -21,8 +21,7 @@ import Toggle from 'cf-component-toggle';
 import { Button } from 'cf-component-button';
 
 import { asyncPluginUpdateSetting } from '../../actions/pluginSettings';
-import FormattedMarkdown
-  from '../../components/FormattedMarkdown/FormattedMarkdown';
+import FormattedMarkdown from '../../components/FormattedMarkdown/FormattedMarkdown';
 import {
   getPluginSettingsValueForZoneId,
   getPluginSettingsModifiedDateForZoneId

@@ -1,6 +1,5 @@
 import React from 'react';
-import MarketingFeature
-  from '../../components/MarketingFeature/MarketingFeature';
+import MarketingFeature from '../../components/MarketingFeature/MarketingFeature';
 import renderer from 'react-test-renderer';
 
 it('renders enabled correctly', () => {

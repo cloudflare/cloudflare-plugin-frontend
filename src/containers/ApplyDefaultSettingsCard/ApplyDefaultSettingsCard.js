@@ -17,8 +17,7 @@ import {
 } from '../../selectors/pluginSettings';
 import { asyncPluginUpdateSetting } from '../../actions/pluginSettings';
 import { getConfigValue } from '../../selectors/config.js';
-import FormattedMarkdown
-  from '../../components/FormattedMarkdown/FormattedMarkdown';
+import FormattedMarkdown from '../../components/FormattedMarkdown/FormattedMarkdown';
 import {
   getLastModifiedDate,
   formatMessageForIntegration
@@ -68,14 +67,13 @@ class ApplyDefaultSettingsCard extends Component {
               </p>
             </CardContent>
             <CardControl>
-              {this.props.isFetching === SETTING_NAME
-                ? <Loading />
-                : <Button
-                    type="primary"
-                    onClick={this.onButtonClick.bind(this)}
-                  >
-                    <FormattedMessage id="container.applydefaultsettingscard.button" />
-                  </Button>}
+              {this.props.isFetching === SETTING_NAME ? (
+                <Loading />
+              ) : (
+                <Button type="primary" onClick={this.onButtonClick.bind(this)}>
+                  <FormattedMessage id="container.applydefaultsettingscard.button" />
+                </Button>
+              )}
             </CardControl>
           </CardSection>
           <CardDrawers
