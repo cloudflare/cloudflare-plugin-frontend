@@ -25,9 +25,9 @@ export function getPlanUpdateParam(minimumPlan) {
       return 'p';
     case BIZ_PLAN:
       return 'b';
+    // Note that we dont support ENT plan
     default:
       // By default return a pro plan
-      // Note that we dont support
       return 'p';
   }
 }

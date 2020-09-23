@@ -33,8 +33,8 @@ class BypassCacheByCookieCard extends Component {
   render() {
     const { formatMessage } = this.props.intl;
 
-    let { activeZone, zones } = this.props;
-    let zone = zones[activeZone.name];
+    const { activeZone, zones } = this.props;
+    const zone = zones[activeZone.name];
 
     // Currently this is hardcoded for WordPress only
     let contentLink =
