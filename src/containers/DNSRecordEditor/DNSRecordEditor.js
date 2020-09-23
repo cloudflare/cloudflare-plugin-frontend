@@ -68,14 +68,16 @@ class DNSRecordEditor extends Component {
                 <TableCell>{dnsRecord.content}</TableCell>
                 <TableCell>{dnsRecord.ttl}</TableCell>
                 <TableCell>
-                  {this.props.updateIsFetching === dnsRecord.name
-                    ? <Loading />
-                    : <Toggle
-                        label="Cloudflare Provisioned"
-                        name={dnsRecord.name + '_provisioned'}
-                        value={dnsRecord.proxied}
-                        onChange={e => this.handleToggle(e, dnsRecord)}
-                      />}
+                  {this.props.updateIsFetching === dnsRecord.name ? (
+                    <Loading />
+                  ) : (
+                    <Toggle
+                      label="Cloudflare Provisioned"
+                      name={dnsRecord.name + '_provisioned'}
+                      value={dnsRecord.proxied}
+                      onChange={e => this.handleToggle(e, dnsRecord)}
+                    />
+                  )}
                 </TableCell>
               </TableRow>
             ))}

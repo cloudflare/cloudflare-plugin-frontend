@@ -5,8 +5,7 @@ import { LayoutRow, LayoutColumn } from 'cf-component-layout';
 import { Flex } from 'cf-component-flex';
 import { injectIntl } from 'react-intl';
 
-import MarketingFeature
-  from '../../components/MarketingFeature/MarketingFeature';
+import MarketingFeature from '../../components/MarketingFeature/MarketingFeature';
 import { getAbsoluteUrl } from '../../selectors/config';
 
 class MarketingFeatureCollection extends Component {

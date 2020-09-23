@@ -16,16 +16,11 @@ import {
   CLOUDFLARE_FORGOT_PASSWORD_PAGE,
   HOME_PAGE
 } from '../../constants/UrlPaths.js';
-import { generateUTMLink } from '../../selectors/generateUTMLink.js';
 import { getConfigValue } from '../../selectors/config';
 import { isLoggedIn } from '../../utils/Auth/Auth';
 import { Link } from 'react-router';
 import { push } from 'react-router-redux';
 import { openWindow720x720 } from '../../utils/utils.js';
-import { generateChannelLink } from '../../selectors/generateChannelLink.js';
-
-const SIGNUP_UTM_CONTENT_IDENTIFIER = 'signup_now';
-const COPY_API_KEY_UTM_CONTENT_IDENTIFIER = 'copy_api_key';
 
 class LoginPage extends Component {
   constructor(props) {
@@ -84,25 +79,6 @@ class LoginPage extends Component {
       inputLabel = 'component.login.form.password';
       loginButtonText = 'component.login.form.button';
     }
-
-    let signupLinkWithUTM = generateUTMLink(
-      CLOUDFLARE_SIGNUP_PAGE,
-      getConfigValue(config, 'integrationName'),
-      getConfigValue(config, 'integrationName'),
-      SIGNUP_UTM_CONTENT_IDENTIFIER
-    );
-
-    let signupLinkWithUTMAndChannel = generateChannelLink(
-      signupLinkWithUTM,
-      getConfigValue(config, 'integrationName')
-    );
-
-    let accountLinkWithUTM = generateUTMLink(
-      CLOUDFLARE_ACCOUNT_PAGE,
-      getConfigValue(config, 'integrationName'),
-      getConfigValue(config, 'integrationName'),
-      COPY_API_KEY_UTM_CONTENT_IDENTIFIER
-    );
 
     var overflowStyle = { overflow: 'hidden' };
 
@@ -174,56 +150,56 @@ class LoginPage extends Component {
               <div style={overflowStyle}>
                 <div>
                   <LayoutColumn width={1 / 1}>
-                    {isHostAPILogin
-                      ? <div>
-                          <LayoutColumn width={1 / 2}>
-                            <p>
-                              <Link className="pull-left" to={SIGN_UP_PAGE}>
-                                <FormattedMessage id="component.login.form.signUp" />
-                              </Link>
-                            </p>
-                          </LayoutColumn>
-                          <LayoutColumn width={1 / 2}>
-                            <p>
-                              <Link
-                                className="pull-right"
-                                href={CLOUDFLARE_FORGOT_PASSWORD_PAGE}
-                                target="_blank"
-                              >
-                                <FormattedMessage id="component.login.form.forgotPassword" />
-                              </Link>
-                            </p>
-                          </LayoutColumn>
-                        </div>
-                      : <div>
-                          <p style={{ textAlign: 'center' }}>
-                            <FormattedMessage id="component.clientLogin.cloudflare.description" />
-                            {' '}
+                    {isHostAPILogin ? (
+                      <div>
+                        <LayoutColumn width={1 / 2}>
+                          <p>
+                            <Link className="pull-left" to={SIGN_UP_PAGE}>
+                              <FormattedMessage id="component.login.form.signUp" />
+                            </Link>
+                          </p>
+                        </LayoutColumn>
+                        <LayoutColumn width={1 / 2}>
+                          <p>
+                            <Link
+                              className="pull-right"
+                              href={CLOUDFLARE_FORGOT_PASSWORD_PAGE}
+                              target="_blank"
+                            >
+                              <FormattedMessage id="component.login.form.forgotPassword" />
+                            </Link>
+                          </p>
+                        </LayoutColumn>
+                      </div>
+                    ) : (
+                      <div>
+                        <p style={{ textAlign: 'center' }}>
+                          <FormattedMessage id="component.clientLogin.cloudflare.description" />{' '}
+                          <a
+                            onClick={openWindow720x720.bind(
+                              this,
+                              CLOUDFLARE_SIGNUP_PAGE
+                            )}
+                          >
+                            cloudflare.com
+                          </a>
+                          .{' '}
+                          <FormattedMessage id="component.clientLogin.form.alreadyHaveAccount" />
+                          <Box display="block">
+                            <FormattedMessage id="component.clientLogin.form.getApiKey" />{' '}
                             <a
                               onClick={openWindow720x720.bind(
                                 this,
-                                signupLinkWithUTMAndChannel
+                                CLOUDFLARE_ACCOUNT_PAGE
                               )}
                             >
-                              cloudflare.com
+                              here
                             </a>
-                            .{' '}
-                            <FormattedMessage id="component.clientLogin.form.alreadyHaveAccount" />
-                            <Box display="block">
-                              <FormattedMessage id="component.clientLogin.form.getApiKey" />
-                              {' '}
-                              <a
-                                onClick={openWindow720x720.bind(
-                                  this,
-                                  accountLinkWithUTM
-                                )}
-                              >
-                                here
-                              </a>
-                              .
-                            </Box>
-                          </p>
-                        </div>}
+                            .
+                          </Box>
+                        </p>
+                      </div>
+                    )}
                   </LayoutColumn>
                 </div>
               </div>

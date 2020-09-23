@@ -1,6 +1,4 @@
-import {
-  zoneAnalyticsDashboardGet
-} from '../utils/CFClientV4API/CFClientV4API';
+import { zoneAnalyticsDashboardGet } from '../utils/CFClientV4API/CFClientV4API';
 import { notificationAddClientAPIError } from './notifications';
 import * as ActionTypes from '../constants/ActionTypes';
 

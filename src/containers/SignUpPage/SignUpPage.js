@@ -185,10 +185,8 @@ class SignUpPage extends Component {
                       <FormattedMessage id="container.signup.form.termsAndConditions.iAgreeTo" />
                       <a href={TERMS_AND_CONDITIONS_PAGE} target="_blank">
                         <FormattedMessage id="container.signup.form.termsAndConditions.cloudFlaresTermsAndConditions" />
-                      </a>
-                      {' '}
-                      <FormattedMessage id="container.signup.form.termsAndConditions.and" />
-                      {' '}
+                      </a>{' '}
+                      <FormattedMessage id="container.signup.form.termsAndConditions.and" />{' '}
                       <a href={PRIVACY_POLICY_PAGE} target="_blank">
                         <FormattedMessage id="container.signup.form.termsAndConditions.privacyPolicy" />
                       </a>

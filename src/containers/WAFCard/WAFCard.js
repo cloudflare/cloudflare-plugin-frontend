@@ -4,15 +4,13 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { Card, CardSection, CardContent, CardDrawers } from 'cf-component-card';
 import Toggle from 'cf-component-toggle';
 
-import FormattedMarkdown
-  from '../../components/FormattedMarkdown/FormattedMarkdown';
+import FormattedMarkdown from '../../components/FormattedMarkdown/FormattedMarkdown';
 import { getLastModifiedDate } from '../../utils/utils';
 import {
   getZoneSettingsValueForZoneId,
   getZoneSettingsModifiedDateForZoneId
 } from '../../selectors/zoneSettings';
-import CustomCardControl
-  from '../../components/CustomCardControl/CustomCardControl';
+import CustomCardControl from '../../components/CustomCardControl/CustomCardControl';
 import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
 import { PRO_PLAN } from '../../constants/Plans.js';
 

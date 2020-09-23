@@ -19,9 +19,7 @@ http.beforeSend(window.RestProxyCallback);
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={history}>
-      {routes}
-    </Router>
+    <Router history={history}>{routes}</Router>
   </Provider>,
   document.getElementById('root')
 );

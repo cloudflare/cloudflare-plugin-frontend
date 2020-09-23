@@ -5,9 +5,7 @@ import _ from 'lodash';
 
 import { Heading } from 'cf-component-heading';
 
-import {
-  renderCards
-} from '../../components/RenderCardsDynamically/RenderCardsDynamically';
+import { renderCards } from '../../components/RenderCardsDynamically/RenderCardsDynamically';
 import WaitForSettings from '../../containers/WaitForSettings/WaitForSettings';
 
 class MoreSettingsPage extends Component {
@@ -19,7 +17,9 @@ class MoreSettingsPage extends Component {
       var categoryTitle = key;
       return (
         <div key={count++}>
-          <Heading size={1}><FormattedMessage id={categoryTitle} /></Heading>
+          <Heading size={1}>
+            <FormattedMessage id={categoryTitle} />
+          </Heading>
           {renderCards(value)}
         </div>
       );

@@ -5,6 +5,7 @@
 # Development Tasks
 ```
 $ yarn run build
+$ OUTPUT_PATH=custom-path.js yarn run build
 $ yarn run build:production
 $ yarn run lint
 $ yarn run format
@@ -55,7 +56,7 @@ to each request.
 
 5. Build an API Client for the Cloudflare Host API which adds the Host Key to all requests.
 
-## JSON response for endpoint /config 
+## JSON response for endpoint /config
 
 ```
 {

@@ -4,12 +4,9 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { Card, CardSection, CardContent, CardDrawers } from 'cf-component-card';
 import { Button } from 'cf-component-button';
 
-import FormattedMarkdown
-  from '../../components/FormattedMarkdown/FormattedMarkdown';
-import CustomCardControl
-  from '../../components/CustomCardControl/CustomCardControl';
+import FormattedMarkdown from '../../components/FormattedMarkdown/FormattedMarkdown';
+import CustomCardControl from '../../components/CustomCardControl/CustomCardControl';
 import { BIZ_PLAN } from '../../constants/Plans.js';
-import { generateUTMLink } from '../../selectors/generateUTMLink.js';
 
 const MINIMUM_PLAN = BIZ_PLAN;
 
@@ -36,18 +33,12 @@ class BypassCacheByCookieCard extends Component {
   render() {
     const { formatMessage } = this.props.intl;
 
-    let { activeZone, config, zones } = this.props;
-    let zone = zones[activeZone.name];
+    const { activeZone, zones } = this.props;
+    const zone = zones[activeZone.name];
 
     // Currently this is hardcoded for WordPress only
     let contentLink =
       'https://support.cloudflare.com/hc/en-us/articles/236166048-Caching-Static-HTML-with-WordPress-WooCommerce';
-    let upgradeLinkWithUTM = generateUTMLink(
-      contentLink,
-      config.integrationName,
-      config.integrationName,
-      this.className
-    );
 
     return (
       <div>
@@ -69,7 +60,7 @@ class BypassCacheByCookieCard extends Component {
             >
               <Button
                 type="primary"
-                onClick={this.onButtonClick.bind(this, upgradeLinkWithUTM)}
+                onClick={this.onButtonClick.bind(this, contentLink)}
               >
                 <FormattedMessage id="container.bypassCacheByCookieCard.button" />
               </Button>

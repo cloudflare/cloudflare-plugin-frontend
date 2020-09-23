@@ -26,12 +26,12 @@ class UnderAttackButton extends Component {
 
   render() {
     let { value } = this.state;
-    let buttonText = value === 'under_attack'
-      ? 'container.underAttackButton.turnOn'
-      : 'container.underAttackButton.turnOff';
-    let buttonValue = value === 'under_attack'
-      ? 'essentially_off'
-      : 'under_attack';
+    let buttonText =
+      value === 'under_attack'
+        ? 'container.underAttackButton.turnOn'
+        : 'container.underAttackButton.turnOff';
+    let buttonValue =
+      value === 'under_attack' ? 'essentially_off' : 'under_attack';
     let buttonType = value === 'under_attack' ? 'warning' : 'primary';
 
     let underAttackStyles = {

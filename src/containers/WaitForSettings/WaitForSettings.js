@@ -65,7 +65,9 @@ class WaitForSettings extends Component {
       isSettingsLoaded && isPluginSettingsLoaded && isAnalyticsLoaded;
 
     var link = (
-      <Link href={CLOUDFLARE_ADD_SITE_PAGE} target="_blank">Cloudflare</Link>
+      <Link href={CLOUDFLARE_ADD_SITE_PAGE} target="_blank">
+        Cloudflare
+      </Link>
     );
     if (isDNSPageEnabled(config)) {
       link = (
@@ -77,17 +79,19 @@ class WaitForSettings extends Component {
 
     return (
       <div>
-        {!isEverythingLoaded &&
-          isZoneOnCloudflare &&
-          <Text align="center"><Loading /></Text>}
-        {!isEverythingLoaded &&
-          !isZoneOnCloudflare &&
+        {!isEverythingLoaded && isZoneOnCloudflare && (
+          <Text align="center">
+            <Loading />
+          </Text>
+        )}
+        {!isEverythingLoaded && !isZoneOnCloudflare && (
           <Text align="center">
             <FormattedMessage
               id="errors.noActiveZoneSelected"
               values={{ link: link, domain: activeZone.name }}
             />
-          </Text>}
+          </Text>
+        )}
         {isEverythingLoaded && isZoneOnCloudflare && this.props.children}
       </div>
     );

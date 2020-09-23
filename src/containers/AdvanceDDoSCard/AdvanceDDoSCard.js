@@ -3,10 +3,8 @@ import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { Card, CardSection, CardContent, CardDrawers } from 'cf-component-card';
 
-import FormattedMarkdown
-  from '../../components/FormattedMarkdown/FormattedMarkdown';
-import CustomCardControl
-  from '../../components/CustomCardControl/CustomCardControl';
+import FormattedMarkdown from '../../components/FormattedMarkdown/FormattedMarkdown';
+import CustomCardControl from '../../components/CustomCardControl/CustomCardControl';
 import { BIZ_PLAN, planNeedsUpgrade } from '../../constants/Plans.js';
 
 const SETTING_NAME = 'advanceddos';

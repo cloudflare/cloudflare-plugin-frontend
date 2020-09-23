@@ -73,59 +73,63 @@ class ZoneProvisionContainer extends Component {
 
     return (
       <div>
-        {!isAnyButtonFetching
-          ? isProvisioned
-              ? <div className="row">
-                  <div className="col-16">
+        {!isAnyButtonFetching ? (
+          isProvisioned ? (
+            <div className="row">
+              <div className="col-16">
+                <Button
+                  type="warning"
+                  onClick={this.handleRequestOpen.bind(this)}
+                >
+                  <FormattedMessage id="container.zoneProvision.button.deprovision" />
+                </Button>
+              </div>
+            </div>
+          ) : (
+            <div>
+              <div className="row">
+                <div className="col-16">
+                  <a
+                    href="https://support.cloudflare.com/hc/en-us/articles/203685674-Full-setup-versus-Partial-CNAME-setup"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FormattedMessage id="container.zoneProvision.provisionDifference" />
+                  </a>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-8">
+                  <Button
+                    type="success"
+                    onClick={this.handleProvisionCNAMEZone.bind(this)}
+                  >
+                    <FormattedMessage id="container.zoneProvision.button.cname" />
+                  </Button>
+                </div>
+                <div className="col-8">
+                  <FeatureManager
+                    isEnabled={
+                      this.props.config
+                        .featureManagerIsFullZoneProvisioningEnabled
+                    }
+                  >
                     <Button
-                      type="warning"
-                      onClick={this.handleRequestOpen.bind(this)}
+                      type="success"
+                      onClick={this.handleFullZoneProvisioningButtonClick.bind(
+                        this
+                      )}
                     >
-                      <FormattedMessage id="container.zoneProvision.button.deprovision" />
+                      <FormattedMessage id="container.zoneProvision.button.full" />
                     </Button>
-                  </div>
+                  </FeatureManager>
                 </div>
-              : <div>
-                  <div className="row">
-                    <div className="col-16">
-                      <a
-                        href="https://support.cloudflare.com/hc/en-us/articles/203685674-Full-setup-versus-Partial-CNAME-setup"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <FormattedMessage id="container.zoneProvision.provisionDifference" />
-                      </a>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-8">
-                      <Button
-                        type="success"
-                        onClick={this.handleProvisionCNAMEZone.bind(this)}
-                      >
-                        <FormattedMessage id="container.zoneProvision.button.cname" />
-                      </Button>
-                    </div>
-                    <div className="col-8">
-                      <FeatureManager
-                        isEnabled={
-                          this.props.config
-                            .featureManagerIsFullZoneProvisioningEnabled
-                        }
-                      >
-                        <Button
-                          type="success"
-                          onClick={this.handleFullZoneProvisioningButtonClick.bind(
-                            this
-                          )}
-                        >
-                          <FormattedMessage id="container.zoneProvision.button.full" />
-                        </Button>
-                      </FeatureManager>
-                    </div>
-                  </div>
-                </div>
-          : <Loading />}
+              </div>
+            </div>
+          )
+        ) : (
+          <Loading />
+        )}
         <Modal
           isOpen={this.state.isModalOpen}
           onRequestClose={this.handleRequestClose.bind(this)}

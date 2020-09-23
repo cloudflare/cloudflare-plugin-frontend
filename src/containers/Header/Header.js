@@ -2,12 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
 
-import ActiveZoneSelector
-  from '../../containers/ActiveZoneSelector/ActiveZoneSelector';
+import ActiveZoneSelector from '../../containers/ActiveZoneSelector/ActiveZoneSelector';
 import { isLoggedIn } from '../../utils/Auth/Auth';
 import { getAbsoluteUrl } from '../../selectors/config';
-import UnderAttackButton
-  from '../../containers/UnderAttackButton/UnderAttackButton';
+import UnderAttackButton from '../../containers/UnderAttackButton/UnderAttackButton';
 import { LayoutColumn } from 'cf-component-layout';
 
 class Header extends Component {
@@ -40,9 +38,9 @@ class Header extends Component {
             <ActiveZoneSelector />
           </LayoutColumn>
           <LayoutColumn width={6 / 8} style={columnStyle}>
-            {isLoggedIn() && zoneSettings.entities[activeZone.id]
-              ? <UnderAttackButton />
-              : null}
+            {isLoggedIn() && zoneSettings.entities[activeZone.id] ? (
+              <UnderAttackButton />
+            ) : null}
           </LayoutColumn>
         </div>
       </header>

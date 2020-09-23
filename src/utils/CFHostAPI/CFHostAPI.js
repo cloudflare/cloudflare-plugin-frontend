@@ -91,18 +91,18 @@ export function userCreate(
 }
 
 /*
-* Authenticate the user
-*
-* @param {Object} [opts]
-* @param {String} [opts.cloudflare_email]
-* @param {String} [opts.cloudflare_pass]
-* @param {String} [opts.unique_id]
-* @param {String} [opts.clobber_unique_id]
-* @param {Function} [onSuccess]
-* @param {Function} [onError]
-*
-* @returns {Object} API Response
-*/
+ * Authenticate the user
+ *
+ * @param {Object} [opts]
+ * @param {String} [opts.cloudflare_email]
+ * @param {String} [opts.cloudflare_pass]
+ * @param {String} [opts.unique_id]
+ * @param {String} [opts.clobber_unique_id]
+ * @param {Function} [onSuccess]
+ * @param {Function} [onError]
+ *
+ * @returns {Object} API Response
+ */
 export function userAuth(
   { cloudflare_email, cloudflare_pass, unique_id, clobber_unique_id },
   callback
