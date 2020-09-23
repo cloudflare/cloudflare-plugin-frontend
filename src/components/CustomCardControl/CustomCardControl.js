@@ -4,19 +4,18 @@ import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { CardControl } from 'cf-component-card';
 import { Button } from 'cf-component-button';
-import { CLOUDFLARE_UPGRADE_PAGE } from '../../constants/UrlPaths.js';
 import {
   planNeedsUpgrade,
   getLocalizedPlanId,
-  FREE_PLAN
+  FREE_PLAN,
+  getPlanUpdateParam
 } from '../../constants/Plans.js';
 import { getConfigValue } from '../../selectors/config.js';
-import { generateUTMLink } from '../../selectors/generateUTMLink.js';
 import { openWindow720x720 } from '../../utils/utils.js';
 
 class CustomCardControl extends Component {
   render() {
-    let { integrationName, activeZone } = this.props;
+    let { activeZone } = this.props;
 
     var currentPlan = this.props.hasOwnProperty('currentPlan')
       ? this.props.currentPlan

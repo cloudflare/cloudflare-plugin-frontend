@@ -11,8 +11,7 @@ import { Card, CardSection } from 'cf-component-card';
 
 import { LayoutContainer, LayoutRow, LayoutColumn } from 'cf-component-layout';
 
-import BenefitsCollection
-  from '../../containers/BenefitsCollection/BenefitsCollection';
+import BenefitsCollection from '../../containers/BenefitsCollection/BenefitsCollection';
 
 import {
   CLOUDFLARE_SIGNUP_PAGE,
@@ -25,10 +24,6 @@ import { Link } from 'react-router';
 import { push } from 'react-router-redux';
 
 import { openWindow720x720 } from '../../utils/utils.js';
-import { generateUTMLink } from '../../selectors/generateUTMLink.js';
-import { generateChannelLink } from '../../selectors/generateChannelLink.js';
-
-const SIGNUP_SPLASH_UTM_CONTENT_IDENTIFIER = 'signup_splash_page';
 
 const cardBoxStyles = {
   margin: '2em auto',
@@ -71,19 +66,7 @@ class SplashPage extends Component {
     if (useHostAPILogin) {
       dispatch(push(SIGN_UP_PAGE));
     } else {
-      const integrationName = getConfigValue(config, 'integrationName');
-      let signupLinkWithUTM = generateUTMLink(
-        CLOUDFLARE_SIGNUP_PAGE,
-        integrationName,
-        integrationName,
-        SIGNUP_SPLASH_UTM_CONTENT_IDENTIFIER
-      );
-
-      let signupLinkWithUTMAndChannel = generateChannelLink(
-        signupLinkWithUTM,
-        integrationName
-      );
-      this.openWindow720x720(signupLinkWithUTMAndChannel);
+      this.openWindow720x720(CLOUDFLARE_SIGNUP_PAGE);
     }
   }
 
@@ -127,8 +110,7 @@ class SplashPage extends Component {
                 <LayoutRow>
                   <LayoutColumn width={1 / 1}>
                     <p style={textStyles}>
-                      <FormattedMessage id="container.splashPage.help.alreadyHaveAccount" />
-                      {' '}
+                      <FormattedMessage id="container.splashPage.help.alreadyHaveAccount" />{' '}
                       <Link style={linkStyles} to={LOGIN_PAGE}>
                         <FormattedMessage id="container.splashPage.help.here" />
                       </Link>
@@ -142,7 +124,6 @@ class SplashPage extends Component {
                   </LayoutColumn>
                 </LayoutRow>
               </LayoutContainer>
-
             </CardSection>
           </Box>
         </Card>

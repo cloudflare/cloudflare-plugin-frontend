@@ -16,16 +16,11 @@ import {
   CLOUDFLARE_FORGOT_PASSWORD_PAGE,
   HOME_PAGE
 } from '../../constants/UrlPaths.js';
-import { generateUTMLink } from '../../selectors/generateUTMLink.js';
 import { getConfigValue } from '../../selectors/config';
 import { isLoggedIn } from '../../utils/Auth/Auth';
 import { Link } from 'react-router';
 import { push } from 'react-router-redux';
 import { openWindow720x720 } from '../../utils/utils.js';
-import { generateChannelLink } from '../../selectors/generateChannelLink.js';
-
-const SIGNUP_UTM_CONTENT_IDENTIFIER = 'signup_now';
-const COPY_API_KEY_UTM_CONTENT_IDENTIFIER = 'copy_api_key';
 
 class LoginPage extends Component {
   constructor(props) {
@@ -85,24 +80,6 @@ class LoginPage extends Component {
       loginButtonText = 'component.login.form.button';
     }
 
-    let signupLinkWithUTM = generateUTMLink(
-      CLOUDFLARE_SIGNUP_PAGE,
-      getConfigValue(config, 'integrationName'),
-      getConfigValue(config, 'integrationName'),
-      SIGNUP_UTM_CONTENT_IDENTIFIER
-    );
-
-    let signupLinkWithUTMAndChannel = generateChannelLink(
-      signupLinkWithUTM,
-      getConfigValue(config, 'integrationName')
-    );
-
-    let accountLinkWithUTM = generateUTMLink(
-      CLOUDFLARE_ACCOUNT_PAGE,
-      getConfigValue(config, 'integrationName'),
-      getConfigValue(config, 'integrationName'),
-      COPY_API_KEY_UTM_CONTENT_IDENTIFIER
-    );
 
     var overflowStyle = { overflow: 'hidden' };
 
@@ -202,7 +179,7 @@ class LoginPage extends Component {
                             <a
                               onClick={openWindow720x720.bind(
                                 this,
-                                signupLinkWithUTMAndChannel
+                                CLOUDFLARE_SIGNUP_PAGE
                               )}
                             >
                               cloudflare.com
@@ -215,7 +192,7 @@ class LoginPage extends Component {
                               <a
                                 onClick={openWindow720x720.bind(
                                   this,
-                                  accountLinkWithUTM
+                                  CLOUDFLARE_ACCOUNT_PAGE
                                 )}
                               >
                                 here
