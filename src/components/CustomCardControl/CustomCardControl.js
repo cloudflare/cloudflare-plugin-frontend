@@ -27,30 +27,24 @@ class CustomCardControl extends Component {
     var needToUpgrade = planNeedsUpgrade(currentPlan, minimumPlan);
     var localizedPlanId = getLocalizedPlanId(minimumPlan);
 
-    let upgradeLinkWithUTM = generateUTMLink(
-      CLOUDFLARE_UPGRADE_PAGE + '/' + activeZone.name,
-      integrationName,
-      integrationName,
-      this.props.indentifier
-    );
-
     // Upgrade Plan Page can get the following parameters
-    // /a/upgrade-plan?plan=[free|pro|business|enterprise]
-    // since we added UTM code we are appending with '&'
-    upgradeLinkWithUTM += '&plan=' + minimumPlan;
+    // /a/upgrade-plan?pt=[f|p|b|]
+    let upgradeLink = `https://dash.cloudflare.com?to=/:account/${activeZone.name}/update-plan`;
+    upgradeLink += '&pt=' + getPlanUpdateParam(minimumPlan);
 
     return (
       <CardControl>
-        {needToUpgrade
-          ? <Button
-              type="primary"
-              onClick={openWindow720x720.bind(this, upgradeLinkWithUTM)}
-            >
-              <FormattedMessage id="component.customcardcontrol.upgrade" />
-              {' '}
-              <FormattedMessage id={localizedPlanId} />
-            </Button>
-          : this.props.children}
+        {needToUpgrade ? (
+          <Button
+            type="primary"
+            onClick={openWindow720x720.bind(this, upgradeLink)}
+          >
+            <FormattedMessage id="component.customcardcontrol.upgrade" />{' '}
+            <FormattedMessage id={localizedPlanId} />
+          </Button>
+        ) : (
+          this.props.children
+        )}
       </CardControl>
     );
   }

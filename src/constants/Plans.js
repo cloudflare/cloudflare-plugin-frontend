@@ -17,6 +17,21 @@ export function planNeedsUpgrade(currentPlan, minimumPlan) {
   return planList[currentPlan] < planList[minimumPlan];
 }
 
+export function getPlanUpdateParam(minimumPlan) {
+  switch (minimumPlan) {
+    case FREE_PLAN:
+      return 'f';
+    case PRO_PLAN:
+      return 'p';
+    case BIZ_PLAN:
+      return 'b';
+    default:
+      // By default return a pro plan
+      // Note that we dont support
+      return 'p';
+  }
+}
+
 export function getLocalizedPlanId(planName) {
   var localizedPlanName = planName;
   switch (planName) {

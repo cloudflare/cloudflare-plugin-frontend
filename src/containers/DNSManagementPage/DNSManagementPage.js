@@ -14,13 +14,9 @@ import {
 import { Heading } from 'cf-component-heading';
 import { Button } from 'cf-component-button';
 
-import ActivationCheckCard
-  from '../../containers/ActivationCheckCard/ActivationCheckCard';
+import ActivationCheckCard from '../../containers/ActivationCheckCard/ActivationCheckCard';
 import DNSRecordEditor from '../../containers/DNSRecordEditor/DNSRecordEditor';
-import ZoneProvisionContainer
-  from '../../containers/ZoneProvisionContainer/ZoneProvisionContainer';
-import { generateUTMLink } from '../../selectors/generateUTMLink.js';
-import { CLOUDFLARE_UPGRADE_PAGE } from '../../constants/UrlPaths.js';
+import ZoneProvisionContainer from '../../containers/ZoneProvisionContainer/ZoneProvisionContainer';
 import { openWindow720x720 } from '../../utils/utils.js';
 
 class DNSManagementPage extends Component {
@@ -30,7 +26,7 @@ class DNSManagementPage extends Component {
   }
 
   render() {
-    let { activeZone, config, dnsRecords, zones } = this.props;
+    let { activeZone, dnsRecords, zones } = this.props;
     let isActiveZoneNameEmpty = _.isEmpty(activeZone.name);
     let isDnsRecordsEmpty = _.isEmpty(dnsRecords[activeZone.id]);
     let isPending = false;
@@ -43,16 +39,14 @@ class DNSManagementPage extends Component {
       zone = zones[activeZone.name];
     }
 
-    let upgradeLinkWithUTM = generateUTMLink(
-      CLOUDFLARE_UPGRADE_PAGE,
-      config.integrationName,
-      config.integrationName,
-      this.className
-    );
+    // Upgrade Plan Page can get the following parameters
+    // /a/upgrade-plan?pt=[f|p|b|]
+    let upgradeLink = `https://dash.cloudflare.com?to=/:account/${activeZone.name}/update-plan`;
+
     let changePlanButton = (
       <Button
         type="success"
-        onClick={openWindow720x720.bind(this, upgradeLinkWithUTM)}
+        onClick={openWindow720x720.bind(this, upgradeLink)}
       >
         <FormattedMessage id="container.dnsManagementPage.thead.changePlan" />
       </Button>
@@ -63,7 +57,7 @@ class DNSManagementPage extends Component {
         <Heading size={1}>
           <FormattedMessage id="container.dnsManagementPage.title" />
         </Heading>
-        {!isActiveZoneNameEmpty &&
+        {!isActiveZoneNameEmpty && (
           <div>
             <Table>
               <TableHead>
@@ -86,8 +80,7 @@ class DNSManagementPage extends Component {
                 <TableRow>
                   <TableCell>{zone.name}</TableCell>
                   <TableCell>
-                    {zone.plan.name}
-                    {' '}&nbsp;&nbsp;&nbsp;{' '}
+                    {zone.plan.name} &nbsp;&nbsp;&nbsp;{' '}
                     {zone.plan.name != '' ? changePlanButton : null}
                   </TableCell>
                   <TableCell>{zone.type}</TableCell>
@@ -100,7 +93,8 @@ class DNSManagementPage extends Component {
             {!isDnsRecordsEmpty ? <DNSRecordEditor /> : null}
 
             <ZoneProvisionContainer />
-          </div>}
+          </div>
+        )}
       </div>
     );
   }
