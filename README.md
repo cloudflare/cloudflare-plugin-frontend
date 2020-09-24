@@ -75,7 +75,6 @@ to each request.
         "container.moresettings.speed": [
             "AlwaysOnlineCard",
             "BrowserCacheTTLCard",
-            "BypassCacheByCookieCard",
             "CacheLevelCard",
             "DevelopmentModeCard",
             "IPV6Card",
