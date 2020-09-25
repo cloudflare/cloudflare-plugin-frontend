@@ -2,6 +2,22 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.1.0](#3.1.0) - 2020-09-24
+### Added
+- Update webpack to accept `OUTPUT_PATH` variable [#143](https://github.com/cloudflare/cloudflare-plugin-frontend/pull/143)
+- Update login text to include API Tokens [#143](https://github.com/cloudflare/cloudflare-plugin-frontend/pull/143)
+- Update prettier config and dependency [#143](https://github.com/cloudflare/cloudflare-plugin-frontend/pull/143)
+
+### Changed
+- Update all paths to dashboard to not include legacy /a routes [#143](https://github.com/cloudflare/cloudflare-plugin-frontend/pull/143)
+- Remove UTM and channel generation for links [#143](https://github.com/cloudflare/cloudflare-plugin-frontend/pull/143)
+- Format code with prettier [#143](https://github.com/cloudflare/cloudflare-plugin-frontend/pull/143)
+- Rename 'Optimize Cloudflare for WordPress' Card [#150](https://github.com/cloudflare/cloudflare-plugin-frontend/pull/150)
+- Remove Cache HTML at CDN card since it's redundant [#150](https://github.com/cloudflare/cloudflare-plugin-frontend/pull/150)
+
+### Fixed
+- Fix 404s on upgrade links [#143](https://github.com/cloudflare/cloudflare-plugin-frontend/pull/143)
+
 ## [3.0.0](#3.0.0) - 2017-7-17
 ### Changed
 - Updated config fetch to use new /config endpoint [#138](https://github.com/cloudflare/cloudflare-plugin-frontend/pull/138)
