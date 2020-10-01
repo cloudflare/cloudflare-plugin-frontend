@@ -19,6 +19,7 @@ import PluginSpecificCacheCard from '../containers/PluginSpecificCacheCard/Plugi
 import PluginSpecificCacheTagCard from '../containers/PluginSpecificCacheTagCard/PluginSpecificCachetTagCard.js';
 import RailgunCard from '../containers/RailgunCard/RailgunCard';
 import AutomaticHTTPSRewritesCard from '../containers/AutomaticHTTPSRewritesCard/AutomaticHTTPSRewritesCard';
+import AutomaticPlatformOptimizationCard from '../containers/AutomaticPlatformOptimization/AutomaticPlatformOptimizationCard';
 
 // Pages
 import DNSManagementPage from '../containers/DNSManagementPage/DNSManagementPage';
@@ -28,6 +29,7 @@ const cardMapper = {
   AlwaysOnlineCard: AlwaysOnlineCard,
   ApplyDefaultSettingsCard: ApplyDefaultSettingsCard,
   AutomaticHTTPSRewritesCard: AutomaticHTTPSRewritesCard,
+  AutomaticPlatformOptimizationCard: AutomaticPlatformOptimizationCard,
   BrowserCacheTTLCard: BrowserCacheTTLCard,
   BrowserIntegrityCheckCard: BrowserIntegrityCheckCard,
   CacheLevelCard: CacheLevelCard,

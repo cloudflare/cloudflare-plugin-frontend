@@ -243,11 +243,27 @@ export function zoneGetAll(callback) {
  * @returns {Object} API Response
  */
 export function zoneGetSettings(zoneId, callback) {
-  return http.get(
-    ENDPOINT + '/zones/' + zoneId + '/settings',
-    {},
-    v4Callback(callback)
-  );
+  return http.get(ENDPOINT + '/zones/' + zoneId + '/settings', {}, function(
+    error,
+    response
+  ) {
+    http.get(
+      ENDPOINT +
+        '/zones/' +
+        zoneId +
+        '/settings/automatic_platform_optimization',
+      {},
+      function(apo_error, apo_response) {
+        if (error || apo_error) {
+          return callback(error || apo_error);
+        }
+
+        // merge automatic_platform_optimization setting into zone settings
+        response.body.result.push(apo_response.body.result);
+        return callback(null, response);
+      }
+    );
+  });
 }
 
 /*
@@ -319,6 +335,22 @@ export function zoneRailgunPatch(zoneId, railgunId, connected, callback) {
   return http.patch(
     ENDPOINT + '/zones/' + zoneId + '/railguns/' + railgunId,
     opts,
+    v4Callback(callback)
+  );
+}
+
+/*
+ * Get all entitlements for a zone
+ *
+ * @param {String}   [zoneId]
+ * @param {Function} [callback]
+ *
+ * @returns {Object} API Response
+ */
+export function zoneGetEntitlements(zoneId, callback) {
+  return http.get(
+    ENDPOINT + '/zones/' + zoneId + '/entitlements',
+    {},
     v4Callback(callback)
   );
 }

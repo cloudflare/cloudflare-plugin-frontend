@@ -10,6 +10,7 @@ import { userReducer } from './user';
 import { zoneAnalyticsReducer } from './zoneAnalytics';
 import { zonePurgeCacheReducer } from './zonePurgeCache';
 import { zoneRailgunReducer } from './zoneRailgun';
+import { zoneEntitlementsReducer } from './zoneEntitlements';
 import { zoneSettingsReducer } from './zoneSettings';
 import { zonesReducer } from './zones';
 import { pluginSettingsReducer } from './pluginSettings';
@@ -28,7 +29,8 @@ const rootReducer = combineReducers({
   zonePurgeCache: zonePurgeCacheReducer,
   zoneRailguns: zoneRailgunReducer,
   zoneSettings: zoneSettingsReducer,
-  pluginSettings: pluginSettingsReducer
+  pluginSettings: pluginSettingsReducer,
+  zoneEntitlements: zoneEntitlementsReducer
 });
 
 export default rootReducer;

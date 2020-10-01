@@ -2,6 +2,9 @@ import { normalize, Schema, arrayOf } from 'normalizr';
 
 const zoneSchema = new Schema('zones', { idAttribute: 'name' });
 const zoneRailgunSchema = new Schema('railguns', { idAttribute: 'id' });
+const zoneEntitlementsSchema = new Schema('entitlements', {
+  idAttribute: 'id'
+});
 
 export function normalizeZoneByIdGetAll(zoneId, result) {
   var zoneSchemaById = new Schema(zoneId, { idAttribute: 'id' });
@@ -14,4 +17,8 @@ export function normalizeZoneGetAll(result) {
 
 export function normalizeZoneRailgunGetAll(result) {
   return normalize(result, arrayOf(zoneRailgunSchema));
+}
+
+export function normalizeZoneEntitlements(result) {
+  return normalize(result, arrayOf(zoneEntitlementsSchema));
 }
