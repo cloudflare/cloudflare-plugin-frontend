@@ -2,13 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import Toggle from 'cf-component-toggle';
-import {
-  Card,
-  CardSection,
-  CardContent,
-  CardControl,
-  CardDrawers
-} from 'cf-component-card';
+import { Card, CardSection, CardContent, CardDrawers } from 'cf-component-card';
 
 import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
 import { asyncPluginUpdateSetting } from '../../actions/pluginSettings';

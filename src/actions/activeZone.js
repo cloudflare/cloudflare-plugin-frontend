@@ -14,7 +14,7 @@ export function zoneSetActiveZone(zone) {
 }
 
 export function asyncZoneSetActiveZone(zone) {
-  return (dispatch) => {
+  return dispatch => {
     dispatch(zoneSetActiveZone(zone));
     if (typeof zone.id !== 'undefined') {
       dispatch(asyncDNSRecordFetchList(zone.id));

@@ -23,9 +23,9 @@ export function zoneEntitlementsError() {
 }
 
 export function asyncZoneEntitlements(zoneId) {
-  return (dispatch) => {
+  return dispatch => {
     dispatch(zoneEntitlements());
-    zoneGetEntitlements(zoneId, function (error, response) {
+    zoneGetEntitlements(zoneId, function(error, response) {
       if (response) {
         dispatch(zoneEntitlementsSuccess(zoneId, response.body.result));
       } else {

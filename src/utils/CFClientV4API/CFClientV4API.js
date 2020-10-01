@@ -23,7 +23,7 @@ export function v4ResponseOk(response) {
  * @returns {Function} callback that passes correct error
  */
 export function v4Callback(callback) {
-  return function (error, response) {
+  return function(error, response) {
     if (response && response.text) {
       response.body = JSON.parse(response.text);
     }
@@ -243,7 +243,7 @@ export function zoneGetAll(callback) {
  * @returns {Object} API Response
  */
 export function zoneGetSettings(zoneId, callback) {
-  return http.get(ENDPOINT + '/zones/' + zoneId + '/settings', {}, function (
+  return http.get(ENDPOINT + '/zones/' + zoneId + '/settings', {}, function(
     error,
     response
   ) {
@@ -253,7 +253,7 @@ export function zoneGetSettings(zoneId, callback) {
         zoneId +
         '/settings/automatic_platform_optimization',
       {},
-      function (apo_error, apo_response) {
+      function(apo_error, apo_response) {
         if (error || apo_error) {
           return callback(error || apo_error);
         }
