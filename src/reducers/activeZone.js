@@ -10,7 +10,8 @@ export function activeZoneReducer(state = initialState, action) {
     case ActionTypes.ZONES_SET_ACTIVE_ZONE:
       return Object.assign({}, state, {
         id: action.zone.id,
-        name: action.zone.name
+        name: action.zone.name,
+        account: action.zone.account
       });
     default:
       return state;

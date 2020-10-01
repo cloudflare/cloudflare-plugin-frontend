@@ -15,7 +15,29 @@ import { openWindow720x720 } from '../../utils/utils.js';
 
 class CustomCardControl extends Component {
   render() {
-    let { activeZone } = this.props;
+    let {
+      activeZone,
+      purchaseSubscription,
+      purchaseSubscriptionPath
+    } = this.props;
+
+    if (purchaseSubscription && purchaseSubscriptionPath) {
+      upgradeLink = `https://dash.cloudflare.com/${activeZone.account.id}/${activeZone.name}${purchaseSubscriptionPath}`;
+      return (
+        <CardControl>
+          {purchaseSubscription ? (
+            <Button
+              type="primary"
+              onClick={openWindow720x720.bind(this, upgradeLink)}
+            >
+              <FormattedMessage id="component.customcardcontrol.purchase" />
+            </Button>
+          ) : (
+            this.props.children
+          )}
+        </CardControl>
+      );
+    }
 
     var currentPlan = this.props.hasOwnProperty('currentPlan')
       ? this.props.currentPlan
@@ -53,9 +75,11 @@ CustomCardControl.propTypes = {
   name: PropTypes.string,
   indentifier: PropTypes.string.isRequired,
   integrationName: PropTypes.string,
-  activeZone: PropTypes.string,
+  activeZone: PropTypes.object.isRequired,
   currentPlan: PropTypes.string,
   minimumPlan: PropTypes.string,
+  purchaseSubscription: PropTypes.bool,
+  purchaseSubscriptionPath: PropTypes.string,
   children: PropTypes.node
 };
 
