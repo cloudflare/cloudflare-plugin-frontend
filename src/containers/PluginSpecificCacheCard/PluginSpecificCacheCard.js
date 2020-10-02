@@ -81,7 +81,7 @@ class PluginSpecificCacheCard extends Component {
               footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}
             >
               <p>
-                <FormattedMessage id="container.pluginSpecificCacheCard.description" />
+                <FormattedMarkdown text="container.pluginSpecificCacheCard.description" />
               </p>
             </CardContent>
             <CardControl>
