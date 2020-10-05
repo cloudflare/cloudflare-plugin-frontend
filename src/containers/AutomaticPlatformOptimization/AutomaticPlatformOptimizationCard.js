@@ -50,7 +50,10 @@ class AutomaticPlatformOptimizationCard extends Component {
 
     dispatch(
       asyncZoneUpdateSetting(SETTING_NAME, activeZoneId, {
-        enabled: value
+        enabled: value,
+        cf: true, // the zone is orange clouded
+        wordpress: true, // wordpress is detected
+        wp_plugin: true // wp plugin is detected
       })
     );
     dispatch(asyncPluginUpdateSetting(SETTING_NAME, activeZoneId, value));
