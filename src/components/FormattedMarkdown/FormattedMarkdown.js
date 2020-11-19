@@ -17,13 +17,15 @@ import { getConfigValue } from '../../selectors/config.js';
 // <FormattedMarkdown text="mycomponent.myfeature" />
 class FormattedMarkdown extends Component {
   render() {
-    let { integrationName } = this.props;
+    let { integrationName, formattedMessage } = this.props;
 
-    var formattedMessage = formatMessageForIntegration(
-      this.props.intl,
-      this.props.text,
-      integrationName
-    );
+    if (!formattedMessage) {
+      formattedMessage = formatMessageForIntegration(
+        this.props.intl,
+        this.props.text,
+        integrationName
+      );
+    }
 
     var md = new MarkdownIt();
 
@@ -38,8 +40,8 @@ class FormattedMarkdown extends Component {
 }
 
 FormattedMarkdown.propTypes = {
-  text: PropTypes.string.isRequired,
-  formattedMessage: PropTypes.func,
+  text: PropTypes.string,
+  formattedMessage: PropTypes.string,
   intl: PropTypes.object,
   integrationName: PropTypes.string
 };

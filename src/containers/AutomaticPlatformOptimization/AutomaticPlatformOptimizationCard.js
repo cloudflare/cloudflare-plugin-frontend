@@ -6,7 +6,7 @@ import { Card, CardSection, CardContent, CardDrawers } from 'cf-component-card';
 
 import { asyncZoneUpdateSetting } from '../../actions/zoneSettings';
 import { asyncPluginUpdateSetting } from '../../actions/pluginSettings';
-import { getLastModifiedDate } from '../../utils/utils';
+import { getLastModifiedDate, isSubdomain } from '../../utils/utils';
 import FormattedMarkdown from '../../components/FormattedMarkdown/FormattedMarkdown';
 import {
   getZoneSettingsValueForZoneId,
@@ -27,16 +27,30 @@ class AutomaticPlatformOptimizationCard extends Component {
   }
 
   componentDidMount() {
-    const { activeZoneId, rewriteValue, dispatch } = this.props;
+    const { activeZoneId, dispatch } = this.props;
 
     // synchronize Plugin setting with API value
     dispatch(
       asyncPluginUpdateSetting(
         SETTING_NAME,
         activeZoneId,
-        rewriteValue && rewriteValue.enabled
+        this.isFeatureEnabled()
       )
     );
+  }
+
+  isFeatureEnabled() {
+    const {
+      hostname,
+      isSubdomain,
+      settings: { enabled, hostnames = [] }
+    } = this.props;
+
+    if (hostnames.length > 0 || isSubdomain) {
+      return enabled && hostnames.includes(hostname);
+    }
+
+    return enabled;
   }
 
   handleDrawerClick(id) {
@@ -46,14 +60,31 @@ class AutomaticPlatformOptimizationCard extends Component {
   }
 
   handleChange(value) {
-    let { activeZoneId, dispatch } = this.props;
+    let {
+      activeZoneId,
+      dispatch,
+      settings: { hostnames = [] },
+      defaultHostnames
+    } = this.props;
+
+    if (value) {
+      hostnames.push(...defaultHostnames.filter(h => !hostnames.includes(h)));
+    } else {
+      _.remove(hostnames, h => defaultHostnames.includes(h));
+
+      // keep feature enabled if there are other hostnames
+      if (hostnames.length > 0) {
+        value = true;
+      }
+    }
 
     dispatch(
       asyncZoneUpdateSetting(SETTING_NAME, activeZoneId, {
         enabled: value,
         cf: true, // the zone is orange clouded
         wordpress: true, // wordpress is detected
-        wp_plugin: true // wp plugin is detected
+        wp_plugin: true, // wp plugin is detected
+        hostnames
       })
     );
     dispatch(asyncPluginUpdateSetting(SETTING_NAME, activeZoneId, value));
@@ -61,7 +92,12 @@ class AutomaticPlatformOptimizationCard extends Component {
 
   render() {
     const { formatMessage } = this.props.intl;
-    const { modifiedDate, entitlements } = this.props;
+    const {
+      modifiedDate,
+      entitlements,
+      settings: { hostnames = [], enabled },
+      defaultHostnames
+    } = this.props;
 
     const automatic_platform_optimization_entitlement =
       entitlements['zone.automatic_platform_optimization'];
@@ -69,6 +105,15 @@ class AutomaticPlatformOptimizationCard extends Component {
       automatic_platform_optimization_entitlement,
       'allocation.value',
       false
+    );
+    const hostnamesMessage = formatMessage(
+      { id: 'container.automaticplatformoptimization.description_hostnames' },
+      {
+        hostnames:
+          hostnames.length > 0
+            ? hostnames.join(', ')
+            : defaultHostnames.join(', ')
+      }
     );
 
     return (
@@ -81,9 +126,13 @@ class AutomaticPlatformOptimizationCard extends Component {
               })}
               footerMessage={getLastModifiedDate(this.props.intl, modifiedDate)}
             >
-              <p>
+              <div>
                 <FormattedMessage id="container.automaticplatformoptimization.description" />
-              </p>
+
+                {enabled && (
+                  <FormattedMarkdown formattedMessage={hostnamesMessage} />
+                )}
+              </div>
             </CardContent>
             <CustomCardControl
               purchaseSubscription={!entitled}
@@ -92,7 +141,7 @@ class AutomaticPlatformOptimizationCard extends Component {
             >
               <Toggle
                 label=""
-                value={this.props.rewriteValue.enabled}
+                value={this.isFeatureEnabled()}
                 onChange={this.handleChange.bind(this)}
               />
             </CustomCardControl>
@@ -116,10 +165,28 @@ class AutomaticPlatformOptimizationCard extends Component {
   }
 }
 
+function getDefaultHostnames(hostname, isSubdomain) {
+  const defaultHostnames = [];
+  defaultHostnames.push(hostname);
+
+  if (!isSubdomain) {
+    if (hostname.startsWith('www.')) {
+      defaultHostnames.push(hostname.substring('www.'.length));
+    } else {
+      defaultHostnames.push(`www.${hostname}`);
+    }
+  }
+
+  return defaultHostnames;
+}
+
 function mapStateToProps(state) {
+  const isSubdomainValue = isSubdomain(state.activeZone.name);
+  const hostname = new URL(document.URL).hostname;
+
   return {
     activeZoneId: state.activeZone.id,
-    rewriteValue: getZoneSettingsValueForZoneId(
+    settings: getZoneSettingsValueForZoneId(
       state.activeZone.id,
       SETTING_NAME,
       state
@@ -129,9 +196,13 @@ function mapStateToProps(state) {
       SETTING_NAME,
       state
     ),
-    entitlements: state.zoneEntitlements.entities[state.activeZone.id]
+    entitlements: state.zoneEntitlements.entities[state.activeZone.id],
+    defaultHostnames: getDefaultHostnames(hostname, isSubdomainValue),
+    hostname,
+    isSubdomain: isSubdomainValue
   };
 }
+
 export default injectIntl(
   connect(mapStateToProps)(AutomaticPlatformOptimizationCard)
 );
