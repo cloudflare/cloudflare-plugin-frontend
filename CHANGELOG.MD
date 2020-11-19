@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.2.2](#3.2.2) - 2020-11-19
+### Fixed
+- APO-147 support of subdomains for APO card [#159](https://github.com/cloudflare/cloudflare-plugin-frontend/pull/159)
+
 ## [3.2.1](#3.2.1) - 2020-10-05
 ### Fixed
 - Set all APO values properly to fix dashboard rendering [#156](https://github.com/cloudflare/cloudflare-plugin-frontend/pull/156)
