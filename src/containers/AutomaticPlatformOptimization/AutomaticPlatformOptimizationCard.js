@@ -63,27 +63,36 @@ class AutomaticPlatformOptimizationCard extends Component {
     let {
       activeZoneId,
       dispatch,
-      settings: { hostnames = [] },
-      defaultHostnames
+      settings: { hostnames = [], cf, wordpress, wp_plugin, enabled },
+      defaultHostnames,
+      isSubdomain
     } = this.props;
 
-    if (value) {
-      hostnames.push(...defaultHostnames.filter(h => !hostnames.includes(h)));
-    } else {
-      _.remove(hostnames, h => defaultHostnames.includes(h));
+    if (enabled) {
+      if (value) {
+        // extend hostnames when APO was enabled already
+        hostnames.push(...defaultHostnames.filter(h => !hostnames.includes(h)));
+      } else {
+        _.remove(hostnames, h => defaultHostnames.includes(h));
 
-      // keep feature enabled if there are other hostnames
-      if (hostnames.length > 0) {
-        value = true;
+        // keep feature enabled if there are other hostnames
+        if (hostnames.length > 0) {
+          value = true;
+        }
+      }
+    } else {
+      if (value) {
+        // override hostnames when APO was disabled
+        hostnames = [...defaultHostnames];
       }
     }
 
     dispatch(
       asyncZoneUpdateSetting(SETTING_NAME, activeZoneId, {
         enabled: value,
-        cf: true, // the zone is orange clouded
-        wordpress: true, // wordpress is detected
-        wp_plugin: true, // wp plugin is detected
+        cf: isSubdomain ? cf : true, // the zone is orange clouded, override only on the root
+        wordpress: isSubdomain ? wordpress : true, // wordpress is detected, override only on the root
+        wp_plugin: isSubdomain ? wp_plugin : true, // wp plugin is detected, override only on the root
         hostnames
       })
     );
