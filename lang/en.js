@@ -274,7 +274,7 @@
     "constants.plans.biz": "Business plan",
     "constants.plans.ent": "Enterprise plan",
     "errors.noActiveZoneSelected": "It looks like your domain {domain} is not provisioned with Cloudflare. Please continue to {link} to secure and speed up your website.",
-    "warning.usingSubdomain": "You are using a subdomain for your site, but any Cloudflare settings applied via this plugin will be applied to your original domain as well.",
+    "warning.usingSubdomain": "You are using a subdomain for your site, apart from the APO feature, any Cloudflare settings applied via this plugin will be applied to your original domain as well.",
     "warning.developmentmode": "Development mode enabled, all traffic will bypass the Cloudflare cache.",
     "utils.utils.lastmodifieddate": "This settings was last changed {date}"
 }
