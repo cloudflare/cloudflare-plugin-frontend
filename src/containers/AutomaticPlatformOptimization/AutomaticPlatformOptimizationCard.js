@@ -14,8 +14,13 @@ import {
 } from '../../selectors/zoneSettings';
 import CustomCardControl from '../../components/CustomCardControl/CustomCardControl';
 import _ from 'lodash';
+import { Checkbox } from 'cf-component-checkbox';
 
 const SETTING_NAME = 'automatic_platform_optimization';
+
+const checkboxStyle = {
+  marginTop: '1rem'
+};
 
 class AutomaticPlatformOptimizationCard extends Component {
   constructor(props) {
@@ -63,7 +68,14 @@ class AutomaticPlatformOptimizationCard extends Component {
     let {
       activeZoneId,
       dispatch,
-      settings: { hostnames = [], cf, wordpress, wp_plugin, enabled },
+      settings: {
+        hostnames = [],
+        cf,
+        wordpress,
+        wp_plugin,
+        enabled,
+        cache_by_device_type = false
+      },
       defaultHostnames,
       isSubdomain
     } = this.props;
@@ -93,10 +105,37 @@ class AutomaticPlatformOptimizationCard extends Component {
         cf: isSubdomain ? cf : true, // the zone is orange clouded, override only on the root
         wordpress: isSubdomain ? wordpress : true, // wordpress is detected, override only on the root
         wp_plugin: isSubdomain ? wp_plugin : true, // wp plugin is detected, override only on the root
-        hostnames
+        hostnames,
+        cache_by_device_type
       })
     );
     dispatch(asyncPluginUpdateSetting(SETTING_NAME, activeZoneId, value));
+  }
+
+  handleCacheByDeviceTypeChange() {
+    let {
+      activeZoneId,
+      dispatch,
+      settings: {
+        hostnames = [],
+        cf,
+        wordpress,
+        wp_plugin,
+        enabled,
+        cache_by_device_type = false
+      }
+    } = this.props;
+
+    dispatch(
+      asyncZoneUpdateSetting(SETTING_NAME, activeZoneId, {
+        enabled,
+        cf,
+        wordpress,
+        wp_plugin,
+        hostnames,
+        cache_by_device_type: !cache_by_device_type
+      })
+    );
   }
 
   render() {
@@ -104,7 +143,7 @@ class AutomaticPlatformOptimizationCard extends Component {
     const {
       modifiedDate,
       entitlements,
-      settings: { hostnames = [], enabled },
+      settings: { hostnames = [], enabled, cache_by_device_type = false },
       defaultHostnames
     } = this.props;
 
@@ -138,6 +177,10 @@ class AutomaticPlatformOptimizationCard extends Component {
               <div>
                 <FormattedMessage id="container.automaticplatformoptimization.description" />
 
+                <FormattedMarkdown text="container.automaticplatformoptimization.drawer.help" />
+
+                <FormattedMarkdown text="container.automaticplatformoptimization.cache_by_device_type_note" />
+
                 {enabled && (
                   <FormattedMarkdown formattedMessage={hostnamesMessage} />
                 )}
@@ -148,11 +191,26 @@ class AutomaticPlatformOptimizationCard extends Component {
               purchaseSubscriptionPath={'/speed/optimization/apo/purchase'}
               indentifier={SETTING_NAME}
             >
-              <Toggle
-                label=""
-                value={this.isFeatureEnabled()}
-                onChange={this.handleChange.bind(this)}
-              />
+              <div>
+                <Toggle
+                  label=""
+                  value={this.isFeatureEnabled()}
+                  onChange={this.handleChange.bind(this)}
+                />
+                <div style={checkboxStyle}>
+                  <Checkbox
+                    name={''}
+                    value={''}
+                    label={formatMessage({
+                      id:
+                        'container.automaticplatformoptimization.cache_by_device_type'
+                    })}
+                    checked={!!cache_by_device_type}
+                    onChange={this.handleCacheByDeviceTypeChange.bind(this)}
+                    disabled={!enabled}
+                  />
+                </div>
+              </div>
             </CustomCardControl>
           </CardSection>
           <CardDrawers
