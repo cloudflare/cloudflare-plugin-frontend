@@ -193,7 +193,7 @@
     "container.automaticplatformoptimization.drawer.help": "For more information about how APO provides better performance to your WordPress site, see [this](https://support.cloudflare.com/hc/en-us/articles/360049822312) support article.",
     "container.automaticplatformoptimization.description_hostnames": "**Note:** APO runs against the following list of hostnames:\n\n_{hostnames}_",
     "container.automaticplatformoptimization.cache_by_device_type": "Cache By Device Type",
-    "container.automaticplatformoptimization.cache_by_device_type_note": "**Note:** Changing Cache By Device Type setting will invalidate Cache.",
+    "container.automaticplatformoptimization.cache_by_device_type_note": "**Note:** Changing Cache By Device Type setting will invalidate Cache. The setting is applied to all hostnames",
     "container.purgeCacheCard.dropdown": "Purge Cache",
     "container.purgeCacheCard.button": "Purge Everything",
     "container.purgeCacheCard.title": "Purge Cache",
