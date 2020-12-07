@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.2.3](#3.2.3) - 2020-12-07
+### Fixed
+- APO-185 bugfix how we handle hostnames, APO settings on subdomain [#161](https://github.com/cloudflare/cloudflare-plugin-frontend/pull/161)
+
 ## [3.2.2](#3.2.2) - 2020-11-19
 ### Fixed
 - APO-147 support of subdomains for APO card [#159](https://github.com/cloudflare/cloudflare-plugin-frontend/pull/159)
