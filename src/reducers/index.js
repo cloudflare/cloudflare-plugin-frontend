@@ -7,7 +7,6 @@ import { dnsRecordsReducer } from './zoneDnsRecords.js';
 import { intlReducer } from './intl';
 import { notificationsReducer } from './notifications';
 import { userReducer } from './user';
-import { zoneAnalyticsReducer } from './zoneAnalytics';
 import { zonePurgeCacheReducer } from './zonePurgeCache';
 import { zoneRailgunReducer } from './zoneRailgun';
 import { zoneEntitlementsReducer } from './zoneEntitlements';
@@ -24,7 +23,6 @@ const rootReducer = combineReducers({
   notifications: notificationsReducer,
   routing: routerReducer,
   zones: zonesReducer,
-  zoneAnalytics: zoneAnalyticsReducer,
   zoneDnsRecords: dnsRecordsReducer,
   zonePurgeCache: zonePurgeCacheReducer,
   zoneRailguns: zoneRailgunReducer,

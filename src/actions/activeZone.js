@@ -1,6 +1,5 @@
 import * as ActionTypes from '../constants/ActionTypes';
 import { asyncDNSRecordFetchList } from './zoneDnsRecords';
-import { asyncZoneFetchAnalytics } from './zoneAnalytics';
 import { asyncZoneRailgunFetchAll } from './zoneRailgun';
 import { asyncZoneEntitlements } from './zoneEntitlements';
 import { asyncZoneFetchSettings } from './zoneSettings';
@@ -21,7 +20,6 @@ export function asyncZoneSetActiveZone(zone) {
       dispatch(asyncZoneRailgunFetchAll(zone.id));
       dispatch(asyncPluginFetchSettings(zone.id));
       dispatch(asyncZoneFetchSettings(zone.id));
-      dispatch(asyncZoneFetchAnalytics(zone.id));
       dispatch(asyncZoneEntitlements(zone.id));
     }
   };
