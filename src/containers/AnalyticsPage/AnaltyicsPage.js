@@ -20,7 +20,7 @@ class AnaltyicsPage extends Component {
               </p>
             </CardContent>
             <CardControl>
-              <Button type="primary" onClick={function(){window.open(analyticsDeepLink)}}>
+              <Button type="primary" onClick={function(){window.open(analyticsDeepLink, '_blank', 'noopener,noreferrer')}}>
                 <FormattedMessage id="container.analyticCard.graphql.linkMessage" />
               </Button>
             </CardControl>
