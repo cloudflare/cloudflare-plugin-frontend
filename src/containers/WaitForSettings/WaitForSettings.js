@@ -28,13 +28,11 @@ class WaitForSettings extends Component {
       zonePluginSettings,
       settings,
       pluginSettings,
-      analytics,
       config
     } = this.props;
 
     let isSettingsLoaded = true;
     let isPluginSettingsLoaded = true;
-    let isAnalyticsLoaded = true;
 
     if (settings) {
       isSettingsLoaded = getAllZoneSettingsForZoneId(

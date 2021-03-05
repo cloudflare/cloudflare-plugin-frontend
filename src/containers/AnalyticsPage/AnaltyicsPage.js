@@ -19,13 +19,26 @@ class AnaltyicsPage extends Component {
 
         <Card>
           <CardSection>
-            <CardContent title={<FormattedMessage id="container.analyticCard.graphql.header" />}>
+            <CardContent
+              title={
+                <FormattedMessage id="container.analyticCard.graphql.header" />
+              }
+            >
               <p>
                 <FormattedMessage id="container.analyticCard.graphql.overview" />
               </p>
             </CardContent>
             <CardControl>
-              <Button type="primary" onClick={function(){window.open(analyticsDeepLink, '_blank', 'noopener,noreferrer')}}>
+              <Button
+                type="primary"
+                onClick={function() {
+                  window.open(
+                    analyticsDeepLink,
+                    '_blank',
+                    'noopener,noreferrer'
+                  );
+                }}
+              >
                 <FormattedMessage id="container.analyticCard.graphql.linkMessage" />
               </Button>
             </CardControl>
