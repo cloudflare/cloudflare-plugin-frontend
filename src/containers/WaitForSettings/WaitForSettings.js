@@ -6,7 +6,6 @@ import Loading from 'cf-component-loading';
 import Text from 'cf-component-text';
 import { getPluginSettingsForZoneId } from '../../selectors/pluginSettings';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { getZoneAnalyticsForZoneId } from '../../selectors/zoneAnalytics';
 import { getAllZoneSettingsForZoneId } from '../../selectors/zoneSettings';
 import { isDNSPageEnabled } from '../../selectors/config';
 import { push } from 'react-router-redux';
@@ -27,16 +26,13 @@ class WaitForSettings extends Component {
       activeZone,
       zoneSettings,
       zonePluginSettings,
-      zoneAnalytics,
       settings,
       pluginSettings,
-      analytics,
       config
     } = this.props;
 
     let isSettingsLoaded = true;
     let isPluginSettingsLoaded = true;
-    let isAnalyticsLoaded = true;
 
     if (settings) {
       isSettingsLoaded = getAllZoneSettingsForZoneId(
@@ -52,17 +48,9 @@ class WaitForSettings extends Component {
       );
     }
 
-    if (analytics) {
-      isAnalyticsLoaded = getZoneAnalyticsForZoneId(
-        activeZone.id,
-        zoneAnalytics
-      );
-    }
-
     let isZoneOnCloudflare = isActiveZoneOnCloudflare(activeZone);
 
-    let isEverythingLoaded =
-      isSettingsLoaded && isPluginSettingsLoaded && isAnalyticsLoaded;
+    let isEverythingLoaded = isSettingsLoaded && isPluginSettingsLoaded;
 
     var link = (
       <Link href={CLOUDFLARE_ADD_SITE_PAGE} target="_blank">
@@ -106,7 +94,6 @@ WaitForSettings.propTypes = {
   activeZone: PropTypes.object,
   zoneSettings: PropTypes.object,
   zonePluginSettings: PropTypes.object,
-  zoneAnalytics: PropTypes.object,
   config: PropTypes.object,
   intl: PropTypes.object,
   children: PropTypes.node
@@ -117,7 +104,6 @@ function mapStateToProps(state) {
     activeZone: state.activeZone,
     zoneSettings: state.zoneSettings,
     zonePluginSettings: state.pluginSettings,
-    zoneAnalytics: state.zoneAnalytics,
     config: state.config
   };
 }
