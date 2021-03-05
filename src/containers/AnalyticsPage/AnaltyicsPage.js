@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { Card, CardSection, CardContent, CardControl } from 'cf-component-card';
 import { Button } from 'cf-component-button';
+import { Heading } from 'cf-component-heading';
 
 class AnaltyicsPage extends Component {
   render() {
@@ -12,6 +13,10 @@ class AnaltyicsPage extends Component {
 
     return (
       <div>
+        <Heading size={1}>
+          <FormattedMessage id="container.analyticsPage.title" />
+        </Heading>
+
         <Card>
           <CardSection>
             <CardContent title={<FormattedMessage id="container.analyticCard.graphql.header" />}>
