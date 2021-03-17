@@ -55,17 +55,17 @@
     "no-catch-shadow": 2,
     "handle-callback-err": 2,
     "camelcase": 0,
-    "no-unused-vars": [2, {"vars": "all", "args": "after-used"}],
-    "no-undef": [2, {"typeof": false}],
-    "react/prop-types": [2, {"skipUndeclared": true}],
+    "no-unused-vars": [2, { "vars": "all", "args": "after-used" }],
+    "no-undef": [2, { "typeof": false }],
+    "react/prop-types": [2, { "skipUndeclared": true }],
     "import/no-absolute-path": 2,
     "import/no-deprecated": 1,
     "import/no-mutable-exports": 1,
     "import/no-extraneous-dependencies": 0,
     "import/no-unresolved": 0,
     "import/first": 1,
-    "prettier/prettier": [2, {"trailingComma": "none", "singleQuote": true}],
-    "compat/compat": 2
+    "prettier/prettier": [2, { "trailingComma": "none", "singleQuote": true }],
+    "compat/compat": 0
   },
   "settings": {
     "import/resolver": "webpack"
