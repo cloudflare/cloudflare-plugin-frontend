@@ -24,9 +24,9 @@ const checkboxStyle = {
 };
 
 const warningIconStyle = {
-  width: '48px',
+  minWidth: '48px',
   padding: '8px',
-  'margin-top': '24px',
+  marginTop: '16px',
   fill: 'currentcolor',
   color: 'rgb(221, 161, 0)'
 };
@@ -210,12 +210,12 @@ class AutomaticPlatformOptimizationCard extends Component {
                     <div style={warningIconStyle}>
                       <Icon type="exclamation-sign" />
                     </div>
-                    <p>
+                    <span>
                       <FormattedMarkdown text="container.automaticplatformoptimization.apo_header_note" />
                       <a onClick={() => this.recheckAPOHeader()} href="#">
                         Check again.
                       </a>
-                    </p>
+                    </span>
                   </div>
                 )}
                 {enabled && !wp_plugin && (
@@ -223,9 +223,9 @@ class AutomaticPlatformOptimizationCard extends Component {
                     <div style={warningIconStyle}>
                       <Icon type="exclamation-sign" />
                     </div>
-                    <p>
+                    <span>
                       <FormattedMarkdown text="container.automaticplatformoptimization.apo_configuration_note" />
-                    </p>
+                    </span>
                   </div>
                 )}
               </div>
