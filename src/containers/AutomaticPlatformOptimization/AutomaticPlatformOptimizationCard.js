@@ -297,6 +297,7 @@ async function apoHeaderIsPresent() {
     let res = await fetch(origin);
     return res.headers.has('cf-edge-cache');
   } catch (err) {
+    console.warn(err);
     return false;
   }
 }
