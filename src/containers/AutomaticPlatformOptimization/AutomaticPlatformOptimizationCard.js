@@ -15,11 +15,20 @@ import {
 import CustomCardControl from '../../components/CustomCardControl/CustomCardControl';
 import _ from 'lodash';
 import { Checkbox } from 'cf-component-checkbox';
+import { Icon } from '@cloudflare/component-icon';
 
 const SETTING_NAME = 'automatic_platform_optimization';
 
 const checkboxStyle = {
   marginTop: '1rem'
+};
+
+const warningIconStyle = {
+  minWidth: '48px',
+  padding: '8px',
+  marginTop: '16px',
+  fill: 'currentcolor',
+  color: 'rgb(221, 161, 0)'
 };
 
 class AutomaticPlatformOptimizationCard extends Component {
@@ -31,7 +40,7 @@ class AutomaticPlatformOptimizationCard extends Component {
     this.handleDrawerClick = this.handleDrawerClick.bind(this);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const { activeZoneId, dispatch } = this.props;
 
     // synchronize Plugin setting with API value
@@ -42,6 +51,15 @@ class AutomaticPlatformOptimizationCard extends Component {
         this.isFeatureEnabled()
       )
     );
+
+    await this.recheckAPOHeader();
+  }
+
+  async recheckAPOHeader() {
+    let hasAPOHeader = await apoHeaderIsPresent();
+    this.setState({
+      hasAPOHeader
+    });
   }
 
   isFeatureEnabled() {
@@ -140,10 +158,16 @@ class AutomaticPlatformOptimizationCard extends Component {
 
   render() {
     const { formatMessage } = this.props.intl;
+    const { hasAPOHeader } = this.state;
     const {
       modifiedDate,
       entitlements,
-      settings: { hostnames = [], enabled, cache_by_device_type = false },
+      settings: {
+        hostnames = [],
+        enabled,
+        wp_plugin,
+        cache_by_device_type = false
+      },
       defaultHostnames
     } = this.props;
 
@@ -176,13 +200,33 @@ class AutomaticPlatformOptimizationCard extends Component {
             >
               <div>
                 <FormattedMessage id="container.automaticplatformoptimization.description" />
-
                 <FormattedMarkdown text="container.automaticplatformoptimization.drawer.help" />
-
                 <FormattedMarkdown text="container.automaticplatformoptimization.cache_by_device_type_note" />
-
                 {enabled && (
                   <FormattedMarkdown formattedMessage={hostnamesMessage} />
+                )}
+                {!hasAPOHeader && entitled && (
+                  <div style={{ display: 'flex' }}>
+                    <div style={warningIconStyle}>
+                      <Icon type="exclamation-sign" />
+                    </div>
+                    <span>
+                      <FormattedMarkdown text="container.automaticplatformoptimization.apo_header_note" />
+                      <a onClick={() => this.recheckAPOHeader()} href="#">
+                        Check again.
+                      </a>
+                    </span>
+                  </div>
+                )}
+                {enabled && !wp_plugin && (
+                  <div style={{ display: 'flex' }}>
+                    <div style={warningIconStyle}>
+                      <Icon type="exclamation-sign" />
+                    </div>
+                    <span>
+                      <FormattedMarkdown text="container.automaticplatformoptimization.apo_configuration_note" />
+                    </span>
+                  </div>
                 )}
               </div>
             </CardContent>
@@ -245,6 +289,17 @@ function getDefaultHostnames(hostname, isSubdomain) {
   }
 
   return defaultHostnames;
+}
+
+async function apoHeaderIsPresent() {
+  try {
+    let origin = new URL(document.URL).origin;
+    let res = await fetch(origin);
+    return res.headers.has('cf-edge-cache');
+  } catch (err) {
+    console.warn(err);
+    return false;
+  }
 }
 
 function mapStateToProps(state) {
