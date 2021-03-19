@@ -41,7 +41,19 @@ class AutomaticPlatformOptimizationCard extends Component {
   }
 
   async componentDidMount() {
-    const { activeZoneId, dispatch } = this.props;
+    const {
+      activeZoneId,
+      dispatch,
+      settings: {
+        hostnames = [],
+        cf,
+        wordpress,
+        wp_plugin,
+        enabled,
+        cache_by_device_type = false
+      },
+      defaultHostnames
+    } = this.props;
 
     // synchronize Plugin setting with API value
     dispatch(
@@ -51,6 +63,25 @@ class AutomaticPlatformOptimizationCard extends Component {
         this.isFeatureEnabled()
       )
     );
+
+    if (!cf || !wordpress || !wp_plugin) {
+      // init hostnames only if the feature is disabled
+      if (!enabled && hostnames.length == 0) {
+        hostnames.push(...defaultHostnames);
+      }
+
+      // autocorrect APO settings
+      dispatch(
+        asyncZoneUpdateSetting(SETTING_NAME, activeZoneId, {
+          enabled,
+          cf: true,
+          wordpress: true,
+          wp_plugin: true,
+          hostnames,
+          cache_by_device_type
+        })
+      );
+    }
 
     await this.recheckAPOHeader();
   }
