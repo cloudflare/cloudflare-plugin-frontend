@@ -86,16 +86,8 @@ class AutomaticPlatformOptimizationCard extends Component {
     let {
       activeZoneId,
       dispatch,
-      settings: {
-        hostnames = [],
-        cf,
-        wordpress,
-        wp_plugin,
-        enabled,
-        cache_by_device_type = false
-      },
-      defaultHostnames,
-      isSubdomain
+      settings: { hostnames = [], enabled, cache_by_device_type = false },
+      defaultHostnames
     } = this.props;
 
     if (enabled) {
@@ -120,9 +112,9 @@ class AutomaticPlatformOptimizationCard extends Component {
     dispatch(
       asyncZoneUpdateSetting(SETTING_NAME, activeZoneId, {
         enabled: value,
-        cf: isSubdomain ? cf : true, // the zone is orange clouded, override only on the root
-        wordpress: isSubdomain ? wordpress : true, // wordpress is detected, override only on the root
-        wp_plugin: isSubdomain ? wp_plugin : true, // wp plugin is detected, override only on the root
+        cf: true,
+        wordpress: true,
+        wp_plugin: true,
         hostnames,
         cache_by_device_type
       })
