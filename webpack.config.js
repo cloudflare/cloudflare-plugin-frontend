@@ -13,7 +13,7 @@ if (!isDev) {
 }
 
 module.exports = {
-  entry: './src/index.js',
+  entry: ['babel-polyfill', './src/index.js'],
   devtool: isDev ? 'cheap-module-source-map' : false,
   output: {
     path: __dirname,

@@ -99,6 +99,7 @@
   "dependencies": {
     "@cloudflare/component-icon": "^5.15.2",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-polyfill": "^6",
     "cf-component-box": "^2.2.1",
     "cf-style-provider": "^1.5.0",
     "prop-types": "^15.5.8"
