@@ -8,6 +8,9 @@ module.exports = {
       impliedStrict: true,
       jsx: true,
       experimentalObjectRestSpread: true
+    },
+    babelOptions: {
+      configFile: './.babelrc.json'
     }
   },
   globals: {
@@ -60,6 +63,13 @@ module.exports = {
     'compat/compat': 0
   },
   settings: {
-    'import/resolver': 'webpack'
+    'import/resolver': {
+      webpack: {
+        config: './webpack.config.js'
+      }
+    },
+    react: {
+      version: 'detect'
+    }
   }
 };
