@@ -18,6 +18,8 @@ import { Checkbox } from 'cf-component-checkbox';
 import { Icon } from '@cloudflare/component-icon';
 
 const SETTING_NAME = 'automatic_platform_optimization';
+const SETTING_CACHE_BY_DEVICE_TYPE =
+  'automatic_platform_optimization_cache_by_device_type';
 
 const checkboxStyle = {
   marginTop: '1rem'
@@ -61,6 +63,14 @@ class AutomaticPlatformOptimizationCard extends Component {
         SETTING_NAME,
         activeZoneId,
         this.isFeatureEnabled()
+      )
+    );
+
+    dispatch(
+      asyncPluginUpdateSetting(
+        SETTING_CACHE_BY_DEVICE_TYPE,
+        activeZoneId,
+        cache_by_device_type
       )
     );
 
@@ -151,6 +161,13 @@ class AutomaticPlatformOptimizationCard extends Component {
       })
     );
     dispatch(asyncPluginUpdateSetting(SETTING_NAME, activeZoneId, value));
+    dispatch(
+      asyncPluginUpdateSetting(
+        SETTING_CACHE_BY_DEVICE_TYPE,
+        activeZoneId,
+        cache_by_device_type
+      )
+    );
   }
 
   handleCacheByDeviceTypeChange() {
