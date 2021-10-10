@@ -1,9 +1,0 @@
-language: node_js
-node_js: 'node'
-
-before_script:
-  - yarn run build:production
-
-script:
-  - yarn run lint
-  - yarn run test
