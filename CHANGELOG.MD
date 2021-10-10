@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.3.0](#3.3.0) - 2021-10-11
+### Added
+- Save plugin setting if APO cache by device type is activated [#181](https://github.com/cloudflare/cloudflare-plugin-frontend/pull/181)
+
 ## [3.2.4](#3.2.4) - 2021-03-05
 ### Changed
 - APILIB-2210 Deprecate REST dashboard analytics [#165](https://github.com/cloudflare/cloudflare-plugin-frontend/pull/165)
