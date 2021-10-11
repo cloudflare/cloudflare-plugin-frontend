@@ -22,7 +22,7 @@ class CustomCardControl extends Component {
     } = this.props;
 
     if (purchaseSubscription && purchaseSubscriptionPath) {
-      upgradeLink = `https://dash.cloudflare.com/${activeZone.account.id}/${activeZone.name}${purchaseSubscriptionPath}`;
+      let upgradeLink = `https://dash.cloudflare.com/${activeZone.account.id}/${activeZone.name}${purchaseSubscriptionPath}`;
       return (
         <CardControl>
           {purchaseSubscription ? (

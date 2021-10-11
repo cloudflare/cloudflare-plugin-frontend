@@ -60,7 +60,8 @@ module.exports = {
     'import/no-unresolved': 0,
     'import/first': 1,
     'prettier/prettier': [2, { trailingComma: 'none', singleQuote: true }],
-    'compat/compat': 0
+    'compat/compat': 0,
+    'no-use-before-define': ['error', { functions: false, classes: true }]
   },
   settings: {
     'import/resolver': {
