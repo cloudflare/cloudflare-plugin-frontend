@@ -17,7 +17,6 @@ import SecurityLevelCard from '../containers/SecurityLevelCard/SecurityLevelCard
 import WAFCard from '../containers/WAFCard/WAFCard';
 import PluginSpecificCacheCard from '../containers/PluginSpecificCacheCard/PluginSpecificCacheCard';
 import PluginSpecificCacheTagCard from '../containers/PluginSpecificCacheTagCard/PluginSpecificCachetTagCard.js';
-import RailgunCard from '../containers/RailgunCard/RailgunCard';
 import AutomaticHTTPSRewritesCard from '../containers/AutomaticHTTPSRewritesCard/AutomaticHTTPSRewritesCard';
 import AutomaticPlatformOptimizationCard from '../containers/AutomaticPlatformOptimization/AutomaticPlatformOptimizationCard';
 
@@ -43,7 +42,6 @@ const cardMapper = {
   PluginSpecificCacheCard: PluginSpecificCacheCard,
   PluginSpecificCacheTagCard: PluginSpecificCacheTagCard,
   PurgeCacheCard: PurgeCacheCard,
-  RailgunCard: RailgunCard,
   SSLCard: SSLCard,
   SecurityLevelCard: SecurityLevelCard,
   WAFCard: WAFCard

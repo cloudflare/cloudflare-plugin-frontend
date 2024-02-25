@@ -81,7 +81,6 @@ to each request.
             "ImageOptimizationCard",
             "MinifyCard",
             "PurgeCacheCard",
-            "RailgunCard"
         ],
         "container.moresettings.security": [
             "AdvanceDDoSCard",

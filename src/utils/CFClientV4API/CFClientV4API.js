@@ -302,44 +302,6 @@ export function zoneDeleteZone(zoneId, callback) {
 }
 
 /*
- * Get all available railguns for a zone
- *
- * @param {String}   [zoneId]
- * @param {Function} [callback]
- *
- * @returns {Object} API Response
- */
-export function zoneRailgunGetAll(zoneId, callback) {
-  return http.get(
-    ENDPOINT + '/zones/' + zoneId + '/railguns',
-    {},
-    v4Callback(callback)
-  );
-}
-
-/*
- * Get all available railguns for a zone
- *
- * @param {String}   [zoneId]
- * @param {Function} [callback]
- *
- * @returns {Object} API Response
- */
-export function zoneRailgunPatch(zoneId, railgunId, connected, callback) {
-  let opts = {
-    body: {
-      connected: connected
-    }
-  };
-
-  return http.patch(
-    ENDPOINT + '/zones/' + zoneId + '/railguns/' + railgunId,
-    opts,
-    v4Callback(callback)
-  );
-}
-
-/*
  * Get all entitlements for a zone
  *
  * @param {String}   [zoneId]
