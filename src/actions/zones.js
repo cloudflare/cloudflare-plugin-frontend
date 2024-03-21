@@ -70,7 +70,12 @@ export function asyncFetchZones() {
     zoneGetAll(function(error, response) {
       if (response) {
         dispatch(zoneFetchSuccess(response.body.result));
-        if (response.body.result[0]) {
+        const activeZone = response.body.result.find(
+          zone => zone.status === 'active'
+        );
+        if (activeZone) {
+          dispatch(zoneSetActiveZoneIfEmpty(activeZone));
+        } else if (response.body.result[0]) {
           dispatch(zoneSetActiveZoneIfEmpty(response.body.result[0]));
         }
       } else {
