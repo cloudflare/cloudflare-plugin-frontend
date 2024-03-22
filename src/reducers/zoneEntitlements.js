@@ -1,4 +1,5 @@
 import * as ActionTypes from '../constants/ActionTypes';
+import { normalizeZoneEntitlements } from '../constants/Schemas';
 
 const initialState = {
   entities: {},
@@ -12,7 +13,12 @@ export function zoneEntitlementsReducer(state = initialState, action) {
         isFetching: true
       });
     case ActionTypes.ZONE_ENTITLEMENTS_SUCCESS:
+      let normalizedZoneEntitlements = normalizeZoneEntitlements(
+        action.zoneEntitlements
+      );
       let newEntities = Object.assign({}, state.entities);
+      newEntities[action.zoneId] =
+        normalizedZoneEntitlements.entities.entitlements;
       return Object.assign({}, state, {
         entities: newEntities,
         isFetching: false
