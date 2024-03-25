@@ -13,6 +13,7 @@ import * as ActionTypes from '../constants/ActionTypes';
 import { asyncZoneSetActiveZone } from './activeZone';
 import { normalizeZoneGetAll } from '../constants/Schemas';
 import { zoneFetch, zoneFetchSuccess } from './zones';
+import { deduplicateOnActiveZones } from '../utils/utils';
 
 /*
  * Zone Provision actions still use reducers/zones.js as the reducer
@@ -136,7 +137,8 @@ function asyncSetHostAPIProvisionedDomainActive(domainName) {
     zoneGetAll(function(error, response) {
       if (response) {
         dispatch(zoneFetchSuccess(response.body.result));
-        let normalizedZoneList = normalizeZoneGetAll(response.body.result);
+        const zoneList = deduplicateOnActiveZones(response.body.result);
+        let normalizedZoneList = normalizeZoneGetAll(zoneList);
         dispatch(
           asyncZoneSetActiveZone(normalizedZoneList.entities.zones[domainName])
         );

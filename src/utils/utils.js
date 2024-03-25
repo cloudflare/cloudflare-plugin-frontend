@@ -70,3 +70,31 @@ export function formatMessageForIntegration(
 
   return formatMessage({ id: messageId });
 }
+
+// deduplicateOnActiveZones was introduced as a potential fix for CUSTESC-36595. The goal of this function is to
+// deduplicate the list of zones returned by the Cloudflare API based on the status of the zone. This way, we hope to
+// guarantee that when normalizing the list of zones, only the active zone would show up in case of duplicates. For
+// instance, in the mentioned tickets, two zones were potentially returned: a purged as well as an active zone.
+export function deduplicateOnActiveZones(zones) {
+  let filteredZones = [];
+  const isActive = z => z.status === 'active';
+  const isSameZone = (z1, z2) => z1.name === z2.name;
+
+  zones.forEach(zone => {
+    if (isActive(zone)) {
+      // If the zone is active, we first remove all existing duplicates and then insert the active zone.
+      filteredZones = filteredZones.filter(fZone => !isSameZone(zone, fZone));
+      filteredZones.push(zone);
+    } else {
+      // If the zone is not active, we only insert it if there is no existing active zone.
+      const alreadyHasActiveZone = filteredZones.some(
+        fZone => isSameZone(zone, fZone) && isActive(fZone)
+      );
+      if (!alreadyHasActiveZone) {
+        filteredZones.push(zone);
+      }
+    }
+  });
+
+  return filteredZones;
+}
