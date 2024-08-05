@@ -10,7 +10,6 @@ import DevelopmentModeCard from '../containers/DevelopmentModeCard/DevelopmentMo
 import IPV6Card from '../containers/IPV6Card/IPV6Card';
 import ImageOptimizationCard from '../containers/ImageOptimizationCard/ImageOptimizationCard';
 import IpRewriteCard from '../containers/IpRewriteCard/IpRewriteCard';
-import MinifyCard from '../containers/MinifyCard/MinifyCard';
 import PurgeCacheCard from '../containers/PurgeCacheCard/PurgeCacheCard';
 import SSLCard from '../containers/SSLCard/SSLCard';
 import SecurityLevelCard from '../containers/SecurityLevelCard/SecurityLevelCard';
@@ -38,7 +37,6 @@ const cardMapper = {
   IPV6Card: IPV6Card,
   ImageOptimizationCard: ImageOptimizationCard,
   IpRewriteCard: IpRewriteCard,
-  MinifyCard: MinifyCard,
   PluginSpecificCacheCard: PluginSpecificCacheCard,
   PluginSpecificCacheTagCard: PluginSpecificCacheTagCard,
   PurgeCacheCard: PurgeCacheCard,
