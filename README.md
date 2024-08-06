@@ -79,7 +79,6 @@ to each request.
             "DevelopmentModeCard",
             "IPV6Card",
             "ImageOptimizationCard",
-            "MinifyCard",
             "PurgeCacheCard",
         ],
         "container.moresettings.security": [
